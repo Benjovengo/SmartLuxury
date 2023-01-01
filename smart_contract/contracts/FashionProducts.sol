@@ -2,9 +2,9 @@
 pragma solidity ^0.8.17;
 
 // OpenZeppelin - imports for NFT (ERC-721 token)
-import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "../node_modules/@openzeppelin/contracts/utils/Counters.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 /* Contract for the information and transactions of fashion products */
 contract FashionProducts is ERC721URIStorage {
