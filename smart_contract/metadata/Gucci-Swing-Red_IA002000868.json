@@ -1,0 +1,48 @@
+{
+    "name": "Gucci Swing",
+    "brand": "Gucci",
+    "description": "Gucci Swing square - red leather",
+    "image": [
+        "https://ipfs.io/ipfs/QmSUfk6D2KR7P2CD6j8sy77522i5hfkBMPhEN7eNz3i28a?filename=Gucci-Swing-Vermelha_01.webp",
+        "https://ipfs.io/ipfs/QmasbYyxVVoKstJ5nFh75kBWwhA3ArPxarLihddnGEhmtr?filename=Gucci-Swing-Vermelha_02.webp",
+        "https://ipfs.io/ipfs/QmSqebcW7r8ASYELFDBQvJwUyiRkjEswusMgj1UJHLu4FU?filename=Gucci-Swing-Vermelha_03.webp",
+        "https://ipfs.io/ipfs/QmdGpuRPx9rBPWahEjkUMWz3eAW8n9PN1qqSC18wCVF9dM?filename=Gucci-Swing-Vermelha_04.webp",
+        "https://ipfs.io/ipfs/QmUQXKvHqgZFk4YK3c3rBSwqZVQY5gUYwhhR71juKMZhbp?filename=Gucci-Swing-Vermelha_05.webp"
+    ],
+    "id": "3",
+    "SKU": "IA002000868",
+    "attributes": [
+        {
+            "trait_type": "Purchase Price",
+            "value": 0.5
+        },
+        {
+            "trait_type": "Type of Product",
+            "value": "Bag"
+        },
+        {
+            "trait_type": "Condition",
+            "value": "Worn with love"
+        },
+        {
+            "trait_type": "Material",
+            "value": "Leather"
+        },
+        {
+            "trait_type": "Accessory(ies)",
+            "value": "Dust bag"
+        },
+        {
+            "trait_type": "Weight",
+            "value": 1250
+        },
+        {
+            "trait_type": "Made In",
+            "value": "Italy"
+        },
+        {
+            "trait_type": "Year",
+            "value": 2021
+        }
+    ]
+}

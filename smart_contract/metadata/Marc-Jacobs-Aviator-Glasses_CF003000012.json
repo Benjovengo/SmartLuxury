@@ -1,0 +1,46 @@
+{
+    "name": "Marc Jacobs Aviator Sunglasses",
+    "brand": "Marc Jacobs",
+    "description": "Classic aviator style sunglasses with golden metal frame.",
+    "image": [
+        "https://ipfs.io/ipfs/QmYbPDCZRvZW6RvN7kN61kJZGrhbSCicepHGtmBYVyKNTM?filename=Mark-Jacobs-Aviator-Sunglasses_01.webp",
+        "https://ipfs.io/ipfs/QmW7DBQj2mhxWwJTeAw4oobhYxdPiQH8BbAtzJUHX4dHTp?filename=Mark-Jacobs-Aviator-Sunglasses_02.webp",
+        "https://ipfs.io/ipfs/Qmb3dAWysadR98wbC5qgeWnNcqy2QiFVR9z1CRj8WHcLYw?filename=Mark-Jacobs-Aviator-Sunglasses_03.webp"
+    ],
+    "id": "4",
+    "SKU": "CF003000012",
+    "attributes": [
+        {
+            "trait_type": "Purchase Price",
+            "value": 0.25
+        },
+        {
+            "trait_type": "Type of Product",
+            "value": "Eyewear"
+        },
+        {
+            "trait_type": "Condition",
+            "value": "Worn with love"
+        },
+        {
+            "trait_type": "Material",
+            "value": "Metal"
+        },
+        {
+            "trait_type": "Accessory(ies)",
+            "value": "Case included"
+        },
+        {
+            "trait_type": "Weight",
+            "value": 100
+        },
+        {
+            "trait_type": "Made In",
+            "value": "USA"
+        },
+        {
+            "trait_type": "Year",
+            "value": 2020
+        }
+    ]
+}
