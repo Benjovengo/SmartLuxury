@@ -119,4 +119,37 @@ describe('Oracle Escrow', () => {
         })
     })
 
+
+    describe('Sale', () => {
+        beforeEach(async () => {
+            let transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(5) })
+            await transaction.wait()
+
+            transaction = await oracleEscrow.connect(oracle).updateDeliveryStatus(1, true)
+            await transaction.wait()
+
+            transaction = await oracleEscrow.connect(buyer).approveSale(1)
+            await transaction.wait()
+
+            transaction = await oracleEscrow.connect(seller).approveSale(1)
+            await transaction.wait()
+
+            transaction = await oracleEscrow.connect(oracle).approveSale(1)
+            await transaction.wait()
+
+            await oracle.sendTransaction({ to: oracleEscrow.address, value: tokens(5) }) // here a lender can send ether to the contract
+
+            transaction = await oracleEscrow.connect(seller).finalizeSale(1)
+            await transaction.wait()
+        })
+
+        it('Updates ownership', async () => {
+            expect(await fashionProducts.ownerOf(1)).to.be.equal(buyer.address)
+        })
+
+        it('Updates oracle contract balance', async () => {
+            expect(await oracleEscrow.getBalance()).to.be.equal(0)
+        })
+    })
+
 })

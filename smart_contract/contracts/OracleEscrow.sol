@@ -100,6 +100,45 @@ contract OracleEscrow is IERC721Receiver {
         approval[_nftID][msg.sender] = true;
     }
 
+    /* Finalize Sale
+       -> Require inspection status (add more items here, like appraisal)
+       -> Require sale to be authorized
+       -> Require funds to be correct amount
+       -> Transfer NFT to buyer
+       -> Transfer Funds to Seller */
+    function finalizeSale(uint256 _nftID) public {
+        require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
+        require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by all involved
+        require(approval[_nftID][seller]);
+        require(approval[_nftID][oracle]);
+        require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
+
+        isListed[_nftID] = false; // stop listing the item
+
+        // Transfer ether to the seller (from the OracleEscrow contract)
+        (bool success, ) = payable(seller).call{value: address(this).balance}(
+            ""
+        );
+        require(success);
+
+        // Transfer product ownership
+        IERC721(nftAddress).safeTransferFrom(
+            address(this),
+            buyer[_nftID],
+            _nftID
+        );
+    }
+
+    /* Cancel Sale (handle earnest deposit)
+       -> if inspection status is not approved, then refund, otherwise send to seller */
+    function cancelSale(uint256 _nftID) public {
+        if (wasDelivered[_nftID] == false) {
+            payable(buyer[_nftID]).transfer(address(this).balance);
+        } else {
+            payable(seller).transfer(address(this).balance);
+        }
+    }
+
     // accept ether from other contracts
     receive() external payable {}
 
