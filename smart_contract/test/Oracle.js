@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { ethers } = require('hardhat');
 
 const tokens = (n) => {
-    return ethers.utils.parseUnits(n, toString(), 'ether')
+    return ethers.utils.parseUnits(n.toString(), 'ether')
 }
 
 describe('Oracle Escrow', () => {
@@ -33,7 +33,7 @@ describe('Oracle Escrow', () => {
         await transaction.wait()
 
         // List product
-        transaction = await oracleEscrow.connect(seller).list(1)
+        transaction = await oracleEscrow.connect(seller).list(1, buyer.address, tokens(10), tokens(5))
         await transaction.wait()
     })
 
@@ -54,6 +54,26 @@ describe('Oracle Escrow', () => {
     describe('Listing', () => {
         it('Updates ownership.', async () => {
             expect(await fashionProducts.ownerOf(1)).to.be.equal(oracleEscrow.address)
+        })
+
+        it('Updates as listed.', async () => {
+            const result = await oracleEscrow.isListed(1)
+            expect(result).that.be.equal(true)
+        })
+
+        it('Returns buyer.', async () => {
+            const result = await oracleEscrow.buyer(1)
+            expect(result).that.be.equal(buyer.address)
+        })
+
+        it('Returns purchase price.', async () => {
+            const result = await oracleEscrow.purchasePrice(1)
+            expect(result).that.be.equal(tokens(10))
+        })
+
+        it('Returns escrow amount.', async () => {
+            const result = await oracleEscrow.escrowAmount(1)
+            expect(result).that.be.equal(tokens(5))
         })
     })
 
