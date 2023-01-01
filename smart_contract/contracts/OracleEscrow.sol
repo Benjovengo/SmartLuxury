@@ -44,6 +44,7 @@ contract OracleEscrow is IERC721Receiver {
     mapping(uint256 => uint256) public escrowAmount; // Amount transferred to the contract
     mapping(uint256 => address) public buyer;
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
+    mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
     constructor(
         address _nftAddress,
@@ -92,6 +93,11 @@ contract OracleEscrow is IERC721Receiver {
         onlyOracleInspector
     {
         wasDelivered[_nftID] = _delivered;
+    }
+
+    /* Approve Sale */
+    function approveSale(uint256 _nftID) public {
+        approval[_nftID][msg.sender] = true;
     }
 
     // accept ether from other contracts

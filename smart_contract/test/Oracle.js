@@ -87,7 +87,7 @@ describe('Oracle Escrow', () => {
         })
     })
 
-    describe('Inspection', () => {
+    describe('Oracle Inspection', () => {
         beforeEach(async () => {
             const transaction = await oracleEscrow.connect(oracle).updateDeliveryStatus(1, true)
             await transaction.wait()
@@ -100,5 +100,23 @@ describe('Oracle Escrow', () => {
     })
 
 
+    describe('Approval', () => {
+        beforeEach(async () => {
+            let transaction = await oracleEscrow.connect(buyer).approveSale(1)
+            await transaction.wait()
+
+            transaction = await oracleEscrow.connect(seller).approveSale(1)
+            await transaction.wait()
+
+            transaction = await oracleEscrow.connect(oracle).approveSale(1)
+            await transaction.wait()
+        })
+
+        it('Updates approval status', async () => {
+            expect(await oracleEscrow.approval(1, buyer.address)).to.be.equal(true)
+            expect(await oracleEscrow.approval(1, seller.address)).to.be.equal(true)
+            expect(await oracleEscrow.approval(1, oracle.address)).to.be.equal(true)
+        })
+    })
 
 })
