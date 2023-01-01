@@ -1,6 +1,8 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+
 interface IERC721 {
     function safeTransferFrom(
         address _from,
@@ -11,7 +13,7 @@ interface IERC721 {
 
 /* Contract to get shipment tracking status 
     Acts like a escrow contract */
-contract OracleShipment {
+contract OracleShipment is IERC721Receiver {
     // state variables
     address public nftAddress;
     address payable public seller;
@@ -21,8 +23,18 @@ contract OracleShipment {
         seller = _seller;
     }
 
+    function onERC721Received(
+        address,
+        address,
+        uint256,
+        bytes calldata
+    ) external pure returns (bytes4) {
+        return IERC721Receiver.onERC721Received.selector;
+    }
+
     // List Product
     function list(uint256 _nftID) public {
+        // Transfer the NFT from seller to this contract
         IERC721(nftAddress).safeTransferFrom(msg.sender, address(this), _nftID);
     }
 }

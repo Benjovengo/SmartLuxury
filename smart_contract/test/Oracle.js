@@ -27,6 +27,14 @@ describe('Oracle Escrow', () => {
         // Deploy OracleShipment
         const OracleShipment = await ethers.getContractFactory('OracleShipment')
         oracleShipment = await OracleShipment.deploy(fashionProducts.address, seller.address)
+
+        // Seller approval
+        transaction = await fashionProducts.connect(seller).approve(oracleShipment.address, 1)
+        await transaction.wait()
+
+        // List product
+        transaction = await oracleShipment.connect(seller).list(1)
+        await transaction.wait()
     })
 
     describe('Deployment', () => {
@@ -40,6 +48,12 @@ describe('Oracle Escrow', () => {
             const result = await oracleShipment.seller()
             expect(result).that.be.equal(seller.address)
             // console.log(result)
+        })
+    })
+
+    describe('Listing', () => {
+        it('Updates ownership.', async () => {
+            expect(await fashionProducts.ownerOf(1)).to.be.equal(oracleShipment.address)
         })
     })
 
