@@ -9,7 +9,7 @@ describe('Oracle Escrow', () => {
     // variables
     let buyer, seller
     let fashionProducts
-    let oracleShipment
+    let oracleEscrow
 
 
     beforeEach(async () => {
@@ -24,28 +24,28 @@ describe('Oracle Escrow', () => {
         let transaction = await fashionProducts.connect(seller).mint("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS")
         await transaction.wait()
 
-        // Deploy OracleShipment
-        const OracleShipment = await ethers.getContractFactory('OracleShipment')
-        oracleShipment = await OracleShipment.deploy(fashionProducts.address, seller.address)
+        // Deploy OracleEscrow
+        const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
+        oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, seller.address)
 
         // Seller approval
-        transaction = await fashionProducts.connect(seller).approve(oracleShipment.address, 1)
+        transaction = await fashionProducts.connect(seller).approve(oracleEscrow.address, 1)
         await transaction.wait()
 
         // List product
-        transaction = await oracleShipment.connect(seller).list(1)
+        transaction = await oracleEscrow.connect(seller).list(1)
         await transaction.wait()
     })
 
     describe('Deployment', () => {
         it('Returns NFT address.', async () => {
-            const result = await oracleShipment.nftAddress()
+            const result = await oracleEscrow.nftAddress()
             expect(result).that.be.equal(fashionProducts.address)
             // console.log(result)
         })
 
         it('Returns the seller address.', async () => {
-            const result = await oracleShipment.seller()
+            const result = await oracleEscrow.seller()
             expect(result).that.be.equal(seller.address)
             // console.log(result)
         })
@@ -53,7 +53,7 @@ describe('Oracle Escrow', () => {
 
     describe('Listing', () => {
         it('Updates ownership.', async () => {
-            expect(await fashionProducts.ownerOf(1)).to.be.equal(oracleShipment.address)
+            expect(await fashionProducts.ownerOf(1)).to.be.equal(oracleEscrow.address)
         })
     })
 

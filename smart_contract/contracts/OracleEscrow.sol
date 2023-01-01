@@ -13,7 +13,7 @@ interface IERC721 {
 
 /* Contract to get shipment tracking status 
   Acts like a escrow contract */
-contract OracleShipment is IERC721Receiver {
+contract OracleEscrow is IERC721Receiver {
     // state variables
     address public nftAddress;
     address payable public seller;
