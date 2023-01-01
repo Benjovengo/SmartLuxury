@@ -87,15 +87,18 @@ describe('Oracle Escrow', () => {
         })
     })
 
-    describe('Oracle Inspection', () => {
-
-        it('Updates inspection status', async () => {
+    describe('Inspection', () => {
+        beforeEach(async () => {
             const transaction = await oracleEscrow.connect(oracle).updateDeliveryStatus(1, true)
             await transaction.wait()
+        })
+
+        it('Updates inspection status', async () => {
             const result = await oracleEscrow.wasDelivered(1)
             expect(result).to.be.equal(true)
         })
     })
+
 
 
 })
