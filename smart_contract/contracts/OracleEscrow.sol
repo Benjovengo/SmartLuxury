@@ -17,6 +17,23 @@ contract OracleEscrow is IERC721Receiver {
     // state variables
     address public nftAddress;
     address payable public seller;
+    address public oracle;
+
+    /* Modifiers - only certain entity can call some methods */
+    modifier onlyBuyer(uint256 _nftID) {
+        require(msg.sender == buyer[_nftID], "Only buyer can call this method");
+        _;
+    }
+
+    modifier onlySeller() {
+        require(msg.sender == seller, "Only seller can call this method");
+        _;
+    }
+
+    modifier onlyInspector() {
+        require(msg.sender == oracle, "Only inspector can call this method"); // may need to change to nftAddress
+        _;
+    }
 
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
@@ -45,7 +62,7 @@ contract OracleEscrow is IERC721Receiver {
         address _buyer,
         uint256 _purchasePrice,
         uint256 _escrowAmount
-    ) public {
+    ) public payable onlySeller {
         // Transfer the NFT from seller to this contract
         IERC721(nftAddress).safeTransferFrom(msg.sender, address(this), _nftID);
 
