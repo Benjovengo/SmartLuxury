@@ -11,12 +11,9 @@ describe('Oracle Escrow', () => {
     let fashionProducts
     let oracleShipment
 
-    it('Saves the addresses.', async () => {
 
-        // Get Signers
-        // const signers = await ethers.getSigners()
-        
-        // Setup accounts
+    beforeEach(async () => {
+        // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
         [buyer, seller] = await ethers.getSigners()
 
         // Deploy FashionProducts
@@ -30,13 +27,20 @@ describe('Oracle Escrow', () => {
         // Deploy OracleShipment
         const OracleShipment = await ethers.getContractFactory('OracleShipment')
         oracleShipment = await OracleShipment.deploy(fashionProducts.address, seller.address)
-
-        const result = await oracleShipment.nftAddress()
-        expect(result).that.be.equal(fashionProducts.address)
-
-        const resultSeller = await oracleShipment.seller()
-        expect(resultSeller).that.be.equal(seller.address)
-
-        console.log(result)
     })
+
+    describe('Deployment', () => {
+        it('Returns NFT address.', async () => {
+            const result = await oracleShipment.nftAddress()
+            expect(result).that.be.equal(fashionProducts.address)
+            // console.log(result)
+        })
+
+        it('Returns the seller address.', async () => {
+            const result = await oracleShipment.seller()
+            expect(result).that.be.equal(seller.address)
+            // console.log(result)
+        })
+    })
+
 })
