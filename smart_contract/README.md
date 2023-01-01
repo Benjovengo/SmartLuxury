@@ -1,4 +1,4 @@
-# Real Estate NFT DApp
+# Smart Luxury Contracts
 
 ## Technology Stack & Tools
 
