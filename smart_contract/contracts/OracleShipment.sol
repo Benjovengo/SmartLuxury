@@ -2,7 +2,7 @@
 pragma solidity ^0.8.17;
 
 interface IERC721 {
-    function transferFrom(
+    function safeTransferFrom(
         address _from,
         address _to,
         uint256 _id
@@ -19,5 +19,10 @@ contract OracleShipment {
     constructor(address _nftAddress, address payable _seller) {
         nftAddress = _nftAddress;
         seller = _seller;
+    }
+
+    // List Product
+    function list(uint256 _nftID) public {
+        IERC721(nftAddress).safeTransferFrom(msg.sender, address(this), _nftID);
     }
 }
