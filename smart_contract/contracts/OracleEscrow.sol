@@ -30,8 +30,11 @@ contract OracleEscrow is IERC721Receiver {
         _;
     }
 
-    modifier onlyInspector() {
-        require(msg.sender == oracle, "Only inspector can call this method"); // may need to change to nftAddress
+    modifier onlyOracleInspector() {
+        require(
+            msg.sender == oracle,
+            "Only oracle inspector can call this method"
+        ); // may need to change to nftAddress
         _;
     }
 
@@ -40,10 +43,16 @@ contract OracleEscrow is IERC721Receiver {
     mapping(uint256 => uint256) public purchasePrice;
     mapping(uint256 => uint256) public escrowAmount; // Amount transferred to the contract
     mapping(uint256 => address) public buyer;
+    mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
 
-    constructor(address _nftAddress, address payable _seller) {
+    constructor(
+        address _nftAddress,
+        address payable _seller,
+        address _oracle
+    ) {
         nftAddress = _nftAddress;
         seller = _seller;
+        oracle = _oracle;
     }
 
     // Receive confirmation for ERC-721 token - called upon a safe transfer
@@ -70,5 +79,26 @@ contract OracleEscrow is IERC721Receiver {
         buyer[_nftID] = _buyer;
         purchasePrice[_nftID] = _purchasePrice;
         escrowAmount[_nftID] = _escrowAmount;
+    }
+
+    /* Put ether under contract (only buyer - payable oracleEscrow) */
+    function depositEarnest(uint256 _nftID) public payable onlyBuyer(_nftID) {
+        require(msg.value >= escrowAmount[_nftID]);
+    }
+
+    /* Inspects if the tracking status is 'delivered' (only oracle inspector) */
+    function updateDeliveryStatus(uint256 _nftID, bool _delivered)
+        public
+        onlyOracleInspector
+    {
+        wasDelivered[_nftID] = _delivered;
+    }
+
+    // accept ether from other contracts
+    receive() external payable {}
+
+    /* Get the balance for the oracleEscrow contract */
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
     }
 }

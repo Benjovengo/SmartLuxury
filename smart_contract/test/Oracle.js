@@ -7,14 +7,14 @@ const tokens = (n) => {
 
 describe('Oracle Escrow', () => {
     // variables
-    let buyer, seller
+    let buyer, seller, oracle
     let fashionProducts
     let oracleEscrow
 
 
     beforeEach(async () => {
         // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
-        [buyer, seller] = await ethers.getSigners()
+        [buyer, seller, oracle] = await ethers.getSigners()
 
         // Deploy FashionProducts
         const FashionProducts = await ethers.getContractFactory('FashionProducts')
@@ -26,7 +26,7 @@ describe('Oracle Escrow', () => {
 
         // Deploy OracleEscrow
         const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
-        oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, seller.address)
+        oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, seller.address, oracle.address)
 
         // Seller approval
         transaction = await fashionProducts.connect(seller).approve(oracleEscrow.address, 1)
@@ -76,5 +76,26 @@ describe('Oracle Escrow', () => {
             expect(result).that.be.equal(tokens(5))
         })
     })
+
+    describe('Deployment', () => {
+        it('Updates escrow contract balance.', async () => {
+            const transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(5) })
+            await transaction.wait()
+            const result = await oracleEscrow.getBalance()
+            expect(result).to.be.equal(tokens(5))
+            // console.log(result)
+        })
+    })
+
+    describe('Oracle Inspection', () => {
+
+        it('Updates inspection status', async () => {
+            const transaction = await oracleEscrow.connect(oracle).updateDeliveryStatus(1, true)
+            await transaction.wait()
+            const result = await oracleEscrow.wasDelivered(1)
+            expect(result).to.be.equal(true)
+        })
+    })
+
 
 })
