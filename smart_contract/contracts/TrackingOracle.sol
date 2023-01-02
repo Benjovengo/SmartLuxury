@@ -10,6 +10,8 @@ contract OracleContract is usingProvable {
     string public BTC_USD;
     string public FUEL_Price; // events
 
+    constructor() payable {}
+
     event ValueUpdated(string price);
     event ProvableQueryCalled(string description); // save the address of the owner of this contract
 
@@ -49,16 +51,18 @@ contract OracleContract is usingProvable {
             );
         } else {
             emit ProvableQueryCalled("Query sent, please wait");
-            if (compareStrings(updateType, "BTC"))
+            if (compareStrings(updateType, "BTC")) {
+                // BTC_ID = provable_query("URL", "json(https://api.pro.coinbase.com/products/BTC-USD/ticker).price");
                 BTC_ID = provable_query(
                     "URL",
-                    "json(https://api.pro.coinbase.com/products/BTC-USD/ticker).price"
+                    "json(https://ipfs.io/ipfs/QmXUJ6VKaBKDPgKUXq7U1EECZQ22SYVhd634A9d26Lf8TY?filename=01-Delivered.json).delivered"
                 );
-            if (compareStrings(updateType, "FUEL"))
+            } else if (compareStrings(updateType, "FUEL")) {
                 regular_ID = provable_query(
                     "URL",
                     "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel"
                 );
+            }
         }
     }
 }
