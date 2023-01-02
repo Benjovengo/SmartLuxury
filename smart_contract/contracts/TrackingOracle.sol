@@ -5,6 +5,6 @@ pragma solidity ^0.8.17;
     - fetches an URL to receive a .json file
     - parses the file to get the "delivered" key value
 */
-contract OracleContract {
+contract TrackingOracle {
 
 }
