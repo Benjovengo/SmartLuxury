@@ -31,13 +31,9 @@
 ### 5. Run deployment script
 
 In a separate terminal execute:
-`$ npx hardhat run ./scripts/deploy.js --network localhost`
+`npx hardhat run ./scripts/deploy.js --network localhost`
 
-or
-
-`npx hardhat run .\scripts\deploy.js --network goerli`
-
-to deploy to Goerli Network.
+or `npx hardhat run .\scripts\deploy.js --network goerli` to deploy to Goerli Network.
 
 ### 7. Start frontend
 
