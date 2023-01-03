@@ -2,14 +2,15 @@
 pragma solidity ^0.8.17;
 
 import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import "./FashionProducts.sol";
 
-interface IERC721 {
+/* interface IERC721 {
     function safeTransferFrom(
         address _from,
         address _to,
         uint256 _id
     ) external;
-}
+} */
 
 /* Contract to get shipment tracking status 
   Acts like a escrow contract */
@@ -18,6 +19,8 @@ contract OracleEscrow is IERC721Receiver {
     address public nftAddress;
     address payable public seller;
     address public oracle;
+
+    FashionProducts public fashionContract;
 
     /* Modifiers - only certain entity can call some methods */
     modifier onlyBuyer(uint256 _nftID) {
@@ -43,6 +46,7 @@ contract OracleEscrow is IERC721Receiver {
     mapping(uint256 => uint256) public purchasePrice;
     mapping(uint256 => uint256) public escrowAmount; // Amount transferred to the contract
     mapping(uint256 => address) public buyer;
+    mapping(uint256 => address) public nftSeller;
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
@@ -54,6 +58,7 @@ contract OracleEscrow is IERC721Receiver {
         nftAddress = _nftAddress;
         seller = _seller;
         oracle = _oracle;
+        fashionContract = FashionProducts(_nftAddress);
     }
 
     // Receive confirmation for ERC-721 token - called upon a safe transfer
@@ -78,6 +83,7 @@ contract OracleEscrow is IERC721Receiver {
 
         isListed[_nftID] = true; // list product with ID=_nftID
         buyer[_nftID] = _buyer;
+        nftSeller[_nftID] = fashionContract.ownerOf(_nftID);
         purchasePrice[_nftID] = _purchasePrice;
         escrowAmount[_nftID] = _escrowAmount;
     }
