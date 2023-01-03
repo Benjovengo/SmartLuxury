@@ -5,6 +5,6 @@ pragma solidity ^0.8.17;
     -> Information given on the Sign Up
     -> Displayed on the Login
 */
-contract IdentityInfo {
+contract ContactInfo {
 
 }
