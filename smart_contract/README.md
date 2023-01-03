@@ -32,7 +32,9 @@
 
 In a separate terminal execute:
 `$ npx hardhat run ./scripts/deploy.js --network localhost`
+
 or
+
 `npx hardhat run .\scripts\deploy.js --network goerli`
 
 ### 7. Start frontend
