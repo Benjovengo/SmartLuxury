@@ -7,13 +7,25 @@ const hre = require("hardhat");
 const fs = require("fs"); // to copy the files to be used by the web interface
 
 const main = async () => {
+  /* Deployment Section */
+  // Deploy ContactInfo
+    
+  // Deploy FashionProducts
+  const FashionProducts = await ethers.getContractFactory('FashionProducts')
+  const fashionProducts = await FashionProducts.deploy()
+  await fashionProducts.deployed()
 
   // Deploy TrackingOracle
   const TrackingOracle = await ethers.getContractFactory('TrackingOracle')
   const trackingOracle = await TrackingOracle.deploy()
   await trackingOracle.deployed()
 
-  // Console Log results
+  // Deploy OracleEscrow
+  // const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
+  // seller: fashionProducts.ownerOf(<number>) -> put this as a paramter inside OracleEscrow.sol??
+  // oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, seller.address, trackingOracle.address)
+
+  /* Console Log results */
   console.log("FashionProducts address: ", )
   console.log("OracleEscrow address: ", )
   console.log("TrackingOracle address: ", trackingOracle.address)
@@ -32,8 +44,9 @@ const runMain = async () => {
   try {
     await main()
     // copy files to client-side
-    const sourceTrackingABI = "./artifacts/contracts/TrackingOracle.sol/TrackingOracle.json"
-    const destinationFolder = "../work/TrackingOracle.json"
+    const fileNames = ['ContactInfo', 'FashionProducts', 'OracleEscrow', 'TrackingOracle']
+    const sourceTrackingABI = "./artifacts/contracts/"+ fileNames[3] +".sol/" + fileNames[3] + ".json"
+    const destinationFolder = "../client/abis/TrackingOracle.json"
     copyABIFiles(sourceTrackingABI, destinationFolder)
     // terminate without errors
     process.exit(0)
