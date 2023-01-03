@@ -23,13 +23,16 @@ contract OracleEscrow is IERC721Receiver {
     FashionProducts public fashionContract;
 
     /* Modifiers - only certain entity can call some methods */
-    modifier onlyBuyer(uint256 _nftID) {
+    /* modifier onlyBuyer(uint256 _nftID) {
         require(msg.sender == buyer[_nftID], "Only buyer can call this method");
         _;
-    }
+    } */
 
-    modifier onlySeller() {
-        require(msg.sender == seller, "Only seller can call this method");
+    modifier onlySeller(uint256 _nftID) {
+        require(
+            msg.sender == fashionContract.getOwnershipOf(_nftID),
+            "Only seller can call this method"
+        );
         _;
     }
 
@@ -50,13 +53,8 @@ contract OracleEscrow is IERC721Receiver {
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
-    constructor(
-        address _nftAddress,
-        address payable _seller,
-        address _oracle
-    ) {
+    constructor(address _nftAddress, address _oracle) {
         nftAddress = _nftAddress;
-        seller = _seller;
         oracle = _oracle;
         fashionContract = FashionProducts(_nftAddress);
     }
@@ -74,23 +72,22 @@ contract OracleEscrow is IERC721Receiver {
     // List Product
     function list(
         uint256 _nftID,
-        address _buyer,
         uint256 _purchasePrice,
         uint256 _escrowAmount
-    ) public payable onlySeller {
+    ) public payable onlySeller(_nftID) {
         // Transfer the NFT from seller to this contract
         IERC721(nftAddress).safeTransferFrom(msg.sender, address(this), _nftID);
 
         isListed[_nftID] = true; // list product with ID=_nftID
-        buyer[_nftID] = _buyer;
-        nftSeller[_nftID] = fashionContract.ownerOf(_nftID);
+        nftSeller[_nftID] = msg.sender;
         purchasePrice[_nftID] = _purchasePrice;
         escrowAmount[_nftID] = _escrowAmount;
     }
 
     /* Put ether under contract (only buyer - payable oracleEscrow) */
-    function depositEarnest(uint256 _nftID) public payable onlyBuyer(_nftID) {
-        require(msg.value >= escrowAmount[_nftID]);
+    function depositEarnest(uint256 _nftID) public payable {
+        buyer[_nftID] = msg.sender;
+        //require(msg.value >= escrowAmount[_nftID]);
     }
 
     /* Inspects if the tracking status is 'delivered' (only oracle inspector) */
@@ -115,16 +112,16 @@ contract OracleEscrow is IERC721Receiver {
     function finalizeSale(uint256 _nftID) public {
         require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
         require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by all involved
-        require(approval[_nftID][seller]);
+        require(approval[_nftID][nftSeller[_nftID]]);
         require(approval[_nftID][oracle]);
         require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         isListed[_nftID] = false; // stop listing the item
 
         // Transfer ether to the seller (from the OracleEscrow contract)
-        (bool success, ) = payable(seller).call{value: address(this).balance}(
-            ""
-        );
+        (bool success, ) = payable(nftSeller[_nftID]).call{
+            value: address(this).balance
+        }("");
         require(success);
 
         // Transfer product ownership

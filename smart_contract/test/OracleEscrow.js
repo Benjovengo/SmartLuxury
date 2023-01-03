@@ -26,43 +26,21 @@ describe('Oracle Escrow', () => {
 
         // Deploy OracleEscrow
         const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
-        oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, seller.address, oracle.address)
+        oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, oracle.address)
 
         // Seller approval
         transaction = await fashionProducts.connect(seller).approve(oracleEscrow.address, 1)
         await transaction.wait()
 
         // List product
-        transaction = await oracleEscrow.connect(seller).list(1, buyer.address, tokens(10), tokens(5))
+        transaction = await oracleEscrow.connect(seller).list(1, tokens(10), tokens(5))
         await transaction.wait()
     })
 
-    describe('Ownership', () => {
-        it('Returns seller.', async () => {
-            
-            // ---------------------------------------------------
-            // List function transfers the ownership of the NFT!!!
-            // ---------------------------------------------------
-
-            console.log('Seller:               ' + seller.address)
-            //console.log('Fashion Get Owner Of: ' + await fashionProducts.getOwnershipOf(1))
-            console.log('Escrow nftSeller:     ' + await oracleEscrow.nftSeller(1))
-
-            //const result = await oracleEscrow.nftSeller(1)
-            //expect(result).that.be.equal(seller.address)
-        })
-    })
-
-    describe('Deployment', () => {
+    describe('Address', () => {
         it('Returns NFT address.', async () => {
             const result = await oracleEscrow.nftAddress()
             expect(result).that.be.equal(fashionProducts.address)
-            // console.log(result)
-        })
-
-        it('Returns the seller address.', async () => {
-            const result = await oracleEscrow.seller()
-            expect(result).that.be.equal(seller.address)
             // console.log(result)
         })
     })
@@ -75,11 +53,6 @@ describe('Oracle Escrow', () => {
         it('Updates as listed.', async () => {
             const result = await oracleEscrow.isListed(1)
             expect(result).that.be.equal(true)
-        })
-
-        it('Returns buyer.', async () => {
-            const result = await oracleEscrow.buyer(1)
-            expect(result).that.be.equal(buyer.address)
         })
 
         it('Returns purchase price.', async () => {
@@ -100,6 +73,13 @@ describe('Oracle Escrow', () => {
             const result = await oracleEscrow.getBalance()
             expect(result).to.be.equal(tokens(5))
             // console.log(result)
+        })
+
+        it('Returns buyer.', async () => {
+            const transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(5) })
+            await transaction.wait()
+            const result = await oracleEscrow.buyer(1)
+            expect(result).that.be.equal(buyer.address)
         })
     })
 
