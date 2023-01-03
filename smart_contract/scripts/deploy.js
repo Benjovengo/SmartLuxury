@@ -50,8 +50,6 @@ const runMain = async () => {
     for (let i = 0; i < 3; i++) {
       sourceABI = "./artifacts/contracts/"+ fileNames[i] +".sol/" + fileNames[i] + ".json"
       destinationPath = "../client/abis/" + fileNames[i] + ".json"
-      console.log(sourceABI)
-      console.log(destinationPath)
       copyABIFiles(sourceABI, destinationPath)
     }
     // terminate without errors
