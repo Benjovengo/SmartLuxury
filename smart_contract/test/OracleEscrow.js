@@ -37,6 +37,22 @@ describe('Oracle Escrow', () => {
         await transaction.wait()
     })
 
+    describe('Ownership', () => {
+        it('Returns seller.', async () => {
+            
+            // ---------------------------------------------------
+            // List function transfers the ownership of the NFT!!!
+            // ---------------------------------------------------
+
+            console.log('Seller:               ' + seller.address)
+            //console.log('Fashion Get Owner Of: ' + await fashionProducts.getOwnershipOf(1))
+            console.log('Escrow nftSeller:     ' + await oracleEscrow.nftSeller(1))
+
+            //const result = await oracleEscrow.nftSeller(1)
+            //expect(result).that.be.equal(seller.address)
+        })
+    })
+
     describe('Deployment', () => {
         it('Returns NFT address.', async () => {
             const result = await oracleEscrow.nftAddress()
