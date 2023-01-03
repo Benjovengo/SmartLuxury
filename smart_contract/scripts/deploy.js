@@ -21,15 +21,15 @@ const main = async () => {
   await trackingOracle.deployed()
 
   // Deploy OracleEscrow
-  // const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
-  // seller: fashionProducts.ownerOf(<number>) -> put this as a paramter inside OracleEscrow.sol??
-  // oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, seller.address, trackingOracle.address)
+  const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
+  oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, trackingOracle.address)
+  await oracleEscrow.deployed()
 
   /* Console Log results */
-  console.log("FashionProducts address: ", )
-  console.log("OracleEscrow address: ", )
+  console.log("FashionProducts address: ", fashionProducts.address)
+  console.log("OracleEscrow address: ", oracleEscrow.address)
   console.log("TrackingOracle address: ", trackingOracle.address)
-  console.log("ContactInfo address: ", )
+  console.log("ContactInfo address: ")
 }
 
 // Function to copy the ABI files
@@ -41,13 +41,19 @@ function copyABIFiles(_trackingABI, _destinationPath) {
 }
 
 const runMain = async () => {
+  let sourceABI
+  let destinationPath
   try {
     await main()
     // copy files to client-side
-    const fileNames = ['ContactInfo', 'FashionProducts', 'OracleEscrow', 'TrackingOracle']
-    const sourceTrackingABI = "./artifacts/contracts/"+ fileNames[3] +".sol/" + fileNames[3] + ".json"
-    const destinationFolder = "../client/abis/TrackingOracle.json"
-    copyABIFiles(sourceTrackingABI, destinationFolder)
+    const fileNames = ['FashionProducts', 'OracleEscrow', 'TrackingOracle', 'ContactInfo']
+    for (let i = 0; i < 3; i++) {
+      sourceABI = "./artifacts/contracts/"+ fileNames[i] +".sol/" + fileNames[i] + ".json"
+      destinationPath = "../client/abis/" + fileNames[i] + ".json"
+      console.log(sourceABI)
+      console.log(destinationPath)
+      copyABIFiles(sourceABI, destinationPath)
+    }
     // terminate without errors
     process.exit(0)
   } catch (error) {
