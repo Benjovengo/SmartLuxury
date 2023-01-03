@@ -37,6 +37,8 @@ or
 
 `npx hardhat run .\scripts\deploy.js --network goerli`
 
+to deploy to Goerli Network.
+
 ### 7. Start frontend
 
 `$ npm run start`
