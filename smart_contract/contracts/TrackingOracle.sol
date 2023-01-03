@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
-import "../node_modules/provable-eth-api/provableAPI.sol";
+import "../node_modules/provable-eth-api/contracts/solc-v0.8.x/provableAPI.sol";
 
-contract OracleContract is usingProvable {
+contract TrackingOracle is usingProvable {
     // for storing the query ids
     bytes32 BTC_ID;
     bytes32 regular_ID; // for storing BTC and fuel price

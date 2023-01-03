@@ -13,6 +13,10 @@ describe('Tracking Oracle', () => {
 
   /* Tests */
   it('Returns ETH price in USD.', async () => {
+    // Deploy TrackingOracle
+    const TrackingOracle = await ethers.getContractFactory('TrackingOracle')
+    const trackingOracle = await TrackingOracle.deploy()
+
     let signers = await ethers.getSigners()
     let oracle = signers[2]
 
