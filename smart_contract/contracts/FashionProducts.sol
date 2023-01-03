@@ -24,6 +24,11 @@ contract FashionProducts is ERC721URIStorage {
         return newItemId;
     }
 
+    // Return the ownership of the NFT
+    function getOwnershipOf(uint256 _nftId) public view returns (address) {
+        return this.ownerOf(_nftId);
+    }
+
     function totalSupply() public view returns (uint256) {
         return _tokenIds.current();
     }
