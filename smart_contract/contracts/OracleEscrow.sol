@@ -86,8 +86,8 @@ contract OracleEscrow is IERC721Receiver {
 
     /* Put ether under contract (only buyer - payable oracleEscrow) */
     function depositEarnest(uint256 _nftID) public payable {
+        require(msg.value >= escrowAmount[_nftID]);
         buyer[_nftID] = msg.sender;
-        //require(msg.value >= escrowAmount[_nftID]);
     }
 
     /* Inspects if the tracking status is 'delivered' (only oracle inspector) */
