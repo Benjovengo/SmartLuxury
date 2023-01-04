@@ -55,7 +55,7 @@ contract TrackingOracle is usingProvable {
                 // BTC_ID = provable_query("URL", "json(https://api.pro.coinbase.com/products/BTC-USD/ticker).price");
                 BTC_ID = provable_query(
                     "URL",
-                    "json(GOOGLE_DRIVE_ADDRESS).delivered"
+                    "json(https://drive.google.com/uc?export=download&id=1S8QRbmY9mmzu1PKNcD_Ftvz-uuHiTRpM).delivered"
                 );
             } else if (compareStrings(updateType, "FUEL")) {
                 regular_ID = provable_query(
