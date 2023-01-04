@@ -22,7 +22,7 @@ const main = async () => {
 
   // Deploy OracleEscrow
   const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
-  oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, trackingOracle.address)
+  const oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, trackingOracle.address)
   await oracleEscrow.deployed()
 
   /* Console Log results */
