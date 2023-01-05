@@ -50,7 +50,7 @@ function copyABIFiles(_trackingABI, _destinationPath) {
 
 // Function to create/ update config.json file
 function createConfigJSON(_fashionAddress, _trackingAddress, _oracleAddress) {
-  const configFilePath = "../client/config.json";
+  const configFilePath = "../client/src/config.json";
 
   // Create data JSON with contents
   var data = {}
@@ -88,7 +88,7 @@ const runMain = async () => {
     const fileNames = ['FashionProducts', 'OracleEscrow', 'TrackingOracle', 'ContactInfo']
     for (let i = 0; i < 3; i++) {
       sourceABI = "./artifacts/contracts/"+ fileNames[i] +".sol/" + fileNames[i] + ".json"
-      destinationPath = "../client/abis/" + fileNames[i] + ".json"
+      destinationPath = "../client/src/abis/" + fileNames[i] + ".json"
       copyABIFiles(sourceABI, destinationPath)
     }
     // create config.json with deployed addresses
