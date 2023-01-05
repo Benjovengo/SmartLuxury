@@ -1,4 +1,5 @@
 import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 // import pages
 import Contact from '../components/Contact'
@@ -14,9 +15,21 @@ import Wallet from '../components/Wallet'
 
 
 const Routers = () => {
-  return (
-    <div>Routers</div>
+  return (<Routes>
+    <Route path='/' element={<Navigate to='/home' />} />
+    <Route path='/contact' element={<Contact />} />
+    <Route path='/editProfile' element={<EditProfile />} />
+    <Route path='/home' element={<Home />} />
+    <Route path='/listItem' element={<ListItem />} />
+    <Route path='/market' element={<Market />} />
+    <Route path='/search' element={<Search />} />
+    <Route path='/sellerProfile' element={<SellerProfile />} />
+    <Route path='/wallet' element={<Wallet />} />
+
+    <Route path='/market/:id' element={<ProductNFTDetails />} />
+  </Routes>
   )
 }
+
 
 export default Routers
