@@ -9,7 +9,7 @@
     "bootstrap": "*",
     "react": "*",
     "react-dom": "*",
-    "react-router-dom": "*",
+    "react-router-dom": "^6.6.1",
     "react-scripts": "*",
     "reactstrap": "*",
     "remixicon": "^*",
