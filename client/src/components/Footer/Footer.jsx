@@ -71,7 +71,6 @@ const Footer = () => {
                 <span>
                   <img src='SmartLuxuryColorLogo.svg' alt='smart luxury logo' className='img__logo' ></img>
                 </span>
-                  Products
               </h2>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident exercitationem porro autem perspiciatis voluptates dolor quisquam vitae ipsam optio eligendi!</p>
             </div>

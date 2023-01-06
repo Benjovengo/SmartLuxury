@@ -1,12 +1,18 @@
 .footer h5 {
   font-family: "Cinzel", serif;
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 600;
   color: #000;
 }
 
 .footer {
+  background-color: antiquewhite;
   padding-bottom: 15px;
+}
+
+.img_logo {
+  height: 1em;
+  margin: -0.15em 1em 0em 0em;
 }
 
 .list__item {
