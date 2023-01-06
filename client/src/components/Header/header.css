@@ -1,0 +1,80 @@
+.header {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 111111;
+}
+
+.header__shrink {
+  background: #14141f;
+  box-shadow: 2px 2px 4px -2px #e250e5;
+}
+
+.navigation {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  column-gap: 2.7rem;
+  margin-bottom: 0;
+}
+
+.nav__item a {
+  color: #000;
+  font-family: "Cinzel", serif;
+  text-decoration: none;
+}
+
+.nav__item a:hover {
+  color: #000;
+}
+
+.active {
+  color: #a51ca8 !important;
+}
+
+.logo h2 {
+  background-clip: text;
+  -webkit-text-fill-color: #141414;
+  margin-bottom: 0;
+}
+
+.nav__right .btn {
+  background-color: #F89104;
+  padding: 7px 25px;
+  border: 1px solid #D87E01;
+  border-radius: 50px;
+}
+
+.nav__right .btn a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.nav__right .btn span i {
+  color: #000;
+}
+
+.nav__right .btn a:hover {
+  background-color: #D87E01;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 7px 25px;
+  text-decoration: none;
+}
+
+.mobile__menu {
+  color: #000;
+  font-size: 1.3rem;
+  display: none;
+}
+
