@@ -26,9 +26,15 @@ const HeroSection = () => {
                   <Link to='/create'>Sell</Link>
                 </button>
               </div>
-
             </div>
           </Col>
+
+          <Col lg="6" md="6">
+            <div className="hero__img">
+              <img src={heroImg} alt="" className="w-100" />
+            </div>
+          </Col>
+
         </Row>
       </Container>
     </section>
