@@ -63,13 +63,17 @@
   color: #000;
 }
 
-.nav__right .btn a:hover {
+.nav__right .btn:hover {
   background-color: #D87E01;
+  border: 1px solid #F89104;
   border-radius: 50px;
   color: #fff;
   font-size: 0.8rem;
   padding: 7px 25px;
-  text-decoration: none;
+}
+
+.btn a:hover {
+  font-size: 0.8rem;
 }
 
 .mobile__menu {
