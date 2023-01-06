@@ -51,6 +51,7 @@
   padding: 7px 25px;
   border: 1px solid #D87E01;
   border-radius: 50px;
+  font-weight: 600;
 }
 
 .nav__right .btn a {
@@ -60,7 +61,7 @@
 }
 
 .nav__right .btn span i {
-  color: #000;
+  color: #fff;
 }
 
 .nav__right .btn:hover {
