@@ -3,6 +3,7 @@ import { Container, Row, Col} from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import "./hero-section.css"
+import heroImg from '../../assets/images/hero.png'
 
 const HeroSection = () => {
   return (
