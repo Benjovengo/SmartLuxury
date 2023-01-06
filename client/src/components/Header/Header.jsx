@@ -25,9 +25,9 @@ const Header = () => {
         <div className="navigation">
           <div className="logo">
             <h2 className='d-flex gap-2 align-items-center'>
-              {/* <span>
-                <i class="ri-handbag-fill"></i>
-              </span> */}
+              <span>
+                <img src='SmartLuxuryColorLogo.svg' alt='smart luxury logo' className='img__logo' ></img>
+              </span>
                 Products
             </h2>
           </div>

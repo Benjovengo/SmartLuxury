@@ -46,6 +46,11 @@
   margin-bottom: 0;
 }
 
+.img__logo {
+  height: 1em;
+  margin: -0.15em 1em 0em 0em;
+}
+
 .nav__right .btn {
   background-color: #F89104;
   padding: 7px 25px;
@@ -73,7 +78,7 @@
   padding: 7px 25px;
 }
 
-.btn a:hover {
+.nav__right .btn a:hover {
   font-size: 0.8rem;
 }
 
