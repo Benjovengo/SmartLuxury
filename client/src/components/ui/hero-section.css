@@ -22,18 +22,15 @@
   border: none;
   outline: none;
   padding: 7px 25px !important;
-  background: #F89104;
-  border-radius: 50px !important;
-  border: 1px solid #D87E01 !important;
+  background: #000;
+  border-radius: 0px !important;
   font-size: 0.9rem;
 }
 
 
 .explore__btn:hover {
-  background: #D87E01;
-  border: 1px solid #F89104 !important;
+  background: #F89104;
 }
-
 
 .explore__btn i,
 .create__btn i {
