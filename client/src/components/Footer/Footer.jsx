@@ -115,27 +115,27 @@ const Footer = () => {
             <div className="social__links d-flex gap-3 align-items-center ">
               <span>
                 <Link to="#">
-                  <i class="ri-facebook-line"></i>
+                  <i className="ri-facebook-line"></i>
                 </Link>
               </span>
               <span>
                 <Link to="#">
-                  <i class="ri-instagram-line"></i>
+                  <i className="ri-instagram-line"></i>
                 </Link>
               </span>
               <span>
                 <Link to="#">
-                  <i class="ri-twitter-line"></i>
+                  <i className="ri-twitter-line"></i>
                 </Link>
               </span>
               <span>
                 <Link to="#">
-                  <i class="ri-telegram-line"></i>
+                  <i className="ri-telegram-line"></i>
                 </Link>
               </span>
               <span>
                 <Link to="#">
-                  <i class="ri-discord-line"></i>
+                  <i className="ri-discord-line"></i>
                 </Link>
               </span>
             </div>
@@ -143,7 +143,7 @@ const Footer = () => {
 
           <Col lg='12' className='mt-4 text-center'>
             <p className='copyright'>
-              <i class="ri-copyright-fill"></i><i> Developed by Fábio Benjovengo. All rights reserved.</i>
+              <i className="ri-copyright-fill"></i><i> Developed by Fábio Benjovengo. All rights reserved.</i>
             </p>
           </Col>
 

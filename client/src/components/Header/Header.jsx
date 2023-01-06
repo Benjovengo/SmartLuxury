@@ -49,13 +49,13 @@ const Header = () => {
             <button className="btn">
               <Link to={"/wallet"} className="d-flex gap-2 align-items-center" >
                 <span>
-                  <i class="ri-wallet-line"></i>
+                  <i className="ri-wallet-line"></i>
                 </span>
                 Connect Wallet
               </Link>
             </button>
             <span className="mobile__menu">
-              <i class="ri-menu-line"></i>
+              <i className="ri-menu-line"></i>
             </span>
           </div>
         </div>
