@@ -1,4 +1,6 @@
-import img01 from "https://ipfs.io/ipfs/QmSUfk6D2KR7P2CD6j8sy77522i5hfkBMPhEN7eNz3i28a?filename=Gucci-Swing-Vermelha_01.webp";
+/* Get info for products */
+
+import img01 from "../images/img-01.jpg";
 import img02 from "../images/img-02.jpg";
 import img03 from "../images/img-03.jpg";
 import img04 from "../images/img-04.jpg";
@@ -20,7 +22,7 @@ export const NFT__DATA = [
     id: "01",
     title: "Travel Monkey Club",
     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia, nostrum et deleniti vero corrupti facilis minima laborum nesciunt nulla error natus saepe illum quasi ratione suscipit tempore dolores. Recusandae, similique modi voluptates dolore repellat eum earum sint.",
-    imgUrl: img01,
+    imgUrl: 'https://ipfs.io/ipfs/QmVfusf2Xt8Hr7ELAbAM4nozgpoc5gTyXCRM3AQxVgynvf?filename=ava-06.png',
     creator: "Trista Francis",
     creatorImg: ava01,
     currentBid: 5.89,
@@ -30,7 +32,7 @@ export const NFT__DATA = [
     id: "02",
     title: "Sir Lion Swag",
     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia, nostrum et deleniti vero corrupti facilis minima laborum nesciunt nulla error natus saepe illum quasi ratione suscipit tempore dolores. Recusandae, similique modi voluptates dolore repellat eum earum sint.",
-    imgUrl: img02,
+    imgUrl: "https://ipfs.io/ipfs/QmW7hCvFnV8ncR6SvMuqXkWwdWvPKapCfGgv6s8ZGyC3Ae?filename=Flap-Jackie_01.webp",
     creator: "Trista Francis",
     creatorImg: ava02,
     currentBid: 5.09,
