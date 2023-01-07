@@ -17,42 +17,36 @@ const NftCard = () => {
       </div>
 
       <div className="nft__content">
-      <h5 className='nft__title'><Link to='/market'>Bolsa Chanel</Link></h5>
-      <div className="creator__info-wrapper d-flex gap-3">
-        <div className="creator__img">
-          <img src={ava01} alt="" className='w-100' />
+        <h5 className='nft__title'><Link to='/market'>Bolsa Chanel</Link></h5>
+        <div className="creator__info-wrapper d-flex gap-3">
+          <div className="creator__img">
+            <img src={ava01} alt="" className='w-100' />
+          </div>
+
+          <div className='owner__info w-70'>
+            <h6>Current owner</h6>
+            <p>Sarah Connor</p>
+          </div>
         </div>
 
-        <div className='owner__info w-70'>
-          <h6>Current owner</h6>
-          <p>Sarah Connor</p>
+        <div className="price__info d-flex align-items-center justify-content-between">
+          <div className='w-50'>
+            <h6>Price</h6>
+            <p>R$3.000,00</p>
+          </div>
+          <div className='d-flex align-items-center justify-content-between'>
+            <button className="bid__btn d-flex align-items-center gap-2">Buy</button>
+          </div>
+        </div>
+
+        <div className="creator__info d-flex align-items-center justify-content-between">
+          <div className='w-50'>
+            <h6>Original Owner</h6>
+            <p>Chanel</p>
+            <span><Link to='#' className='history__link'>View History</Link></span>
+          </div>
         </div>
       </div>
-
-      <div className='owner__info w-70'>
-        <h6>Price</h6>
-        <p>R$3.000,00</p>
-      </div>
-
-
-      <div className="creator__info d-flex align-items-center justify-content-between">
-        <div className='w-50'>
-          <h6>Original Owner</h6>
-          <p>Chanel</p>
-          <span><Link to='#' className='history__link'>View History</Link></span>
-        </div>
-        <div className='d-flex align-items-center justify-content-between'>
-          <button className="bid__btn d-flex align-items-center gap-2">Buy</button>
-        </div>
-      </div>
-
-
-
-  </div>
-
-
-
-
     </div>
   )
 }

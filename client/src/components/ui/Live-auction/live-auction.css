@@ -62,6 +62,20 @@
   padding: 0;
 }
 
+.price__info h6 {
+  font-size: 0.9rem;
+  color: #141414;
+  font-weight: 500;
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+
+.price__info p {
+  font-size: 1.25rem;
+  margin: -0.25em 0 0 0;
+  padding: 0;
+}
+
 
 .bid__btn {
   border: none;
