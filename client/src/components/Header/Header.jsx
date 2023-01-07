@@ -28,7 +28,6 @@ const Header = () => {
               <span>
                 <img src='SmartLuxuryColorLogo.svg' alt='smart luxury logo' className='img__logo' ></img>
               </span>
-                Products
             </h2>
           </div>
 
