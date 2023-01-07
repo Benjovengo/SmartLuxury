@@ -18,7 +18,8 @@
 
 .nft__title a {
   color: #000;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -49,7 +50,7 @@
 
 
 .owner__info h6 {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #141414;
   font-weight: 500;
   margin: 0;
@@ -57,7 +58,7 @@
 }
 
 .owner__info p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin: -0.25em 0 0 0;
   padding: 0;
 }
@@ -71,7 +72,7 @@
 }
 
 .price__info p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin: -0.25em 0 0 0;
   padding: 0;
 }

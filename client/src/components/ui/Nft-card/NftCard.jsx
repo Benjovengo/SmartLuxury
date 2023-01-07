@@ -2,25 +2,23 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-import img01 from '../../../assets_test/images/img-01.jpg'
-import ava01 from '../../../assets_test/images/ava-01.png'
+const NftCard = (props) => {
 
-
-const NftCard = () => {
-
-  //const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  
+  const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  
 
   return (
     <div className="single__nft__card">
       <div className="nft__img">
-        <img src={img01} alt="" className='w-100' />
+        <img src={imgUrl} alt="" className='w-100' />
       </div>
 
       <div className="nft__content">
-        <h5 className='nft__title'><Link to='/market'>Bolsa Chanel</Link></h5>
+        <h5 className='nft__title'>
+        <Link to={`/market/${id}`}>{title}</Link>
+        </h5>
         <div className="creator__info-wrapper d-flex gap-3">
           <div className="creator__img">
-            <img src={ava01} alt="" className='w-100' />
+            <img src={creatorImg} alt="" className='w-100' />
           </div>
 
           <div className='owner__info w-70'>
@@ -32,7 +30,7 @@ const NftCard = () => {
         <div className="price__info d-flex align-items-center justify-content-between">
           <div className='w-50'>
             <h6>Price</h6>
-            <p>R$3.000,00</p>
+            <p>{currentBid} ETH</p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
             <button className="bid__btn d-flex align-items-center gap-2">Buy</button>
@@ -42,7 +40,7 @@ const NftCard = () => {
         <div className="creator__info d-flex align-items-center justify-content-between">
           <div className='w-50'>
             <h6>Original Owner</h6>
-            <p>Chanel</p>
+            <p>{creator}</p>
             <span><Link to='#' className='history__link'>View History</Link></span>
           </div>
         </div>

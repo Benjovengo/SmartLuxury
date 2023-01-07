@@ -6,7 +6,7 @@ import './live-auction.css'
 
 import NftCard from '../Nft-card/NftCard'
 //import { NFT__DATA } from '../../../assets/data/data.js' // get data from IPFS
-//import { NFT__DATA } from '../../../assets_test/data/data.js' // test data
+import { NFT__DATA } from '../../../assets_test/data/data.js' // test data
 
 const LiveAuction = () => {
   return (
@@ -26,10 +26,10 @@ const LiveAuction = () => {
 
           <Col lg='3'>
             {
-              <NftCard />
-              /* NFT__DATA.slice(0,4).map((item)=>(
-                <NftCard key={item.id} itm={item} />
-              )) */
+              //<NftCard />
+              NFT__DATA.slice(0,4).map((item)=>(
+                <NftCard key={item.id} item={item} />
+              ))
             }
           </Col>
 
