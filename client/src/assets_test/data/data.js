@@ -1,4 +1,4 @@
-import img01 from "../images/img-01.jpg";
+import img01 from "https://ipfs.io/ipfs/QmSUfk6D2KR7P2CD6j8sy77522i5hfkBMPhEN7eNz3i28a?filename=Gucci-Swing-Vermelha_01.webp";
 import img02 from "../images/img-02.jpg";
 import img03 from "../images/img-03.jpg";
 import img04 from "../images/img-04.jpg";
