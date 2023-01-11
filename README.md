@@ -1,6 +1,6 @@
 # Smart Luxury<br><sup>_a bockchain secured transaction system for luxury goods_</sup>
 
-<p align="center"><i><h3>Work in progress!!!</h3></i></p>
+<h3><i>Work in progress!!!</i></h3>
 
 ## Introduction
 
