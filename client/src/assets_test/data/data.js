@@ -17,6 +17,35 @@ import ava04 from "../images/ava-04.png";
 import ava05 from "../images/ava-05.png";
 import ava06 from "../images/ava-06.png";
 
+const folder = [
+  "./metadata/Dior-Hobo-Black_IA002000811.json",
+  "./metadata/Dior-Vintage-Sunglasses_IA002000251.json",
+  "./metadata/Gucci-Flap-Jackie-Bag.json",
+  "./metadata/Gucci-Swing-Red_IA002000868.json",
+  "./metadata/Louis-Vuitton-Speedy-Bag.json",
+  "./metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json",
+  "./metadata/Valentino-RockStud-1234.json"
+]
+
+let newData
+
+async function getData(_folder) {
+  let response
+  let json
+  let data = []
+  for(let i=0; i < _folder.length; i++){
+    response = await fetch(_folder[i])
+    json = await response.json()
+    data.push(json)
+  }
+  return data
+}
+
+let nftData
+nftData = await getData(folder)
+console.log(nftData)
+
+
 export const NFT__DATA = [
   {
     id: "01",
