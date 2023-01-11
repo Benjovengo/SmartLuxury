@@ -1,0 +1,46 @@
+{
+    "name": "Louis Vuitton Speedy Bag",
+    "brand": "Louis Vuitton",
+    "description": "Speedy EPI bag - a classic by Louis Vuitton.",
+    "image": [
+        "../images/Speedy-EPI-Bege_01.webp",
+        "../images/Speedy-EPI-Bege_02.webp",
+        "../images/Speedy-EPI-Bege_03.webp"
+    ],
+    "id": "7",
+    "SKU": "IA002000769",
+    "attributes": [
+        {
+            "trait_type": "Purchase Price",
+            "value": 1.05
+        },
+        {
+            "trait_type": "Type of Product",
+            "value": "Bag"
+        },
+        {
+            "trait_type": "Condition",
+            "value": "Excellent"
+        },
+        {
+            "trait_type": "Material",
+            "value": "Leather"
+        },
+        {
+            "trait_type": "Accessory(ies)",
+            "value": "Dust bag"
+        },
+        {
+            "trait_type": "Weight",
+            "value": 450
+        },
+        {
+            "trait_type": "Made In",
+            "value": "Italy"
+        },
+        {
+            "trait_type": "Year",
+            "value": 2018
+        }
+    ]
+}

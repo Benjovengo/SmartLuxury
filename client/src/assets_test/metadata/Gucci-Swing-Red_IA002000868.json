@@ -1,0 +1,48 @@
+{
+    "name": "Gucci Swing",
+    "brand": "Gucci",
+    "description": "Gucci Swing square - red leather",
+    "image": [
+        "../images/Gucci-Swing-Vermelha_01.webp",
+        "../images/Gucci-Swing-Vermelha_02.webp",
+        "../images/Gucci-Swing-Vermelha_03.webp",
+        "../images/Gucci-Swing-Vermelha_04.webp",
+        "../images/Gucci-Swing-Vermelha_05.webp"
+    ],
+    "id": "3",
+    "SKU": "IA002000868",
+    "attributes": [
+        {
+            "trait_type": "Purchase Price",
+            "value": 0.5
+        },
+        {
+            "trait_type": "Type of Product",
+            "value": "Bag"
+        },
+        {
+            "trait_type": "Condition",
+            "value": "Worn with love"
+        },
+        {
+            "trait_type": "Material",
+            "value": "Leather"
+        },
+        {
+            "trait_type": "Accessory(ies)",
+            "value": "Dust bag"
+        },
+        {
+            "trait_type": "Weight",
+            "value": 1250
+        },
+        {
+            "trait_type": "Made In",
+            "value": "Italy"
+        },
+        {
+            "trait_type": "Year",
+            "value": 2021
+        }
+    ]
+}
