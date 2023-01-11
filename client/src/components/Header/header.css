@@ -53,9 +53,9 @@
 }
 
 .nav__right .btn {
-  background-color: #F89104;
+  background-color: #000;
   padding: 7px 25px;
-  border: 1px solid #D87E01;
+  border: 1px solid #252525;
   border-radius: 50px;
   font-weight: 600;
 }
@@ -71,8 +71,8 @@
 }
 
 .nav__right .btn:hover {
-  background-color: #D87E01;
-  border: 1px solid #F89104;
+  background-color: #F89104;
+  border: 1px solid #D87E01;
   border-radius: 50px;
   color: #fff;
   font-size: 0.8rem;
