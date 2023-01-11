@@ -10,8 +10,6 @@ const folder = [
   "./metadata/Valentino-RockStud-1234.json"
 ]
 
-let newData
-
 async function getData(_folder) {
   let response
   let json
