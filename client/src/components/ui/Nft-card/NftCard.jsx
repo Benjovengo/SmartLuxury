@@ -44,7 +44,7 @@ const NftCard = (props) => {
           </div>
         </div>
       </div>
-      <span><Link to='#' className='history__link'><i class="ri-history-line"></i> View Ownership History</Link></span>
+      <span><Link to='#' className='history__link'><i className="ri-history-line"></i> View Ownership History</Link></span>
     </div>
   )
 }
