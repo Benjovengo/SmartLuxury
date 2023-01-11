@@ -16,22 +16,22 @@ const LiveAuction = () => {
           <Col lg='12' className='mb-4'>
             <div className="live_auction__top d-flex align-items center justify-content-between">
               <h3>Products</h3>
-              <span>
-                <Link to='/market'>
-                  Explore more
-                </Link>
+              <span className='explore__more'>
+              <button className="explore__btn d-flex align-items-center gap-2">More Items</button>
               </span>
             </div>
           </Col>
 
-          <Col lg='3'>
+          
             {
               //<NftCard />
               NFT__DATA.slice(0,4).map((item)=>(
-                <NftCard key={item.id} item={item} />
+                <Col lg='3'>
+                  <NftCard key={item.id} item={item} />
+                </Col>
               ))
             }
-          </Col>
+          
 
         </Row>
       </Container>
