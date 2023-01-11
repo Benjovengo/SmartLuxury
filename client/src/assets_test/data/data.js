@@ -1,7 +1,7 @@
 /* Get info for products */
 
-import img01 from "../images/img-01.jpg";
-import img02 from "../images/img-02.jpg";
+import img01 from "../images/Dior-Vintage-Sunglasses_01.webp";
+import img02 from "../images/Flap-Jackie_01.webp";
 import img03 from "../images/img-03.jpg";
 import img04 from "../images/img-04.jpg";
 import img05 from "../images/img-05.jpg";
@@ -20,20 +20,20 @@ import ava06 from "../images/ava-06.png";
 export const NFT__DATA = [
   {
     id: "01",
-    title: "Travel Monkey Club",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia, nostrum et deleniti vero corrupti facilis minima laborum nesciunt nulla error natus saepe illum quasi ratione suscipit tempore dolores. Recusandae, similique modi voluptates dolore repellat eum earum sint.",
-    imgUrl: 'https://ipfs.io/ipfs/QmVfusf2Xt8Hr7ELAbAM4nozgpoc5gTyXCRM3AQxVgynvf?filename=ava-06.png',
-    creator: "Trista Francis",
+    title: "Medium Dior Vibe Hobo Bag",
+    desc: "New this season, Maria Grazia Chiuri imagines the Dior Vibe bag with the allure of a Hobo bag showcasing modern lines. The black Cannage lambskin style features a suede interior while a white 'CHRISTIAN DIOR PARIS' signature adorns the bottom of the bag. Featuring a handle in addition to a removable and adjustable shoulder strap with a military-inspired buckle, the medium Dior Vibe bag can be carried by hand, worn on the shoulder or crossbody for a sportier look.",
+    imgUrl: img01,
+    creator: "Christian Dior",
     creatorImg: ava01,
     currentBid: 5.89,
   },
 
   {
     id: "02",
-    title: "Sir Lion Swag",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia, nostrum et deleniti vero corrupti facilis minima laborum nesciunt nulla error natus saepe illum quasi ratione suscipit tempore dolores. Recusandae, similique modi voluptates dolore repellat eum earum sint.",
-    imgUrl: "https://ipfs.io/ipfs/QmW7hCvFnV8ncR6SvMuqXkWwdWvPKapCfGgv6s8ZGyC3Ae?filename=Flap-Jackie_01.webp",
-    creator: "Trista Francis",
+    title: "Gucci Flap Jackie",
+    desc: "Classic 1961 model made of alligator leather.",
+    imgUrl: img02,
+    creator: "Gucci",
     creatorImg: ava02,
     currentBid: 5.09,
   },
