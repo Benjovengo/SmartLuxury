@@ -14,6 +14,7 @@
 
 .nft__title {
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .nft__title a {
@@ -24,8 +25,9 @@
 }
 
 .nft__title a:hover {
-  color: #000;
+  color: #F89104;
 }
+
 
 .creator__img {
   width: 50px;

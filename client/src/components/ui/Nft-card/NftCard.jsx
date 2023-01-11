@@ -41,10 +41,10 @@ const NftCard = (props) => {
           <div className='w-50'>
             <h6>Original Owner</h6>
             <p>{creator}</p>
-            <span><Link to='#' className='history__link'>View History</Link></span>
           </div>
         </div>
       </div>
+      <span><Link to='#' className='history__link'><i class="ri-history-line"></i> View Ownership History</Link></span>
     </div>
   )
 }
