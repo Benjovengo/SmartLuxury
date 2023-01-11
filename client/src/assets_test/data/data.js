@@ -32,11 +32,21 @@ let newData
 async function getData(_folder) {
   let response
   let json
+  let formatJson
   let data = []
   for(let i=0; i < _folder.length; i++){
     response = await fetch(_folder[i])
     json = await response.json()
-    data.push(json)
+    formatJson = {
+      id: json.id,
+      title: json.name,
+      description: json.description,
+      imageUrl: json.image[0],
+      creator: "First Owner!",
+      creatorImg: ava01,
+      currentBid: json.attributes.value     
+    }
+    data.push(formatJson)
   }
   return data
 }
@@ -283,3 +293,5 @@ export const SELLER__DATA = [
     twitUrl: "#",
   },
 ];
+
+console.log(NFT__DATA)
