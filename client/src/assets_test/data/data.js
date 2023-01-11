@@ -44,10 +44,8 @@ async function getData(_folder) {
       imgUrl: json.image[0],
       creator: "First Owner!",
       creatorImg: "../images/ava-01.png",
-      currentBid: json.attributes.value     
+      currentBid: json.attributes[0].value
     }
-    let imgTest = json.image
-    //console.log(imgTest[0])
     data.push(formatJson)
   }
   return data
