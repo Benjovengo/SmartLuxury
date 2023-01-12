@@ -69,6 +69,9 @@ const NftDetails = () => {
                 </div>
 
                 <p className="my-4">{singleNft.description}</p>
+
+                <p>Price: {singleNft.currentBid}</p>
+
                 <button className="singleNft-btn d-flex align-items-center gap-2 ">
                   <i className="ri-shopping-bag-line"></i>
                   <Link to="/wallet">Purchase Item</Link>
