@@ -22,22 +22,20 @@ const Market = () => {
     const filterValue = e.target.value;
 
     if (filterValue === "high") {
-      const filterData = NFT__DATA.filter((item) => item.currentBid >= 6);
-
+      const filterData = NFT__DATA.filter((item) => item.currentBid >= 1.5);
       setData(filterData);
     }
 
     if (filterValue === "mid") {
       const filterData = NFT__DATA.filter(
-        (item) => item.currentBid >= 5.5 && item.currentBid < 6
+        (item) => item.currentBid >= 1.0 && item.currentBid < 1.5
       );
-
       setData(filterData);
     }
 
     if (filterValue === "low") {
       const filterData = NFT__DATA.filter(
-        (item) => item.currentBid >= 4.89 && item.currentBid < 5.5
+        (item) => item.currentBid >= 0.20 && item.currentBid < 1.0
       );
 
       setData(filterData);
