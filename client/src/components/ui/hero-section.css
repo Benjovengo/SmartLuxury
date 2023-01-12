@@ -75,7 +75,7 @@
     background-size: cover;
     margin-top: 10px;
     overflow: hidden;
-    background-position-x: right;
+    background-position-x: 50%;
     background-repeat: no-repeat;
   }
 
@@ -87,7 +87,7 @@
   .hero__content p {
     font-size: 0.8rem;
     line-height: 25px;
-    max-width: 40%;
+    max-width: 70%;
   }
 
   .create__btn,
