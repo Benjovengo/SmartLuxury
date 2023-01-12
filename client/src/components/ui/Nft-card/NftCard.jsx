@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import './nft-card.css'
+
 function myFunction(_text) {
   console.log('Copy Address!')
 }
