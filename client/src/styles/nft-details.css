@@ -54,21 +54,25 @@
 
 .singleNft-btn {
   padding: 8px 25px;
-  background: #F89104;
+  background: #000;
   border: none;
   outline: none;
-  border-radius: 50px;
-
   transition: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
 }
 
 .singleNft-btn a {
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
+}
+
+.singleNft-btn a:hover {
+  text-decoration: none;
+  color: #fff;
 }
 
 .singleNft-btn:hover {
