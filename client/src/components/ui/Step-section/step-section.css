@@ -1,0 +1,31 @@
+.single__step__item {
+  background: #BBB;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.step__title {
+  color: #F89104;
+}
+
+.step__item__content h5 a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.step__item__content h5 a:hover {
+  color: #D87E01;
+}
+
+
+.single__step__item span i {
+  color: #fff;
+  padding: 10px;
+  font-size: 1.5rem;
+  background: #F89104;
+  border-radius: 0px;
+}
+
+.step__item__content {
+  margin-top: 20px !important;
+}
