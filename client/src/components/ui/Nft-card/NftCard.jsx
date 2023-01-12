@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 import './nft-card.css'
+
+import Review from "../Review/Review";
 
 function myFunction(_text) {
   console.log('Copy Address!')
@@ -10,6 +12,8 @@ function myFunction(_text) {
 const NftCard = (props) => {
 
   const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  
+
+  const [showReview, setShowReview] = useState(false);
 
   return (
     <div className="single__nft__card">
@@ -38,7 +42,7 @@ const NftCard = (props) => {
             <p>{currentBid} ETH</p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
-            <button className="bid__btn d-flex align-items-center gap-2">Buy</button>
+            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => setShowReview(true)}>Buy</button>
           </div>
         </div>
 
@@ -53,7 +57,10 @@ const NftCard = (props) => {
           <p className='original__address'>{creator}</p>
           <button className='copy__to__clipboard' onClick={myFunction('Fabio')}>
             <i className="ri-file-copy-line"></i>
-          </button> 
+          </button>
+
+          {showReview && <Review setShowReview={setShowReview} />}
+
       </div>
 
       <span><Link to='#' className='history__link'><i className="ri-history-line"></i> View Ownership History</Link></span>
