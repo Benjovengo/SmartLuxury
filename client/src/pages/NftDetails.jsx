@@ -55,8 +55,6 @@ const NftDetails = () => {
                   </div>
                 </div>
 
-                <p>{singleNft.description}</p>
-
                 <div className="nft__creator d-flex gap-3 align-items-center">
                   <div className="creator__img">
                     <img src={singleNft.creatorImg} alt="" className="w-100" />
@@ -70,8 +68,8 @@ const NftDetails = () => {
                   </div>
                 </div>
 
-                <p className="my-4">{singleNft.desc}</p>
-                <button className="singleNft-btn d-flex align-items-center gap-2 w-100">
+                <p className="my-4">{singleNft.description}</p>
+                <button className="singleNft-btn d-flex align-items-center gap-2 ">
                   <i className="ri-shopping-bag-line"></i>
                   <Link to="/wallet">Purchase Item</Link>
                 </button>
