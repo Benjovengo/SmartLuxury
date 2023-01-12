@@ -1,3 +1,12 @@
+/* TEST IMAGES */
+import ava01 from "../images/ava-01.png";
+import ava02 from "../images/ava-02.png";
+import ava03 from "../images/ava-03.png";
+import ava04 from "../images/ava-04.png";
+import ava05 from "../images/ava-05.png";
+import ava06 from "../images/ava-06.png";
+
+
 /* Get info for products */
 
 const folder = [
@@ -37,3 +46,148 @@ export const NFT__DATA = await getData(folder)
 //console.log(NFT__DATA)
 
 
+export const SELLER__DATA = [
+  {
+    id: "01",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+    sellerName: "Ryan Carder",
+    sellerImg: ava01,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "02",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+    sellerName: "Trista Francis",
+    sellerImg: ava02,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "03",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+    sellerName: "Ryan Carder",
+    sellerImg: ava03,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "04",
+
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+
+    sellerName: "Ryan Carder",
+    sellerImg: ava04,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "05",
+
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+
+    sellerName: "Trista Francis",
+    sellerImg: ava05,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "06",
+
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+
+    sellerName: "Trista Francis",
+    sellerImg: ava06,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "01",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+    sellerName: "Ryan Carder",
+    sellerImg: ava01,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "02",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+    sellerName: "Trista Francis",
+    sellerImg: ava02,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "03",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+    sellerName: "Ryan Carder",
+    sellerImg: ava03,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "04",
+
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+
+    sellerName: "Ryan Carder",
+    sellerImg: ava04,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "05",
+
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+
+    sellerName: "Trista Francis",
+    sellerImg: ava05,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+
+  {
+    id: "06",
+
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+
+    sellerName: "Trista Francis",
+    sellerImg: ava06,
+    currentBid: 5.89,
+    fbUrl: "#",
+    instaUrl: "#",
+    twitUrl: "#",
+  },
+];
