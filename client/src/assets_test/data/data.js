@@ -32,7 +32,7 @@ async function getData(_folder) {
       title: json.name,
       description: json.description,
       imgUrl: json.image[0],
-      creator: "First Owner!",
+      creator: "0xC74a9a98Af6108adD8EB17A4262d3dc9B924c429",
       creatorImg: "../images/ava-01.png",
       currentBid: json.attributes[0].value
     }
