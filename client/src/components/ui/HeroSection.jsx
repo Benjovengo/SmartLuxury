@@ -19,10 +19,10 @@ const HeroSection = () => {
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ad fugit at quae saepe perferendis quaerat corrupti temporibus similique nihil?</p>
               
               <div className="hero__btns d-flex align-items-center gap-4">
-                <button className=' explore__btn  d-flex align-items-center gap-2'>
+                <button className=' explore__create__btn  d-flex align-items-center gap-2'>
                   <Link to='/market'>Explore</Link>
                 </button>
-                <button className=' explore__btn  d-flex align-items-center gap-2'>
+                <button className=' explore__create__btn  d-flex align-items-center gap-2'>
                   <Link to='/create'>Sell</Link>
                 </button>
               </div>
@@ -31,7 +31,7 @@ const HeroSection = () => {
 
           <Col lg="6" md="6">
             <div className="hero__img">
-              <img src={heroImg} alt="" className="w-100" />
+              {/* <img src={''} alt="" className="w-100" /> */}
             </div>
           </Col>
 
