@@ -9,8 +9,11 @@
     ],
     "id": "1",
     "SKU": "ac1389",
-    "price": 2,
     "attributes": [
+        {
+            "trait_type": "Purchase Price",
+            "value": 2
+        },
         {
             "trait_type": "Type of Product",
             "value": "Eyewear"

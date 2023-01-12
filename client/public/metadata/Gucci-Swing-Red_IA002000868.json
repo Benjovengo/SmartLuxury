@@ -11,8 +11,11 @@
     ],
     "id": "3",
     "SKU": "IA002000868",
-    "price": 0.5,
     "attributes": [
+        {
+            "trait_type": "Purchase Price",
+            "value": 0.5
+        },
         {
             "trait_type": "Type of Product",
             "value": "Bag"
