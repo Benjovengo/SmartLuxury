@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+function myFunction(_text) {
+  console.log(_text)
+}
 
 const NftCard = (props) => {
 
@@ -38,12 +41,19 @@ const NftCard = (props) => {
         </div>
 
         <div className="creator__info d-flex align-items-center justify-content-between">
-          <div className='w-50'>
-            <h6>Original Owner</h6>
-            <p>{creator}</p>
+          <div className='w-150'>
+            <h6>Original Owner's Address</h6>
           </div>
         </div>
       </div>
+
+      <div className="creator__info d-flex align-items-center justify-content-between">
+          <p className='original__address'>{creator}</p>
+          <button className='copy__to__clipboard' onClick={myFunction('Fabio')}>
+            <i className="ri-file-copy-line"></i>
+          </button> 
+      </div>
+
       <span><Link to='#' className='history__link'><i className="ri-history-line"></i> View Ownership History</Link></span>
     </div>
   )

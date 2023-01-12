@@ -154,3 +154,24 @@
   background: #F89104;
   color: #fff;
 }
+
+.original__address{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.copy__to__clipboard {
+  border: none;
+  outline: none;
+  padding: 0px 2px;
+  background: transparent;
+  font-size: 1rem;
+  color: #F89104;
+  border-radius: 0px;
+  transition: 0.3s;
+}
+
+.copy__to__clipboard:hover {
+  color: #D87E01;
+}
