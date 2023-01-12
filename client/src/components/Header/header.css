@@ -102,6 +102,10 @@
     display: none;
   }
 
+  .nav__item a {
+    color: #fff;
+  }
+
   .active__menu {
     display: block;
   }
