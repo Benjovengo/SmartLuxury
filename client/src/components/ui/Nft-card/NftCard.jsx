@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function myFunction(_text) {
-  console.log(_text)
+  console.log('Copy Address!')
 }
 
 const NftCard = (props) => {
