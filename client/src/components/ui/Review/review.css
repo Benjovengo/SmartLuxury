@@ -1,4 +1,4 @@
-.modal__wrapper {
+.review__wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   z-index: 4444444;
 }
 
-.single__modal {
+.single__review {
   position: relative;
   top: 50%;
   left: 50%;
@@ -19,19 +19,19 @@
   border-radius: 5px;
   padding: 30px;
   z-index: 5555555 !important;
-  cursor: pointer;
 }
 
-.single__modal h6 {
-  font-size: 1.1rem;
-  font-weight: 500;
+.single__review h6 {
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
-.single__modal .money {
+.single__review .money {
   color: #fff;
   font-weight: 500;
   font-size: 1.1rem;
+  margin-bottom: 1em;
 }
 
 .input__item input {
@@ -56,7 +56,7 @@
   outline: none;
   width: 120px;
   margin: auto;
-  background: #5142fc;
+  background: #F89104;
   color: #fff;
   border-radius: 50px;
   font-size: 0.8rem;
@@ -64,30 +64,38 @@
   margin-top: 15px;
 }
 
-.close__modal {
+.place__bid-btn:hover {
+  background: #D87E01;
+}
+
+.close__review {
   position: absolute;
   top: -2px;
   right: -2px;
   z-index: 6666666;
+  cursor: pointer;
 }
 
-.close__modal i {
+.close__review i {
   padding: 5px;
-  background: #5142fc;
+  background: #F89104;
   color: #fff;
   border-radius: 50%;
 }
+.close__review i:hover {
+  background: #D87E01;
+}
 
 @media only screen and (max-width: 992px) {
-  .single__modal {
+  .single__review {
     width: 300px;
     height: auto;
   }
 
-  .single__modal h6 {
+  .single__review h6 {
     font-size: 0.9rem;
   }
-  .single__modal p {
+  .single__review p {
     font-size: 0.8rem;
     margin-bottom: 0;
   }
