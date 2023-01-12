@@ -9,11 +9,8 @@
     ],
     "id": "4",
     "SKU": "CF003000012",
+    "price": 0.25,
     "attributes": [
-        {
-            "trait_type": "Purchase Price",
-            "value": 0.25
-        },
         {
             "trait_type": "Type of Product",
             "value": "Eyewear"
