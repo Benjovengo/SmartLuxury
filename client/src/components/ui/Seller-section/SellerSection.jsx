@@ -2,7 +2,6 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import './seller.css'
 
-import ava01 from '../../../assets_test/images/ava-01.png'
 import { SELLER__DATA } from '../../../assets_test/data/data'
 
 
