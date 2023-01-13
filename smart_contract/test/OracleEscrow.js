@@ -139,6 +139,12 @@ describe('Oracle Escrow', () => {
             expect(await fashionProducts.ownerOf(1)).to.be.equal(buyer.address)
         })
 
+        it('Get list of owners', async () => {
+            let result = await fashionProducts.getOwners(1)
+            //console.log(result)
+            expect(result[1]).to.be.equal(buyer.address)
+        })
+
         it('Updates oracle contract balance', async () => {
             expect(await oracleEscrow.getBalance()).to.be.equal(0)
         })
