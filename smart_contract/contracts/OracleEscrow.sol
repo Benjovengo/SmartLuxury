@@ -20,12 +20,12 @@ contract OracleEscrow is IERC721Receiver {
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
-    FashionProducts public fashionContract;
+    FashionProducts public fashionToken;
 
     /* Modifiers - only certain entity can call some methods */
     modifier onlySeller(uint256 _nftID) {
         require(
-            msg.sender == fashionContract.getOwnershipOf(_nftID),
+            msg.sender == fashionToken.getOwnershipOf(_nftID),
             "Only seller can call this method"
         );
         _;
@@ -40,9 +40,15 @@ contract OracleEscrow is IERC721Receiver {
     }
 
     constructor(address _nftAddress, address _oracle) {
-        nftAddress = _nftAddress;
         oracle = _oracle;
-        fashionContract = FashionProducts(_nftAddress);
+        nftAddress = _nftAddress;
+        fashionToken = FashionProducts(_nftAddress);
+    }
+
+    // Register new product
+    function register(string memory _tokenURI) public {
+        uint256 newID = fashionToken.mint(_tokenURI);
+        IERC721(nftAddress).safeTransferFrom(address(this), msg.sender, newID);
     }
 
     // Receive confirmation for ERC-721 token - called upon a safe transfer
@@ -117,7 +123,7 @@ contract OracleEscrow is IERC721Receiver {
         );
 
         // add owner to list of owners
-        fashionContract.addToOwners(_nftID, buyer[_nftID]);
+        fashionToken.addToOwners(_nftID, buyer[_nftID]);
     }
 
     /* Cancel Sale (handle earnest deposit)
