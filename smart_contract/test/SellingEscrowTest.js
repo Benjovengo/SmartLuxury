@@ -177,7 +177,7 @@ describe('Selling Escrow', () => {
   
         it('Get list of owners', async () => {
             let result = await fashionToken.getOwners(1)
-            //console.log(result)
+            expect(result[0]).to.be.equal(seller.address)
             expect(result[1]).to.be.equal(buyer.address)
         })
   
