@@ -1,17 +1,15 @@
 {
-    "name": "Gucci Swing",
+    "name": "Gucci Flap Jackie",
     "brand": "Gucci",
-    "description": "Gucci Swing square - red leather",
+    "description": "Classic 1961 model made of alligator leather.",
     "image": [
-        "../images/Gucci-Swing-Vermelha_01.webp",
-        "../images/Gucci-Swing-Vermelha_02.webp",
-        "../images/Gucci-Swing-Vermelha_03.webp",
-        "../images/Gucci-Swing-Vermelha_04.webp",
-        "../images/Gucci-Swing-Vermelha_05.webp"
+        "../images/Flap-Jackie_01.webp",
+        "../images/Flap-Jackie_02.webp",
+        "../images/Flap-Jackie_03.webp"
     ],
-    "id": "3",
-    "SKU": "IA002000868",
-    "price": 0.5,
+    "id": "2",
+    "SKU": "IA002000404",
+    "price": 3,
     "attributes": [
         {
             "trait_type": "Type of Product",
@@ -19,7 +17,7 @@
         },
         {
             "trait_type": "Condition",
-            "value": "Worn with love"
+            "value": "New, with tags"
         },
         {
             "trait_type": "Material",
@@ -27,11 +25,11 @@
         },
         {
             "trait_type": "Accessory(ies)",
-            "value": "Dust bag"
+            "value": "Adjustable shoulder bag"
         },
         {
             "trait_type": "Weight",
-            "value": 1250
+            "value": 750
         },
         {
             "trait_type": "Made In",

@@ -1,19 +1,19 @@
 {
-    "name": "Dior Vintage Sunglasses",
+    "name": "Valentino RockStud Bag",
     "brand": "Christian Dior",
-    "description": "Brown Plastic Dior Sunglasses",
+    "description": "Valentino Garavani Rockstud bucket bag in grainy calfskin.",
     "image": [
-        "../images/Dior-Vintage-Sunglasses_01.webp",
-        "../images/Dior-Vintage-Sunglasses_02.webp",
-        "../images/Dior-Vintage-Sunglasses_03.webp"
+        "../images/RockStud-Bege_01.webp",
+        "../images/RockStud-Bege_02.webp",
+        "../images/RockStud-Bege_03.webp"
     ],
-    "id": "1",
-    "SKU": "ac1389",
-    "price": 2,
+    "id": "6",
+    "SKU": "IA002000148",
+    "price": 0.75,
     "attributes": [
         {
             "trait_type": "Type of Product",
-            "value": "Eyewear"
+            "value": "Bag"
         },
         {
             "trait_type": "Condition",
@@ -21,15 +21,15 @@
         },
         {
             "trait_type": "Material",
-            "value": "Plastic"
+            "value": "Leather"
         },
         {
             "trait_type": "Accessory(ies)",
-            "value": "Dust Bag / Item Box"
+            "value": "Removable shoulder strap and dust bag included"
         },
         {
             "trait_type": "Weight",
-            "value": 150
+            "value": 400
         },
         {
             "trait_type": "Made In",
@@ -37,7 +37,7 @@
         },
         {
             "trait_type": "Year",
-            "value": 2018
+            "value": 2019
         }
     ]
 }

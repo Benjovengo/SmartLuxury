@@ -1,35 +1,35 @@
 {
-    "name": "Dior Vintage Sunglasses",
-    "brand": "Christian Dior",
-    "description": "Brown Plastic Dior Sunglasses",
+    "name": "Louis Vuitton Speedy Bag",
+    "brand": "Louis Vuitton",
+    "description": "Speedy EPI bag - a classic by Louis Vuitton.",
     "image": [
-        "../images/Dior-Vintage-Sunglasses_01.webp",
-        "../images/Dior-Vintage-Sunglasses_02.webp",
-        "../images/Dior-Vintage-Sunglasses_03.webp"
+        "../images/Speedy-EPI-Bege_01.webp",
+        "../images/Speedy-EPI-Bege_02.webp",
+        "../images/Speedy-EPI-Bege_03.webp"
     ],
-    "id": "1",
-    "SKU": "ac1389",
-    "price": 2,
+    "id": "7",
+    "SKU": "IA002000769",
+    "price": 1.05,
     "attributes": [
         {
             "trait_type": "Type of Product",
-            "value": "Eyewear"
+            "value": "Bag"
         },
         {
             "trait_type": "Condition",
-            "value": "Good, but used"
+            "value": "Excellent"
         },
         {
             "trait_type": "Material",
-            "value": "Plastic"
+            "value": "Leather"
         },
         {
             "trait_type": "Accessory(ies)",
-            "value": "Dust Bag / Item Box"
+            "value": "Dust bag"
         },
         {
             "trait_type": "Weight",
-            "value": 150
+            "value": 450
         },
         {
             "trait_type": "Made In",

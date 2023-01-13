@@ -3,17 +3,14 @@
     "brand": "Marc Jacobs",
     "description": "Classic aviator style sunglasses with golden metal frame.",
     "image": [
-        "https://ipfs.io/ipfs/QmYbPDCZRvZW6RvN7kN61kJZGrhbSCicepHGtmBYVyKNTM?filename=Mark-Jacobs-Aviator-Sunglasses_01.webp",
-        "https://ipfs.io/ipfs/QmW7DBQj2mhxWwJTeAw4oobhYxdPiQH8BbAtzJUHX4dHTp?filename=Mark-Jacobs-Aviator-Sunglasses_02.webp",
-        "https://ipfs.io/ipfs/Qmb3dAWysadR98wbC5qgeWnNcqy2QiFVR9z1CRj8WHcLYw?filename=Mark-Jacobs-Aviator-Sunglasses_03.webp"
+        "../images/Mark-Jacobs-Aviator-Sunglasses_01.webp",
+        "../images/Mark-Jacobs-Aviator-Sunglasses_02.webp",
+        "../images/Mark-Jacobs-Aviator-Sunglasses_03.webp"
     ],
     "id": "4",
     "SKU": "CF003000012",
+    "price": 0.25,
     "attributes": [
-        {
-            "trait_type": "Purchase Price",
-            "value": 0.25
-        },
         {
             "trait_type": "Type of Product",
             "value": "Eyewear"
