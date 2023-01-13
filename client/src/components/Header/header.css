@@ -95,8 +95,8 @@
 
 .metamask__account {
   background-color: #343444;
-  margin: -0.75ex 0 0 0;
   line-height: initial;
+  margin: -0.75ex 0 0 0;
   padding: 0;
   top: 0;
   left: 0;
@@ -107,6 +107,7 @@
 .metamask__account p {
   color: #fff;
   font-size: 0.75rem;
+  line-height: 1em;
   margin: 0;
   padding: 0 0 0 6.5em;
 }

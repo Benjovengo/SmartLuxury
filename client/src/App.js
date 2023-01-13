@@ -25,8 +25,7 @@ function App() {
   const loadBlockchainData = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-    //setAccount(accounts[0])
-    console.log(accounts[0])
+    setAccount(accounts[0])
   }
 
   useEffect(() => {
@@ -35,7 +34,7 @@ function App() {
 
 
   return (
-    <Layout/>
+    <Layout account={account} setAccount={setAccount} />
   );
 }
 

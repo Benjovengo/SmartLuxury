@@ -22,10 +22,15 @@ const NAV__LINKS = [
   },
 ]
 
-const Header = () => {
+const Header = ( { account, setAccount } ) => {
   const headerRef = useRef(null);
 
   const menuRef = useRef(null);
+
+  const connectHandler = async () => {
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+    setAccount(accounts[0])
+  }
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -84,8 +89,13 @@ const Header = () => {
         </div>
       </Container>
       <div className="metamask__account">
-          <p><b>Address:</b> 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266</p>
-        </div>
+        {account? (
+          //<p><b>Address:</b> {account.slice(0,6) + '...' + account.slice(38,42)}</p>
+          <p><b>Address:</b> {account}</p>
+        ) : (
+          <p>Connect Account</p>
+        )}
+      </div>
     </header>
   )
 }
