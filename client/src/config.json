@@ -1,13 +1,10 @@
 {
- "31337": {
-  "fashionToken": {
-   "address": "0xC6f30a96bBfa7B4Bf2032759c002BEAAFcDA3274"
-  },
-  "trackingOracle": {
-   "address": "0xa9AC113751b3CB06FF0a8978e39Af32f8158D8ED"
-  },
-  "sellingEscrow": {
-   "address": "0x6C6F70B20e11226CBfa5D116328F96F449AE6e36"
+  "31337": {
+      "fashionToken": {
+          "address": "0xC6f30a96bBfa7B4Bf2032759c002BEAAFcDA3274"
+      },
+      "sellingEscrow": {
+          "address": "0x6C6F70B20e11226CBfa5D116328F96F449AE6e36"
+      }
   }
- }
 }
