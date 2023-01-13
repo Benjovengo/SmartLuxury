@@ -33,7 +33,7 @@ describe('Oracle Escrow', () => {
         await transaction.wait()
 
         // List product
-        transaction = await oracleEscrow.connect(seller).list(1, tokens(10), tokens(5))
+        transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
         await transaction.wait()
     })
 
@@ -60,23 +60,19 @@ describe('Oracle Escrow', () => {
             expect(result).that.be.equal(tokens(10))
         })
 
-        it('Returns escrow amount.', async () => {
-            const result = await oracleEscrow.escrowAmount(1)
-            expect(result).that.be.equal(tokens(5))
-        })
     })
 
     describe('Deployment', () => {
         it('Updates escrow contract balance.', async () => {
-            const transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(5) })
+            const transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
             await transaction.wait()
             const result = await oracleEscrow.getBalance()
-            expect(result).to.be.equal(tokens(5))
+            expect(result).to.be.equal(tokens(10))
             // console.log(result)
         })
 
         it('Returns buyer.', async () => {
-            const transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(5) })
+            const transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
             await transaction.wait()
             const result = await oracleEscrow.buyer(1)
             expect(result).that.be.equal(buyer.address)
@@ -118,7 +114,7 @@ describe('Oracle Escrow', () => {
 
     describe('Sale', () => {
         beforeEach(async () => {
-            let transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(5) })
+            let transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
             await transaction.wait()
 
             transaction = await oracleEscrow.connect(oracle).updateDeliveryStatus(1, true)
