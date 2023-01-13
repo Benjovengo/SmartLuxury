@@ -5,8 +5,8 @@ import './nft-card.css'
 
 import Review from "../Review/Review";
 
-function myFunction(_text) {
-  console.log('Copy Address!')
+function copyToClipboard(_Address {
+  //console.log('Copy Address!')
 }
 
 const NftCard = (props) => {
@@ -55,7 +55,7 @@ const NftCard = (props) => {
 
       <div className="creator__info d-flex align-items-center justify-content-between">
           <p className='original__address'>{creator}</p>
-          <button className='copy__to__clipboard' onClick={myFunction('Fabio')}>
+          <button className='copy__to__clipboard' onClick={copyToClipboard('Address')}>
             <i className="ri-file-copy-line"></i>
           </button>
 
