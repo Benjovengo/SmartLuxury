@@ -115,6 +115,9 @@ contract OracleEscrow is IERC721Receiver {
             buyer[_nftID],
             _nftID
         );
+
+        // add owner to list of owners
+        fashionContract.addToOwners(_nftID, buyer[_nftID]);
     }
 
     /* Cancel Sale (handle earnest deposit)
