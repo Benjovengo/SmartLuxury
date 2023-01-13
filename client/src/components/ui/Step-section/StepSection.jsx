@@ -11,24 +11,28 @@ const STEP__DATA = [
     title: "Setup your wallet",
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
     icon: "ri-wallet-line",
+    link: "/wallet",
   },
 
   {
-    title: "Create your collection",
+    title: "Validate your products",
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
     icon: "ri-layout-masonry-line",
+    link: "/register",
   },
 
   {
-    title: "Add your NFTs",
+    title: "Register your products",
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
     icon: "ri-image-line",
+    link: "/register",
   },
 
   {
     title: "List them for sale",
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
     icon: "ri-list-check",
+    link: "/create",
   },
 ];
 
@@ -53,7 +57,7 @@ const StepSection = () => {
                   </span>
                   <div className="step__item__content">
                     <h5>
-                      <Link to="/wallet">{item.title}</Link>
+                      <Link to={item.link}>{item.title}</Link>
                     </h5>
                     <p className="mb-0">{item.desc}</p>
                   </div>
