@@ -26,7 +26,10 @@ contract FashionToken is ERC721URIStorage {
     }
 
     // mint NFT
-    function mint(string memory tokenURI) public returns (uint256) {
+    function mint(string memory tokenURI, address _newOwner)
+        public
+        returns (uint256)
+    {
         require(msg.sender == owner);
         _tokenIds.increment();
 
@@ -35,7 +38,7 @@ contract FashionToken is ERC721URIStorage {
         _setTokenURI(newItemId, tokenURI);
 
         // Update list of owners
-        addToOwners(newItemId, msg.sender);
+        addToOwners(newItemId, _newOwner);
 
         return newItemId;
     }
