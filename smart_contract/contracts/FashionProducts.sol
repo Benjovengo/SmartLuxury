@@ -19,6 +19,12 @@ contract FashionProducts is ERC721URIStorage {
         owner = msg.sender;
     }
 
+    // change ownership
+    function changeOwner(address _newOwner) public {
+        require(msg.sender == owner);
+        owner = _newOwner;
+    }
+
     // mint NFT
     function mint(string memory tokenURI) public returns (uint256) {
         require(msg.sender == owner);
