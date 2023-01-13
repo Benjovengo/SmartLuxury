@@ -11,6 +11,14 @@ contract OracleEscrow is IERC721Receiver {
     address public nftAddress;
     address payable public seller;
     address public oracle;
+    // Mappings - per NFT properties
+    mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
+    mapping(uint256 => uint256) public purchasePrice;
+    //mapping(uint256 => uint256) public escrowAmount; // Amount transferred to the contract
+    mapping(uint256 => address) public buyer;
+    mapping(uint256 => address) public nftSeller;
+    mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
+    mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
     FashionProducts public fashionContract;
 
@@ -30,15 +38,6 @@ contract OracleEscrow is IERC721Receiver {
         ); // may need to change to nftAddress
         _;
     }
-
-    // Mappings - per NFT properties
-    mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
-    mapping(uint256 => uint256) public purchasePrice;
-    //mapping(uint256 => uint256) public escrowAmount; // Amount transferred to the contract
-    mapping(uint256 => address) public buyer;
-    mapping(uint256 => address) public nftSeller;
-    mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
-    mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
     constructor(address _nftAddress, address _oracle) {
         nftAddress = _nftAddress;
@@ -108,7 +107,7 @@ contract OracleEscrow is IERC721Receiver {
         (bool success, ) = payable(nftSeller[_nftID]).call{
             value: address(this).balance
         }("");
-        require(success);
+        require(success, "Unsuccessful transfer of funds to the seller.");
 
         // Transfer product ownership
         IERC721(nftAddress).safeTransferFrom(
