@@ -4,14 +4,6 @@ pragma solidity ^0.8.17;
 import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "./FashionProducts.sol";
 
-/* interface IERC721 {
-    function safeTransferFrom(
-        address _from,
-        address _to,
-        uint256 _id
-    ) external;
-} */
-
 /* Contract to get shipment tracking status 
   Acts like a escrow contract */
 contract OracleEscrow is IERC721Receiver {
@@ -23,11 +15,6 @@ contract OracleEscrow is IERC721Receiver {
     FashionProducts public fashionContract;
 
     /* Modifiers - only certain entity can call some methods */
-    /* modifier onlyBuyer(uint256 _nftID) {
-        require(msg.sender == buyer[_nftID], "Only buyer can call this method");
-        _;
-    } */
-
     modifier onlySeller(uint256 _nftID) {
         require(
             msg.sender == fashionContract.getOwnershipOf(_nftID),
@@ -84,7 +71,7 @@ contract OracleEscrow is IERC721Receiver {
         escrowAmount[_nftID] = _escrowAmount;
     }
 
-    /* Put ether under contract (only buyer - payable oracleEscrow) */
+    /* Put ether under contract (buyer - payable oracleEscrow) */
     function depositEarnest(uint256 _nftID) public payable {
         require(msg.value >= escrowAmount[_nftID]);
         buyer[_nftID] = msg.sender;
