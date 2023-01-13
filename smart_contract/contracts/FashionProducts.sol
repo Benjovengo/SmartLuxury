@@ -12,6 +12,8 @@ contract FashionProducts is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
     address public firstOwner;
+    mapping(uint256 => uint256) public numberOfOwners;
+    mapping(uint256 => mapping(uint256 => address)) public listOwners;
 
     constructor() ERC721("Smart Luxury", "SLUX") {
         firstOwner = msg.sender;
@@ -24,6 +26,9 @@ contract FashionProducts is ERC721URIStorage {
         _mint(msg.sender, newItemId);
         _setTokenURI(newItemId, tokenURI);
 
+        // Update list of owners
+        addToOwners(newItemId, msg.sender);
+
         return newItemId;
     }
 
@@ -34,5 +39,20 @@ contract FashionProducts is ERC721URIStorage {
 
     function totalSupply() public view returns (uint256) {
         return _tokenIds.current();
+    }
+
+    // Update list of owners
+    function addToOwners(uint256 _nftID, address _newOwner) public {
+        listOwners[_nftID][numberOfOwners[_nftID]] = _newOwner;
+        numberOfOwners[_nftID]++;
+    }
+
+    /* get list of owners */
+    function getOwners(uint256 _nftID) public view returns (address[] memory) {
+        address[] memory owners = new address[](numberOfOwners[_nftID]);
+        for (uint256 i = 0; i < numberOfOwners[_nftID]; i++) {
+            owners[i] = listOwners[_nftID][i];
+        }
+        return owners;
     }
 }
