@@ -5,8 +5,8 @@ import './nft-card.css'
 
 import Review from "../Review/Review";
 
-function copyToClipboard(_Address {
-  //console.log('Copy Address!')
+function copyToClipboard(_Address) {
+  //console.log('')
 }
 
 const NftCard = (props) => {
