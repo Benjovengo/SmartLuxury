@@ -11,15 +11,17 @@ contract FashionProducts is ERC721URIStorage {
     // allow to create an enumerable ERC-721 token
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
-    address public firstOwner;
+    address public owner;
     mapping(uint256 => uint256) public numberOfOwners;
     mapping(uint256 => mapping(uint256 => address)) public listOwners;
 
     constructor() ERC721("Smart Luxury", "SLUX") {
-        firstOwner = msg.sender;
+        owner = msg.sender;
     }
 
+    // mint NFT
     function mint(string memory tokenURI) public returns (uint256) {
+        require(msg.sender == owner);
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
@@ -43,6 +45,7 @@ contract FashionProducts is ERC721URIStorage {
 
     // Update list of owners
     function addToOwners(uint256 _nftID, address _newOwner) public {
+        require(msg.sender == owner, "Invalid address call");
         listOwners[_nftID][numberOfOwners[_nftID]] = _newOwner;
         numberOfOwners[_nftID]++;
     }
