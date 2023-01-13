@@ -7,7 +7,7 @@ import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 /* Contract for the information and transactions of fashion products */
-contract FashionProducts is ERC721URIStorage {
+contract FashionToken is ERC721URIStorage {
     // allow to create an enumerable ERC-721 token
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;

@@ -5,36 +5,36 @@ const tokens = (n) => {
     return ethers.utils.parseUnits(n.toString(), 'ether')
 }
 
-describe('Oracle Escrow', () => {
+describe('Selling Escrow', () => {
     // variables
     let buyer, seller, oracle
     let fashionToken
-    let oracleEscrow
+    let sellingEscrow
 
 
     beforeEach(async () => {
         // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
         [deployer, buyer, seller, oracle] = await ethers.getSigners()
 
-        // Deploy OracleEscrow
-        const FashionToken = await ethers.getContractFactory('FashionProducts')
+        // Deploy SellingEscrow
+        const FashionToken = await ethers.getContractFactory('FashionToken')
         fashionToken = await FashionToken.deploy()
 
-        // Deploy OracleEscrow
-        const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
-        oracleEscrow = await OracleEscrow.deploy(fashionToken.address, oracle.address)
+        // Deploy SellingEscrow
+        const SellingEscrow = await ethers.getContractFactory('SellingEscrow')
+        sellingEscrow = await SellingEscrow.deploy(fashionToken.address, oracle.address)
 
         // change owner
-        fashionToken.changeOwner(oracleEscrow.address)
+        fashionToken.changeOwner(sellingEscrow.address)
 
 
 
          // Mint
-         let transaction = await oracleEscrow.connect(seller).register("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS")
+         let transaction = await sellingEscrow.connect(seller).register("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS")
          await transaction.wait()
 
         // Seller approval
-        transaction = await fashionToken.connect(seller).approve(oracleEscrow.address, 1)
+        transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 1)
         await transaction.wait()
 
     })
@@ -42,13 +42,13 @@ describe('Oracle Escrow', () => {
     describe('Deployment', () => {
 
         it('Address.', async () => {
-            const result = await oracleEscrow.nftAddress()
+            const result = await sellingEscrow.nftAddress()
             expect(result).that.be.equal(fashionToken.address)
         })
 
         it('Escrow owns the token.', async () => {
             const result = await fashionToken.owner()
-            expect(result).that.be.equal(oracleEscrow.address)
+            expect(result).that.be.equal(sellingEscrow.address)
         })
 
         it('Create NFT.', async () => {
@@ -62,24 +62,24 @@ describe('Oracle Escrow', () => {
 
         it('Transfer ownership to escrow.', async () => {
             // List product
-            transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
-            expect(await fashionToken.ownerOf(1)).to.be.equal(oracleEscrow.address)
+            expect(await fashionToken.ownerOf(1)).to.be.equal(sellingEscrow.address)
         })
 
         it('Updates as listed.', async () => {
             // List product
-            transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
-            const result = await oracleEscrow.isListed(1)
+            const result = await sellingEscrow.isListed(1)
             expect(result).that.be.equal(true)
         })
 
         it('Returns purchase price.', async () => {
             // List product
-            transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
-            const result = await oracleEscrow.purchasePrice(1)
+            const result = await sellingEscrow.purchasePrice(1)
             expect(result).that.be.equal(tokens(10))
         })
     })
@@ -87,22 +87,22 @@ describe('Oracle Escrow', () => {
     describe('Selling info', () => {
         it('Updates escrow contract balance.', async () => {
             // List product
-            transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
-            transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
+            transaction = await sellingEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
             await transaction.wait()
-            const result = await oracleEscrow.getBalance()
+            const result = await sellingEscrow.getBalance()
             expect(result).to.be.equal(tokens(10))
             // console.log(result)
         })
   
         it('Returns buyer.', async () => {
             // List product
-            transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
-            transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
+            transaction = await sellingEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
             await transaction.wait()
-            const result = await oracleEscrow.buyer(1)
+            const result = await sellingEscrow.buyer(1)
             expect(result).that.be.equal(buyer.address)
         })
     })
@@ -110,64 +110,64 @@ describe('Oracle Escrow', () => {
     describe('Oracle Inspection', () => {
         beforeEach(async () => {
             // List product
-            let transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            let transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
 
-            transaction = await oracleEscrow.connect(oracle).updateDeliveryStatus(1, true)
+            transaction = await sellingEscrow.connect(oracle).updateDeliveryStatus(1, true)
             await transaction.wait()
         })
   
         it('Updates inspection status', async () => {
-            const result = await oracleEscrow.wasDelivered(1)
+            const result = await sellingEscrow.wasDelivered(1)
             expect(result).to.be.equal(true)
         })
     })
 
     describe('Approval', () => {
         beforeEach(async () => {
-            let transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            let transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
             
-            transaction = await oracleEscrow.connect(buyer).approveSale(1)
+            transaction = await sellingEscrow.connect(buyer).approveSale(1)
             await transaction.wait()
   
-            transaction = await oracleEscrow.connect(seller).approveSale(1)
+            transaction = await sellingEscrow.connect(seller).approveSale(1)
             await transaction.wait()
   
-            transaction = await oracleEscrow.connect(oracle).approveSale(1)
+            transaction = await sellingEscrow.connect(oracle).approveSale(1)
             await transaction.wait()
         })
   
         it('Updates approval status', async () => {
-            expect(await oracleEscrow.approval(1, buyer.address)).to.be.equal(true)
-            expect(await oracleEscrow.approval(1, seller.address)).to.be.equal(true)
-            expect(await oracleEscrow.approval(1, oracle.address)).to.be.equal(true)
+            expect(await sellingEscrow.approval(1, buyer.address)).to.be.equal(true)
+            expect(await sellingEscrow.approval(1, seller.address)).to.be.equal(true)
+            expect(await sellingEscrow.approval(1, oracle.address)).to.be.equal(true)
         })
     })
 
     describe('Sale', () => {
         beforeEach(async () => {
-            let transaction = await oracleEscrow.connect(seller).list(1, tokens(10))
+            let transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
             await transaction.wait()
             
-            transaction = await oracleEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
+            transaction = await sellingEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
             await transaction.wait()
   
-            transaction = await oracleEscrow.connect(oracle).updateDeliveryStatus(1, true)
+            transaction = await sellingEscrow.connect(oracle).updateDeliveryStatus(1, true)
             await transaction.wait()
   
-            transaction = await oracleEscrow.connect(buyer).approveSale(1)
+            transaction = await sellingEscrow.connect(buyer).approveSale(1)
             await transaction.wait()
   
-            transaction = await oracleEscrow.connect(seller).approveSale(1)
+            transaction = await sellingEscrow.connect(seller).approveSale(1)
             await transaction.wait()
   
-            transaction = await oracleEscrow.connect(oracle).approveSale(1)
+            transaction = await sellingEscrow.connect(oracle).approveSale(1)
             await transaction.wait()
   
-            await oracle.sendTransaction({ to: oracleEscrow.address, value: tokens(5) }) // here a lender can send ether to the contract
+            await oracle.sendTransaction({ to: sellingEscrow.address, value: tokens(5) }) // here a lender can send ether to the contract
   
-            transaction = await oracleEscrow.connect(seller).finalizeSale(1)
+            transaction = await sellingEscrow.connect(seller).finalizeSale(1)
             await transaction.wait()
         })
   
@@ -182,7 +182,7 @@ describe('Oracle Escrow', () => {
         })
   
         it('Updates oracle contract balance', async () => {
-            expect(await oracleEscrow.getBalance()).to.be.equal(0)
+            expect(await sellingEscrow.getBalance()).to.be.equal(0)
         })
     })
     
@@ -191,6 +191,6 @@ describe('Oracle Escrow', () => {
 /*
 console.log('Buyer:  ', buyer.address)
 console.log('Seller: ',seller.address)
-console.log('Oracle: ', oracleEscrow.address)
+console.log('Oracle: ', sellingEscrow.address)
 console.log('Token:  ', fashionToken.address)
 */

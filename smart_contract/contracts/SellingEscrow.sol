@@ -2,11 +2,11 @@
 pragma solidity ^0.8.17;
 
 import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-import "./FashionProducts.sol";
+import "./FashionToken.sol";
 
 /* Contract to get shipment tracking status 
   Acts like a escrow contract */
-contract OracleEscrow is IERC721Receiver {
+contract SellingEscrow is IERC721Receiver {
     // state variables
     address public nftAddress;
     address payable public seller;
@@ -20,7 +20,7 @@ contract OracleEscrow is IERC721Receiver {
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
-    FashionProducts public fashionToken;
+    FashionToken public fashionToken;
 
     /* Modifiers - only certain entity can call some methods */
     modifier onlySeller(uint256 _nftID) {
@@ -42,7 +42,7 @@ contract OracleEscrow is IERC721Receiver {
     constructor(address _nftAddress, address _oracle) {
         oracle = _oracle;
         nftAddress = _nftAddress;
-        fashionToken = FashionProducts(_nftAddress);
+        fashionToken = FashionToken(_nftAddress);
     }
 
     // Register new product
