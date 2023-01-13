@@ -7,7 +7,7 @@ const hre = require("hardhat");
 const fs = require("fs"); // to copy the files to be used by the web interface
 
 let fashionAddress
-let oracleAddress
+let sellingAddress
 let trackingAddress
 
 const main = async () => {
@@ -15,10 +15,10 @@ const main = async () => {
   // Deploy ContactInfo
     
   // Deploy FashionProducts
-  const FashionProducts = await ethers.getContractFactory('FashionProducts')
-  const fashionProducts = await FashionProducts.deploy()
-  await fashionProducts.deployed()
-  fashionAddress = fashionProducts.address
+  const FashionToken = await ethers.getContractFactory('FashionToken')
+  const fashionToken = await FashionToken.deploy()
+  await fashionToken.deployed()
+  fashionAddress = fashionToken.address
 
   // Deploy TrackingOracle
   const TrackingOracle = await ethers.getContractFactory('TrackingOracle')
@@ -27,16 +27,16 @@ const main = async () => {
   trackingAddress = trackingOracle.address
 
   // Deploy OracleEscrow
-  const OracleEscrow = await ethers.getContractFactory('OracleEscrow')
-  const oracleEscrow = await OracleEscrow.deploy(fashionProducts.address, trackingOracle.address)
-  await oracleEscrow.deployed()
-  oracleAddress = oracleEscrow.address
+  const SellingEscrow = await ethers.getContractFactory('SellingEscrow')
+  const sellingEscrow = await SellingEscrow.deploy(fashionToken.address, trackingOracle.address)
+  await sellingEscrow.deployed()
+  sellingAddress = sellingEscrow.address
 
   /* Console Log results */
-  console.log("FashionProducts address: ", fashionProducts.address)
-  console.log("OracleEscrow address: ", oracleEscrow.address)
+  console.log("FashionToken address:   ", fashionToken.address)
+  console.log("SellingEscrow address:  ", sellingEscrow.address)
   console.log("TrackingOracle address: ", trackingOracle.address)
-  console.log("ContactInfo address: ")
+  console.log("ContactInfo address:    ")
 }
 
 // Function to copy the ABI files
@@ -49,7 +49,7 @@ function copyABIFiles(_trackingABI, _destinationPath) {
 
 
 // Function to create/ update config.json file
-function createConfigJSON(_fashionAddress, _trackingAddress, _oracleAddress) {
+function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress) {
   const configFilePath = "../client/src/config.json";
 
   // Create data JSON with contents
@@ -63,8 +63,8 @@ function createConfigJSON(_fashionAddress, _trackingAddress, _oracleAddress) {
     trackingOracle: {
       address: _trackingAddress
     },
-    oracleEscrow: {
-      address: _oracleAddress
+    sellingEscrow: {
+      address: _sellingAddress
     }
   }
 
@@ -85,14 +85,14 @@ const runMain = async () => {
   try {
     await main()
     // copy files to client-side
-    const fileNames = ['FashionProducts', 'OracleEscrow', 'TrackingOracle', 'ContactInfo']
+    const fileNames = ['FashionToken', 'SellingEscrow', 'TrackingOracle', 'ContactInfo']
     for (let i = 0; i < 3; i++) {
       sourceABI = "./artifacts/contracts/"+ fileNames[i] +".sol/" + fileNames[i] + ".json"
       destinationPath = "../client/src/abis/" + fileNames[i] + ".json"
       copyABIFiles(sourceABI, destinationPath)
     }
     // create config.json with deployed addresses
-    createConfigJSON(fashionAddress, trackingAddress, oracleAddress)
+    createConfigJSON(fashionAddress, trackingAddress, sellingAddress)
     // terminate without errors
     process.exit(0)
   } catch (error) {
