@@ -1,13 +1,13 @@
 {
  "5": {
   "fashionProducts": {
-   "address": "0xf5059a5D33d5853360D16C683c16e67980206f36"
+   "address": "0xC6f30a96bBfa7B4Bf2032759c002BEAAFcDA3274"
   },
   "trackingOracle": {
-   "address": "0x95401dc811bb5740090279Ba06cfA8fcF6113778"
+   "address": "0xa9AC113751b3CB06FF0a8978e39Af32f8158D8ED"
   },
   "sellingEscrow": {
-   "address": "0x998abeb3E57409262aE5b751f60747921B33613E"
+   "address": "0x6C6F70B20e11226CBfa5D116328F96F449AE6e36"
   }
  }
 }
