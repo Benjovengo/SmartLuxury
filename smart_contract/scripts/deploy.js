@@ -57,8 +57,9 @@ function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress) {
   data[31337] = [] //localhost
   //data[5] = [] // Goerli
 
-  data[5] = {
-    fashionProducts: {
+  //data[5] = {
+  data[31337] = {
+    fashionToken: {
       address: _fashionAddress
     },
     trackingOracle: {
