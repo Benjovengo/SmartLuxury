@@ -54,7 +54,8 @@ function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress) {
 
   // Create data JSON with contents
   var data = {}
-  data[5] = []
+  data[31337] = [] //localhost
+  //data[5] = [] // Goerli
 
   data[5] = {
     fashionProducts: {
