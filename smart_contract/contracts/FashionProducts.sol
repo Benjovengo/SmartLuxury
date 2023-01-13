@@ -11,8 +11,11 @@ contract FashionProducts is ERC721URIStorage {
     // allow to create an enumerable ERC-721 token
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
+    address public firstOwner;
 
-    constructor() ERC721("Smart Luxury", "SLUX") {}
+    constructor() ERC721("Smart Luxury", "SLUX") {
+        firstOwner = msg.sender;
+    }
 
     function mint(string memory tokenURI) public returns (uint256) {
         _tokenIds.increment();
