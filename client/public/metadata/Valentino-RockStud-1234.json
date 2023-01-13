@@ -3,9 +3,9 @@
     "brand": "Christian Dior",
     "description": "Valentino Garavani Rockstud bucket bag in grainy calfskin.",
     "image": [
-        "https://drive.google.com/uc?export=download&id=14wcqbmDqU-1wAxTrwcbRM-ZWY11K46Vh",
-        "https://drive.google.com/uc?export=download&id=1RCJ_25GC8NK8QjVYTYPa0_5LCPsDfpxe",
-        "https://drive.google.com/uc?export=download&id=19Tc_TayyCBKqTXz26i7OJQCx6VQDRVKo"
+        "../images/RockStud-Bege_01.webp",
+        "../images/RockStud-Bege_02.webp",
+        "../images/RockStud-Bege_03.webp"
     ],
     "id": "6",
     "SKU": "IA002000148",

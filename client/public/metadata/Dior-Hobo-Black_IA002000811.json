@@ -3,10 +3,10 @@
     "brand": "Christian Dior",
     "description": "New this season, Maria Grazia Chiuri imagines the Dior Vibe bag with the allure of a Hobo bag showcasing modern lines. The black Cannage lambskin style features a suede interior while a white 'CHRISTIAN DIOR PARIS' signature adorns the bottom of the bag. Featuring a handle in addition to a removable and adjustable shoulder strap with a military-inspired buckle, the medium Dior Vibe bag can be carried by hand, worn on the shoulder or crossbody for a sportier look.",
     "image": [
-        "https://drive.google.com/uc?export=download&id=1wD62YuPXUTvK2l9rU5Zge2A6h-_PGM7B",
-        "https://drive.google.com/uc?export=download&id=1Q1g2Ob-gBhLNQcWIzaqyXuIzeeZWobFr",
-        "https://drive.google.com/uc?export=download&id=1NcjL4GEWjHOFbbX2y5ynrVrkRYuXNzot",
-        "https://drive.google.com/uc?export=download&id=1PezkkbTDd5fFdGfW20ZrNj-vANsPd0DJ"
+        "../images/Hobo-Preta_01.webp",
+        "../images/Hobo-Preta_02.webp",
+        "../images/Hobo-Preta_03.webp",
+        "../images/Hobo-Preta_04.webp"
     ],
     "id": "5",
     "SKU": "IA002000811",

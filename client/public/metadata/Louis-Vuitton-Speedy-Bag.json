@@ -3,9 +3,9 @@
     "brand": "Louis Vuitton",
     "description": "Speedy EPI bag - a classic by Louis Vuitton.",
     "image": [
-        "https://drive.google.com/uc?export=download&id=1Ys5Ck81NlJd5oLV7GLaTusQ5whYnzXIn",
-        "https://drive.google.com/uc?export=download&id=1tMWRN4PKDIBBTCTuWdvMfor3aWfn05Pg",
-        "https://drive.google.com/uc?export=download&id=127dP2Lk91lNJIpGb4-DzaO545BP8nc4t"
+        "../images/Speedy-EPI-Bege_01.webp",
+        "../images/Speedy-EPI-Bege_02.webp",
+        "../images/Speedy-EPI-Bege_03.webp"
     ],
     "id": "7",
     "SKU": "IA002000769",
