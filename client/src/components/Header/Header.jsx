@@ -17,6 +17,10 @@ const NAV__LINKS = [
     url:'/create'
   },
   {
+    display:'Wallet',
+    url:'/wallet'
+  },
+  {
     display:'Contact',
     url:'/contact'
   },
@@ -74,8 +78,8 @@ const Header = ( { account, setAccount } ) => {
             </ul>
           </div>
           <div className="nav__right d-flex align-items-center gap-5">
-            <button className="btn">
-              <Link to={"/wallet"} className="d-flex gap-2 align-items-center" >
+            <button className="btn" onClick={connectHandler}>
+              <Link className="d-flex gap-2 align-items-center" >
                 <span>
                   <i className="ri-wallet-line"></i>
                 </span>
