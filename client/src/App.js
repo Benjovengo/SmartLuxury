@@ -24,18 +24,28 @@ function App() {
 
   const loadBlockchainData = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-    setAccount(accounts[0])
+    //const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+    //setAccount(accounts[0])
     setProvider(provider)
-
     const network = await provider.getNetwork()
-    //console.log(config[network.chainId].fashionToken.address)
-    //console.log(config[network.chainId].sellingEscrow.address)
+
+    // Javascript "version" of the smart contracts
+    // to interact with via Javascript
+    const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+    //const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+    const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
+
+    const totalSupply = await fashionToken.totalSupply()
+    console.log(totalSupply)
+
 
     
-    const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
-    const totalSupply = await fashionToken.totalSupply()
-    console.log(totalSupply.toString())
+
+    //const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+    
+    //const realEstate = new ethers.Contract(config[network.chainId].realEstate.address, RealEstate, provider)
+    //const totalSupply = await fashionToken.totalSupply()
+    //const products = []
     
     /*const products = []*/
 
