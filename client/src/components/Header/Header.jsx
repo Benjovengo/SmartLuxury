@@ -83,7 +83,12 @@ const Header = ( { account, setAccount } ) => {
                 <span>
                   <i className="ri-wallet-line"></i>
                 </span>
-                Connect Wallet
+                {account? (
+                <div>Address: {account.slice(0,6) + '...' + account.slice(38,42)}</div>
+                //<p><b>Address:</b> {account}</p>
+              ) : (
+                <div>Connect Wallet</div>
+              )}
               </Link>
             </button>
             <span className="mobile__menu">
@@ -92,14 +97,6 @@ const Header = ( { account, setAccount } ) => {
           </div>
         </div>
       </Container>
-      <div className="metamask__account">
-        {account? (
-          //<p><b>Address:</b> {account.slice(0,6) + '...' + account.slice(38,42)}</p>
-          <p><b>Address:</b> {account}</p>
-        ) : (
-          <p>Connect Account</p>
-        )}
-      </div>
     </header>
   )
 }
