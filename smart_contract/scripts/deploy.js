@@ -39,12 +39,44 @@ const main = async () => {
   //console.log("VerifiedContacts address: ")
 }
 
-// Function to copy the ABI files
-function copyABIFiles(_trackingABI, _destinationPath) {
-  fs.copyFile(_trackingABI, _destinationPath, (err) => {
-  if (err) throw err;
-  console.log('ABI successfully copied to client-side application');
+// write function
+function writeABIs(_destination, _data) {
+  // save new file
+  var options = { flag : 'w' };
+  fs.writeFileSync(_destination, _data , options, function(err) {
+    if (err) throw err;
+    console.log('complete');
   })
+}
+
+// Function to copy the ABI files
+function createABIFiles() {
+  // Fashion Token ABI
+  let jsonFile = fs.readFileSync('./artifacts/contracts/FashionToken.sol/FashionToken.json')
+  let jsonData = JSON.parse(jsonFile);
+  let stringfyData = JSON.stringify(jsonData.abi, null, " ")
+
+  let abiFilePath = "../client/src/abis/FashionToken.json"
+  //writeData('../client/src/abis/FashionToken.sol', attribute)
+  writeABIs(abiFilePath, stringfyData)
+
+  // Selling Escrow ABI
+  jsonFile = fs.readFileSync('./artifacts/contracts/SellingEscrow.sol/SellingEscrow.json')
+  jsonData = JSON.parse(jsonFile);
+  stringfyData = JSON.stringify(jsonData.abi, null, " ")
+
+  abiFilePath = "../client/src/abis/SellingEscrow.json"
+  //writeData('../client/src/abis/FashionToken.sol', attribute)
+  writeABIs(abiFilePath, stringfyData)
+
+  // Tracking Oracle ABI
+  jsonFile = fs.readFileSync('./artifacts/contracts/TrackingOracle.sol/TrackingOracle.json')
+  jsonData = JSON.parse(jsonFile);
+  stringfyData = JSON.stringify(jsonData.abi, null, " ")
+
+  abiFilePath = "../client/src/abis/TrackingOracle.json"
+  //writeData('../client/src/abis/FashionToken.sol', attribute)
+  writeABIs(abiFilePath, stringfyData)
 }
 
 
@@ -87,12 +119,7 @@ const runMain = async () => {
   try {
     await main()
     // copy files to client-side
-    const fileNames = ['FashionToken', 'SellingEscrow', 'TrackingOracle', 'ContactInfo']
-    for (let i = 0; i < 3; i++) {
-      sourceABI = "./artifacts/contracts/"+ fileNames[i] +".sol/" + fileNames[i] + ".json"
-      destinationPath = "../client/src/abis/" + fileNames[i] + ".json"
-      copyABIFiles(sourceABI, destinationPath)
-    }
+    createABIFiles()
     // create config.json with deployed addresses
     createConfigJSON(fashionAddress, trackingAddress, sellingAddress)
     // terminate without errors
