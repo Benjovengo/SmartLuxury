@@ -75,9 +75,9 @@ const Market = () => {
                 <div className="filter__right">
                   <select onChange={handleSort}>
                     <option>Sort By</option>
-                    <option value="high">High Rate</option>
-                    <option value="mid">Mid Rate</option>
-                    <option value="low">Low Rate</option>
+                    <option value="high">High Price</option>
+                    <option value="mid">Mid Price</option>
+                    <option value="low">Low Price</option>
                   </select>
                 </div>
               </div>
