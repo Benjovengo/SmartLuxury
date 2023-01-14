@@ -21,6 +21,11 @@ const Market = () => {
   const handleSort = (e) => {
     const filterValue = e.target.value;
 
+    if (filterValue === "all") {
+      const filterData = NFT__DATA.filter((item) => item.currentBid >= 0);
+      setData(filterData);
+    }
+
     if (filterValue === "high") {
       const filterData = NFT__DATA.filter((item) => item.currentBid >= 1.5);
       setData(filterData);
@@ -75,6 +80,7 @@ const Market = () => {
                 <div className="filter__right">
                   <select onChange={handleSort}>
                     <option>Sort By</option>
+                    <option value="all">Any Price</option>
                     <option value="high">High Price</option>
                     <option value="mid">Mid Price</option>
                     <option value="low">Low Price</option>
