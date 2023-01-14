@@ -11,6 +11,9 @@ let sellingAddress
 let trackingAddress
 
 const main = async () => {
+    // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
+    [deployer, buyer, seller, oracle] = await ethers.getSigners()
+
   /* Deployment Section */
   // Deploy VerifiedContracts
 
