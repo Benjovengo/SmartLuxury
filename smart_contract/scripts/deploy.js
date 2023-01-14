@@ -35,6 +35,9 @@ const main = async () => {
   await sellingEscrow.deployed()
   sellingAddress = sellingEscrow.address
 
+  // Change ownership to Selling Escrow
+  await fashionToken.changeOwner(sellingEscrow.address)
+  
   /* Console Log results */
   console.log("FashionToken address:       ", fashionToken.address)
   console.log("SellingEscrow address:      ", sellingEscrow.address)
