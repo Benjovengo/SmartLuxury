@@ -12,7 +12,7 @@ let trackingAddress
 
 const main = async () => {
   /* Deployment Section */
-  // Deploy ContactInfo
+  // Deploy VerifiedContracts
 
   // Deploy FashionProducts
   const FashionToken = await ethers.getContractFactory('FashionToken')
