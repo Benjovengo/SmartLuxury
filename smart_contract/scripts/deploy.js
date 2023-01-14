@@ -37,7 +37,14 @@ const main = async () => {
 
   // Change ownership to Selling Escrow
   await fashionToken.changeOwner(sellingEscrow.address)
-  
+
+
+  // ============================== DEFAULT MINTS ==============================
+  await sellingEscrow.connect(seller).register('https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/1.json')
+  await sellingEscrow.connect(seller).register('https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/2.json')
+  await sellingEscrow.connect(seller).register('https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/3.json')
+  // ============================== DEFAULT MINTS ==============================
+
   /* Console Log results */
   console.log("FashionToken address:       ", fashionToken.address)
   console.log("SellingEscrow address:      ", sellingEscrow.address)
