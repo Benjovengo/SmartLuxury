@@ -13,7 +13,7 @@ let trackingAddress
 const main = async () => {
   /* Deployment Section */
   // Deploy ContactInfo
-    
+
   // Deploy FashionProducts
   const FashionToken = await ethers.getContractFactory('FashionToken')
   const fashionToken = await FashionToken.deploy()
@@ -33,10 +33,10 @@ const main = async () => {
   sellingAddress = sellingEscrow.address
 
   /* Console Log results */
-  console.log("FashionToken address:   ", fashionToken.address)
-  console.log("SellingEscrow address:  ", sellingEscrow.address)
-  console.log("TrackingOracle address: ", trackingOracle.address)
-  console.log("ContactInfo address:    ")
+  console.log("FashionToken address:       ", fashionToken.address)
+  console.log("SellingEscrow address:      ", sellingEscrow.address)
+  console.log("TrackingOracle address:     ", trackingOracle.address)
+  //console.log("VerifiedContacts address: ")
 }
 
 // Function to copy the ABI files
