@@ -18,7 +18,7 @@ function App() {
   const [provider, setProvider] = useState(null)
   const [sellingEscrow, setEscrow] = useState(null)
   const [account, setAccount] = useState(null)
-  const [homes, setHomes] = useState([])
+  const [products, setProducts] = useState([])
   const [home, setHome] = useState({})
   const [toggle, setToggle] = useState(false);
 
@@ -29,11 +29,26 @@ function App() {
     setProvider(provider)
 
     const network = await provider.getNetwork()
-    console.log(config[network.chainId].fashionToken.address)
+    //console.log(config[network.chainId].fashionToken.address)
+    //console.log(config[network.chainId].sellingEscrow.address)
+
     
-    /*const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+    const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
     const totalSupply = await fashionToken.totalSupply()
-    const homes = []*/
+    
+    // get products
+    products = []
+    for (var i = 1; i <= totalSupply; i++) {
+      const uri = await fashionToken.tokenURI(i)
+      const response = await fetch(uri)
+      const metadata = await response.json()
+      products.push(metadata)
+    }
+    setProducts(products)
+
+
+    const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
+    setEscrow(sellingEscrow)
 
     window.ethereum.on('accountsChanged', async () => {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
