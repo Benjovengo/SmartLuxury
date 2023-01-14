@@ -6,8 +6,8 @@ import './App.css';
 import Layout from './components/Layout/Layout'
 
 // Import ABIs
-import fashionToken from './abis/FashionToken.json'
-import sellingEscrow from './abis/SellingEscrow.json'
+import FashionToken from './abis/FashionToken.json'
+import SellingEscrow from './abis/SellingEscrow.json'
 //import trackingOracle from './abis/TrackingOracle.json'
 // config
 import config from './config.json';
@@ -26,6 +26,14 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
     setAccount(accounts[0])
+    setProvider(provider)
+
+    const network = await provider.getNetwork()
+    console.log(config[network.chainId].fashionToken.address)
+    
+    /*const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+    const totalSupply = await fashionToken.totalSupply()
+    const homes = []*/
 
     window.ethereum.on('accountsChanged', async () => {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
