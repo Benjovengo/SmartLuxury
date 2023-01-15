@@ -3,9 +3,9 @@
     "brand": "Christian Dior",
     "description": "Brown Plastic Dior Sunglasses",
     "image": [
-        "../images/Dior-Vintage-Sunglasses_01.webp",
-        "../images/Dior-Vintage-Sunglasses_02.webp",
-        "../images/Dior-Vintage-Sunglasses_03.webp"
+        "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets_test/images/Dior-Vintage-Sunglasses_01.webp",
+        "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets_test/images/Dior-Vintage-Sunglasses_02.webp",
+        "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets_test/images/Dior-Vintage-Sunglasses_03.webp"
     ],
     "id": "1",
     "SKU": "ac1389",
