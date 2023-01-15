@@ -47,6 +47,13 @@ const main = async () => {
   await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json')
   await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json')
   await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json')
+
+  // Seller approval
+  let transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 1)
+  await transaction.wait()
+  // List product
+  transaction = await sellingEscrow.connect(seller).list(1, 10)
+  await transaction.wait()
   // ============================== DEFAULT MINTS ==============================
 
   /* Console Log results */
