@@ -6,6 +6,13 @@
 const hre = require("hardhat");
 const fs = require("fs"); // to copy the files to be used by the web interface
 
+// Convert ether to wei - helper function
+const tokens = (n) => {
+  //return ethers.utils.parseUnits(n.toString(), 'ether')
+  return 100*n
+}
+
+
 let fashionAddress
 let sellingAddress
 let trackingAddress
@@ -52,7 +59,14 @@ const main = async () => {
   let transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 1)
   await transaction.wait()
   // List product
-  transaction = await sellingEscrow.connect(seller).list(1, 10)
+  transaction = await sellingEscrow.connect(seller).list(1, 55)
+  await transaction.wait()
+
+  // Seller approval
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 2)
+  await transaction.wait()
+  // List product
+  transaction = await sellingEscrow.connect(buyer).list(2, 155)
   await transaction.wait()
   // ============================== DEFAULT MINTS ==============================
 
