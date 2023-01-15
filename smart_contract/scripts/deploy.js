@@ -40,13 +40,13 @@ const main = async () => {
 
 
   // ============================== DEFAULT MINTS ==============================
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Valentino-RockStud-1234.json')
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json')
-  await sellingEscrow.connect(deployer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Louis-Vuitton-Speedy-Bag.json')
-  await sellingEscrow.connect(oracle).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Gucci-Swing-Red_IA002000868.json')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Gucci-Flap-Jackie-Bag.json')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/metadata/Dior-Hobo-Black_IA002000811.json')
+  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json')
+  await sellingEscrow.connect(deployer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json')
+  await sellingEscrow.connect(oracle).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json')
+  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json')
+  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json')
+  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json')
   // ============================== DEFAULT MINTS ==============================
 
   /* Console Log results */
