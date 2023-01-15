@@ -65,23 +65,27 @@ async function getData() {
   let formatJson
   let data = []
   for(let i=0; i < productList.length; i++){
-    json = await productList[i]
-    formatJson = {
-      id: json.id,
-      title: json.name,
-      description: json.description,
-      imgUrl: json.image[0],
-      creator: await fashionToken.ownerOf(i+1),
-      creatorImg: "../images/ava-01.png",
-      currentBid: json.price
+    if (!(await sellingEscrow.isListed(1))) {
+      json = await productList[i]
+      formatJson = {
+        id: json.id,
+        title: json.name,
+        description: json.description,
+        imgUrl: json.image[0],
+        creator: await fashionToken.ownerOf(i+1),
+        creatorImg: "../images/ava-01.png",
+        currentBid: json.price
+      }
+      data.push(formatJson)
     }
-    data.push(formatJson)
+    
   }
+  console.log(await sellingEscrow.isListed(1)) // <=================== isListed = false!!!
   return data
 }
 
 export const NFT__DATA = await getData()
-//console.log(NFT__DATA)
+console.log(NFT__DATA)
 
 
 export const SELLER__DATA = [
