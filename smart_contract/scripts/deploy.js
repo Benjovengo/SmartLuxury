@@ -43,6 +43,7 @@ const main = async () => {
   await sellingEscrow.connect(seller).register('https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/1.json')
   await sellingEscrow.connect(seller).register('https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/2.json')
   await sellingEscrow.connect(seller).register('https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/3.json')
+  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/metadata/Dior-Hobo-Black_IA002000811.json')
   // ============================== DEFAULT MINTS ==============================
 
   /* Console Log results */
