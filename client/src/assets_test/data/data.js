@@ -74,7 +74,7 @@ async function getData() {
         imgUrl: json.image[0],
         creator: await fashionToken.ownerOf(i+1),
         creatorImg: "../images/ava-01.png",
-        currentBid: Number(await sellingEscrow.purchasePrice(i))
+        currentBid: (Number(await sellingEscrow.purchasePrice(i)))/100
       }
       data.push(formatJson)
     }
