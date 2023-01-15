@@ -18,7 +18,7 @@ function App() {
   let [provider, setProvider] = useState(null)
   let [sellingEscrow, setEscrow] = useState(null)
   let [account, setAccount] = useState(null)
-  //let [products, setProducts] = useState([])
+  let [products, setProducts] = useState([])
   //let [product, setProduct] = useState({})
   //let [toggle, setToggle] = useState(false);
 
@@ -38,6 +38,15 @@ function App() {
     const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
     setEscrow(sellingEscrow)
     
+    const products = []
+
+    for (var i = 1; i <= totalSupply; i++) {
+      const uri = await fashionToken.tokenURI(i)
+      const response = await fetch(uri)
+      const metadata = await response.json()
+      products.push(metadata)
+    }
+    setProducts(products)
 
 
     window.ethereum.on('accountsChanged', async () => {
