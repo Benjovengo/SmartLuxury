@@ -2,6 +2,8 @@ import React from "react";
 
 import "./review.css";
 
+let fee = 0.05
+
 const Review = ({ setShowReview }) => {
   return (
     <div className="review__wrapper">
@@ -23,7 +25,7 @@ const Review = ({ setShowReview }) => {
 
         <div className="input__item mb-3">
           <p className="text-light">Quantity</p>
-          <input type="number" placeholder="Enter quantity" />
+          <input type="number" placeholder="Enter quantity" value={1} />
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
@@ -33,7 +35,7 @@ const Review = ({ setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Service Fee</p>
-          <span className="money">0.89 ETH</span>
+          <span className="money">{fee} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
