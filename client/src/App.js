@@ -26,28 +26,6 @@ function App() {
     provider = new ethers.providers.Web3Provider(window.ethereum)
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
     setAccount(accounts[0])
-    setProvider(provider)
-    const network = await provider.getNetwork()
-
-    // Javascript "version" of the smart contracts
-    // to interact with via Javascript
-    const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
-    const totalSupply = await fashionToken.totalSupply()
-    console.log(totalSupply)
-
-    const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
-    setEscrow(sellingEscrow)
-    
-    const products = []
-
-    for (var i = 1; i <= totalSupply; i++) {
-      const uri = await fashionToken.tokenURI(i)
-      const response = await fetch(uri)
-      const metadata = await response.json()
-      products.push(metadata)
-    }
-    setProducts(products)
-
 
     window.ethereum.on('accountsChanged', async () => {
       accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
