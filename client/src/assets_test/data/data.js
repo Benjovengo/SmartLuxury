@@ -1,3 +1,14 @@
+import { ethers } from 'ethers';
+
+
+// Import ABIs
+import FashionToken from '../../abis/FashionToken.json'
+import SellingEscrow from '../../abis/SellingEscrow.json'
+//import trackingOracle from './abis/TrackingOracle.json'
+// config
+import config from '../../config.json';
+
+
 /* TEST IMAGES */
 import ava01 from "../images/ava-01.png";
 import ava02 from "../images/ava-02.png";
@@ -19,14 +30,40 @@ const folder = [
   "./metadata/Valentino-RockStud-1234.json"
 ]
 
-async function getData(_folder) {
+const loadMetadata = async () => {
+  let provider = new ethers.providers.Web3Provider(window.ethereum)
+    const network = await provider.getNetwork()
+
+  // Javascript "version" of the smart contracts
+  // to interact with via Javascript
+  const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+  const totalSupply = await fashionToken.totalSupply()
+  console.log(totalSupply)
+
+  const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
+  
+  const products = []
+
+  for (var i = 1; i <= totalSupply; i++) {
+    const uri = await fashionToken.tokenURI(i)
+    const response = await fetch(uri)
+    const metadata = await response.json()
+    products.push(metadata)
+  }
+  return products
+
+}
+
+async function getData() {
+
+  let productList = await loadMetadata()
   let response
   let json
   let formatJson
   let data = []
-  for(let i=0; i < _folder.length; i++){
-    response = await fetch(_folder[i])
-    json = await response.json()
+  for(let i=0; i < productList.length; i++){
+    response = productList[i]
+    json = await productList[i]
     formatJson = {
       id: json.id,
       title: json.name,
@@ -41,8 +78,7 @@ async function getData(_folder) {
   return data
 }
 
-export const NFT__DATA = await getData(folder)
-
+export const NFT__DATA = await getData()
 //console.log(NFT__DATA)
 
 
