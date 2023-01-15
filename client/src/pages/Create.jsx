@@ -27,7 +27,7 @@ const Create = () => {
         <Container>
           <Row>
             <Col lg="3" md="4" sm="6">
-              <h5 className="mb-4 text-light">Preview Item</h5>
+              <h5 className="mb-4">Preview Item</h5>
               <NftCard item={item} />
             </Col>
 

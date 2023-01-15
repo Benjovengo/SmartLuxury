@@ -24,6 +24,19 @@
   padding: 40px 25px;
 }
 
+input::file-selector-button {
+  background: #F89104;
+  font-weight: bold;
+  color: #fff;
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 0px;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #D87E01;
+}
+
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
   cursor: pointer;
