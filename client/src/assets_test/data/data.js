@@ -30,18 +30,23 @@ const folder = [
   "./metadata/Valentino-RockStud-1234.json"
 ]
 
+// Setup provider and network
+let provider = new ethers.providers.Web3Provider(window.ethereum)
+const network = await provider.getNetwork()
+
+// Javascript "version" of the smart contracts
+// to interact with via Javascript
+const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+const totalSupply = await fashionToken.totalSupply()
+
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
+
+
+/* Function
+  Load metadata from deployed contract
+*/
 const loadMetadata = async () => {
-  let provider = new ethers.providers.Web3Provider(window.ethereum)
-    const network = await provider.getNetwork()
 
-  // Javascript "version" of the smart contracts
-  // to interact with via Javascript
-  const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
-  const totalSupply = await fashionToken.totalSupply()
-  console.log(totalSupply)
-
-  const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
-  
   const products = []
 
   for (var i = 1; i <= totalSupply; i++) {
@@ -55,21 +60,18 @@ const loadMetadata = async () => {
 }
 
 async function getData() {
-
   let productList = await loadMetadata()
-  let response
   let json
   let formatJson
   let data = []
   for(let i=0; i < productList.length; i++){
-    response = productList[i]
     json = await productList[i]
     formatJson = {
       id: json.id,
       title: json.name,
       description: json.description,
       imgUrl: json.image[0],
-      creator: "0xC74a9a98Af6108adD8EB17A4262d3dc9B924c429",
+      creator: await fashionToken.ownerOf(i+1),
       creatorImg: "../images/ava-01.png",
       currentBid: json.price
     }
