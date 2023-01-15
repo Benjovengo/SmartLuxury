@@ -65,7 +65,7 @@ async function getData() {
   let formatJson
   let data = []
   for(let i=0; i < productList.length; i++){
-    if (!(await sellingEscrow.isListed(1))) {
+    if (await sellingEscrow.isListed(i)) {
       json = await productList[i]
       formatJson = {
         id: json.id,
@@ -74,13 +74,12 @@ async function getData() {
         imgUrl: json.image[0],
         creator: await fashionToken.ownerOf(i+1),
         creatorImg: "../images/ava-01.png",
-        currentBid: json.price
+        currentBid: Number(await sellingEscrow.purchasePrice(i))
       }
       data.push(formatJson)
     }
     
   }
-  console.log(await sellingEscrow.isListed(1)) // <=================== isListed = false!!!
   return data
 }
 
