@@ -10,12 +10,7 @@
     ],
     "id": "5",
     "SKU": "IA002000811",
-    "price": 1.55,
     "attributes": [
-        {
-            "trait_type": "Purchase Price",
-            "value": 1.5
-        },
         {
             "trait_type": "Type of Product",
             "value": "Bag"
