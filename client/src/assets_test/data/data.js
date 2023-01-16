@@ -74,7 +74,7 @@ async function getData() {
 }
 
 export const NFT__DATA = await getData()
-console.log(NFT__DATA)
+//console.log(NFT__DATA)
 
 
 export const SELLER__DATA = [
