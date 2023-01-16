@@ -8,7 +8,7 @@ import avatar from "../assets/images/ava-01.png";
 
 import "../styles/create-item.css";
 
-//import { insert_data } from "../assets_test/mysql-script";
+import "../assets_test/mysql-script";
 
 const item = {
   id: "01",
