@@ -20,16 +20,6 @@ import ava06 from "../images/ava-06.png";
 
 /* Get info for products */
 
-const folder = [
-  "./metadata/Dior-Hobo-Black_IA002000811.json",
-  "./metadata/Dior-Vintage-Sunglasses_IA002000251.json",
-  "./metadata/Gucci-Flap-Jackie-Bag.json",
-  "./metadata/Gucci-Swing-Red_IA002000868.json",
-  "./metadata/Louis-Vuitton-Speedy-Bag.json",
-  "./metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json",
-  "./metadata/Valentino-RockStud-1234.json"
-]
-
 // Setup provider and network
 let provider = new ethers.providers.Web3Provider(window.ethereum)
 const network = await provider.getNetwork()
