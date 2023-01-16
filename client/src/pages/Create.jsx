@@ -8,6 +8,8 @@ import avatar from "../assets/images/ava-01.png";
 
 import "../styles/create-item.css";
 
+//import { insert_data } from "../assets_test/mysql-script";
+
 const item = {
   id: "01",
   title: "Product Title",
@@ -21,7 +23,7 @@ const item = {
 const Create = () => {
   return (
     <>
-      <CommonSection title="Register Item" />
+      <CommonSection title="Register and Sell Item" />
 
       <section>
         <Container>
@@ -73,6 +75,10 @@ const Create = () => {
                       <label htmlFor="">Expiration Date</label>
                       <input type="date" />
                     </div>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <div><i>Now just click the button to list you item for sale.</i></div>
+                    <button className="sell__btn">Sell</button>
                   </div>
 
                 </form>

@@ -42,6 +42,18 @@ input[type=file]::file-selector-button:hover {
   cursor: pointer;
 }
 
+.sell__btn {
+  background: #000;
+  border: none;
+  color: #fff;
+  border-radius: 0px;
+  padding: 0.5em 1em;
+}
+
+.sell__btn:hover {
+  background: #D87E01;
+}
+
 @media only screen and (max-width: 576px) {
   .create__item {
     margin-top: 15px;
