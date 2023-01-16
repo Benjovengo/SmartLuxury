@@ -13,6 +13,7 @@ coverage.json
 typechain
 typechain-types
 .vscode
+./client/src/work
 
 # Hardhat files
 cache
