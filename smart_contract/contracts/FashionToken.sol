@@ -12,8 +12,8 @@ contract FashionToken is ERC721URIStorage {
     using Counters for Counters.Counter; // allow to create an enumerable ERC-721 token
     Counters.Counter private _tokenIds;
     address public owner;
-    mapping(uint256 => uint256) public numberOfOwners;
-    mapping(uint256 => mapping(uint256 => address)) public listOwners;
+    mapping(uint256 => uint256) public numberOfOwners; // total number of owners
+    mapping(uint256 => mapping(uint256 => address)) public listOwners; // list of owners of a token
 
     /* Constructor Method */
     constructor() ERC721("Smart Luxury", "SLUX") {
