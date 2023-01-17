@@ -40,6 +40,7 @@ contract Contacts {
 
     /* Add Customer's Info 
         - get the data from the web and save it on the blockchain
+        - test if account already exists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     */
     function addAccount(
         string memory _firstName,
