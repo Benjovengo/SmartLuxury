@@ -8,24 +8,25 @@ import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721UR
 
 /* Contract for the information and transactions of fashion products */
 contract FashionToken is ERC721URIStorage {
-    // allow to create an enumerable ERC-721 token
-    using Counters for Counters.Counter;
+    /* States */
+    using Counters for Counters.Counter; // allow to create an enumerable ERC-721 token
     Counters.Counter private _tokenIds;
     address public owner;
-    mapping(uint256 => uint256) public numberOfOwners;
-    mapping(uint256 => mapping(uint256 => address)) public listOwners;
+    mapping(uint256 => uint256) public numberOfOwners; // total number of owners
+    mapping(uint256 => mapping(uint256 => address)) public listOwners; // list of owners of a token
 
+    /* Constructor Method */
     constructor() ERC721("Smart Luxury", "SLUX") {
         owner = msg.sender;
     }
 
-    // change ownership
+    /* Change ownership of this token contract */
     function changeOwner(address _newOwner) public {
         require(msg.sender == owner);
         owner = _newOwner;
     }
 
-    // mint NFT
+    /* Mint NFT */
     function mint(string memory tokenURI, address _newOwner)
         public
         returns (uint256)
@@ -43,16 +44,17 @@ contract FashionToken is ERC721URIStorage {
         return newItemId;
     }
 
-    // Return the ownership of the NFT
+    /* Return the current ownership of the NFT */
     function getOwnershipOf(uint256 _nftId) public view returns (address) {
         return this.ownerOf(_nftId);
     }
 
+    /* Return the total number of products/NFTs registered */
     function totalSupply() public view returns (uint256) {
         return _tokenIds.current();
     }
 
-    // Update list of owners
+    /* Update list of owners */
     function addToOwners(uint256 _nftID, address _newOwner) public {
         require(msg.sender == owner, "Invalid address call");
         listOwners[_nftID][numberOfOwners[_nftID]] = _newOwner;

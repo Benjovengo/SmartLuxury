@@ -14,7 +14,6 @@ contract SellingEscrow is IERC721Receiver {
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
-    //mapping(uint256 => uint256) public escrowAmount; // Amount transferred to the contract
     mapping(uint256 => address) public buyer;
     mapping(uint256 => address) public nftSeller;
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
@@ -39,6 +38,7 @@ contract SellingEscrow is IERC721Receiver {
         _;
     }
 
+    /* Constructor Method */
     constructor(address _nftAddress, address _oracle) {
         oracle = _oracle;
         nftAddress = _nftAddress;
