@@ -42,6 +42,7 @@ contract SellingEscrow is IERC721Receiver {
     event productRegistered(bool regItem);
     event productListed(bool listed);
     event productUnlisted(bool unlisted);
+    event saleFinalized(bool sale);
 
     /* Constructor Method */
     constructor(address _nftAddress, address _oracle) {
@@ -139,6 +140,8 @@ contract SellingEscrow is IERC721Receiver {
 
         // add owner to list of owners
         fashionToken.addToOwners(_nftID, buyer[_nftID]);
+
+        emit saleFinalized(true);
     }
 
     /* Cancel Sale (handle earnest deposit)
