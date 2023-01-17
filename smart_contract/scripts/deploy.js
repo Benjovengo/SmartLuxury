@@ -16,13 +16,13 @@ const tokens = (n) => {
 let fashionAddress
 let sellingAddress
 let trackingAddress
+let contactsAddress
 
 const main = async () => {
   // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
   [deployer, buyer, seller, oracle] = await ethers.getSigners()
 
   /* Deployment Section */
-  // Deploy VerifiedContracts
 
   // Deploy FashionProducts
   const FashionToken = await ethers.getContractFactory('FashionToken')
@@ -36,9 +36,16 @@ const main = async () => {
   await trackingOracle.deployed()
   trackingAddress = trackingOracle.address
 
+  // Deploy Contacts
+  const Contacts = await ethers.getContractFactory('Contacts')
+  const contacts = await Contacts.deploy()
+  await contacts.deployed()
+  contactsAddress = contacts.address
+
+
   // Deploy OracleEscrow
   const SellingEscrow = await ethers.getContractFactory('SellingEscrow')
-  const sellingEscrow = await SellingEscrow.deploy(fashionToken.address, trackingOracle.address)
+  const sellingEscrow = await SellingEscrow.deploy(fashionToken.address, contacts.address, trackingOracle.address)
   await sellingEscrow.deployed()
   sellingAddress = sellingEscrow.address
 
@@ -74,6 +81,7 @@ const main = async () => {
   console.log("FashionToken address:       ", fashionToken.address)
   console.log("SellingEscrow address:      ", sellingEscrow.address)
   console.log("TrackingOracle address:     ", trackingOracle.address)
+  console.log("Contacts address:           ", contacts.address)
   //console.log("VerifiedContacts address: ")
 }
 
@@ -104,7 +112,14 @@ function createABIFiles() {
   stringfyData = JSON.stringify(jsonData.abi, null, " ")
 
   abiFilePath = "../client/src/abis/SellingEscrow.json"
-  //writeData('../client/src/abis/FashionToken.sol', attribute)
+  writeABIs(abiFilePath, stringfyData)
+
+  // Contacts ABI
+  jsonFile = fs.readFileSync('./artifacts/contracts/Contacts.sol/Contacts.json')
+  jsonData = JSON.parse(jsonFile);
+  stringfyData = JSON.stringify(jsonData.abi, null, " ")
+
+  abiFilePath = "../client/src/abis/Contacts.json"
   writeABIs(abiFilePath, stringfyData)
 
   // Tracking Oracle ABI
@@ -113,13 +128,12 @@ function createABIFiles() {
   stringfyData = JSON.stringify(jsonData.abi, null, " ")
 
   abiFilePath = "../client/src/abis/TrackingOracle.json"
-  //writeData('../client/src/abis/FashionToken.sol', attribute)
   writeABIs(abiFilePath, stringfyData)
 }
 
 
 // Function to create/ update config.json file
-function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress) {
+function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress, _contactsAddress) {
   const configFilePath = "../client/src/config.json";
 
   // Create data JSON with contents
@@ -134,6 +148,9 @@ function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress) {
     },
     trackingOracle: {
       address: _trackingAddress
+    },
+    contacts: {
+      address: _contactsAddress
     },
     sellingEscrow: {
       address: _sellingAddress
@@ -159,7 +176,7 @@ const runMain = async () => {
     // copy files to client-side
     createABIFiles()
     // create config.json with deployed addresses
-    createConfigJSON(fashionAddress, trackingAddress, sellingAddress)
+    createConfigJSON(fashionAddress, trackingAddress, sellingAddress, contactsAddress)
     // terminate without errors
     process.exit(0)
   } catch (error) {
