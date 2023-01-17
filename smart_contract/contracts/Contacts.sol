@@ -82,7 +82,7 @@ contract Contacts {
     {
         totalProductsOwned[_customerAddress]++;
         ownedProducts[_customerAddress].push(_tokenId);
-        return ownedProducts[_customerAddress]; //token id
+        return ownedProducts[_customerAddress];
     }
 
     /* Remove Customer Items
@@ -93,6 +93,6 @@ contract Contacts {
         returns (uint256[] memory)
     {
         delete ownedProducts[_customerAddress][_tokenId];
-        return ownedProducts[_customerAddress]; //token id
+        return ownedProducts[_customerAddress];
     }
 }
