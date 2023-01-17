@@ -11,6 +11,7 @@ contract SellingEscrow is IERC721Receiver {
     address public nftAddress;
     address payable public seller;
     address public oracle;
+    address public contacts;
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
@@ -44,8 +45,13 @@ contract SellingEscrow is IERC721Receiver {
     event productUnlisted(bool unlisted);
 
     /* Constructor Method */
-    constructor(address _nftAddress, address _oracle) {
+    constructor(
+        address _nftAddress,
+        address _contacts,
+        address _oracle
+    ) {
         oracle = _oracle;
+        contacts = _contacts;
         nftAddress = _nftAddress;
         fashionToken = FashionToken(_nftAddress);
     }
@@ -96,7 +102,8 @@ contract SellingEscrow is IERC721Receiver {
         buyer[_nftID] = msg.sender;
     }
 
-    /* Inspects if the tracking status is 'delivered' (only oracle inspector) */
+    /* Oracle
+        - Inspects if the tracking status is 'delivered' (only oracle inspector) */
     function updateDeliveryStatus(uint256 _nftID, bool _delivered)
         public
         onlyOracleInspector
