@@ -78,11 +78,9 @@ contract Contacts {
     */
     function addCustomerItems(address _customerAddress, uint256 _tokenId)
         public
-        returns (uint256[] memory)
     {
         totalProductsOwned[_customerAddress]++;
         ownedProducts[_customerAddress].push(_tokenId);
-        return ownedProducts[_customerAddress];
     }
 
     /* Remove Customer Items
@@ -90,9 +88,18 @@ contract Contacts {
     */
     function removeCustomerItems(address _customerAddress, uint256 _tokenId)
         public
-        returns (uint256[] memory)
     {
         delete ownedProducts[_customerAddress][_tokenId];
+    }
+
+    /* Get Customer Info 
+        - get the info based on the customer address
+    */
+    function getOwned(address _customerAddress)
+        public
+        view
+        returns (uint256[] memory)
+    {
         return ownedProducts[_customerAddress];
     }
 }
