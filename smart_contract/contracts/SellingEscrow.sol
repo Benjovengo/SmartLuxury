@@ -46,9 +46,17 @@ contract SellingEscrow is IERC721Receiver {
     }
 
     // Register new product
-    function register(string memory _tokenURI) public {
-        uint256 newID = fashionToken.mint(_tokenURI, msg.sender);
-        IERC721(nftAddress).safeTransferFrom(address(this), msg.sender, newID);
+    function register(string memory _tokenURI, string memory _serialNumber)
+        public
+    {
+        uint256 newID = fashionToken.mint(_tokenURI, msg.sender, _serialNumber);
+        if (newID != 0) {
+            IERC721(nftAddress).safeTransferFrom(
+                address(this),
+                msg.sender,
+                newID
+            );
+        }
     }
 
     // Receive confirmation for ERC-721 token - called upon a safe transfer

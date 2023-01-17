@@ -14,6 +14,7 @@ contract FashionToken is ERC721URIStorage {
     address public owner;
     mapping(uint256 => uint256) public numberOfOwners; // total number of owners
     mapping(uint256 => mapping(uint256 => address)) public listOwners; // list of owners of a token
+    string[] serialNumber; // serial number of the product
 
     /* Constructor Method */
     constructor() ERC721("Smart Luxury", "SLUX") {
@@ -27,20 +28,43 @@ contract FashionToken is ERC721URIStorage {
     }
 
     /* Mint NFT */
-    function mint(string memory tokenURI, address _newOwner)
-        public
-        returns (uint256)
-    {
+    function mint(
+        string memory tokenURI,
+        address _newOwner,
+        string memory _serialNumber
+    ) public returns (uint256) {
+        // requirements to mint
         require(msg.sender == owner);
-        _tokenIds.increment();
+        uint256 newItemId;
+        bool alreadyRegistered = false;
+        // Check if a serial number has already been registered
+        if (_tokenIds.current() > 0) {
+            for (uint256 i = 1; i < _tokenIds.current(); i++) {
+                if (
+                    keccak256(abi.encodePacked((_serialNumber))) ==
+                    (keccak256(abi.encodePacked(serialNumber[i])))
+                ) {
+                    //Product already registered!
+                    alreadyRegistered = true;
+                    break;
+                }
+            }
+        }
 
-        uint256 newItemId = _tokenIds.current();
-        _mint(msg.sender, newItemId);
-        _setTokenURI(newItemId, tokenURI);
+        // if the serial number hasn't been registered, mint the product NFT
+        if (!alreadyRegistered) {
+            // mint product NFT
+            _tokenIds.increment();
+            newItemId = _tokenIds.current();
+            _mint(msg.sender, newItemId);
+            _setTokenURI(newItemId, tokenURI);
 
-        // Update list of owners
-        addToOwners(newItemId, _newOwner);
+            // add serial number info
+            serialNumber.push(_serialNumber);
 
+            // Update list of owners
+            addToOwners(newItemId, _newOwner);
+        }
         return newItemId;
     }
 
