@@ -40,7 +40,8 @@ contract SellingEscrow is IERC721Receiver {
 
     /* Events */
     event productRegistered(bool regItem);
-    event productListed(bool lsited);
+    event productListed(bool listed);
+    event productUnlisted(bool unlisted);
 
     /* Constructor Method */
     constructor(address _nftAddress, address _oracle) {
@@ -60,6 +61,7 @@ contract SellingEscrow is IERC721Receiver {
                 msg.sender,
                 newID
             );
+            emit productRegistered(true);
         }
     }
 
@@ -85,6 +87,7 @@ contract SellingEscrow is IERC721Receiver {
         isListed[_nftID] = true; // list product with ID=_nftID
         nftSeller[_nftID] = msg.sender;
         purchasePrice[_nftID] = _purchasePrice;
+        emit productUnlisted(true);
     }
 
     /* Put ether under contract (buyer - payable oracleEscrow) */
