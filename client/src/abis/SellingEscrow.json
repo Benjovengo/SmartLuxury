@@ -21,7 +21,7 @@
    {
     "indexed": false,
     "internalType": "bool",
-    "name": "lsited",
+    "name": "listed",
     "type": "bool"
    }
   ],
@@ -39,6 +39,19 @@
    }
   ],
   "name": "productRegistered",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "unlisted",
+    "type": "bool"
+   }
+  ],
+  "name": "productUnlisted",
   "type": "event"
  },
  {
