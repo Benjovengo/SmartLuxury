@@ -277,6 +277,11 @@
     "internalType": "string",
     "name": "_tokenURI",
     "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "_serialNumber",
+    "type": "string"
    }
   ],
   "name": "register",

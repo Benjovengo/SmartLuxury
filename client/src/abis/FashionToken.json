@@ -263,6 +263,11 @@
     "internalType": "address",
     "name": "_newOwner",
     "type": "address"
+   },
+   {
+    "internalType": "string",
+    "name": "_serialNumber",
+    "type": "string"
    }
   ],
   "name": "mint",
