@@ -6,11 +6,11 @@ import './App.css';
 import Layout from './components/Layout/Layout'
 
 // Import ABIs
-import FashionToken from './abis/FashionToken.json'
-import SellingEscrow from './abis/SellingEscrow.json'
+//import FashionToken from './abis/FashionToken.json'
+//import SellingEscrow from './abis/SellingEscrow.json'
 //import trackingOracle from './abis/TrackingOracle.json'
 // config
-import config from './config.json';
+//import config from './config.json';
 
 
 function App() {
