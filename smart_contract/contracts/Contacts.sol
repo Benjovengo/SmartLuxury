@@ -29,6 +29,9 @@ contract Contacts {
     }
     mapping(uint256 => Customer) public customers;
     mapping(address => uint256) public customerId;
+    uint256[] tokenIds;
+    mapping(address => uint256) public totalProductsOwned;
+    mapping(address => uint256[]) public ownedProducts;
 
     /* Constructor Method 
         - sets the owner of the contacts contract
@@ -68,5 +71,35 @@ contract Contacts {
         returns (Customer memory)
     {
         return customers[customerId[_customerAddress]];
+    }
+
+    /* Add Customer Items
+        - add the product ID of owned product based on the customer address
+    */
+    function addCustomerItems(address _customerAddress, uint256 _tokenId)
+        public
+        returns (uint256[] memory)
+    {
+        totalProductsOwned[_customerAddress]++;
+        ownedProducts[_customerAddress].push(_tokenId);
+        return ownedProducts[_customerAddress]; //token id
+    }
+
+    /* Remove Customer Items
+        - add the product ID of owned product based on the customer address
+    */
+    function removeCustomerItems(address _customerAddress, uint256 _tokenId)
+        public
+        returns (uint256[] memory)
+    {
+        // Swap & Delete
+        ownedProducts[_customerAddress][_tokenId] = ownedProducts[
+            _customerAddress
+        ][totalProductsOwned[_customerAddress]];
+        delete ownedProducts[_customerAddress][
+            totalProductsOwned[_customerAddress]
+        ];
+        totalProductsOwned[_customerAddress]--;
+        return ownedProducts[_customerAddress]; //token id
     }
 }
