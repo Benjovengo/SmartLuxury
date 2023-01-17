@@ -131,9 +131,9 @@ contract SellingEscrow is IERC721Receiver {
        -> Transfer Funds to Seller */
     function finalizeSale(uint256 _nftID) public {
         require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
-        require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by all involved
-        require(approval[_nftID][nftSeller[_nftID]]);
-        require(approval[_nftID][oracle]);
+        require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by the buyer
+        require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
+        require(approval[_nftID][oracle]); // transaction approved by the delivery service
         require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         isListed[_nftID] = false; // stop listing the item
