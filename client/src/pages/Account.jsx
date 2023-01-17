@@ -4,6 +4,7 @@ import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
 import { addAccount } from "../scripts/addAccount";
+import { getAccountInfo } from "../scripts/getAccountInfo";
 
 
 const Account = () => {
@@ -17,7 +18,8 @@ const Account = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addAccount(e.target.firstName.value, e.target.lastName.value, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value)
+    addAccount(e.target.firstName.value, e.target.lastName.value, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
+    getAccountInfo();
   };
 
   return (
