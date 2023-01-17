@@ -15,7 +15,7 @@ import Layout from './components/Layout/Layout'
 
 function App() {
 
-  //let [provider, setProvider] = useState(null)
+  let [provider, setProvider] = useState(null)
   //let [sellingEscrow, setEscrow] = useState(null)
   let [account, setAccount] = useState(null)
   //let [products, setProducts] = useState([])
