@@ -16,6 +16,32 @@
   "type": "constructor"
  },
  {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "lsited",
+    "type": "bool"
+   }
+  ],
+  "name": "productListed",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "regItem",
+    "type": "bool"
+   }
+  ],
+  "name": "productRegistered",
+  "type": "event"
+ },
+ {
   "inputs": [
    {
     "internalType": "uint256",
