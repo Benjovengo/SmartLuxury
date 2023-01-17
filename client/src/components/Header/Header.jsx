@@ -24,6 +24,10 @@ const NAV__LINKS = [
     display:'Contact',
     url:'/contact'
   },
+  {
+    display:'Account',
+    url:'/account'
+  },
 ]
 
 const Header = ( { account, setAccount } ) => {
