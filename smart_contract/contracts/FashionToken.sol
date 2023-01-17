@@ -21,13 +21,20 @@ contract FashionToken is ERC721URIStorage {
         owner = msg.sender;
     }
 
-    /* Change ownership of this token contract */
+    /* Change ownership of this token contract 
+        - the SellingEscrow must be the owner of this token contract
+    */
     function changeOwner(address _newOwner) public {
         require(msg.sender == owner);
         owner = _newOwner;
     }
 
-    /* Mint NFT */
+    /* Mint NFT
+        - require the selling contract to call this function
+        - require that the serial number of the product is not already registered
+        - if it is registered, then return 0 as the id of the 'new' product
+        - otherwise mint the product and increment the tokenID counter
+     */
     function mint(
         string memory tokenURI,
         address _newOwner,
