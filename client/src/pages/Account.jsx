@@ -3,6 +3,8 @@ import React, { useRef } from "react";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
+import { addAccount } from "../scripts/addAccount";
+
 
 const Account = () => {
   // Hooks
@@ -15,7 +17,7 @@ const Account = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(e.target.firstName.value + ' ' + e.target.lastName.value)
+    addAccount(e.target.firstName.value, e.target.lastName.value, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value)
   };
 
   return (
@@ -30,9 +32,7 @@ const Account = () => {
             <Col lg="9" md="6" className="m-auto">
               <h2>Personal Info</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Temporibus ipsum aperiam cumque fugit suscipit animi natus
-                nostrum voluptatem iste quam!
+                Don't worry! Your privacy is secured!
               </p>
               <div className="sign__up">
                 <form onSubmit={handleSubmit}>
