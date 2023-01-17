@@ -3,6 +3,7 @@ pragma solidity ^0.8.17;
 
 import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "./FashionToken.sol";
+import "./Contacts.sol";
 
 /* Contract to get shipment tracking status 
   Acts like a escrow contract */
@@ -20,7 +21,9 @@ contract SellingEscrow is IERC721Receiver {
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
+    // Contracts
     FashionToken public fashionToken;
+    Contacts public contactContract;
 
     /* Modifiers - only certain entity can call some methods */
     modifier onlySeller(uint256 _nftID) {
@@ -54,6 +57,7 @@ contract SellingEscrow is IERC721Receiver {
         contacts = _contacts;
         nftAddress = _nftAddress;
         fashionToken = FashionToken(_nftAddress);
+        contactContract = Contacts(_contacts);
     }
 
     // Register new product
@@ -67,6 +71,9 @@ contract SellingEscrow is IERC721Receiver {
                 msg.sender,
                 newID
             );
+            // add token to list of owned tokens
+            contactContract.addCustomerItems(msg.sender, newID);
+            // register confirmation
             emit productRegistered(true);
         }
     }
@@ -143,9 +150,10 @@ contract SellingEscrow is IERC721Receiver {
             buyer[_nftID],
             _nftID
         );
-
         // add owner to list of owners
         fashionToken.addToOwners(_nftID, buyer[_nftID]);
+        // add token to buyer's account
+        contactContract.addCustomerItems(buyer[_nftID], _nftID);
     }
 
     /* Cancel Sale (handle earnest deposit)
