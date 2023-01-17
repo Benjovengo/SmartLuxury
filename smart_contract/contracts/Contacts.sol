@@ -12,32 +12,92 @@ pragma solidity ^0.8.17;
             |-> get from FashionToken - create mapping from address to list (mapping) of token IDs owned by that address
 */
 
-import "./FashionToken.sol";
-
 contract Contacts {
     /* States */
     address owner;
-    string first_name;
-    string last_name;
-    string email;
-    string physical_address;
-    uint256 po_box;
+    uint256 userId;
 
+    struct Customer {
+        address ethAccount;
+        string firstName;
+        string lastName;
+        string email;
+        string physicalAddress;
+        uint256 poBox;
+    }
+    mapping(uint256 => Customer) public customers;
+    mapping(address => uint256) public customerId;
+    uint256[] tokenIds;
+    mapping(address => uint256) public totalProductsOwned;
+    mapping(address => uint256[]) public ownedProducts;
+
+    /* Constructor Method 
+        - sets the owner of the contacts contract
+    */
     constructor() {
         owner = msg.sender;
     }
 
+    /* Add Customer's Info 
+        - get the data from the web and save it on the blockchain
+    */
     function addAccount(
-        string memory _first_name,
-        string memory _last_name,
+        string memory _firstName,
+        string memory _lastName,
         string memory _email,
-        string memory _physical_address,
-        uint256 _po_box
+        string memory _physicalAddress,
+        uint256 _poBox
     ) public {
-        first_name = _first_name;
-        last_name = _last_name;
-        email = _email;
-        physical_address = _physical_address;
-        po_box = _po_box;
+        userId++;
+        customers[userId] = Customer(
+            msg.sender,
+            _firstName,
+            _lastName,
+            _email,
+            _physicalAddress,
+            _poBox
+        );
+        customerId[msg.sender] = userId;
+    }
+
+    /* Get Customer Info 
+        - get the info based on the customer address
+    */
+    function getCustomerInfo(address _customerAddress)
+        public
+        view
+        returns (Customer memory)
+    {
+        return customers[customerId[_customerAddress]];
+    }
+
+    /* Add Customer Items
+        - add the product ID of owned product based on the customer address
+    */
+    function addCustomerItems(address _customerAddress, uint256 _tokenId)
+        public
+    {
+        totalProductsOwned[_customerAddress]++;
+        ownedProducts[_customerAddress].push(_tokenId);
+    }
+
+    /* Remove Customer Items
+        - remove the product ID from the owned products list
+    */
+    function removeCustomerItems(address _customerAddress, uint256 _tokenId)
+        public
+    {
+        delete ownedProducts[_customerAddress][_tokenId];
+    }
+
+    /* Get Customer Info 
+        - get the info based on the customer address
+    */
+    function getOwned(address _customerAddress)
+        public
+        view
+        returns (uint256[] memory)
+    {
+        return ownedProducts[_customerAddress];
     }
 }

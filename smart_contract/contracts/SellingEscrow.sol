@@ -3,6 +3,7 @@ pragma solidity ^0.8.17;
 
 import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "./FashionToken.sol";
+import "./Contacts.sol";
 
 /* Contract to get shipment tracking status 
   Acts like a escrow contract */
@@ -11,6 +12,7 @@ contract SellingEscrow is IERC721Receiver {
     address public nftAddress;
     address payable public seller;
     address public oracle;
+    address public contacts;
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
@@ -19,7 +21,9 @@ contract SellingEscrow is IERC721Receiver {
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
+    // Contracts
     FashionToken public fashionToken;
+    Contacts public contactContract;
 
     /* Modifiers - only certain entity can call some methods */
     modifier onlySeller(uint256 _nftID) {
@@ -45,10 +49,16 @@ contract SellingEscrow is IERC721Receiver {
     event saleFinalized(bool sale);
 
     /* Constructor Method */
-    constructor(address _nftAddress, address _oracle) {
+    constructor(
+        address _nftAddress,
+        address _contacts,
+        address _oracle
+    ) {
         oracle = _oracle;
+        contacts = _contacts;
         nftAddress = _nftAddress;
         fashionToken = FashionToken(_nftAddress);
+        contactContract = Contacts(_contacts);
     }
 
     // Register new product
@@ -62,6 +72,9 @@ contract SellingEscrow is IERC721Receiver {
                 msg.sender,
                 newID
             );
+            // add token to list of owned tokens
+            contactContract.addCustomerItems(msg.sender, newID);
+            // register confirmation
             emit productRegistered(true);
         }
     }
@@ -97,7 +110,8 @@ contract SellingEscrow is IERC721Receiver {
         buyer[_nftID] = msg.sender;
     }
 
-    /* Inspects if the tracking status is 'delivered' (only oracle inspector) */
+    /* Oracle
+        - Inspects if the tracking status is 'delivered' (only oracle inspector) */
     function updateDeliveryStatus(uint256 _nftID, bool _delivered)
         public
         onlyOracleInspector
@@ -118,9 +132,9 @@ contract SellingEscrow is IERC721Receiver {
        -> Transfer Funds to Seller */
     function finalizeSale(uint256 _nftID) public {
         require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
-        require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by all involved
-        require(approval[_nftID][nftSeller[_nftID]]);
-        require(approval[_nftID][oracle]);
+        require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by the buyer
+        require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
+        require(approval[_nftID][oracle]); // transaction approved by the delivery service
         require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         isListed[_nftID] = false; // stop listing the item
@@ -137,10 +151,11 @@ contract SellingEscrow is IERC721Receiver {
             buyer[_nftID],
             _nftID
         );
-
         // add owner to list of owners
         fashionToken.addToOwners(_nftID, buyer[_nftID]);
-
+        // add token to buyer's account
+        contactContract.addCustomerItems(buyer[_nftID], _nftID);
+        // confirm sale
         emit saleFinalized(true);
     }
 

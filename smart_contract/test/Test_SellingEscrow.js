@@ -10,6 +10,7 @@ describe('Selling Escrow', () => {
   let deployer, account01
   let fashionToken
   let sellingEscrow
+  let contacts
 
   beforeEach(async () => {
     // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
@@ -19,9 +20,13 @@ describe('Selling Escrow', () => {
     const FashionToken = await ethers.getContractFactory('FashionToken')
     fashionToken = await FashionToken.deploy()
 
+    // Deploy Contacts
+    const Contacts = await ethers.getContractFactory('Contacts')
+    contacts = await Contacts.deploy()
+
     // Deploy SellingEscrow
     const SellingEscrow = await ethers.getContractFactory('SellingEscrow')
-    sellingEscrow = await SellingEscrow.deploy(fashionToken.address, oracle.address)
+    sellingEscrow = await SellingEscrow.deploy(fashionToken.address, contacts.address, oracle.address)
 
     // change owner
     fashionToken.changeOwner(sellingEscrow.address)
