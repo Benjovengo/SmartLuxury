@@ -16,7 +16,7 @@ describe('Contracts', () => {
     // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
     [deployer, buyer, seller, oracle] = await ethers.getSigners()
 
-    // Deploy SellingEscrow
+    // Deploy FashionToken
     const FashionToken = await ethers.getContractFactory('FashionToken')
     fashionToken = await FashionToken.deploy()
 
