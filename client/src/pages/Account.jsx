@@ -12,8 +12,10 @@ const Account = () => {
   const physicalAddressRef = useRef("");
   const poBoxRef = useRef("");
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    alert(e.target.firstName.value + ' ' + e.target.lastName.value)
   };
 
   return (
@@ -42,6 +44,7 @@ const Account = () => {
                         <input
                           type="text"
                           placeholder="Enter your first name"
+                          name="firstName"
                           ref={firstNameRef}
                         />
                       </Col>
@@ -50,6 +53,7 @@ const Account = () => {
                         <input
                           type="text"
                           placeholder="Enter your last name"
+                          name="lastName"
                           ref={lastNameRef}
                         />
                       </Col>
@@ -60,6 +64,7 @@ const Account = () => {
                       <input
                         type="text"
                         placeholder="Enter your email address"
+                        name="email"
                         ref={emailRef}
                       />
                     </Col>
@@ -70,6 +75,7 @@ const Account = () => {
                         <input
                           type="text"
                           placeholder="Enter your address"
+                          name="physicalAddress"
                           ref={physicalAddressRef}
                         />
                       </Col>
@@ -78,6 +84,7 @@ const Account = () => {
                         <input
                           type="number"
                           placeholder="12345678"
+                          name="poBox"
                           ref={poBoxRef}
                         />
                       </Col>
