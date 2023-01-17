@@ -1,0 +1,252 @@
+[
+ {
+  "inputs": [],
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "_firstName",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "_lastName",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "_email",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "_physicalAddress",
+    "type": "string"
+   },
+   {
+    "internalType": "uint256",
+    "name": "_poBox",
+    "type": "uint256"
+   }
+  ],
+  "name": "addAccount",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "_customerAddress",
+    "type": "address"
+   },
+   {
+    "internalType": "uint256",
+    "name": "_tokenId",
+    "type": "uint256"
+   }
+  ],
+  "name": "addCustomerItems",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "customerId",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "name": "customers",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "ethAccount",
+    "type": "address"
+   },
+   {
+    "internalType": "string",
+    "name": "firstName",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "lastName",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "email",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "physicalAddress",
+    "type": "string"
+   },
+   {
+    "internalType": "uint256",
+    "name": "poBox",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "_customerAddress",
+    "type": "address"
+   }
+  ],
+  "name": "getCustomerInfo",
+  "outputs": [
+   {
+    "components": [
+     {
+      "internalType": "address",
+      "name": "ethAccount",
+      "type": "address"
+     },
+     {
+      "internalType": "string",
+      "name": "firstName",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "lastName",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "email",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "physicalAddress",
+      "type": "string"
+     },
+     {
+      "internalType": "uint256",
+      "name": "poBox",
+      "type": "uint256"
+     }
+    ],
+    "internalType": "struct Contacts.Customer",
+    "name": "",
+    "type": "tuple"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "_customerAddress",
+    "type": "address"
+   }
+  ],
+  "name": "getOwned",
+  "outputs": [
+   {
+    "internalType": "uint256[]",
+    "name": "",
+    "type": "uint256[]"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   },
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "name": "ownedProducts",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "_customerAddress",
+    "type": "address"
+   },
+   {
+    "internalType": "uint256",
+    "name": "_tokenId",
+    "type": "uint256"
+   }
+  ],
+  "name": "removeCustomerItems",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "totalProductsOwned",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ }
+]

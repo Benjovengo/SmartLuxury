@@ -8,6 +8,11 @@
    },
    {
     "internalType": "address",
+    "name": "_contacts",
+    "type": "address"
+   },
+   {
+    "internalType": "address",
     "name": "_oracle",
     "type": "address"
    }
@@ -52,6 +57,19 @@
    }
   ],
   "name": "productUnlisted",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "sale",
+    "type": "bool"
+   }
+  ],
+  "name": "saleFinalized",
   "type": "event"
  },
  {
@@ -121,6 +139,32 @@
   "name": "cancelSale",
   "outputs": [],
   "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "contactContract",
+  "outputs": [
+   {
+    "internalType": "contract Contacts",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "contacts",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
   "type": "function"
  },
  {
