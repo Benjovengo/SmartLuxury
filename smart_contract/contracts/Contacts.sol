@@ -12,8 +12,6 @@ pragma solidity ^0.8.17;
             |-> get from FashionToken - create mapping from address to list (mapping) of token IDs owned by that address
 */
 
-import "./FashionToken.sol";
-
 contract Contacts {
     /* States */
     address owner;
