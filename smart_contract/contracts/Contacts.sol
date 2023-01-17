@@ -86,20 +86,13 @@ contract Contacts {
     }
 
     /* Remove Customer Items
-        - add the product ID of owned product based on the customer address
+        - remove the product ID from the owned products list
     */
     function removeCustomerItems(address _customerAddress, uint256 _tokenId)
         public
         returns (uint256[] memory)
     {
-        // Swap & Delete
-        ownedProducts[_customerAddress][_tokenId] = ownedProducts[
-            _customerAddress
-        ][totalProductsOwned[_customerAddress]];
-        delete ownedProducts[_customerAddress][
-            totalProductsOwned[_customerAddress]
-        ];
-        totalProductsOwned[_customerAddress]--;
+        delete ownedProducts[_customerAddress][_tokenId];
         return ownedProducts[_customerAddress]; //token id
     }
 }
