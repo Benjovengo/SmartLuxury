@@ -38,6 +38,10 @@ contract SellingEscrow is IERC721Receiver {
         _;
     }
 
+    /* Events */
+    event productRegistered(bool regItem);
+    event productListed(bool lsited);
+
     /* Constructor Method */
     constructor(address _nftAddress, address _oracle) {
         oracle = _oracle;
@@ -69,7 +73,7 @@ contract SellingEscrow is IERC721Receiver {
         return IERC721Receiver.onERC721Received.selector;
     }
 
-    // List Product
+    // List product for sale
     function list(uint256 _nftID, uint256 _purchasePrice)
         public
         payable
