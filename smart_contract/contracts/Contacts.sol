@@ -40,7 +40,7 @@ contract Contacts {
 
     /* Add Customer's Info 
         - get the data from the web and save it on the blockchain
-        - test if account already exists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        - test if account already exists before adding
     */
     function addAccount(
         string memory _firstName,
@@ -49,16 +49,18 @@ contract Contacts {
         string memory _physicalAddress,
         uint256 _poBox
     ) public {
-        userId++;
-        customers[userId] = Customer(
-            msg.sender,
-            _firstName,
-            _lastName,
-            _email,
-            _physicalAddress,
-            _poBox
-        );
-        customerId[msg.sender] = userId;
+        if (customerId[msg.sender] != 0) {
+            userId++;
+            customers[userId] = Customer(
+                msg.sender,
+                _firstName,
+                _lastName,
+                _email,
+                _physicalAddress,
+                _poBox
+            );
+            customerId[msg.sender] = userId;
+        }
     }
 
     /* Get Customer Info 
