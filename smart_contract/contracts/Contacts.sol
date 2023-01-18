@@ -49,7 +49,7 @@ contract Contacts {
         string memory _physicalAddress,
         uint256 _poBox
     ) public {
-        if (customerId[msg.sender] != 0) {
+        if (customerId[msg.sender] == 0) {
             userId++;
             customers[userId] = Customer(
                 msg.sender,
@@ -76,12 +76,21 @@ contract Contacts {
 
     /* Add Customer Items
         - add the product ID of owned product based on the customer address
+        - test if the product ID has already been added
     */
     function addCustomerItems(address _customerAddress, uint256 _tokenId)
         public
     {
-        totalProductsOwned[_customerAddress]++;
-        ownedProducts[_customerAddress].push(_tokenId);
+        bool added;
+        for (uint256 i; i < totalProductsOwned[_customerAddress]; i++) {
+            if (ownedProducts[_customerAddress][i] == _tokenId) {
+                added = true;
+            }
+        }
+        if (!added) {
+            totalProductsOwned[_customerAddress]++;
+            ownedProducts[_customerAddress].push(_tokenId);
+        }
     }
 
     /* Remove Customer Items
