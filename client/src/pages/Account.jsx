@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
