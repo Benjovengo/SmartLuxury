@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
 
@@ -25,17 +26,7 @@ export const sellItem = async (_tokenURI, _serialNumber) => {
   let transaction = await sellingEscrow.connect(signer).register(_tokenURI, _serialNumber)
   await transaction.wait()
 
-  console.log(sellingEscrow)
-/*   sellingEscrow.on('productRegistered', (value) => {
-    console.log(value);
-  }); */
-
-  /* contract.on('metadata', (hash, name, metadata, event) => {
-    console.log('First parameter :', hash);
-    console.log('Second parameter :', name);
-    console.log('Third parameter :', metadata);
-    console.log('Event : ', event);  //Event object
-  }); */
+  
 
 
 }
