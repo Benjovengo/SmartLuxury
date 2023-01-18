@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -7,6 +7,8 @@ import img from "../assets/images/img-01.png";
 import avatar from "../assets/images/ava-01.png";
 
 import "../styles/create-item.css";
+
+import { sellItem } from "../scripts/listItem";
 
 
 const item = {
@@ -17,6 +19,13 @@ const item = {
   creator: "Creator's Address",
   creatorImg: avatar,
   currentBid: 7.89,
+};
+
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  sellItem("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS", "IA002000128");
+  //getAccountInfo();
 };
 
 const Create = () => {
@@ -34,7 +43,7 @@ const Create = () => {
 
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form__input">
                     <label htmlFor="">Upload File</label>
                     <input type="file" className="upload__input" />
@@ -77,7 +86,7 @@ const Create = () => {
                   </div>
                   <div className="d-flex justify-content-between">
                     <div><i>Now just click the button to list you item for sale.</i></div>
-                    <button className="sell__btn">Sell</button>
+                    <button className="sell__btn" type="submit">Sell</button>
                   </div>
 
                 </form>
