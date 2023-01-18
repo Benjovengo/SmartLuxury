@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 
 import "../styles/wallet.css";
 
-import NftCard from "../components/ui/Nft-card/NftCard";
+import NftCard from "../components/ui/Nft-card/NftWallet";
 import { PRODUCTS__OWNED } from '../scripts/accountNFT'
 
 
@@ -45,23 +45,22 @@ const Wallet = () => {
           <Row>
             <Col lg="12" className="mb-5 text-center">
               <div className="w-50 m-auto">
-                <h3 className="">Connect your wallet</h3>
+                <h3 className="">Your Collection</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Minima numquam nisi, quam obcaecati a provident voluptas sequi
-                  unde officiis placeat!
+                  Manage you collection of luxury items!
                 </p>
               </div>
             </Col>
 
             <Row>
-              {
-                PRODUCTS__OWNED.slice(0, 8).map((item) => (
-                  <Col lg="3" md="4" sm="6" key={item.id} className="mb-4">
-                    <NftCard item={item} />
-                  </Col>
-                ))
-              }
+                {
+                  PRODUCTS__OWNED.slice(0, 8).map((item) => (
+                    <Col lg="3" md="4" sm="6" key={item.id} className="mb-4">
+                      <NftCard item={item} />
+                    </Col>
+                  ))
+                }
+            
             </Row>
             
             <Row>
