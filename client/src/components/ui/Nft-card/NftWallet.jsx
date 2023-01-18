@@ -5,9 +5,6 @@ import './nft-card-sell.css'
 
 import Review from "../Review/ReviewSell";
 
-function copyToClipboard(_Address) {
-  //console.log('')
-}
 
 const NftCard = (props) => {
 
