@@ -59,7 +59,7 @@ const NftCard = (props) => {
 
       <div className="creator__info d-flex align-items-center justify-content-between">
           <p className='original__address'>{creator}</p>
-          <button className='copy__to__clipboard' onClick={copyToClipboard('Address')}>
+          <button className='copy__to__clipboard'>
             <i className="ri-file-copy-line"></i>
           </button>
 
