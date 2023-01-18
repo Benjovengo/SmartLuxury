@@ -58,12 +58,12 @@ const NftCard = (props) => {
       </div>
 
       <div className="creator__info d-flex align-items-center justify-content-between">
-          <p className='original__address'>{creator}</p>
-          <button className='copy__to__clipboard'>
-            <i className="ri-file-copy-line"></i>
-          </button>
+        <p className='original__address'>{creator}</p>
+        <button className='copy__to__clipboard'>
+          <i className="ri-file-copy-line"></i>
+        </button>
 
-          {showReview && <Review setShowReview={setShowReview} />}
+        {showReview && <Review setShowReview={setShowReview} />}
 
       </div>
 
