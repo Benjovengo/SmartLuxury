@@ -9,6 +9,10 @@ import "../styles/account.css"
 import { addAccount } from "../scripts/addAccount";
 import { getCustomerData } from "../scripts/GetAccountInfo";
 
+// Provisory Data
+import ava05 from "../assets_test/images/ava-05.png";
+//import ava05 from "../images/ava-05.png";
+
 
 const Account = () => {
   // Hooks
@@ -28,6 +32,11 @@ const Account = () => {
     e.preventDefault();
     addAccount(e.target.firstName.value, e.target.lastName.value, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
     //getAccountInfo();
+    document.getElementById('first_name').innerHTML = e.target.firstName.value;
+    document.getElementById('last_name').innerHTML = e.target.lastName.value;
+    document.getElementById('email_address').innerHTML = e.target.email.value;
+    document.getElementById('physical_address').innerHTML = e.target.physicalAddress.value;
+    document.getElementById('po_box').innerHTML = e.target.poBox.value;
   };
 
   return (
@@ -37,9 +46,28 @@ const Account = () => {
         <Container>
           <Row>
             
-            <Col className="m-auto text-center">
-              <h2>Info Card</h2>
-              <h4>Preview</h4>
+            <Col className="m-auto text-center container__settings">
+              <div className="preview__info">
+                <h2>Info Card</h2>
+                <h4>Preview</h4>
+                <Row>
+                  <Col>
+                    <img src={ava05} alt="" className="w-100 preview__avatar" />
+                  </Col>
+                  <Col className="m-auto preview__card">
+                    <p id="first_name">First name</p>
+                    <p> <span id="last_name">Last name</span></p>
+                  </Col>
+                </Row>
+                <div className="info__block">
+                  <p><b>Email:</b><br/> <span id="email_address">your.email@provider.com</span></p>
+                  <p><b>Address:</b><br/> <span id="physical_address">Your Street, number</span></p>
+                  <p><b>P.O. Box:</b><br/> <span id="po_box">11.111-111</span></p>
+                </div>
+                <div className="metamask__address">
+                  <p><b>MataMask Account:</b><br/> 0x70997970C51812...C7d01b50e0d17dc79C8</p>
+                </div>
+              </div>
             </Col>
 
             <Col lg="9" md="6" className="m-auto">
@@ -58,6 +86,7 @@ const Account = () => {
                           type="text"
                           placeholder="Enter your first name"
                           name="firstName"
+                          //id="firstNameInput"
                           defaultValue={getCustomerData.firstName}
                           ref={firstNameRef}
                         />

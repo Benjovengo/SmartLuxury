@@ -1,3 +1,7 @@
+.container__settings {
+  background-color: #DDD;
+}
+
 .title__text {
   color:brown;
   margin: -1em 0 0.5em 0;
@@ -25,4 +29,45 @@
 
 .sign__up button:hover {
   background: #D87E01;
+}
+
+.preview__info h2 {
+  margin: 0.5em 0 0 0;
+}
+
+.preview__info h4 {
+  margin: -0.25em 0 0.5em 0;
+}
+
+
+.preview__info p {
+  font-size: 0.8rem;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.preview__card p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: normal;
+  margin: 0 0 0 -1em;
+  padding: 0;
+}
+
+.preview__card span {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.info__block {
+  margin: 1em 0 0 0;
+}
+
+.metamask__address {
+  margin: 1em 0;
 }
