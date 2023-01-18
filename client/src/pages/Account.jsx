@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
 import { addAccount } from "../scripts/addAccount";
-import { getAccountInfo } from "../scripts/getAccountInfo";
+import { getCustomerData } from "../scripts/GetAccountInfo";
 
 
 const Account = () => {
@@ -15,11 +15,16 @@ const Account = () => {
   const physicalAddressRef = useRef("");
   const poBoxRef = useRef("");
 
+  const customerData = getCustomerData.then((result) => {
+    return result;
+  })
+  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addAccount(e.target.firstName.value, e.target.lastName.value, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
-    getAccountInfo();
+    //getAccountInfo();
   };
 
   return (
@@ -49,6 +54,7 @@ const Account = () => {
                           type="text"
                           placeholder="Enter your first name"
                           name="firstName"
+                          defaultValue={getCustomerData.firstName}
                           ref={firstNameRef}
                         />
                       </Col>
