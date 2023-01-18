@@ -28,9 +28,11 @@ const Account = () => {
       <section>
         <Container>
           <Row>
+            
             <Col>
               <h2>Info Card</h2>
             </Col>
+
             <Col lg="9" md="6" className="m-auto">
               <h2>Personal Info</h2>
               <p>
