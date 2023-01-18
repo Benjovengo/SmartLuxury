@@ -13,7 +13,7 @@ contract FashionToken is ERC721URIStorage {
     Counters.Counter private _tokenIds;
     address public owner;
     mapping(uint256 => uint256) public numberOfOwners; // total number of owners
-    mapping(uint256 => mapping(uint256 => address)) public listOwners; // list of owners of a token
+    mapping(uint256 => mapping(uint256 => address)) private listOwners; // list of owners of a token
     string[] serialNumber; // serial number of the product
 
     /* Constructor Method */
@@ -93,11 +93,21 @@ contract FashionToken is ERC721URIStorage {
     }
 
     /* get list of owners */
-    function getOwners(uint256 _nftID) public view returns (address[] memory) {
+    function getOwnersIn(uint256 _nftID)
+        private
+        view
+        returns (address[] memory)
+    {
         address[] memory owners = new address[](numberOfOwners[_nftID]);
-        for (uint256 i = 0; i < numberOfOwners[_nftID]; i++) {
+        for (uint256 i; i < numberOfOwners[_nftID]; ++i) {
             owners[i] = listOwners[_nftID][i];
         }
+        return owners;
+    }
+
+    /* get list of owners - public function */
+    function getOwners(uint256 _nftID) public view returns (address[] memory) {
+        address[] memory owners = getOwnersIn(_nftID);
         return owners;
     }
 }
