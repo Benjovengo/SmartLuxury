@@ -1,0 +1,28 @@
+.title__text {
+  color:brown;
+  margin: -1em 0 0.5em 0;
+}
+
+.sign__up p {
+  font-weight: 500;
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+
+.sign__up input {
+  margin: -0.25em 0 1em 0;
+}
+
+.sign__up button {
+  background: #F89104;
+  border: none;
+  border-radius: 0px;
+  font-weight: 600;
+  color: #fff;
+  margin: 1em 0 0 0;
+  padding: 0.5em 1em;
+}
+
+.sign__up button:hover {
+  background: #D87E01;
+}

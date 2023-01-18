@@ -3,6 +3,9 @@ import React, { useEffect, useRef } from "react";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
+import "../styles/account.css"
+
+
 import { addAccount } from "../scripts/addAccount";
 import { getCustomerData } from "../scripts/GetAccountInfo";
 
@@ -34,14 +37,15 @@ const Account = () => {
         <Container>
           <Row>
             
-            <Col>
+            <Col className="m-auto text-center">
               <h2>Info Card</h2>
+              <h4>Preview</h4>
             </Col>
 
             <Col lg="9" md="6" className="m-auto">
               <h2>Personal Info</h2>
-              <p>
-                Don't worry! Your privacy is secured!
+              <p className="title__text">
+                Your privacy is secured! Only you will be able to see and update your info!
               </p>
               <div className="sign__up">
                 <form onSubmit={handleSubmit}>
