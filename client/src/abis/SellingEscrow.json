@@ -38,9 +38,9 @@
   "inputs": [
    {
     "indexed": false,
-    "internalType": "bool",
+    "internalType": "uint256",
     "name": "regItem",
-    "type": "bool"
+    "type": "uint256"
    }
   ],
   "name": "productRegistered",

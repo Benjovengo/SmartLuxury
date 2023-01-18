@@ -231,30 +231,6 @@
  {
   "inputs": [
    {
-    "internalType": "uint256",
-    "name": "",
-    "type": "uint256"
-   },
-   {
-    "internalType": "uint256",
-    "name": "",
-    "type": "uint256"
-   }
-  ],
-  "name": "listOwners",
-  "outputs": [
-   {
-    "internalType": "address",
-    "name": "",
-    "type": "address"
-   }
-  ],
-  "stateMutability": "view",
-  "type": "function"
- },
- {
-  "inputs": [
-   {
     "internalType": "string",
     "name": "tokenURI",
     "type": "string"
