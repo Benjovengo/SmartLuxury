@@ -22,12 +22,20 @@ export const sellItem = async (_tokenURI, _serialNumber) => {
   const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
    // Mint New Item
-   let transaction = await sellingEscrow.connect(signer).register(_tokenURI, _serialNumber)
-   await transaction.wait()
+  let transaction = await sellingEscrow.connect(signer).register(_tokenURI, _serialNumber)
+  await transaction.wait()
 
-  sellingEscrow.on("productRegistered", (from, to, value)=>{
-    let tokenID = ethers.utils.formatUnits(value)
-    console.log(tokenID, 6)
-  })
+  console.log(sellingEscrow)
+/*   sellingEscrow.on('productRegistered', (value) => {
+    console.log(value);
+  }); */
+
+  /* contract.on('metadata', (hash, name, metadata, event) => {
+    console.log('First parameter :', hash);
+    console.log('Second parameter :', name);
+    console.log('Third parameter :', metadata);
+    console.log('Event : ', event);  //Event object
+  }); */
+
 
 }
