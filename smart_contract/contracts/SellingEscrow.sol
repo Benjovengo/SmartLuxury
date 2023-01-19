@@ -43,7 +43,7 @@ contract SellingEscrow is IERC721Receiver {
     }
 
     /* Events */
-    event productRegistered(uint256 regItem);
+    event productRegistered(address owner, uint256 regItem);
     event productListed(bool listed);
     event productUnlisted(bool unlisted);
     event saleFinalized(bool sale);
@@ -75,7 +75,7 @@ contract SellingEscrow is IERC721Receiver {
             // add token to list of owned tokens
             contactContract.addCustomerItems(msg.sender, newID);
             // register confirmation
-            emit productRegistered(newID);
+            emit productRegistered(msg.sender, newID);
         }
     }
 
