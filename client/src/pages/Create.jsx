@@ -2,9 +2,10 @@ import React, { useRef } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
-import NftCard from "../components/ui/Nft-card/NftCard";
+import NftCard from "../components/ui/Nft-card/NftSellCard";
 import img from "../assets/images/img-01.png";
 import avatar from "../assets/images/ava-01.png";
+import { randomPhoto } from "../scripts/randomProduct";
 
 import "../styles/create-item.css";
 
@@ -32,7 +33,7 @@ const handleSubmit = (e) => {
 const Create = () => {
   return (
     <>
-      <CommonSection title="Register and Sell Item" />
+      <CommonSection title="Register Item" />
 
       <section>
         <Container>
@@ -45,14 +46,10 @@ const Create = () => {
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
                 <label htmlFor="">Sell a registered item</label>
-                <p className="mb-4">Selling a registered item is even easier. Go to your wallet, set the price and press the sell button.</p>
+                <p className="mb-4">To sell a registered item, go to your wallet, set the price and press the sell button.</p>
                 <h5>Register a new item for sale</h5>
                 <form onSubmit={handleSubmit}>
-                  <div className="form__input">
-                    <label htmlFor="">Upload File</label>
-                    <input type="file" className="upload__input" />
-                  </div>
-
+                  
                   <div className="form__input">
                     <label htmlFor="">Title</label>
                     <input type="text" placeholder="Enter title" />
@@ -70,14 +67,28 @@ const Create = () => {
                   </div>
 
                   <div className="form__input">
-                    <label htmlFor="">Price</label>
-                    <input
-                      type="number" step="0.01"
-                      placeholder="Enter price for one item (ETH)"
-                    />
+                    <Row className="w-50">
+                      <Col>
+                        <label htmlFor="">Price</label>
+                        <input
+                          type="number" step="0.01"
+                          placeholder="Enter price for one item (ETH)"
+                        />
+                      </Col>
+                      <Col>
+                        <label htmlFor="">Serial Number</label>
+                        <input type="text" placeholder="Serial Number" />
+                      </Col>
+                    </Row>
+                    
                   </div>
 
-                  <div className=" d-flex align-items-center gap-4">
+                  <div className="form__input">
+                    <label htmlFor="">Upload File <span>(not implemented)</span></label>
+                    <input type="file" className="upload__input" />
+                  </div>
+
+{/*                   <div className=" d-flex align-items-center gap-4">
                     <div className="form__input w-50">
                       <label htmlFor="">Starting Date <span>(optional)</span></label>
                       <input type="date" />
@@ -87,12 +98,11 @@ const Create = () => {
                       <label htmlFor="">Expiration Date <span>(optional)</span></label>
                       <input type="date" />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="d-flex justify-content-between">
-                    <div><i>Now just click the button to list you item for sale.</i></div>
+                    <div><i>Now just click the button to register or list you item for sale.</i></div>
                     <div>
                       <button className="register__btn" type="submit">Register</button>
-                      <button className="sell__btn" type="submit">Sell</button>
                     </div>
                   </div>
 
