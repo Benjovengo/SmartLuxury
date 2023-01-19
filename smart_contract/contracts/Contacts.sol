@@ -6,10 +6,9 @@ pragma solidity ^0.8.17;
     -> the states: mapping using the address as a key
         - first name
         - last name
+        - link to avatar picture
         - email
         - physical address -> street, city, state, country, PO Box
-        - products -> IDs of the products owned by that contract (remove after a sale is complete)
-            |-> get from FashionToken - create mapping from address to list (mapping) of token IDs owned by that address
 */
 
 contract Contacts {
@@ -21,6 +20,7 @@ contract Contacts {
         address ethAccount;
         string firstName;
         string lastName;
+        string avatar;
         string email;
         string physicalAddress;
         uint256 poBox;
@@ -45,6 +45,7 @@ contract Contacts {
     function addAccount(
         string memory _firstName,
         string memory _lastName,
+        string memory _avatar,
         string memory _email,
         string memory _physicalAddress,
         uint256 _poBox
@@ -55,6 +56,7 @@ contract Contacts {
                 msg.sender,
                 _firstName,
                 _lastName,
+                _avatar,
                 _email,
                 _physicalAddress,
                 _poBox
