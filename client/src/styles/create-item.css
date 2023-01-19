@@ -37,9 +37,27 @@ input[type=file]::file-selector-button:hover {
   background: #D87E01;
 }
 
+.form__input span {
+  color: #F89104;
+  font-style: italic;
+}
+
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
   cursor: pointer;
+}
+
+.register__btn {
+  background: #000;
+  border: none;
+  color: #fff;
+  border-radius: 0px;
+  margin: 0 0.5em;
+  padding: 0.5em 1em;
+}
+
+.register__btn:hover {
+  background: #F89104;
 }
 
 .sell__btn {
@@ -47,11 +65,12 @@ input[type=file]::file-selector-button:hover {
   border: none;
   color: #fff;
   border-radius: 0px;
+  margin: 0 0.5em;
   padding: 0.5em 1em;
 }
 
 .sell__btn:hover {
-  background: #D87E01;
+  background: #F89104;
 }
 
 @media only screen and (max-width: 576px) {

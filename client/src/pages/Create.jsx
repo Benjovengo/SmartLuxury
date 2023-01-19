@@ -43,6 +43,9 @@ const Create = () => {
 
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
+                <label htmlFor="">Sell a registered item</label>
+                <p className="mb-4">Selling a registered item is even easier. Go to your wallet, set the price and press the sell button.</p>
+                <h5>Register a new item for sale</h5>
                 <form onSubmit={handleSubmit}>
                   <div className="form__input">
                     <label htmlFor="">Upload File</label>
@@ -75,18 +78,21 @@ const Create = () => {
 
                   <div className=" d-flex align-items-center gap-4">
                     <div className="form__input w-50">
-                      <label htmlFor="">Starting Date</label>
+                      <label htmlFor="">Starting Date <span>(optional)</span></label>
                       <input type="date" />
                     </div>
 
                     <div className="form__input w-50">
-                      <label htmlFor="">Expiration Date</label>
+                      <label htmlFor="">Expiration Date <span>(optional)</span></label>
                       <input type="date" />
                     </div>
                   </div>
                   <div className="d-flex justify-content-between">
                     <div><i>Now just click the button to list you item for sale.</i></div>
-                    <button className="sell__btn" type="submit">Sell</button>
+                    <div>
+                      <button className="register__btn" type="submit">Register</button>
+                      <button className="sell__btn" type="submit">Sell</button>
+                    </div>
                   </div>
 
                 </form>
