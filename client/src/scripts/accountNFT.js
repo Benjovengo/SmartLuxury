@@ -66,6 +66,7 @@ async function getBlockchainData() {
       }
       data.push(formatJson)    
   }
+  console.log('Got data from blockchain.')
   return data
 }
 
