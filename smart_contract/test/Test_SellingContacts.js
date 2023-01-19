@@ -47,7 +47,7 @@ describe('Contracts', () => {
     })
 
     it('Add and get account info.', async () => {
-      await contacts.addAccount('Fabio', 'Pereira Benjovengo', 'fabio.benjovengo@gmail.com', 'SHIS QI 26, Chácara 18 - Casa B', 71670740)
+      await contacts.addAccount('Fabio', 'Pereira Benjovengo', 'https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-01.png' ,'fabio.benjovengo@gmail.com', 'SHIS QI 26, Chácara 18 - Casa B', 71670740)
       let result = await contacts.getCustomerInfo(deployer.address)
       expect(result.firstName).to.be.equal('Fabio')
     })

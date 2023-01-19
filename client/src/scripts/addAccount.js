@@ -18,7 +18,7 @@ export const addAccount = async (_firstName, _lastName, _email, _physicalAddress
   const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
   // add account
-  await contacts.addAccount(_firstName, _lastName, _email, _physicalAddress, _poBox)
+  await contacts.addAccount(_firstName, _lastName, 'https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-01.png', _email, _physicalAddress, _poBox)
 }
 
 
