@@ -63,12 +63,12 @@ const Account = () => {
           <Row className="m-auto text-center">
             <h2 className="text-light">Choose an avatar</h2>
             <Col className="m-auto text-center">
-              <img src={ava01} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar01); addingOverlay.classList.add('animateRemovingOverlay');}} />
-              <img src={ava02} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar02); addingOverlay.classList.add('animateRemovingOverlay');}} />
-              <img src={ava03} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar03); addingOverlay.classList.add('animateRemovingOverlay');}} />
-              <img src={ava04} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar04); addingOverlay.classList.add('animateRemovingOverlay');}} />
-              <img src={ava05} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar05); addingOverlay.classList.add('animateRemovingOverlay');}} />
-              <img src={ava06} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar06); addingOverlay.classList.add('animateRemovingOverlay');}} />
+              <img src={ava01} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar01); addingOverlay.classList.add('animateRemovingOverlay'); document.getElementById('account_avatar').src = avatar01;}} />
+              <img src={ava02} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar02); addingOverlay.classList.add('animateRemovingOverlay'); document.getElementById('account_avatar').src = avatar02;}} />
+              <img src={ava03} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar03); addingOverlay.classList.add('animateRemovingOverlay'); document.getElementById('account_avatar').src = avatar03;}} />
+              <img src={ava04} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar04); addingOverlay.classList.add('animateRemovingOverlay'); document.getElementById('account_avatar').src = avatar04;}} />
+              <img src={ava05} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar05); addingOverlay.classList.add('animateRemovingOverlay'); document.getElementById('account_avatar').src = avatar05;}} />
+              <img src={ava06} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar06); addingOverlay.classList.add('animateRemovingOverlay'); document.getElementById('account_avatar').src = avatar06;}} />
             </Col>
           </Row>
           <Row className="m-auto w-25 mt-5">
