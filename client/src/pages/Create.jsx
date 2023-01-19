@@ -10,7 +10,7 @@ import { randomPhoto } from "../scripts/randomProduct";
 import "../styles/create-item.css";
 
 import { registerProduct } from "../scripts/addProduct";
-import { randomPhoto } from "../scripts/randomProduct"
+
 
 
 const item = {
