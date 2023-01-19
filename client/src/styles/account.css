@@ -7,6 +7,10 @@
   margin: -1em 0 0.5em 0;
 }
 
+.preview__avatar {
+  cursor: pointer;
+}
+
 .sign__up p {
   font-weight: 500;
   margin: 1em 0 0 0;
@@ -116,7 +120,7 @@
 @keyframes addAvatarOverlayFadeIn {
   from {
     opacity: 0;
-    z-index: 1;
+    z-index: -1;
   }
   to {
     opacity: 1;

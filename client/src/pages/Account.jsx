@@ -16,7 +16,6 @@ import ava03 from "../assets_test/images/ava-03.png";
 import ava04 from "../assets_test/images/ava-04.png";
 import ava05 from "../assets_test/images/ava-05.png";
 import ava06 from "../assets_test/images/ava-06.png";
-//import ava05 from "../images/ava-05.png";
 
 
 const Account = () => {
@@ -27,20 +26,20 @@ const Account = () => {
   const physicalAddressRef = useRef("");
   const poBoxRef = useRef("");
 
-  const [avatarUrl, setAvatarUrl] = useState("");
   let avatar01 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-01.png"
   let avatar02 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-02.png"
   let avatar03 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-03.png"
   let avatar04 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-04.png"
   let avatar05 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-05.png"
   let avatar06 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-06.png"
-  
+
+
 
   const customerData = getCustomerData.then((result) => {
     return result;
   })
   
-
+  const [avatarUrl, setAvatarUrl] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,12 +62,12 @@ const Account = () => {
           <Row className="m-auto text-center">
             <h2 className="text-light">Choose an avatar</h2>
             <Col className="m-auto text-center">
-              <img src={ava01} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar01)} />
-              <img src={ava02} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar02)}/>
-              <img src={ava03} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar03)}/>
-              <img src={ava04} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar04)}/>
-              <img src={ava05} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar05)}/>
-              <img src={ava06} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar06)}/>
+              <img src={ava01} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar01); addingOverlay.classList.add('animateRemovingOverlay');}} />
+              <img src={ava02} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar02); addingOverlay.classList.add('animateRemovingOverlay');}} />
+              <img src={ava03} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar03); addingOverlay.classList.add('animateRemovingOverlay');}} />
+              <img src={ava04} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar04); addingOverlay.classList.add('animateRemovingOverlay');}} />
+              <img src={ava05} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar05); addingOverlay.classList.add('animateRemovingOverlay');}} />
+              <img src={ava06} alt="" className="avatar__list" onClick={()=> {setAvatarUrl(avatar06); addingOverlay.classList.add('animateRemovingOverlay');}} />
             </Col>
           </Row>
           <Row className="m-auto w-25 mt-5">
@@ -87,7 +86,7 @@ const Account = () => {
                 <h4>Preview</h4>
                 <Row>
                   <Col>
-                    <img src={ava05} alt="" className="w-100 preview__avatar" id="btnChooseAvatar"/>
+                    <img src={ava05} alt="" className="w-100 preview__avatar" title="Change avatar" id="btnChooseAvatar"/>
                   </Col>
                   <Col className="m-auto preview__card">
                     <p id="first_name">First name</p>
@@ -185,17 +184,21 @@ const Account = () => {
 
 export default Account
 
+
 let addingOverlay = document.getElementById('addAvatarOverlay');
 let chooseAvatar = document.getElementById('btnChooseAvatar');
 let cancelBtn = document.getElementById('cancelAvatar')
 
+
 chooseAvatar.addEventListener('click', () => {
   addingOverlay.style.display = 'block';
-  //setTimeout(addingOverlay.classList.remove('animateRemovingOverlay'), 1000);
+  addingOverlay.classList.add('animateAdingOverlay')
+  setTimeout(addingOverlay.classList.remove('animateRemovingOverlay'), 1000);
 })
 
 
 cancelBtn.addEventListener('click', () => {
   addingOverlay.style.display = 'none';
-  //setTimeout(addingOverlay.classList.remove('animateRemovingOverlay'), 1000);
+  addingOverlay.classList.add('animateRemovingOverlay')
+  setTimeout(addingOverlay.classList.remove('animateAdingOverlay'), 1000);
 })
