@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -10,7 +10,12 @@ import { addAccount } from "../scripts/addAccount";
 import { getCustomerData } from "../scripts/GetAccountInfo";
 
 // Provisory Data
+import ava01 from "../assets_test/images/ava-01.png";
+import ava02 from "../assets_test/images/ava-02.png";
+import ava03 from "../assets_test/images/ava-03.png";
+import ava04 from "../assets_test/images/ava-04.png";
 import ava05 from "../assets_test/images/ava-05.png";
+import ava06 from "../assets_test/images/ava-06.png";
 //import ava05 from "../images/ava-05.png";
 
 
@@ -22,6 +27,15 @@ const Account = () => {
   const physicalAddressRef = useRef("");
   const poBoxRef = useRef("");
 
+  const [avatarUrl, setAvatarUrl] = useState("");
+  let avatar01 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-01.png"
+  let avatar02 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-02.png"
+  let avatar03 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-03.png"
+  let avatar04 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-04.png"
+  let avatar05 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-05.png"
+  let avatar06 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-06.png"
+  
+
   const customerData = getCustomerData.then((result) => {
     return result;
   })
@@ -30,7 +44,7 @@ const Account = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addAccount(e.target.firstName.value, e.target.lastName.value, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
+    addAccount(e.target.firstName.value, e.target.lastName.value, avatarUrl, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
     //getAccountInfo();
     document.getElementById('first_name').innerHTML = e.target.firstName.value;
     document.getElementById('last_name').innerHTML = e.target.lastName.value;
@@ -42,6 +56,27 @@ const Account = () => {
   return (
     <>
       <CommonSection title="Sign Up" />
+
+      {/* CHOOSE AVATAR OVERLAY SECTION */}
+      <div className="chooseAvatarOverlay" id="addAvatarOverlay">
+        <section>
+          <Row className="m-auto text-center">
+            <h2 className="text-light">Choose an avatar</h2>
+            <Col className="m-auto text-center">
+              <img src={ava01} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar01)} />
+              <img src={ava02} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar02)}/>
+              <img src={ava03} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar03)}/>
+              <img src={ava04} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar04)}/>
+              <img src={ava05} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar05)}/>
+              <img src={ava06} alt="" className="avatar__list" onClick={()=> setAvatarUrl(avatar06)}/>
+            </Col>
+          </Row>
+          <Row className="m-auto w-25 mt-5">
+            <button className="overlay__cancel" id="cancelAvatar">Cancel</button>
+          </Row>
+        </section>
+      </div>
+
       <section>
         <Container>
           <Row>
@@ -52,7 +87,7 @@ const Account = () => {
                 <h4>Preview</h4>
                 <Row>
                   <Col>
-                    <img src={ava05} alt="" className="w-100 preview__avatar" />
+                    <img src={ava05} alt="" className="w-100 preview__avatar" id="btnChooseAvatar"/>
                   </Col>
                   <Col className="m-auto preview__card">
                     <p id="first_name">First name</p>
@@ -149,3 +184,18 @@ const Account = () => {
 }
 
 export default Account
+
+let addingOverlay = document.getElementById('addAvatarOverlay');
+let chooseAvatar = document.getElementById('btnChooseAvatar');
+let cancelBtn = document.getElementById('cancelAvatar')
+
+chooseAvatar.addEventListener('click', () => {
+  addingOverlay.style.display = 'block';
+  //setTimeout(addingOverlay.classList.remove('animateRemovingOverlay'), 1000);
+})
+
+
+cancelBtn.addEventListener('click', () => {
+  addingOverlay.style.display = 'none';
+  //setTimeout(addingOverlay.classList.remove('animateRemovingOverlay'), 1000);
+})

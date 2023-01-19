@@ -71,3 +71,72 @@
 .metamask__address {
   margin: 1em 0;
 }
+
+
+/* OVERLAY */
+
+.chooseAvatarOverlay {
+  background: rgba(0, 0, 0, .85);
+  color: black;
+  display: none;
+  min-height: 100vh;
+  opacity: 1;
+  padding: 0;
+  place-content: top;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.avatar__list {
+  cursor: pointer;
+  margin: 0 0.5em;
+  width: 10%;
+}
+
+.overlay__cancel {
+  background: #F89104;
+  border: none;
+  border-radius: 0px;
+  font-weight: 600;
+  color: #fff;
+  margin: 1em 0 0 0;
+  padding: 0.5em 1em;
+}
+
+.overlay__cancel:hover {
+  background: #D87E01;
+}
+
+/* Add Avatar Overlay */
+.animateAdingOverlay {
+  animation: addAvatarOverlayFadeIn 1.5s forwards;
+}
+
+@keyframes addAvatarOverlayFadeIn {
+  from {
+    opacity: 0;
+    z-index: 1;
+  }
+  to {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+
+/* Remove Avatar Overlay */
+.animateRemovingOverlay {
+  animation: removeAvatarOverlayFadeIn 1.5s forwards;
+}
+
+@keyframes removeAvatarOverlayFadeIn {
+  from {
+    opacity: 1;
+    z-index: 1;
+  }
+  to {
+    opacity: 0;
+    z-index: -1;
+  }
+}
