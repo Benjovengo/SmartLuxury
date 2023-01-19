@@ -18,6 +18,11 @@
    },
    {
     "internalType": "string",
+    "name": "_avatar",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
     "name": "_email",
     "type": "string"
    },
@@ -101,6 +106,11 @@
    },
    {
     "internalType": "string",
+    "name": "avatar",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
     "name": "email",
     "type": "string"
    },
@@ -143,6 +153,11 @@
      {
       "internalType": "string",
       "name": "lastName",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "avatar",
       "type": "string"
      },
      {
