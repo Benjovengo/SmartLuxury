@@ -8,7 +8,8 @@ import avatar from "../assets/images/ava-01.png";
 
 import "../styles/create-item.css";
 
-import { sellItem } from "../scripts/listItem";
+import { registerProduct } from "../scripts/addProduct";
+import { randomPhoto } from "../scripts/randomProduct"
 
 
 const item = {
@@ -24,7 +25,7 @@ const item = {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  sellItem("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS", "IA002000128");
+  registerProduct(randomPhoto(), "IA002000128");
   //getAccountInfo();
 };
 
