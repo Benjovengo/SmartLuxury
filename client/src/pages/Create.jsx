@@ -67,7 +67,7 @@ const Create = () => {
                   </div>
 
                   <div className="form__input">
-                    <Row className="w-50">
+                    <Row className="w-100">
                       <Col>
                         <label htmlFor="">Price</label>
                         <input
@@ -79,9 +79,63 @@ const Create = () => {
                         <label htmlFor="">Serial Number</label>
                         <input type="text" placeholder="Serial Number" />
                       </Col>
+                      <Col>
+                        <label for="cars">Category</label><br/>
+                        <select id="cars" name="cars">
+                          <option value="bag">Bag</option>
+                          <option value="shoe">Shoe</option>
+                          <option value="jewel">Jewel</option>
+                          <option value="eyewear">Eyewear</option>
+                          <option value="accessory">Accessory</option>
+                          <option value="watch">Watch</option>
+                        </select> 
+                      </Col>
                     </Row>
-                    
                   </div>
+
+                  <div className="form__input">
+                    <Row className="w-100">
+                      <Col>
+                        <label htmlFor="">Material</label>
+                        <input type="text" placeholder="Leather/Plastic" />
+                      </Col>
+                      <Col>
+                        <label htmlFor="">Made In</label>
+                        <input type="text" placeholder="Country" />
+                      </Col>
+                      <Col>
+                        <label for="cars">Condition</label><br/>
+                        <select id="cars" name="cars">
+                          <option value="new">New, with tags</option>
+                          <option value="excellent">Excellent</option>
+                          <option value="good">Good, but used</option>
+                          <option value="worn">Worn with love</option>
+                        </select> 
+                      </Col>
+                    </Row>
+                  </div>
+
+
+                  <div className="form__input">
+                    <Row className="w-100">
+                      <Col>
+                        <label htmlFor="">Accessories</label>
+                        <input type="text" placeholder="Dust bag" />
+                      </Col>
+                      <Col>
+                        <label htmlFor="">Weight (grams)</label>
+                        <input
+                          type="number" step="1"
+                          placeholder="Weight"
+                         />
+                      </Col>
+                      <Col>
+                      <label htmlFor="">Year</label>
+                        <input type="number" min="2000" max="2099" step="1" placeholder="2023"/>
+                      </Col>
+                    </Row>
+                  </div>
+
 
                   <div className="form__input">
                     <label htmlFor="">Upload File <span>(not implemented)</span></label>
