@@ -38,6 +38,12 @@
   "inputs": [
    {
     "indexed": false,
+    "internalType": "address",
+    "name": "owner",
+    "type": "address"
+   },
+   {
+    "indexed": false,
     "internalType": "uint256",
     "name": "regItem",
     "type": "uint256"
