@@ -13,7 +13,7 @@ const NAV__LINKS = [
     url:'/market'
   },
   {
-    display:'Sell',
+    display:'Register',
     url:'/create'
   },
   {
