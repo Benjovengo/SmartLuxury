@@ -50,6 +50,7 @@ const Account = () => {
     document.getElementById('email_address').innerHTML = e.target.email.value;
     document.getElementById('physical_address').innerHTML = e.target.physicalAddress.value;
     document.getElementById('po_box').innerHTML = e.target.poBox.value;
+    document.getElementById('account_avatar').src = avatarUrl
   };
 
   return (
@@ -86,7 +87,7 @@ const Account = () => {
                 <h4>Preview</h4>
                 <Row>
                   <Col>
-                    <img src={ava05} alt="" className="w-100 preview__avatar" title="Change avatar" onClick={()=> {addingOverlay.classList.add('animateAdingOverlay');}}/>
+                    <img src={ava05} alt="" id="account_avatar" className="w-100 preview__avatar" title="Change avatar" onClick={()=> {addingOverlay.classList.add('animateAdingOverlay');}}/>
                   </Col>
                   <Col className="m-auto preview__card">
                     <p id="first_name">First name</p>
