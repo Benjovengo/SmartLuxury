@@ -61,6 +61,7 @@ export const registerProduct = async (_tokenURI, _serialNumber) => {
 
   // get signer
   const signer = provider.getSigner();
+  //console.log("Account:", await signer.getAddress());
 
   // Javascript "version" of the contact smart contract
   const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
