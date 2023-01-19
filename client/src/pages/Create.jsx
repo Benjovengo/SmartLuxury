@@ -38,7 +38,7 @@ const handleSubmit = (e) => {
   let productWeight = e.target.weight.value;
   let productYear = e.target.year.value;
 
-  let jsonData = createJSON(productName, productBrand, productDescription, randomPhoto(), 3, productSN, productCategory, productCondition, productMaterial, productAccessories, productWeight, productMadeIn, productYear)
+  let jsonData = createJSON(productName, productBrand, productDescription, randomPhoto(), 11, productSN, productCategory, productCondition, productMaterial, productAccessories, productWeight, productMadeIn, productYear)
   registerProduct('https://github.com/Benjovengo/SmartLuxury/raw/master/client/public/metadata/Gucci-Swing-Red_IA002000868.json', "IA002000128");
   //getAccountInfo();
 };
