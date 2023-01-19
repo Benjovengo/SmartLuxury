@@ -73,6 +73,20 @@ input[type=file]::file-selector-button:hover {
   background: #F89104;
 }
 
+
+.form__input select {
+  width: 100%;
+  padding: 7px 25px;
+  color: #fff;
+  font-size: 0.8rem;
+  background: #343444;
+  border: 1px solid rgba(21, 21, 21, 0.171);
+  outline: none;
+  border-radius: 5px;
+}
+
+
+
 @media only screen and (max-width: 576px) {
   .create__item {
     margin-top: 15px;
