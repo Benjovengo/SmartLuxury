@@ -9,7 +9,7 @@ import { randomPhoto } from "../scripts/randomProduct";
 
 import "../styles/create-item.css";
 
-import { registerProduct } from "../scripts/addProduct";
+import { registerProduct, createJSON } from "../scripts/addProduct";
 
 
 
@@ -26,7 +26,20 @@ const item = {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  registerProduct(randomPhoto(), "IA002000128");
+  let productName = e.target.productName.value;
+  let productBrand = e.target.brand.value;
+  let productDescription = e.target.descript.value;
+  let productSN = e.target.serialNumber.value;
+  let productCategory = e.target.category.value;
+  let productMaterial = e.target.material.value;
+  let productMadeIn = e.target.madeIn.value;
+  let productCondition = e.target.condition.value;
+  let productAccessories = e.target.accessories.value;
+  let productWeight = e.target.weight.value;
+  let productYear = e.target.year.value;
+
+  let jsonData = createJSON(productName, productBrand, productDescription, randomPhoto(), 3, productSN, productCategory, productCondition, productMaterial, productAccessories, productWeight, productMadeIn, productYear)
+  registerProduct('https://github.com/Benjovengo/SmartLuxury/raw/master/client/public/metadata/Gucci-Swing-Red_IA002000868.json', "IA002000128");
   //getAccountInfo();
 };
 
@@ -52,15 +65,15 @@ const Create = () => {
                   
                   <div className="form__input">
                     <label htmlFor="">Title</label>
-                    <input type="text" placeholder="Enter title" />
+                    <input type="text" name="productName" placeholder="Enter title" />
                   </div>
 
                   <div className="form__input">
                     <label htmlFor="">Description</label>
                     <textarea
-                      name=""
+                      name="descript"
                       id=""
-                      rows="7"
+                      rows="5"
                       placeholder="Enter description"
                       className="w-100"
                     ></textarea>
@@ -69,19 +82,19 @@ const Create = () => {
                   <div className="form__input">
                     <Row className="w-100">
                       <Col>
-                        <label htmlFor="">Price</label>
+                        <label htmlFor="">Brand</label>
                         <input
-                          type="number" step="0.01"
-                          placeholder="Enter price for one item (ETH)"
+                          type="text" name="brand"
+                          placeholder="Brand"
                         />
                       </Col>
                       <Col>
                         <label htmlFor="">Serial Number</label>
-                        <input type="text" placeholder="Serial Number" />
+                        <input type="text" name="serialNumber" placeholder="Serial Number" />
                       </Col>
                       <Col>
-                        <label for="cars">Category</label><br/>
-                        <select id="cars" name="cars">
+                        <label for="category">Category</label><br/>
+                        <select id="category" name="category">
                           <option value="bag">Bag</option>
                           <option value="shoe">Shoe</option>
                           <option value="jewel">Jewel</option>
@@ -97,15 +110,15 @@ const Create = () => {
                     <Row className="w-100">
                       <Col>
                         <label htmlFor="">Material</label>
-                        <input type="text" placeholder="Leather/Plastic" />
+                        <input type="text" name="material" placeholder="Leather/Plastic" />
                       </Col>
                       <Col>
                         <label htmlFor="">Made In</label>
-                        <input type="text" placeholder="Country" />
+                        <input type="text" name="madeIn" placeholder="Country" />
                       </Col>
                       <Col>
-                        <label for="cars">Condition</label><br/>
-                        <select id="cars" name="cars">
+                        <label for="condition">Condition</label><br/>
+                        <select id="condition" name="condition">
                           <option value="new">New, with tags</option>
                           <option value="excellent">Excellent</option>
                           <option value="good">Good, but used</option>
@@ -120,18 +133,19 @@ const Create = () => {
                     <Row className="w-100">
                       <Col>
                         <label htmlFor="">Accessories</label>
-                        <input type="text" placeholder="Dust bag" />
+                        <input type="text" name="accessories" placeholder="Dust bag" />
                       </Col>
                       <Col>
                         <label htmlFor="">Weight (grams)</label>
                         <input
                           type="number" step="1"
+                          name="weight"
                           placeholder="Weight"
                          />
                       </Col>
                       <Col>
                       <label htmlFor="">Year</label>
-                        <input type="number" min="2000" max="2099" step="1" placeholder="2023"/>
+                        <input type="number" min="2000" max="2099" step="1" name="year" placeholder="2023"/>
                       </Col>
                     </Row>
                   </div>
@@ -142,17 +156,6 @@ const Create = () => {
                     <input type="file" className="upload__input" />
                   </div>
 
-{/*                   <div className=" d-flex align-items-center gap-4">
-                    <div className="form__input w-50">
-                      <label htmlFor="">Starting Date <span>(optional)</span></label>
-                      <input type="date" />
-                    </div>
-
-                    <div className="form__input w-50">
-                      <label htmlFor="">Expiration Date <span>(optional)</span></label>
-                      <input type="date" />
-                    </div>
-                  </div> */}
                   <div className="d-flex justify-content-between">
                     <div><i>Now just click the button to register or list you item for sale.</i></div>
                     <div>
