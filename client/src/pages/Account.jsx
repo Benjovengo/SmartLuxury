@@ -71,7 +71,7 @@ const Account = () => {
             </Col>
           </Row>
           <Row className="m-auto w-25 mt-5">
-            <button className="overlay__cancel" id="cancelAvatar">Cancel</button>
+            <button className="overlay__cancel" onClick={()=> {addingOverlay.classList.add('animateRemovingOverlay');}}>Cancel</button>
           </Row>
         </section>
       </div>
@@ -86,7 +86,7 @@ const Account = () => {
                 <h4>Preview</h4>
                 <Row>
                   <Col>
-                    <img src={ava05} alt="" className="w-100 preview__avatar" title="Change avatar" id="btnChooseAvatar"/>
+                    <img src={ava05} alt="" className="w-100 preview__avatar" title="Change avatar" onClick={()=> {addingOverlay.classList.add('animateAdingOverlay');}}/>
                   </Col>
                   <Col className="m-auto preview__card">
                     <p id="first_name">First name</p>
@@ -186,19 +186,3 @@ export default Account
 
 
 let addingOverlay = document.getElementById('addAvatarOverlay');
-let chooseAvatar = document.getElementById('btnChooseAvatar');
-let cancelBtn = document.getElementById('cancelAvatar')
-
-
-chooseAvatar.addEventListener('click', () => {
-  addingOverlay.style.display = 'block';
-  addingOverlay.classList.add('animateAdingOverlay')
-  setTimeout(addingOverlay.classList.remove('animateRemovingOverlay'), 1000);
-})
-
-
-cancelBtn.addEventListener('click', () => {
-  addingOverlay.style.display = 'none';
-  addingOverlay.classList.add('animateRemovingOverlay')
-  setTimeout(addingOverlay.classList.remove('animateAdingOverlay'), 1000);
-})

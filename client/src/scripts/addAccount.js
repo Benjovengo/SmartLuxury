@@ -5,7 +5,7 @@ import { ethers } from 'ethers';
 import Contacts from '../abis/Contacts.json'
 import config from '../config.json'; // config - contract address
 
-export const addAccount = async (_firstName, _lastName, _email, _physicalAddress, _poBox) => {
+export const addAccount = async (_firstName, _lastName, _avatar, _email, _physicalAddress, _poBox) => {
 
   // Setup provider and network
   let provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -18,7 +18,8 @@ export const addAccount = async (_firstName, _lastName, _email, _physicalAddress
   const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
   // add account
-  await contacts.addAccount(_firstName, _lastName, 'https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-01.png', _email, _physicalAddress, _poBox)
+  await contacts.addAccount(_firstName, _lastName, _avatar, _email, _physicalAddress, _poBox)
+  console.log(_avatar)
 }
 
 
