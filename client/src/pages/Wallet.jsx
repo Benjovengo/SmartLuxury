@@ -54,7 +54,7 @@ const Wallet = () => {
 
   return (
     <>
-      <CommonSection title="Connect Wallet" />
+      <CommonSection title="Manage Collection" />
       <section>
         <Container>
           <Row>
@@ -78,7 +78,7 @@ const Wallet = () => {
             
             </Row>
             
-            <Row>
+            <Row className="mt-5">
               {wallet__data.map((item, index) => (
               <Col lg="3" md="4" sm="6" key={index} className="mb-4">
                 <div className="wallet__item">
