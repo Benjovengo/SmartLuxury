@@ -12,6 +12,7 @@ import "../styles/nft-details.css";
 
 const NftDetails = () => {
   const { id } = useParams();
+  const singleNft = NFT__DATA.find((item) => item.id === id);
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
@@ -34,8 +35,6 @@ const NftDetails = () => {
       setPrice(singleNft.currentBid)
     }
   }
-
-  const singleNft = NFT__DATA.find((item) => item.id === id);
 
   return (
     <>
