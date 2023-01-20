@@ -70,5 +70,8 @@ async function getBlockchainData() {
   return data
 }
 
-export const PRODUCTS__OWNED = await getBlockchainData()
+export const PRODUCTS__OWNED__FILE = await getBlockchainData()
+export const accountData = async () => {
+  return await getBlockchainData()
+}
 //console.log(PRODUCTS__OWNED)
