@@ -39,8 +39,10 @@ const Account = () => {
     return result;
   })
   
+
   const [avatarUrl, setAvatarUrl] = useState("");
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     addAccount(e.target.firstName.value, e.target.lastName.value, avatarUrl, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
@@ -52,6 +54,7 @@ const Account = () => {
     document.getElementById('po_box').innerHTML = e.target.poBox.value;
     document.getElementById('account_avatar').src = avatarUrl
   };
+
 
   return (
     <>
