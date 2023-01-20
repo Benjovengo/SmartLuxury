@@ -35,3 +35,7 @@
 .wallet__links {
   text-decoration: none;
 }
+
+.crypto__links {
+  height: max-content;
+}
