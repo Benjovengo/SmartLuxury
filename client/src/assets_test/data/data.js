@@ -61,7 +61,6 @@ async function getData() {
   let formatJson
   let data = []
   for(let i=0; i < productList.length; i++){
-    //console.log(i+1, await sellingEscrow.isListed(i+1)) // DEBUG
     if (await sellingEscrow.isListed(i+1)) {
       json = await productList[i]
       formatJson = {
@@ -90,7 +89,6 @@ export const refreshProducts = async () => {
   //console.log(resultData)
   return resultData
 }
-//console.log(NFT__DATA)
 
 
 export const SELLER__DATA = [
