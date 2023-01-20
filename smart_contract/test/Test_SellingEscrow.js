@@ -74,6 +74,15 @@ describe('Selling Escrow', () => {
       expect(result).that.be.equal(true)
     })
 
+    it('Unlist an item.', async () => {
+      // List product
+      transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
+      await transaction.wait()
+      transaction = await sellingEscrow.connect(seller).unlist(1)
+      const result = await sellingEscrow.isListed(1)
+      expect(result).that.be.equal(false)
+    })
+
     it('Returns purchase price.', async () => {
       // List product
       transaction = await sellingEscrow.connect(seller).list(1, tokens(10))

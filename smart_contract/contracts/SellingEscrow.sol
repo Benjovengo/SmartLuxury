@@ -101,6 +101,20 @@ contract SellingEscrow is IERC721Receiver {
         isListed[_nftID] = true; // list product with ID=_nftID
         nftSeller[_nftID] = msg.sender;
         purchasePrice[_nftID] = _purchasePrice;
+        emit productListed(true);
+    }
+
+    function unlist(uint256 _nftID) public {
+        /* require(
+            nftSeller[_nftID] == msg.sender,
+            "Only the owner can call this method."
+        ); */
+
+        // Transfer the NFT back from this contract to seller
+        IERC721(nftAddress).safeTransferFrom(address(this), msg.sender, _nftID);
+
+        isListed[_nftID] = false; // list product with ID=_nftID
+        nftSeller[_nftID] = msg.sender;
         emit productUnlisted(true);
     }
 
