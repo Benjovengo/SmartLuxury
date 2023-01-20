@@ -44,6 +44,7 @@ const Review = ({ productName, productId, price, setShowReview }) => {
   
   const confirmSelling = () => {
     listProduct(Number(productId), Number(price) + Number(fee));
+    setShowReview(false);
   }
 
   return (
