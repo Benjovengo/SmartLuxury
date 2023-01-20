@@ -4,9 +4,8 @@ import { ethers } from 'ethers';
 // Import ABIs
 import FashionToken from '../../abis/FashionToken.json'
 import SellingEscrow from '../../abis/SellingEscrow.json'
-//import trackingOracle from './abis/TrackingOracle.json'
-// config
-import config from '../../config.json';
+
+import config from '../../config.json'; // config
 
 
 /* TEST IMAGES */
@@ -77,7 +76,10 @@ async function getData() {
 
 export const NFT__DATA = await getData()
 export const refreshProducts = async () => {
-  return await getData()
+  let resultData = await getData()
+  console.log('data script')
+  console.log(resultData)
+  return resultData
 }
 //console.log(NFT__DATA)
 
