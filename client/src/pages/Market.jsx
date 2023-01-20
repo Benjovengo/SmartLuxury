@@ -4,7 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import NftCard from "../components/ui/Nft-card/NftCard";
 
-import { NFT__DATA } from "../assets_test/data/data";
+import { NFT__DATA, refreshProducts } from "../assets_test/data/data";
 
 
 
@@ -13,7 +13,45 @@ import "../styles/market.css";
 const Market = () => {
   const [data, setData] = useState(NFT__DATA);
 
-  const handleCategory = () => {};
+  // ====== SORTING DATA BY CATEGORY =========
+  const handleCategory = (e) => {
+    const filterValue = e.target.value;
+
+    if (filterValue === "all") {
+      const filterData = NFT__DATA;
+      setData(filterData);
+    }
+
+    if (filterValue === "bags") {
+      const filterData = NFT__DATA.filter((item) => item.category === 'Bag');
+      setData(filterData);
+    }
+
+    if (filterValue === "shoes") {
+      const filterData = NFT__DATA.filter((item) => item.category === 'Shoe');
+      setData(filterData);
+    }
+
+    if (filterValue === "jewel") {
+      const filterData = NFT__DATA.filter((item) => item.category === 'Jewelry');
+      setData(filterData);
+    }
+
+    if (filterValue === "eyewear") {
+      const filterData = NFT__DATA.filter((item) => item.category === 'Eyewear');
+      setData(filterData);
+    }
+
+    if (filterValue === "accessories") {
+      const filterData = NFT__DATA.filter((item) => item.category === 'Accessory');
+      setData(filterData);
+    }
+
+    if (filterValue === "watches") {
+      const filterData = NFT__DATA.filter((item) => item.category === 'Watch');
+      setData(filterData);
+    }
+  };
 
   const handleItems = () => {};
 
@@ -47,11 +85,17 @@ const Market = () => {
     }
   };
 
+
+  // ====== UPDATE PRODUCTS ON LOAD =========
+  const updateProducts = () => {
+    setData(NFT__DATA);
+  }
+
   return (
     <>
       <CommonSection title={"MarketPlace"} />
 
-      <section>
+      <section onLoad={updateProducts}>
         <Container>
           <Row>
             <Col lg="12" className="mb-5">
@@ -59,9 +103,10 @@ const Market = () => {
                 <div className="filter__left d-flex align-items-center gap-5">
                   <div className="all__category__filter">
                     <select onChange={handleCategory}>
-                      <option>All Categories</option>
+                      <option value="all">All Categories</option>
                       <option value="bags">Bags</option>
                       <option value="shoes">Shoes</option>
+                      <option value="jewel">Jewelry</option>
                       <option value="accessories">Accessories</option>
                       <option value="eyewear">Eyewear</option>
                       <option value="watches">Watches</option>
