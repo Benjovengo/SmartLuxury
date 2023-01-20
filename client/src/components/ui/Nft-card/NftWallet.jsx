@@ -12,14 +12,24 @@ const NftCard = (props) => {
 
   const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  ;
   const [showReview, setShowReview] = useState(false);
+  const [productName, setProductName] = useState('Product Title');
   const [price, setPrice] = useState(1);
+  const [productId, setProductId] = useState(1);
 
   /**Show Reviwew */
   const ReviewSell = () => {
     setShowReview(true)
+    // name
+    if (title != '') {
+      setProductName(title)
+    }
+    // ID
+    if (id != '') {
+      setProductId(id)
+    }
+    // price
     let inputID = `priceInput${id}`
     let priceResult = document.getElementById(inputID).value
-    console.log(priceResult)
     if (priceResult != '') {
       setPrice(priceResult)
     }
@@ -36,7 +46,7 @@ const NftCard = (props) => {
       </div>
 
       <div className="nft__content">
-        <h5 className='nft__title'>
+        <h5 className='nft__title' >
           <Link to={`/market/${id}`}>{title}</Link>
         </h5>
         <div className="creator__info-wrapper d-flex gap-3">
@@ -79,7 +89,7 @@ const NftCard = (props) => {
           <i className="ri-file-copy-line"></i>
         </button>
 
-        {showReview && <Review price={price} setShowReview={setShowReview} />}
+        {showReview && <Review productName={productName} productId={productId} price={price} setShowReview={setShowReview} />}
 
       </div>
 
