@@ -61,10 +61,10 @@ const main = async () => {
   // ============================== DEFAULT MINTS ==============================
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', 'ia002000024')
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json', 'ia002000025')
-  await sellingEscrow.connect(deployer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json', 'ia002000124')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json', 'ia002000124')
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json', 'ia002000024')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json', 'ia002000028')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'ia002000324')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json', 'ia002000028')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'ia002000324')
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000064')
 
   // DEBUG
