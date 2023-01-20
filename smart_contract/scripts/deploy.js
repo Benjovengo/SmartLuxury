@@ -21,6 +21,11 @@ let contactsAddress
 const main = async () => {
   // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
   [deployer, buyer, seller, oracle] = await ethers.getSigners()
+  console.log('Deployer: ', deployer.address)
+  console.log('Buyer:    ', buyer.address)
+  console.log('Seller:   ', seller.address)
+  console.log('Oracle:   ', oracle.address)
+  
 
   /* Deployment Section */
 
@@ -54,26 +59,29 @@ const main = async () => {
 
 
   // ============================== DEFAULT MINTS ==============================
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', 'ia002000024')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', 'ia002000024')
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json', 'ia002000025')
   await sellingEscrow.connect(deployer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json', 'ia002000124')
-  await sellingEscrow.connect(oracle).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json', 'ia002000024')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json', 'ia002000024')
   await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json', 'ia002000028')
   await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'ia002000324')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000028')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000064')
+
+
+  console.log('Products:', await contacts.getOwned(buyer.address))
 
   // Seller approval
-  let transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 1)
+  let transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 1)
   await transaction.wait()
   // List product
-  transaction = await sellingEscrow.connect(seller).list(1, 55)
+  transaction = await sellingEscrow.connect(buyer).list(1, 55)
   await transaction.wait()
 
   // Seller approval
-  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 2)
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 7)
   await transaction.wait()
   // List product
-  transaction = await sellingEscrow.connect(buyer).list(2, 155)
+  transaction = await sellingEscrow.connect(buyer).list(7, 155)
   await transaction.wait()
   // ============================== DEFAULT MINTS ==============================
 
