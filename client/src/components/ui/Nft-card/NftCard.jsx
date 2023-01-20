@@ -34,7 +34,8 @@ const NftCard = (props) => {
 
           <div className='owner__info w-70'>
             <h6>Seller</h6>
-            <p>{firstname}<br/>{lastname}</p>
+            <h5>{firstname}</h5>
+            <p>{lastname}</p>
           </div>
         </div>
 
