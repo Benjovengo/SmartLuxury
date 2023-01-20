@@ -78,6 +78,13 @@ const main = async () => {
   transaction = await sellingEscrow.connect(buyer).list(1, 55)
   await transaction.wait()
 
+   // Seller approval
+   transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 2)
+   await transaction.wait()
+   // List product
+   transaction = await sellingEscrow.connect(buyer).list(2, 15)
+   await transaction.wait()
+
   // Seller approval
   transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 7)
   await transaction.wait()
