@@ -1,7 +1,39 @@
 import React from "react";
+import { ethers } from 'ethers';
+
 
 import "./review.css";
 
+// Import ABI
+import FashionToken from '../../../abis/FashionToken.json'
+import SellingEscrow from '../../../abis/SellingEscrow.json'
+import config from '../../../config.json'; // config
+
+/** SETUP ETHERS CONNECTION */
+// Setup provider and network
+let provider = new ethers.providers.Web3Provider(window.ethereum)
+const network = await provider.getNetwork()
+// get signer
+const signer = provider.getSigner();
+// Javascript "version" of the smart contracts
+const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+
+
+/* Function
+  List product for sale
+*/
+const listProduct = async () => {
+  let transaction = await fashionToken.approve(sellingEscrow.address, 4)
+  await transaction.wait()
+  // List product
+  transaction = await sellingEscrow.list(4, 85)
+  await transaction.wait()
+  console.log('Product Listed!')
+}
+
+
+// Default Fee
 let fee = 0.05
 
 const Review = ({ setShowReview }) => {
@@ -43,7 +75,9 @@ const Review = ({ setShowReview }) => {
           <span className="money">5.89 ETH</span>
         </div>
 
-        <button className="place__bid-btn">Confirm</button>
+        {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
+
+        <button onClick={() => listProduct()} className="place__bid-btn">Confirm</button>
       </div>
     </div>
   );

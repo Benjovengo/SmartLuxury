@@ -41,8 +41,8 @@ const Wallet = () => {
   let PRODUCTS__OWNED = PRODUCTS__OWNED__FILE
 
   const reloadData = async () => {
-    console.log('Wallet main page')
-    console.log(await accountData())
+    //console.log('Wallet main page')
+    //console.log(await accountData())
   }
 
   useEffect(() => {
