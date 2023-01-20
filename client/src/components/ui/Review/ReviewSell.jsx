@@ -9,15 +9,6 @@ import FashionToken from '../../../abis/FashionToken.json'
 import SellingEscrow from '../../../abis/SellingEscrow.json'
 import config from '../../../config.json'; // config
 
-/** SETUP ETHERS CONNECTION */
-// Setup provider and network
-let provider = new ethers.providers.Web3Provider(window.ethereum)
-const network = await provider.getNetwork()
-// get signer
-const signer = provider.getSigner();
-// Javascript "version" of the smart contracts
-const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
 
 
 
@@ -32,13 +23,26 @@ const Review = ({ productName, productId, price, setShowReview }) => {
     List product for sale
   */
   const listProduct = async () => {
+    /** SETUP ETHERS CONNECTION */
+    // Setup provider and network
+    let provider = new ethers.providers.Web3Provider(window.ethereum)
+    const network = await provider.getNetwork()
+    // get signer
+    const signer = provider.getSigner();
+    // Javascript "version" of the smart contracts
+    const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
+    const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+
+
+    /** LIST PRODUCT */
     console.log(productId)
-/*     let transaction = await fashionToken.approve(sellingEscrow.address, productId)
+    let transaction = await fashionToken.approve(sellingEscrow.address, 1)
     await transaction.wait()
+    console.log(await fashionToken.totalSupply())
     // List product
-    const totalPrice = (Number(price) + Number(fee))*100
-    transaction = await sellingEscrow.list(productId, totalPrice)
-    await transaction.wait() */
+    //const totalPrice = (Number(price) + Number(fee))*100
+    //transaction = await sellingEscrow.list(1, 123)
+    //await transaction.wait()
     console.log('Product Listed!')
   }
 
