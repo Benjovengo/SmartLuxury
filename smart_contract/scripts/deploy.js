@@ -71,7 +71,8 @@ const main = async () => {
 /*   let productsList = await contacts.getOwned(buyer.address)
   console.log('Products:', productsList) */
 
-  // Seller approval
+  // LIST PRODUCTS
+  /* // Seller approval
   let transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 1)
   await transaction.wait()
   // List product
@@ -91,6 +92,7 @@ const main = async () => {
   // List product
   transaction = await sellingEscrow.connect(buyer).list(7, 155)
   await transaction.wait()
+   */
 
   // DEBUG
 /*   for(let i=1; i<8; i++){
