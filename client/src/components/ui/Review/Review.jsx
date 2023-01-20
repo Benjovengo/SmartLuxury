@@ -1,10 +1,30 @@
 import React from "react";
+import { ethers } from 'ethers';
 
 import "./review.css";
 
+// Import ABI
+import FashionToken from '../../../abis/FashionToken.json'
+import SellingEscrow from '../../../abis/SellingEscrow.json'
+import config from '../../../config.json'; // config
+
+
+/** SETUP ETHERS CONNECTION */
+// Setup provider and network
+let provider = new ethers.providers.Web3Provider(window.ethereum)
+const network = await provider.getNetwork()
+// get signer
+const signer = provider.getSigner();
+// Javascript "version" of the smart contracts
+const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+
+
 let fee = 0.05
 
-const Review = ({ setShowReview }) => {
+
+
+const Review = ({ productName, price, setShowReview }) => {
   return (
     <div className="review__wrapper">
       <div className="single__review">
@@ -16,7 +36,7 @@ const Review = ({ setShowReview }) => {
         <p className="text-light">
           Item
         </p>
-        <p className="money">ITEM NAME</p>
+        <p className="money">{productName}</p>
 
         <p className="text-light">
           Seller's address
@@ -30,7 +50,7 @@ const Review = ({ setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Price</p>
-          <span className="money">5.89 ETH</span>
+          <span className="money">{Number(price) - Number(fee)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
@@ -40,7 +60,7 @@ const Review = ({ setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Total Amount</p>
-          <span className="money">5.89 ETH</span>
+          <span className="money">{Number(price)} ETH</span>
         </div>
 
         <button className="place__bid-btn">Place a Bid</button>

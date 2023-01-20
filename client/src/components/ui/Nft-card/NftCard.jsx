@@ -14,6 +14,21 @@ const NftCard = (props) => {
   const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname} = props.item  
 
   const [showReview, setShowReview] = useState(false);
+  const [productName, setProductName] = useState('Product Title');
+  const [price, setPrice] = useState(1);
+
+    /**Show Reviwew */
+    const reviewSell = () => {
+      setShowReview(true)
+      // name
+      if (title != '') {
+        setProductName(title)
+      }
+      // price
+      if (currentBid != 0) {
+        setPrice(currentBid)
+      }
+    }
 
   return (
     <div className="single__nft__card">
@@ -45,7 +60,7 @@ const NftCard = (props) => {
             <p>{currentBid} ETH</p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
-            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => setShowReview(true)}>Buy</button>
+            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => reviewSell()}>Buy</button>
           </div>
         </div>
 
@@ -62,7 +77,7 @@ const NftCard = (props) => {
             <i className="ri-file-copy-line"></i>
           </button>
 
-          {showReview && <Review setShowReview={setShowReview} />}
+          {showReview && <Review productName={productName} price={price}setShowReview={setShowReview} />}
 
       </div>
 
