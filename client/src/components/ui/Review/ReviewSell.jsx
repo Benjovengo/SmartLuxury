@@ -20,23 +20,29 @@ const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.ad
 const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
 
 
-/* Function
-  List product for sale
-*/
-const listProduct = async () => {
-  let transaction = await fashionToken.approve(sellingEscrow.address, 4)
-  await transaction.wait()
-  // List product
-  transaction = await sellingEscrow.list(4, 85)
-  await transaction.wait()
-  console.log('Product Listed!')
-}
+
 
 
 // Default Fee
 let fee = 0.05
 
-const Review = ({ price, setShowReview }) => {
+const Review = ({ productName, productId, price, setShowReview }) => {
+
+  /* Function
+    List product for sale
+  */
+  const listProduct = async () => {
+    console.log(productId)
+/*     let transaction = await fashionToken.approve(sellingEscrow.address, productId)
+    await transaction.wait()
+    // List product
+    const totalPrice = (Number(price) + Number(fee))*100
+    transaction = await sellingEscrow.list(productId, totalPrice)
+    await transaction.wait() */
+    console.log('Product Listed!')
+  }
+
+
   return (
     <div className="review__wrapper">
       <div className="single__review">
@@ -48,7 +54,7 @@ const Review = ({ price, setShowReview }) => {
         <p className="text-light">
           Item
         </p>
-        <p className="money">ITEM NAME</p>
+        <p className="money">{productName}</p>
 
         <p className="text-light">
           Seller's address
@@ -61,18 +67,18 @@ const Review = ({ price, setShowReview }) => {
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
-          <p className="text-light">Price</p>
+          <p className="text-light">Value to be received after tax</p>
           <span className="money">{price} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
-          <p className="text-light">Service Fee</p>
+          <p className="text-light">Service fee</p>
           <span className="money">{fee} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
-          <p className="text-light">Total Amount</p>
-          <span className="money">5.89 ETH</span>
+          <p className="text-light">Total Price</p>
+          <span className="money">{Number(price) + Number(fee)} ETH</span>
         </div>
 
         {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
