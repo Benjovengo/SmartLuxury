@@ -33,10 +33,6 @@ const listProduct = async (_tokenID, _priceETH) => {
   await transaction.wait()
 }
 
-
-//listProduct(Number(productId), Number(price) + Number(fee))
-
-
 // Default Fee
 let fee = 0.05
 
