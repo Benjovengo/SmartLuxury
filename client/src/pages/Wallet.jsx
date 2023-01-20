@@ -85,7 +85,7 @@ const Wallet = () => {
             <Row className="mt-5">
               {wallet__data.map((item, index) => (
               <Col lg="3" md="4" sm="6" key={index} className="mb-4">
-                <a className="wallet__links" href={item.urlLink}>
+                <a className="wallet__links" href={item.urlLink} target="_blank">
                   <div className="wallet__item">
                     <span>
                       <i className={item.icon}></i>
