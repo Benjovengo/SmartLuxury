@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+//import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
 
@@ -25,8 +25,5 @@ export const sellItem = async (_tokenURI, _serialNumber) => {
    // Mint New Item
   let transaction = await sellingEscrow.connect(signer).register(_tokenURI, _serialNumber)
   await transaction.wait()
-
-  
-
 
 }
