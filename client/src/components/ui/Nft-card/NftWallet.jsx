@@ -10,7 +10,7 @@ import Review from "../Review/ReviewSell";
 
 const NftCard = (props) => {
 
-  const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  ;
+  const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname} = props.item  ;
   const [showReview, setShowReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
   const [price, setPrice] = useState(1);
@@ -55,8 +55,8 @@ const NftCard = (props) => {
           </div>
 
           <div className='owner__info w-70'>
-            <h6>Seller</h6>
-            <p>Sarah Connor</p>
+            <h6>{firstname}</h6>
+            <p>{lastname}</p>
           </div>
         </div>
 

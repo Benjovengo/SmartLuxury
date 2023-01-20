@@ -1,9 +1,8 @@
 import { ethers } from 'ethers';
 
 
-/* Contract */
+/* Contracts */
 import FashionToken from '../abis/FashionToken.json'
-
 import Contacts from '../abis/Contacts.json' // Import ABI
 import config from '../config.json'; // config
 
@@ -20,11 +19,6 @@ const signer = provider.getSigner();
 // Javascript "version" of the smart contracts
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
-
-// DEBUG
-//await contacts.addCustomerItems(accounts[0], 5)
-//await contacts.addCustomerItems(accounts[0], 5)
-// DEBUG END
 
 const totalTokens = await contacts.totalProductsOwned(accounts[0])
 const ownedTokens = await contacts.getOwned(accounts[0])
@@ -49,6 +43,9 @@ const loadTokens = async () => {
 }
 
 async function getBlockchainData() {
+  const userId = await contacts.customerId(accounts[0])
+  const customer = await contacts.customers(userId) 
+
   let productList = await loadTokens()
   let json
   let formatJson
@@ -61,6 +58,8 @@ async function getBlockchainData() {
         description: json.description,
         imgUrl: json.image[0],
         creator: await fashionToken.ownerOf(i+1),
+        firstname: customer[1],
+        lastname: customer[2],
         creatorImg: "../images/ava-01.png",
         currentBid: 100,
         category: json.attributes[0].value
@@ -70,6 +69,13 @@ async function getBlockchainData() {
   console.log('Got data from blockchain.')
   return data
 }
+
+
+/**
+ * mapping(uint256 => Customer) public customers;
+ * mapping(address => uint256) public customerId;
+ * 
+ */
 
 export const PRODUCTS__OWNED__FILE = await getBlockchainData()
 export const accountData = async () => {

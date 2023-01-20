@@ -11,7 +11,7 @@ function copyToClipboard(_Address) {
 
 const NftCard = (props) => {
 
-  const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  
+  const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname} = props.item  
 
   const [showReview, setShowReview] = useState(false);
 
@@ -34,7 +34,7 @@ const NftCard = (props) => {
 
           <div className='owner__info w-70'>
             <h6>Seller</h6>
-            <p>Sarah Connor</p>
+            <p>{firstname}<br/>{lastname}</p>
           </div>
         </div>
 

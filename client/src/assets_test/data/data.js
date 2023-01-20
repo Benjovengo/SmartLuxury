@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 // Import ABIs
 import FashionToken from '../../abis/FashionToken.json'
 import SellingEscrow from '../../abis/SellingEscrow.json'
-
+import Contacts from '../../abis/Contacts.json'
 import config from '../../config.json'; // config
 
 
@@ -22,13 +22,17 @@ import ava06 from "../images/ava-06.png";
 // Setup provider and network
 let provider = new ethers.providers.Web3Provider(window.ethereum)
 const network = await provider.getNetwork()
+const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+// get signer
+const signer = provider.getSigner();
 
 // Javascript "version" of the smart contracts
 // to interact with via Javascript
-const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
 const totalSupply = await fashionToken.totalSupply()
 
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, provider)
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
 
 /* Function
@@ -49,6 +53,9 @@ const loadMetadata = async () => {
 }
 
 async function getData() {
+  const userId = await contacts.customerId(accounts[0])
+  const customer = await contacts.customers(userId) 
+
   let productList = await loadMetadata()
   let json
   let formatJson
@@ -63,6 +70,8 @@ async function getData() {
         description: json.description,
         imgUrl: json.image[0],
         creator: await fashionToken.ownerOf(i+1),
+        firstname: customer[1],
+        lastname: customer[2],
         creatorImg: "../images/ava-01.png",
         currentBid: (Number(await sellingEscrow.purchasePrice(i+1)))/100,
         category: json.attributes[0].value
