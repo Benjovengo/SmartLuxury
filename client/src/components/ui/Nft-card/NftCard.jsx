@@ -17,18 +17,18 @@ const NftCard = (props) => {
   const [productName, setProductName] = useState('Product Title');
   const [price, setPrice] = useState(1);
 
-    /**Show Reviwew */
-    const reviewSell = () => {
-      setShowReview(true)
-      // name
-      if (title != '') {
-        setProductName(title)
-      }
-      // price
-      if (currentBid != 0) {
-        setPrice(currentBid)
-      }
+  /**Show Reviwew */
+  const reviewSell = () => {
+    setShowReview(true)
+    // name
+    if (title != '') {
+      setProductName(title)
     }
+    // price
+    if (currentBid != 0) {
+      setPrice(currentBid)
+    }
+  }
 
   return (
     <div className="single__nft__card">
