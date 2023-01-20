@@ -83,6 +83,10 @@
   color: #fff;
 }
 
+.purchase__label {
+  color: #fff;
+}
+
 
 @media only screen and (max-width: 992px) {
   .single__nft__content h2 {
