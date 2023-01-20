@@ -77,8 +77,8 @@ async function getData() {
 export const NFT__DATA = await getData()
 export const refreshProducts = async () => {
   let resultData = await getData()
-  console.log('data script')
-  console.log(resultData)
+  //console.log('data script')
+  //console.log(resultData)
   return resultData
 }
 //console.log(NFT__DATA)
