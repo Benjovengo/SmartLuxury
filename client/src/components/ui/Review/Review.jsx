@@ -24,12 +24,12 @@ let fee = 0.05
 
 
 
-const Review = ({ productName, price, setShowReview }) => {
+const Review = ({ productName, price, setShowPurchaseReview }) => {
   return (
     <div className="review__wrapper">
       <div className="single__review">
         <span className="close__review">
-          <i className="ri-close-line" onClick={() => setShowReview(false)}></i>
+          <i className="ri-close-line" onClick={() => setShowPurchaseReview(false)}></i>
         </span>
         <h6 className="text-center text-light">Review your purchase</h6>
 

@@ -13,13 +13,13 @@ import "../styles/nft-details.css";
 const NftDetails = () => {
   const { id } = useParams();
 
-  const [showReview, setShowReview] = useState(false);
+  const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
   const [price, setPrice] = useState(1);
 
   /**Show Reviwew */
   const reviewPurchase = () => {
-    setShowReview(true)
+    setShowPurchaseReview(true)
     // name
     if (singleNft.title != '') {
       setProductName(singleNft.title)
@@ -93,7 +93,7 @@ const NftDetails = () => {
                   <span className='purchase__label'>Purchase Item</span>
                 </button>
 
-                {showReview && <Review productName={productName} price={price} setShowReview={setShowReview} />}
+                {showPurchaseReview && <Review productName={productName} price={price} setShowPurchaseReview={setShowPurchaseReview} />}
 
               </div>
             </Col>
