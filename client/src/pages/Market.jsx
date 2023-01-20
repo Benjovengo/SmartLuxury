@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -87,15 +87,21 @@ const Market = () => {
 
 
   // ====== UPDATE PRODUCTS ON LOAD =========
-  const updateProducts = () => {
-    setData(NFT__DATA);
+  const updateProducts = async () => {
+    setData(await refreshProducts());
+    //setData(NFT__DATA);
   }
+
+  useEffect(() => {
+    updateProducts();
+  }, [])
+
 
   return (
     <>
       <CommonSection title={"MarketPlace"} />
 
-      <section onLoad={updateProducts}>
+      <section>
         <Container>
           <Row>
             <Col lg="12" className="mb-5">
