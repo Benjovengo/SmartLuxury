@@ -67,8 +67,9 @@ const main = async () => {
   await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'ia002000324')
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000064')
 
-
-  console.log('Products:', await contacts.getOwned(buyer.address))
+  // DEBUG
+/*   let productsList = await contacts.getOwned(buyer.address)
+  console.log('Products:', productsList) */
 
   // Seller approval
   let transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 1)
@@ -83,6 +84,12 @@ const main = async () => {
   // List product
   transaction = await sellingEscrow.connect(buyer).list(7, 155)
   await transaction.wait()
+
+  // DEBUG
+/*   for(let i=1; i<8; i++){
+    console.log(await sellingEscrow.isListed(i))
+  } */
+  
   // ============================== DEFAULT MINTS ==============================
 
   /* Console Log results */
