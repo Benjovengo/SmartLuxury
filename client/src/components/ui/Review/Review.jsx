@@ -45,7 +45,7 @@ const Review = ({ productName, price, setShowReview }) => {
 
         <div className="input__item mb-3">
           <p className="text-light">Quantity</p>
-          <input type="number" placeholder="Enter quantity" value={1} />
+          <input type="number" placeholder="Enter quantity" defaultValue={1} />
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
@@ -63,7 +63,7 @@ const Review = ({ productName, price, setShowReview }) => {
           <span className="money">{(Number(price)).toFixed(2)} ETH</span>
         </div>
 
-        <button className="place__bid-btn">Place a Bid</button>
+        <button className="place__bid-btn">Confirm Purchase</button>
       </div>
     </div>
   );

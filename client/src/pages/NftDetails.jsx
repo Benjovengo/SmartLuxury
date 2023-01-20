@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -92,6 +92,9 @@ const NftDetails = () => {
                   <i className="ri-shopping-bag-line"></i>
                   <span className='purchase__label'>Purchase Item</span>
                 </button>
+
+                {showReview && <Review productName='teste' price='2' setShowReview={setShowReview} />}
+
               </div>
             </Col>
           </Row>
