@@ -77,7 +77,7 @@ const NftCard = (props) => {
             <i className="ri-file-copy-line"></i>
           </button>
 
-          {showReview && <Review productName={productName} price={price}setShowReview={setShowReview} />}
+          {showReview && <Review productName={productName} price={price} setShowReview={setShowReview} />}
 
       </div>
 
