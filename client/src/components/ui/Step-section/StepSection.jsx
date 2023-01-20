@@ -9,28 +9,28 @@ import "./step-section.css";
 const STEP__DATA = [
   {
     title: "Setup your wallet",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
+    desc: "Never lose an authenticity certificate again. Setup you wallet and use the security of the blockchain to keep your assets safe.",
     icon: "ri-wallet-line",
     link: "/wallet",
   },
 
   {
     title: "Validate your products",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
+    desc: "Forget about counterfeits. You can check if the serial number of a product you want to buy has already been registered and by whom.",
     icon: "ri-layout-masonry-line",
     link: "/register",
   },
 
   {
     title: "Register your products",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
+    desc: "You can register your unregistered products. By doing so, you will contribute for the fashion industry security and prevent theft.",
     icon: "ri-image-line",
     link: "/register",
   },
 
   {
     title: "List them for sale",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi, facilis voluptatum fugit illum ",
+    desc: "Renew your collection and make the fashion world more sustainable. Sell your itens and buy new ones with authenticity guaranteed.",
     icon: "ri-list-check",
     link: "/create",
   },
