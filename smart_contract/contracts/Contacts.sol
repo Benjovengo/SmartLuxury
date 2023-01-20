@@ -11,10 +11,16 @@ pragma solidity ^0.8.17;
         - physical address -> street, city, state, country, PO Box
 */
 
+import "../node_modules/@openzeppelin/contracts/utils/Counters.sol";
+
 contract Contacts {
     /* States */
-    address owner;
-    uint256 userId;
+    using Counters for Counters.Counter; // allow to create an enumerable ERC-721 token
+    Counters.Counter private totalCustomers;
+
+    address public owner;
+    uint256 public userId;
+    uint256 public numberOfCustomers;
 
     struct Customer {
         address ethAccount;
@@ -62,6 +68,8 @@ contract Contacts {
                 _poBox
             );
             customerId[msg.sender] = userId;
+            totalCustomers.increment();
+            numberOfCustomers = totalCustomers.current();
         }
     }
 
