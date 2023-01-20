@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -6,7 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 import "../styles/wallet.css";
 
 import NftCard from "../components/ui/Nft-card/NftWallet";
-import { PRODUCTS__OWNED } from '../scripts/accountNFT'
+import { PRODUCTS__OWNED__FILE, accountData } from '../scripts/accountNFT'
 
 
 
@@ -37,6 +37,20 @@ const wallet__data = [
 ];
 
 const Wallet = () => {
+
+  let PRODUCTS__OWNED = PRODUCTS__OWNED__FILE
+
+  const reloadData = async () => {
+    console.log(await accountData())
+  }
+
+  useEffect(() => {
+    reloadData();
+  }, [])
+
+
+
+
   return (
     <>
       <CommonSection title="Connect Wallet" />
