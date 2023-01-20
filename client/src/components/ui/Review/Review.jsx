@@ -9,6 +9,7 @@ import SellingEscrow from '../../../abis/SellingEscrow.json'
 import config from '../../../config.json'; // config
 
 
+
 /** SETUP ETHERS CONNECTION */
 // Setup provider and network
 let provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -20,11 +21,33 @@ const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.ad
 const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
 
 
+const tokens = (n) => {
+  return ethers.utils.parseUnits(n.toString(), 'ether')
+}
+
+/* Function
+  Buy a product
+*/
+const buyProduct = async (_tokenID, _priceETH) => {
+  console.log('DEBUG')
+
+}
+
+
+
+
+
+// transaction fee
 let fee = 0.05
 
 
+const Review = ({ productName, price, productId, setShowPurchaseReview }) => {
 
-const Review = ({ productName, price, setShowPurchaseReview }) => {
+  const confirmPurchase = () => {
+    buyProduct(Number(productId), Number(price));
+    setShowPurchaseReview(false);
+  }
+
   return (
     <div className="review__wrapper">
       <div className="single__review">
@@ -63,7 +86,7 @@ const Review = ({ productName, price, setShowPurchaseReview }) => {
           <span className="money">{(Number(price)).toFixed(2)} ETH</span>
         </div>
 
-        <button className="place__bid-btn">Confirm Purchase</button>
+        <button className="place__bid-btn" onClick={() => confirmPurchase()}>Confirm Purchase</button>
       </div>
     </div>
   );

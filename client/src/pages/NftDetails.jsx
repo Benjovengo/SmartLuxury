@@ -15,6 +15,7 @@ const NftDetails = () => {
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
+  const [productId, setProductId] = useState(1);
   const [price, setPrice] = useState(1);
 
   /**Show Reviwew */
@@ -23,6 +24,10 @@ const NftDetails = () => {
     // name
     if (singleNft.title != '') {
       setProductName(singleNft.title)
+    }
+    // id
+    if (id > 0) {
+      setProductId(id)
     }
     // price
     if (singleNft.currentBid != 0) {
@@ -93,7 +98,7 @@ const NftDetails = () => {
                   <span className='purchase__label'>Purchase Item</span>
                 </button>
 
-                {showPurchaseReview && <Review productName={productName} price={price} setShowPurchaseReview={setShowPurchaseReview} />}
+                {showPurchaseReview && <Review productName={productName} price={price} productId={productId} setShowPurchaseReview={setShowPurchaseReview} />}
 
               </div>
             </Col>

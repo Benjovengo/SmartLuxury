@@ -15,6 +15,7 @@ const NftCard = (props) => {
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
+  const [productId, setProductId] = useState(1);
   const [price, setPrice] = useState(1);
 
   /**Show Reviwew */
@@ -23,6 +24,10 @@ const NftCard = (props) => {
     // name
     if (title != '') {
       setProductName(title)
+    }
+    // id
+    if (id > 0) {
+      setProductId(id)
     }
     // price
     if (currentBid != 0) {
@@ -77,7 +82,7 @@ const NftCard = (props) => {
             <i className="ri-file-copy-line"></i>
           </button>
 
-          {showPurchaseReview && <Review productName={productName} price={price} setShowPurchaseReview={setShowPurchaseReview} />}
+          {showPurchaseReview && <Review productName={productName} price={price} productId={productId} setShowPurchaseReview={setShowPurchaseReview} />}
 
       </div>
 
