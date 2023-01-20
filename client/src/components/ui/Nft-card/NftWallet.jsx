@@ -6,11 +6,26 @@ import './nft-card-sell.css'
 import Review from "../Review/ReviewSell";
 
 
+
+
 const NftCard = (props) => {
 
-  const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  
-
+  const {title, id, currentBid, creatorImg, imgUrl, creator} = props.item  ;
   const [showReview, setShowReview] = useState(false);
+  const [price, setPrice] = useState(1);
+
+  /**Show Reviwew */
+  const ReviewSell = () => {
+    setShowReview(true)
+    let inputID = `priceInput${id}`
+    let priceResult = document.getElementById(inputID).value
+    console.log(priceResult)
+    if (priceResult != '') {
+      setPrice(priceResult)
+    }
+  }
+
+
 
   return (
     <div className="single__nft__card">
@@ -42,11 +57,12 @@ const NftCard = (props) => {
               <input
                 type="number" step="0.01"
                 placeholder="Price (ETH)"
+               id={`priceInput${id}`}
               />
           </div>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
-            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => setShowReview(true)}>Sell</button>
+            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
           </div>
         </div>
 
@@ -63,7 +79,7 @@ const NftCard = (props) => {
           <i className="ri-file-copy-line"></i>
         </button>
 
-        {showReview && <Review setShowReview={setShowReview} />}
+        {showReview && <Review price={price} setShowReview={setShowReview} />}
 
       </div>
 

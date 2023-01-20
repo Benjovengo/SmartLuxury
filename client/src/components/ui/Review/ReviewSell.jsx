@@ -36,7 +36,7 @@ const listProduct = async () => {
 // Default Fee
 let fee = 0.05
 
-const Review = ({ setShowReview }) => {
+const Review = ({ price, setShowReview }) => {
   return (
     <div className="review__wrapper">
       <div className="single__review">
@@ -62,7 +62,7 @@ const Review = ({ setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Price</p>
-          <span className="money">5.89 ETH</span>
+          <span className="money">{price} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
