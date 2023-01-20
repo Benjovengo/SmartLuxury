@@ -17,7 +17,9 @@ const LiveAuction = () => {
             <div className="live_auction__top d-flex align-items center justify-content-between">
               <h3>Recently Added</h3>
               <span className='explore__more'>
-                <button className="explore__btn d-flex align-items-center gap-2">More Items</button>
+                <button className="explore__btn d-flex align-items-center gap-2">
+                  <Link to='/market'>More Items</Link>
+                </button>
               </span>
             </div>
           </Col>
