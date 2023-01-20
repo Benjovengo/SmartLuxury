@@ -18,6 +18,15 @@ import ava05 from "../assets_test/images/ava-05.png";
 import ava06 from "../assets_test/images/ava-06.png";
 
 
+//addingOverlay = document.getElementById('addAvatarOverlay');
+
+const overlay = () => {
+  addingOverlay = document.getElementById('addAvatarOverlay');
+  addingOverlay.classList.add('animateAdingOverlay');
+}
+
+
+
 const Account = () => {
   // Hooks
   const firstNameRef = useRef("");
@@ -42,7 +51,6 @@ const Account = () => {
 
   const [avatarUrl, setAvatarUrl] = useState("");
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     addAccount(e.target.firstName.value, e.target.lastName.value, avatarUrl, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
@@ -90,7 +98,7 @@ const Account = () => {
                 <h4>Preview</h4>
                 <Row>
                   <Col>
-                    <img src={ava05} alt="" id="account_avatar" className="w-100 preview__avatar" title="Change avatar" onClick={()=> {addingOverlay.classList.add('animateAdingOverlay');}}/>
+                    <img src={ava05} alt="" id="account_avatar" className="w-100 preview__avatar" title="Change avatar" onClick={()=> overlay()}/>
                   </Col>
                   <Col className="m-auto preview__card">
                     <p id="first_name">First name</p>
@@ -187,6 +195,5 @@ const Account = () => {
 }
 
 export default Account
-
 
 let addingOverlay = document.getElementById('addAvatarOverlay');
