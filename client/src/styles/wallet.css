@@ -31,3 +31,7 @@
   font-size: 0.8rem;
   line-height: 28px;
 }
+
+.wallet__links {
+  text-decoration: none;
+}
