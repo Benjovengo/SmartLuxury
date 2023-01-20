@@ -50,7 +50,7 @@ const Review = ({ productName, price, setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Price</p>
-          <span className="money">{Number(price) - Number(fee)} ETH</span>
+          <span className="money">{(Number(price) - Number(fee)).toFixed(2)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
@@ -60,7 +60,7 @@ const Review = ({ productName, price, setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Total Amount</p>
-          <span className="money">{Number(price)} ETH</span>
+          <span className="money">{(Number(price)).toFixed(2)} ETH</span>
         </div>
 
         <button className="place__bid-btn">Place a Bid</button>

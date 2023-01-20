@@ -37,7 +37,7 @@ const NftCard = (props) => {
         <div className="price__info d-flex align-items-center justify-content-between">
           <div className='w-50'>
             <h6>Price</h6>
-            <p>{currentBid} ETH</p>
+            <p>{(Number(currentBid)).toFixed(2)} ETH</p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
             <button className="bid__btn d-flex align-items-center gap-2">Buy</button>

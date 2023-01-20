@@ -68,17 +68,17 @@ const Review = ({ productName, productId, price, setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Value to be received after tax</p>
-          <span className="money">{price} ETH</span>
+          <span className="money">{(Number(price)).toFixed(2)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Service fee</p>
-          <span className="money">{fee} ETH</span>
+          <span className="money">{(fee).toFixed(2)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Total Price</p>
-          <span className="money">{Number(price) + Number(fee)} ETH</span>
+          <span className="money">{(Number(price) + Number(fee)).toFixed(2)} ETH</span>
         </div>
 
         {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
