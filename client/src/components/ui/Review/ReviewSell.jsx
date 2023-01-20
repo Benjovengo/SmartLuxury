@@ -11,6 +11,29 @@ import config from '../../../config.json'; // config
 
 
 
+/** SETUP ETHERS CONNECTION */
+// Setup provider and network
+let provider = new ethers.providers.Web3Provider(window.ethereum)
+const network = await provider.getNetwork()
+// get signer
+const signer = provider.getSigner();
+// Javascript "version" of the smart contracts
+const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+
+
+/* Function
+  List product for sale
+*/
+const listProduct = async (_tokenID, _priceETH) => {
+  let transaction = await fashionToken.approve(sellingEscrow.address, _tokenID)
+  await transaction.wait()
+  // List product
+  transaction = await sellingEscrow.list(_tokenID, _priceETH*100)
+  await transaction.wait()
+}
+
+
 
 
 
@@ -18,35 +41,6 @@ import config from '../../../config.json'; // config
 let fee = 0.05
 
 const Review = ({ productName, productId, price, setShowReview }) => {
-
-  /* Function
-    List product for sale
-  */
-  const listProduct = async () => {
-    /** SETUP ETHERS CONNECTION */
-    // Setup provider and network
-    let provider = new ethers.providers.Web3Provider(window.ethereum)
-    const network = await provider.getNetwork()
-    // get signer
-    const signer = provider.getSigner();
-    // Javascript "version" of the smart contracts
-    const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
-    const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
-
-
-    /** LIST PRODUCT */
-    console.log(productId)
-    let transaction = await fashionToken.approve(sellingEscrow.address, 1)
-    await transaction.wait()
-    console.log(await fashionToken.totalSupply())
-    // List product
-    //const totalPrice = (Number(price) + Number(fee))*100
-    //transaction = await sellingEscrow.list(1, 123)
-    //await transaction.wait()
-    console.log('Product Listed!')
-  }
-
-
   return (
     <div className="review__wrapper">
       <div className="single__review">
@@ -87,7 +81,7 @@ const Review = ({ productName, productId, price, setShowReview }) => {
 
         {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
 
-        <button onClick={() => listProduct()} className="place__bid-btn">Confirm</button>
+        <button onClick={() => listProduct(Number(productId), Number(price) + Number(fee))} className="place__bid-btn">Confirm</button>
       </div>
     </div>
   );
