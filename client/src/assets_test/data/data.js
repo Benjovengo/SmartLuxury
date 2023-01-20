@@ -65,7 +65,7 @@ async function getData() {
         imgUrl: json.image[0],
         creator: await fashionToken.ownerOf(i+1),
         creatorImg: "../images/ava-01.png",
-        currentBid: (Number(await sellingEscrow.purchasePrice(i)))/100
+        currentBid: (Number(await sellingEscrow.purchasePrice(i+1)))/100
       }
       data.push(formatJson)
     }
@@ -78,7 +78,7 @@ export const NFT__DATA = await getData()
 export const refreshProducts = async () => {
   return await getData()
 }
-//console.log(NFT__DATA)
+console.log(NFT__DATA)
 
 
 export const SELLER__DATA = [
