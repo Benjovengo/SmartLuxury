@@ -34,13 +34,18 @@ const listProduct = async (_tokenID, _priceETH) => {
 }
 
 
-
+//listProduct(Number(productId), Number(price) + Number(fee))
 
 
 // Default Fee
 let fee = 0.05
 
 const Review = ({ productName, productId, price, setShowReview }) => {
+  
+  const confirmSelling = () => {
+    listProduct(Number(productId), Number(price) + Number(fee));
+  }
+
   return (
     <div className="review__wrapper">
       <div className="single__review">
@@ -81,7 +86,7 @@ const Review = ({ productName, productId, price, setShowReview }) => {
 
         {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
 
-        <button onClick={() => listProduct(Number(productId), Number(price) + Number(fee))} className="place__bid-btn">Confirm</button>
+        <button onClick={() => confirmSelling()} className="place__bid-btn">Confirm</button>
       </div>
     </div>
   );
