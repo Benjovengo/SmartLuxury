@@ -13,13 +13,13 @@ const NftCard = (props) => {
 
   const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname} = props.item  
 
-  const [showReview, setShowReview] = useState(false);
+  const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
   const [price, setPrice] = useState(1);
 
   /**Show Reviwew */
   const reviewSell = () => {
-    setShowReview(true)
+    setShowPurchaseReview(true)
     // name
     if (title != '') {
       setProductName(title)
@@ -77,7 +77,7 @@ const NftCard = (props) => {
             <i className="ri-file-copy-line"></i>
           </button>
 
-          {showReview && <Review productName={productName} price={price} setShowReview={setShowReview} />}
+          {showPurchaseReview && <Review productName={productName} price={price} setShowPurchaseReview={setShowPurchaseReview} />}
 
       </div>
 
