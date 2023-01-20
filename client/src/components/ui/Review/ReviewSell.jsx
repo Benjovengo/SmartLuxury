@@ -25,7 +25,7 @@ const Review = ({ setShowReview }) => {
 
         <div className="input__item mb-3">
           <p className="text-light">Quantity</p>
-          <input type="number" placeholder="Enter quantity" value={1} />
+          <input type="number" placeholder="Enter quantity" defaultValue={1} />
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
