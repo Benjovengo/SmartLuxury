@@ -97,7 +97,7 @@ const Create = () => {
                         <select id="category" name="category">
                           <option value="bag">Bag</option>
                           <option value="shoe">Shoe</option>
-                          <option value="jewel">Jewel</option>
+                          <option value="jewel">Jewelry</option>
                           <option value="eyewear">Eyewear</option>
                           <option value="accessory">Accessory</option>
                           <option value="watch">Watch</option>
