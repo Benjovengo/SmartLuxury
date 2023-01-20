@@ -13,6 +13,23 @@ import "../styles/nft-details.css";
 const NftDetails = () => {
   const { id } = useParams();
 
+  const [showReview, setShowReview] = useState(false);
+  const [productName, setProductName] = useState('Product Title');
+  const [price, setPrice] = useState(1);
+
+  /**Show Reviwew */
+  const reviewPurchase = () => {
+    setShowReview(true)
+    // name
+    if (singleNft.title != '') {
+      setProductName(singleNft.title)
+    }
+    // price
+    if (singleNft.currentBid != 0) {
+      setPrice(singleNft.currentBid)
+    }
+  }
+
   const singleNft = NFT__DATA.find((item) => item.id === id);
 
   return (
@@ -71,9 +88,9 @@ const NftDetails = () => {
 
                 <p>Price: {singleNft.currentBid}</p>
 
-                <button className="singleNft-btn d-flex align-items-center gap-2 ">
+                <button className="singleNft-btn d-flex align-items-center gap-2" onClick={() => reviewPurchase()}>
                   <i className="ri-shopping-bag-line"></i>
-                  <Link to="/wallet">Purchase Item</Link>
+                  <span className='purchase__label'>Purchase Item</span>
                 </button>
               </div>
             </Col>
