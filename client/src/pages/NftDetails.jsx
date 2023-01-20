@@ -86,14 +86,14 @@ const NftDetails = () => {
 
                 <p className="my-4">{singleNft.description}</p>
 
-                <p>Price: {singleNft.currentBid}</p>
+                <p>Price: {Number(singleNft.currentBid).toFixed(2)} ETH</p>
 
                 <button className="singleNft-btn d-flex align-items-center gap-2" onClick={() => reviewPurchase()}>
                   <i className="ri-shopping-bag-line"></i>
                   <span className='purchase__label'>Purchase Item</span>
                 </button>
 
-                {showReview && <Review productName='teste' price='2' setShowReview={setShowReview} />}
+                {showReview && <Review productName={productName} price={price} setShowReview={setShowReview} />}
 
               </div>
             </Col>
