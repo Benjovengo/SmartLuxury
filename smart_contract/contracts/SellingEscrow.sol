@@ -13,6 +13,7 @@ contract SellingEscrow is IERC721Receiver {
     address payable public seller;
     address public oracle;
     address public contacts;
+    uint256 private fee = 5;
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
