@@ -148,6 +148,19 @@
   "type": "function"
  },
  {
+  "inputs": [],
+  "name": "deployer",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
   "inputs": [
    {
     "internalType": "uint256",
