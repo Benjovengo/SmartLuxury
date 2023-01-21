@@ -76,7 +76,6 @@ async function getData() {
         currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
-      console.log('Index: ', json.id, ' -- Price: ', Number(await sellingEscrow.purchasePrice(productID)))
       data.push(formatJson)
     }
   }
