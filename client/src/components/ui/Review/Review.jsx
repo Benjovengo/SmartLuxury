@@ -47,8 +47,8 @@ const buyProduct = async (_tokenID, _priceETH) => {
 
 
 
-// transaction fee
-let fee = 0.05
+// Default Fee (not in percentage)
+let fee = 0.05 // = 5%
 
 
 const Review = ({ productName, price, productId, setShowPurchaseReview }) => {
@@ -83,12 +83,12 @@ const Review = ({ productName, price, productId, setShowPurchaseReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Price</p>
-          <span className="money">{(Number(price) - Number(fee)).toFixed(2)} ETH</span>
+          <span className="money">{(Number(price) * (1 - Number(fee))).toFixed(2)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Service Fee</p>
-          <span className="money">{fee} ETH</span>
+          <span className="money">{fee * Number(price)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">

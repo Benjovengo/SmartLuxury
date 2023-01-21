@@ -33,13 +33,13 @@ const listProduct = async (_tokenID, _priceETH) => {
   await transaction.wait()
 }
 
-// Default Fee
-let fee = 0.05
+// Default Fee (not in percentage)
+let fee = 0.05 // = 5%
 
 const Review = ({ productName, productId, price, setShowReview }) => {
   
   const confirmSelling = () => {
-    listProduct(Number(productId), Number(price) + Number(fee));
+    listProduct(Number(productId), Number(price)/(1-fee));
     setShowReview(false);
   }
 
@@ -73,12 +73,12 @@ const Review = ({ productName, productId, price, setShowReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Service fee</p>
-          <span className="money">{(fee).toFixed(2)} ETH</span>
+          <span className="money">{(Number(price)*fee/(1-fee)).toFixed(2)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Total Price</p>
-          <span className="money">{(Number(price) + Number(fee)).toFixed(2)} ETH</span>
+          <span className="money">{(Number(price)/(1-fee)).toFixed(2)} ETH</span>
         </div>
 
         {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
