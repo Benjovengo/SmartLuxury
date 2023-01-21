@@ -13,16 +13,12 @@ const NAV__LINKS = [
     url:'/market'
   },
   {
-    display:'Register',
+    display:'Add Product',
     url:'/create'
   },
   {
     display:'Wallet',
     url:'/wallet'
-  },
-  {
-    display:'Contact',
-    url:'/contact'
   },
   {
     display:'Account',
