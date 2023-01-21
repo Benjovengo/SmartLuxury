@@ -119,6 +119,19 @@
   "inputs": [
    {
     "internalType": "uint256",
+    "name": "_nftID",
+    "type": "uint256"
+   }
+  ],
+  "name": "approveTransfer",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
     "name": "",
     "type": "uint256"
    }
@@ -384,6 +397,19 @@
   "outputs": [
    {
     "internalType": "address payable",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "tokenOwner",
+  "outputs": [
+   {
+    "internalType": "address",
     "name": "",
     "type": "address"
    }
