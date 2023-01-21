@@ -39,7 +39,7 @@ let fee = 0.05
 const Review = ({ productName, productId, price, setShowReview }) => {
   
   const confirmSelling = () => {
-    listProduct(Number(productId), Math.round(Number(price)*(1+fee)*100)/100 );
+    listProduct(Number(productId), Math.round((Number(price)/(1-fee))*100)/100 );
     setShowReview(false);
   }
 
