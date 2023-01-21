@@ -29,10 +29,10 @@ const tokens = (n) => {
   Buy a product
 */
 const buyProduct = async (_tokenID, _priceETH) => {
-  //let transaction = await sellingEscrow.depositEarnest(_tokenID, { value: tokens(_priceETH) })
-  //await transaction.wait()
+  let transaction = await sellingEscrow.depositEarnest(_tokenID, { value: tokens(_priceETH) })
+  await transaction.wait()
 
-  let transaction = await sellingEscrow.unlist(_tokenID)
+  transaction = await sellingEscrow.unlist(_tokenID)
   await transaction.wait()
 
   console.log(await sellingEscrow.isListed(_tokenID))
