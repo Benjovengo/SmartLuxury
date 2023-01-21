@@ -157,11 +157,14 @@ contract SellingEscrow is IERC721Receiver {
         //require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by the buyer
         //require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
         //require(approval[_nftID][oracle]); // transaction approved by the delivery service
-        //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
+        require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         // Transfer ether to the seller (from the OracleEscrow contract)
-        //uint256 sellValue = address(this).balance;
-        uint256 afterFee = address(this).balance;
+        /* uint256 afterFee = address(this).balance;
+        (bool success, ) = payable(nftSeller[_nftID]).call{value: afterFee}(""); */
+
+        uint256 afterFee = uint256(purchasePrice[_nftID]) *
+            uint256(10 * 10**16);
         (bool success, ) = payable(nftSeller[_nftID]).call{value: afterFee}("");
         /* 
         require(success, "Unsuccessful transfer of funds to the seller."); */
