@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 import "./review.css";
 
 // Import ABI
-//import FashionToken from '../../../abis/FashionToken.json'
+import FashionToken from '../../../abis/FashionToken.json'
 import SellingEscrow from '../../../abis/SellingEscrow.json'
 import config from '../../../config.json'; // config
 
@@ -17,7 +17,7 @@ const network = await provider.getNetwork()
 // get signer
 const signer = provider.getSigner();
 // Javascript "version" of the smart contracts
-//const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
+const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
 const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
 
 
@@ -32,11 +32,14 @@ const buyProduct = async (_tokenID, _priceETH) => {
   let transaction = await sellingEscrow.depositEarnest(_tokenID, { value: tokens(_priceETH) })
   await transaction.wait()
 
+  transaction = await sellingEscrow.approveTransfer(_tokenID)
+  await transaction.wait()
+
   transaction = await sellingEscrow.unlist(_tokenID)
   await transaction.wait()
 
   console.log(await sellingEscrow.isListed(_tokenID))
-  console.log(await sellingEscrow.nftSeller(_tokenID))
+  console.log(await sellingEscrow.tokenOwner())
 
   //transaction = await sellingEscrow.approveSale(_tokenID)
   //await transaction.wait()

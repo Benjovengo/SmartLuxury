@@ -104,6 +104,10 @@ contract SellingEscrow is IERC721Receiver {
         emit productListed(true);
     }
 
+    function approveTransfer(uint256 _nftID) public {
+        fashionToken.approve(msg.sender, _nftID);
+    }
+
     function unlist(uint256 _nftID) public {
         require(
             nftSeller[_nftID] == msg.sender,
@@ -111,11 +115,13 @@ contract SellingEscrow is IERC721Receiver {
         );
 
         // Transfer the NFT back from this contract to seller
-        /*         IERC721(nftAddress).safeTransferFrom(address(this), msg.sender, _nftID);
-         */
+        IERC721(nftAddress).safeTransferFrom(address(this), msg.sender, _nftID);
 
+        // update listing and ownership status
         isListed[_nftID] = false; // list product with ID=_nftID
         nftSeller[_nftID] = msg.sender;
+
+        // broadcast product unlisted
         emit productUnlisted(true);
     }
 
