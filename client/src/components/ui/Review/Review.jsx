@@ -38,8 +38,8 @@ const buyProduct = async (_tokenID, _priceETH) => {
   transaction = await sellingEscrow.finalizeSale(_tokenID)
   await transaction.wait()
 
-  console.log(Number(await sellingEscrow.purchasePrice(_tokenID)))
-  console.log(Number(await sellingEscrow.getBalance()))
+  //console.log(Number(await sellingEscrow.purchasePrice(_tokenID)))
+  //console.log(Number(await sellingEscrow.getBalance()))
 
 }
 
@@ -83,12 +83,12 @@ const Review = ({ productName, price, productId, setShowPurchaseReview }) => {
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Price</p>
-          <span className="money">{(Number(price) - Number(fee)).toFixed(2)} ETH</span>
+          <span className="money">{(Number(price) * (1- Number(fee)) ).toFixed(2)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
           <p className="text-light">Service Fee</p>
-          <span className="money">{fee} ETH</span>
+          <span className="money">{(Number(price)*(fee/(1-fee))).toFixed(2)} ETH</span>
         </div>
 
         <div className=" d-flex align-items-center justify-content-between">
