@@ -193,7 +193,7 @@ describe('Selling Escrow', () => {
     })
 
     it('Updates oracle contract balance', async () => {
-      expect(await sellingEscrow.getBalance()).to.be.equal(0)
+      expect(await sellingEscrow.getBalance()).to.be.equal(tokens(0.75))
     })
   })
 

@@ -160,7 +160,9 @@ contract SellingEscrow is IERC721Receiver {
 
         // Transfer ether to the seller (from the OracleEscrow contract)
         //uint256 sellValue = address(this).balance;
-        uint256 afterFee = uint256(uint256(105) / uint256(2));
+        uint256 afterFee = uint256(
+            (address(this).balance / uint256(100)) * uint256(95)
+        );
         (bool success, ) = payable(nftSeller[_nftID]).call{value: afterFee}("");
         /* 
         require(success, "Unsuccessful transfer of funds to the seller."); */
