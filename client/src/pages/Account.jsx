@@ -7,7 +7,7 @@ import "../styles/account.css"
 
 
 import { addAccount } from "../scripts/addAccount";
-import { getCustomerData } from "../scripts/GetAccountInfo";
+import { getCustomerData } from "../scripts/getAccountInfo";
 
 // Provisory Data
 import ava01 from "../assets_test/images/ava-01.png";
