@@ -42,14 +42,13 @@ const loadMetadata = async () => {
 
   const products = []
 
-  for (var i = 1; i <= totalSupply; i++) {
+  for (var i = 1; i <= Number(totalSupply); i++) {
     const uri = await fashionToken.tokenURI(i)
     const response = await fetch(uri)
     const metadata = await response.json()
     products.push(metadata)
   }
   return products
-
 }
 
 async function getData() {
@@ -61,8 +60,8 @@ async function getData() {
   let formatJson
   let data = []
   for(let i=0; i < productList.length; i++){
-    if (await sellingEscrow.isListed(i+1)) {
-      json = await productList[i]
+    json = await productList[i]
+    if (await sellingEscrow.isListed(Number(json.id))) {
       formatJson = {
         id: json.id,
         title: json.name,
@@ -77,7 +76,6 @@ async function getData() {
       }
       data.push(formatJson)
     }
-    
   }
   return data
 }
