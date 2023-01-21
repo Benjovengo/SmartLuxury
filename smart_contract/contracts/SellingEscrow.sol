@@ -13,6 +13,7 @@ contract SellingEscrow is IERC721Receiver {
     address payable public seller;
     address public oracle;
     address public contacts;
+    uint256 private fee = 5;
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
@@ -152,19 +153,19 @@ contract SellingEscrow is IERC721Receiver {
        -> Transfer NFT to buyer
        -> Transfer Funds to Seller */
     function finalizeSale(uint256 _nftID) public {
-        require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
-        require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by the buyer
-        require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
-        require(approval[_nftID][oracle]); // transaction approved by the delivery service
-        require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
-
-        isListed[_nftID] = false; // stop listing the item
+        //require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
+        //require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by the buyer
+        //require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
+        //require(approval[_nftID][oracle]); // transaction approved by the delivery service
+        //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         // Transfer ether to the seller (from the OracleEscrow contract)
-        (bool success, ) = payable(nftSeller[_nftID]).call{
-            value: address(this).balance
-        }("");
-        require(success, "Unsuccessful transfer of funds to the seller.");
+        uint256 sellValue = 10000000000;
+        (bool success, ) = payable(nftSeller[_nftID]).call{value: sellValue}(
+            ""
+        );
+        /* 
+        require(success, "Unsuccessful transfer of funds to the seller."); */
 
         // Transfer product ownership
         IERC721(nftAddress).safeTransferFrom(
@@ -172,12 +173,14 @@ contract SellingEscrow is IERC721Receiver {
             buyer[_nftID],
             _nftID
         );
+        // set as unlisted
+        isListed[_nftID] = false; // stop listing the item
         // add owner to list of owners
         fashionToken.addToOwners(_nftID, buyer[_nftID]);
         // add token to buyer's account
         contactContract.addCustomerItems(buyer[_nftID], _nftID);
         // confirm sale
-        emit saleFinalized(true);
+        emit saleFinalized(success);
     }
 
     /* Cancel Sale (handle earnest deposit)

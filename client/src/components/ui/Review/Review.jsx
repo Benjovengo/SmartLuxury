@@ -35,14 +35,12 @@ const buyProduct = async (_tokenID, _priceETH) => {
   transaction = await sellingEscrow.approveTransfer(_tokenID)
   await transaction.wait()
 
-  transaction = await sellingEscrow.unlist(_tokenID)
+  transaction = await sellingEscrow.finalizeSale(_tokenID)
   await transaction.wait()
 
-  console.log(await sellingEscrow.isListed(_tokenID))
-  console.log(await sellingEscrow.tokenOwner())
+  console.log(Number(await sellingEscrow.purchasePrice(_tokenID)))
+  console.log(Number(await sellingEscrow.getBalance()))
 
-  //transaction = await sellingEscrow.approveSale(_tokenID)
-  //await transaction.wait()
 }
 
 
