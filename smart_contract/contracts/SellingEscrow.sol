@@ -164,7 +164,9 @@ contract SellingEscrow is IERC721Receiver {
         require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         // Transfer ether to the seller (from the SellingEscrow contract)
-        uint256 afterFee = 50 * (10**18);
+        uint256 afterFee = uint256(purchasePrice[_nftID]) *
+            uint256(95) *
+            (10**14);
         (bool success, ) = payable(nftSeller[_nftID]).call{value: afterFee}("");
         require(success, "Unsuccessful transfer of funds to the seller.");
 
