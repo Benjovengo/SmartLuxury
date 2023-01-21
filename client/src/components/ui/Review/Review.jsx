@@ -45,6 +45,8 @@ const buyProduct = async (_tokenID, _priceETH) => {
 
   console.log('Selling Escrow balance: ', Number(await sellingEscrow.getBalance()))
   console.log('Deployer address: ', Number(await fashionToken.deployer()))
+  console.log('Transfer back: ', Number(await sellingEscrow.transfer01()))
+  console.log('Transfer to deployer: ', Number(await sellingEscrow.transfer02()))
   
 }
 

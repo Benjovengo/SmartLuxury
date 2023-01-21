@@ -405,6 +405,32 @@
   "type": "function"
  },
  {
+  "inputs": [],
+  "name": "transfer01",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "transfer02",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
   "inputs": [
    {
     "internalType": "uint256",
