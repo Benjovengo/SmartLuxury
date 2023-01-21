@@ -13,7 +13,6 @@ contract SellingEscrow is IERC721Receiver {
     address payable public seller;
     address public oracle;
     address public contacts;
-    uint256 private fee = 5;
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
@@ -160,7 +159,7 @@ contract SellingEscrow is IERC721Receiver {
         //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         // Transfer ether to the seller (from the OracleEscrow contract)
-        uint256 sellValue = 10000000000;
+        uint256 sellValue = address(this).balance;
         (bool success, ) = payable(nftSeller[_nftID]).call{value: sellValue}(
             ""
         );
