@@ -35,7 +35,7 @@ const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
 
-/* Function
+/* LOAD METADATA FUNCTIONS
   Load metadata from deployed contract
 */
 const loadMetadata = async () => {
@@ -59,36 +59,48 @@ async function getData() {
   let json
   let formatJson
   let data = []
+  let productID
   for(let i=0; i < productList.length; i++){
     json = await productList[i]
-    if (await sellingEscrow.isListed(Number(json.id))) {
+    productID = Number(json.id)
+    if (await sellingEscrow.isListed(productID)) {
       formatJson = {
         id: json.id,
         title: json.name,
         description: json.description,
         imgUrl: json.image[0],
-        creator: await fashionToken.ownerOf(i+1),
+        creator: await fashionToken.ownerOf(productID),
         firstname: customer[1],
         lastname: customer[2],
         creatorImg: "../images/ava-01.png",
-        currentBid: (Number(await sellingEscrow.purchasePrice(i+1)))/100,
+        currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
+      console.log('Index: ', json.id, ' -- Price: ', Number(await sellingEscrow.purchasePrice(productID)))
       data.push(formatJson)
     }
   }
   return data
 }
 
+
+
+
+/** DATA
+ * get metadata for the products from the blockchain
+ */
 export const NFT__DATA = await getData()
 export const refreshProducts = async () => {
   let resultData = await getData()
-  //console.log('data script')
-  //console.log(resultData)
   return resultData
 }
 
 
+
+
+/** SELLER DATA
+ * get contacts info
+ */
 export const SELLER__DATA = [
   {
     id: "01",
