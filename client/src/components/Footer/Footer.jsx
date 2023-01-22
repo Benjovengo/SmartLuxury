@@ -72,7 +72,7 @@ const Footer = () => {
                   <img src='SmartLuxuryColorLogo.svg' alt='smart luxury logo' className='img__logo' ></img>
                 </span>
               </h2>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident exercitationem porro autem perspiciatis voluptates dolor quisquam vitae ipsam optio eligendi!</p>
+              <p>This project uses the Goerli test network. To use its functionalities you may need to get some ether for that network. If so, one option is to use <a href="goerlifaucet.com/">Goerli Faucet</a> to get some ethers.</p>
             </div>
           </Col>
 
@@ -114,31 +114,35 @@ const Footer = () => {
             <input type="text" className="newsletter" placeholder="Email" />
             <div className="social__links d-flex gap-3 align-items-center ">
               <span>
-                <Link to="#">
+                <a href="https://www.facebook.com" target="_blank">
                   <i className="ri-facebook-line"></i>
-                </Link>
+                </a>
               </span>
               <span>
-                <Link to="#">
+                <a href="https://www.instagram.com" target="_blank">
                   <i className="ri-instagram-line"></i>
-                </Link>
+                </a>
               </span>
               <span>
-                <Link to="#">
+                <a href="https://www.twitter.com" target="_blank">
                   <i className="ri-twitter-line"></i>
-                </Link>
+                </a>
               </span>
               <span>
-                <Link to="#">
+                <a href="https://web.telegram.org" target="_blank">
                   <i className="ri-telegram-line"></i>
-                </Link>
+                </a>
               </span>
               <span>
-                <Link to="#">
+                <a href="https://discord.com" target="_blank">
                   <i className="ri-discord-line"></i>
-                </Link>
+                </a>
               </span>
             </div>
+          </Col>
+
+          <Col lg='12' className='mt-4 text-center'>
+            <p><b>Atention!!!</b> Smart Luxury is a fictitious brand. Don't use it to sell real products.</p>
           </Col>
 
           <Col lg='12' className='mt-4 text-center'>
