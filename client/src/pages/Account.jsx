@@ -60,7 +60,7 @@ const Account = () => {
   })
   
 
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState(avatar01);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -116,7 +116,7 @@ const Account = () => {
                 <h4>Preview</h4>
                 <Row>
                   <Col>
-                    <img src={ava05} alt="" id="account_avatar" className="w-100 preview__avatar" title="Change avatar" onClick={()=> overlay()}/>
+                    <img src={ava01} alt="" id="account_avatar" className="w-100 preview__avatar" title="Change avatar" onClick={()=> overlay()}/>
                   </Col>
                   <Col className="m-auto preview__card">
                     <p id="first_name">First name</p>
