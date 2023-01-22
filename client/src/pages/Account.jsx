@@ -18,14 +18,23 @@ import ava05 from "../assets_test/images/ava-05.png";
 import ava06 from "../assets_test/images/ava-06.png";
 
 
-//addingOverlay = document.getElementById('addAvatarOverlay');
-
 const overlay = () => {
-  console.log('DEBUG - OVERLAY FUNCTION')
   addingOverlay = document.getElementById('addAvatarOverlay');
   addingOverlay.classList.remove('animateRemovingOverlay');
   addingOverlay.classList.add('animateAddingOverlay');
 }
+
+// Validate email field
+function ValidateEmail(mail)
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+
 
 
 
@@ -55,7 +64,7 @@ const Account = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addAccount(e.target.firstName.value, e.target.lastName.value, avatarUrl, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
+
     //getAccountInfo();
     document.getElementById('first_name').innerHTML = e.target.firstName.value;
     document.getElementById('last_name').innerHTML = e.target.lastName.value;
@@ -63,6 +72,10 @@ const Account = () => {
     document.getElementById('physical_address').innerHTML = e.target.physicalAddress.value;
     document.getElementById('po_box').innerHTML = e.target.poBox.value;
     document.getElementById('account_avatar').src = avatarUrl
+
+    if (ValidateEmail(document.getElementById('email_address').innerHTML)){
+      addAccount(e.target.firstName.value, e.target.lastName.value, avatarUrl, e.target.email.value, e.target.physicalAddress.value, e.target.poBox.value);
+    }
   };
 
 
