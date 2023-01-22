@@ -26,7 +26,17 @@ export const newMessage = async (_name, _email, _subject, _body) => {
 /** Get messages */
 export const myMessages = async () => {
   const numberOfSenders = Number(await messages.numberOfUsers())
-  await messages.notNew(1)
-  console.log(Number(numberOfSenders))
-  console.log(await messages.allMessages(1))
+  let isNew
+  let readMessages = []
+  let individualMessage
+  
+  for (let i=1; i<=numberOfSenders; i++){
+    isNew = await messages.isNew(i)
+    if (isNew) {
+      individualMessage = await messages.allMessages(i)
+      readMessages.push(individualMessage)
+      await messages.notNew(i)
+    }
+  }
+  console.log(readMessages)
 }
