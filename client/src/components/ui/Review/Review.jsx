@@ -42,12 +42,6 @@ const buyProduct = async (_tokenID, _priceETH) => {
   //  - transfer the ownership to the buyer
   transaction = await sellingEscrow.finalizeSale(_tokenID)
   await transaction.wait()
-
-  console.log('Selling Escrow balance: ', Number(await sellingEscrow.getBalance()))
-  console.log('Deployer address: ', Number(await fashionToken.deployer()))
-  console.log('Transfer back: ', Number(await sellingEscrow.transfer01()))
-  console.log('Transfer to deployer: ', Number(await sellingEscrow.transfer02()))
-  
 }
 
 
