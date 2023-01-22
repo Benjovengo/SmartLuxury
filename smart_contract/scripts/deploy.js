@@ -57,6 +57,12 @@ const main = async () => {
   // Change ownership to Selling Escrow
   await fashionToken.changeOwner(sellingEscrow.address)
 
+  // Deploy Messages
+  const Messages = await ethers.getContractFactory('Messages')
+  const messages = await Messages.deploy()
+  await messages.deployed()
+  messagesAddress = messages.address
+
 
   // ============================== DEFAULT MINTS ==============================
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', 'ia002000024')
@@ -67,45 +73,13 @@ const main = async () => {
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'ia002000324')
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000064')
 
-  // DEBUG
-/*   let productsList = await contacts.getOwned(buyer.address)
-  console.log('Products:', productsList) */
-
-  // LIST PRODUCTS
-  /* // Seller approval
-  let transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 1)
-  await transaction.wait()
-  // List product
-  transaction = await sellingEscrow.connect(buyer).list(1, 55)
-  await transaction.wait()
-
-   // Seller approval
-   transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 2)
-   await transaction.wait()
-   // List product
-   transaction = await sellingEscrow.connect(buyer).list(2, 15)
-   await transaction.wait()
-
-  // Seller approval
-  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 7)
-  await transaction.wait()
-  // List product
-  transaction = await sellingEscrow.connect(buyer).list(7, 155)
-  await transaction.wait()
-   */
-
-  // DEBUG
-/*   for(let i=1; i<8; i++){
-    console.log(await sellingEscrow.isListed(i))
-  } */
-  
-  // ============================== DEFAULT MINTS ==============================
 
   /* Console Log results */
   console.log("FashionToken address:       ", fashionToken.address)
   console.log("SellingEscrow address:      ", sellingEscrow.address)
   console.log("TrackingOracle address:     ", trackingOracle.address)
   console.log("Contacts address:           ", contacts.address)
+  console.log("Messages address:           ", messages.address)
   //console.log("VerifiedContacts address: ")
 }
 
@@ -153,11 +127,19 @@ function createABIFiles() {
 
   abiFilePath = "../client/src/abis/TrackingOracle.json"
   writeABIs(abiFilePath, stringfyData)
+
+  // Messages ABI
+  jsonFile = fs.readFileSync('./artifacts/contracts/Messages.sol/Messages.json')
+  jsonData = JSON.parse(jsonFile);
+  stringfyData = JSON.stringify(jsonData.abi, null, " ")
+
+  abiFilePath = "../client/src/abis/Messages.json"
+  writeABIs(abiFilePath, stringfyData)
 }
 
 
 // Function to create/ update config.json file
-function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress, _contactsAddress) {
+function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress, _contactsAddress, _messagesAddress) {
   const configFilePath = "../client/src/config.json";
 
   // Create data JSON with contents
@@ -178,6 +160,9 @@ function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress, _c
     },
     sellingEscrow: {
       address: _sellingAddress
+    },
+    messages: {
+      address: _messagesAddress
     }
   }
 
@@ -200,7 +185,7 @@ const runMain = async () => {
     // copy files to client-side
     createABIFiles()
     // create config.json with deployed addresses
-    createConfigJSON(fashionAddress, trackingAddress, sellingAddress, contactsAddress)
+    createConfigJSON(fashionAddress, trackingAddress, sellingAddress, contactsAddress, messagesAddress)
     // terminate without errors
     process.exit(0)
   } catch (error) {
