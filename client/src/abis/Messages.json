@@ -66,11 +66,6 @@
     "internalType": "string",
     "name": "body",
     "type": "string"
-   },
-   {
-    "internalType": "bool",
-    "name": "newMessage",
-    "type": "bool"
    }
   ],
   "stateMutability": "view",
@@ -80,19 +75,19 @@
   "inputs": [
    {
     "internalType": "uint256",
-    "name": "_userId",
-    "type": "uint256"
-   }
-  ],
-  "name": "getMessages",
-  "outputs": [
-   {
-    "internalType": "uint256",
     "name": "",
     "type": "uint256"
    }
   ],
-  "stateMutability": "pure",
+  "name": "isNew",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
   "type": "function"
  },
  {
@@ -112,6 +107,19 @@
    }
   ],
   "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "_userID",
+    "type": "uint256"
+   }
+  ],
+  "name": "notNew",
+  "outputs": [],
+  "stateMutability": "nonpayable",
   "type": "function"
  },
  {
