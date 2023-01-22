@@ -60,12 +60,9 @@ contract Messages {
      *   - in the client-side, read the numberOfUsers to read the total number of users
      *   - get the message for all the users and check if it is a new message
      */
-    function getMessages(uint256 _numberOfUsers)
-        public
-        onlyOwner
-        returns (Message memory)
-    {
-        allMessages[_numberOfUsers].newMessage = false;
-        return allMessages[_numberOfUsers];
+    function getMessages(uint256 _userId) public pure returns (uint256) {
+        /* Message memory myMessage = allMessages[_userId];
+        allMessages[_userId].newMessage = false; */
+        return _userId;
     }
 }
