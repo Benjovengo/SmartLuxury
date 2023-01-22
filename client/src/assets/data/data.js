@@ -85,7 +85,7 @@ async function getData() {
 
 
 
-/** DATA
+/** DATA - EXPORT METADATA
  * get metadata for the products from the blockchain
  */
 export const NFT__DATA = await getData()
@@ -97,79 +97,39 @@ export const refreshProducts = async () => {
 
 
 
+
+
 /** SELLER DATA
  * get contacts info
  */
-export const SELLER__DATA = [
-  {
-    id: "01",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-    sellerName: "Ryan Carder",
-    sellerImg: ava01,
-    currentBid: 5.89,
-    fbUrl: "#",
-    instaUrl: "#",
-    twitUrl: "#",
-  },
 
-  {
-    id: "02",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-    sellerName: "Trista Francis",
-    sellerImg: ava02,
-    currentBid: 5.89,
-    fbUrl: "#",
-    instaUrl: "#",
-    twitUrl: "#",
-  },
+/* LOAD METADATA FUNCTIONS
+  Load metadata from deployed contract
+*/
+const loadAccountsInfo = async () => {
 
-  {
-    id: "03",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-    sellerName: "Ryan Carder",
-    sellerImg: ava03,
-    currentBid: 5.89,
-    fbUrl: "#",
-    instaUrl: "#",
-    twitUrl: "#",
-  },
+  const contactsInfo = []
+  const numberOfContacts = await contacts.numberOfCustomers()
 
-  {
-    id: "04",
 
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
+  for (var i = 1; i <= Number(numberOfContacts); i++) {
+    let data = await contacts.customers(i)
+    let fetchedUser = {
+      id: i,
+      sellerName: data.firstName + data.lastName,
+      sellerImg: data.avatar,
+      currentBid: 5.12,
+      address: data.ethAccount
+    }
+    contactsInfo.push(fetchedUser)
+  }
+  return contactsInfo
+}
 
-    sellerName: "Ryan Carder",
-    sellerImg: ava04,
-    currentBid: 5.89,
-    fbUrl: "#",
-    instaUrl: "#",
-    twitUrl: "#",
-  },
 
-  {
-    id: "05",
 
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-
-    sellerName: "Trista Francis",
-    sellerImg: ava05,
-    currentBid: 5.89,
-    fbUrl: "#",
-    instaUrl: "#",
-    twitUrl: "#",
-  },
-
-  {
-    id: "06",
-
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-
-    sellerName: "Trista Francis",
-    sellerImg: ava06,
-    currentBid: 5.89,
-    fbUrl: "#",
-    instaUrl: "#",
-    twitUrl: "#",
-  },
-];
+/** DATA - EXPORT CONTACTS
+ * get accounts info from the blockchain
+ */
+export const SELLER__DATA = await loadAccountsInfo()
+ 
