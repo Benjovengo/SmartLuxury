@@ -27,8 +27,7 @@ const overlay = () => {
 // Validate email field
 function ValidateEmail(mail)
 {
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
-  {
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
     return (true)
   }
     alert("You have entered an invalid email address!")
@@ -55,9 +54,10 @@ const Account = () => {
 
 
 
-  const customerData = getCustomerData.then((result) => {
+/*   const customerData = getCustomerData.then((result) => {
+    console.log('Account: Get customer data!!')
     return result;
-  })
+  }) */
   
 
   const [avatarUrl, setAvatarUrl] = useState(avatar01);

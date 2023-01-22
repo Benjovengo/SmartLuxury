@@ -23,7 +23,7 @@ const NftDetails = () => {
   const reviewPurchase = () => {
     setShowPurchaseReview(true)
     // name
-    if (singleNft.title != '') {
+    if (singleNft.title !== '') {
       setProductName(singleNft.title)
     }
     // id
@@ -31,7 +31,7 @@ const NftDetails = () => {
       setProductId(id)
     }
     // price
-    if (singleNft.currentBid != 0) {
+    if (singleNft.currentBid !== 0) {
       setPrice(singleNft.currentBid)
     }
   }

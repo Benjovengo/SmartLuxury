@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -39,6 +39,8 @@ const handleSubmit = (e) => {
   let productYear = e.target.year.value;
 
   let jsonData = createJSON(productName, productBrand, productDescription, randomPhoto(), 11, productSN, productCategory, productCondition, productMaterial, productAccessories, productWeight, productMadeIn, productYear)
+  console.log('Create: (json data below)')
+  console.log(jsonData)
   registerProduct('https://github.com/Benjovengo/SmartLuxury/raw/master/client/public/metadata/Gucci-Swing-Red_IA002000868.json', "IA002000128");
   //getAccountInfo();
 };
