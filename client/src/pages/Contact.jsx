@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
-import { newMessage } from "../scripts/messages";
+import { newMessage, myMessages } from "../scripts/messages";
 
 
 const Contact = () => {
@@ -90,6 +90,7 @@ const Contact = () => {
               </div>
             </Col>
           </Row>
+          <button onClick={() => myMessages()}>My Messages</button>
         </Container>
       </section>
     </>
