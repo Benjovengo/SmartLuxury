@@ -58,18 +58,18 @@ const Create = () => {
 
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
-                <label htmlFor="">Sell a registered item</label>
+                <label>Sell a registered item</label>
                 <p className="mb-4">To sell a registered item, go to your wallet, set the price and press the sell button.</p>
                 <h5>Register a new item for sale</h5>
                 <form onSubmit={handleSubmit}>
                   
                   <div className="form__input">
-                    <label htmlFor="">Title</label>
+                    <label>Title</label>
                     <input type="text" name="productName" placeholder="Enter title" />
                   </div>
 
                   <div className="form__input">
-                    <label htmlFor="">Description</label>
+                    <label>Description</label>
                     <textarea
                       name="descript"
                       id=""
@@ -82,18 +82,18 @@ const Create = () => {
                   <div className="form__input">
                     <Row className="w-100">
                       <Col>
-                        <label htmlFor="">Brand</label>
+                        <label>Brand</label>
                         <input
                           type="text" name="brand"
                           placeholder="Brand"
                         />
                       </Col>
                       <Col>
-                        <label htmlFor="">Serial Number</label>
+                        <label>Serial Number</label>
                         <input type="text" name="serialNumber" placeholder="Serial Number" />
                       </Col>
                       <Col>
-                        <label for="category">Category</label><br/>
+                        <label htmlFor="category">Category</label><br/>
                         <select id="category" name="category">
                           <option value="bag">Bag</option>
                           <option value="shoe">Shoe</option>
@@ -109,15 +109,15 @@ const Create = () => {
                   <div className="form__input">
                     <Row className="w-100">
                       <Col>
-                        <label htmlFor="">Material</label>
+                        <label>Material</label>
                         <input type="text" name="material" placeholder="Leather/Plastic" />
                       </Col>
                       <Col>
-                        <label htmlFor="">Made In</label>
+                        <label>Made In</label>
                         <input type="text" name="madeIn" placeholder="Country" />
                       </Col>
                       <Col>
-                        <label for="condition">Condition</label><br/>
+                        <label htmlFor="condition">Condition</label><br/>
                         <select id="condition" name="condition">
                           <option value="new">New, with tags</option>
                           <option value="excellent">Excellent</option>
