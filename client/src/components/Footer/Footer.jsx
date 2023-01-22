@@ -6,20 +6,16 @@ import "./footer.css"
 
 const MY__ACCOUNT = [
   {
-    display: 'Seller Profile',
-    url: '/seller-profile'
-  },
-  {
     display: 'Register New Item',
     url: '/create'
   },
   {
-    display: 'Collection',
-    url: '/market'
+    display: 'Your Collection',
+    url: '/wallet'
   },
   {
     display: 'Edit Profile',
-    url: '/edit-profile'
+    url: '/account'
   },
 ]
 
