@@ -20,7 +20,7 @@ const Contact = () => {
     let getBody = e.target.bodyInput.value;
     
     newMessage(getName, getEmail, getSubject, getBody);
-    console.log('DEBUG')
+    alert("Your message has been sent!! I'll get in touch soon.")
   };
 
   return (
