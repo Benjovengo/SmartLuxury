@@ -23,6 +23,7 @@ import ava06 from "../assets_test/images/ava-06.png";
 const overlay = () => {
   console.log('DEBUG - OVERLAY FUNCTION')
   addingOverlay = document.getElementById('addAvatarOverlay');
+  addingOverlay.classList.remove('animateRemovingOverlay');
   addingOverlay.classList.add('animateAddingOverlay');
 }
 
@@ -84,7 +85,10 @@ const Account = () => {
             </Col>
           </Row>
           <Row className="m-auto w-25 mt-5">
-            <button className="overlay__cancel" onClick={()=> {addingOverlay.classList.add('animateRemovingOverlay');}}>Cancel</button>
+            <button className="overlay__cancel" onClick={()=> {
+              //addingOverlay.classList.remove('animateAddingOverlay');
+              addingOverlay.classList.add('animateRemovingOverlay');
+              }}>Cancel</button>
           </Row>
         </section>
       </div>
