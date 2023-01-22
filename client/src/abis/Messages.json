@@ -1,0 +1,175 @@
+[
+ {
+  "inputs": [],
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "string",
+    "name": "_name",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "_email",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "_subject",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "_body",
+    "type": "string"
+   }
+  ],
+  "name": "addMessage",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "name": "allMessages",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "ethAccount",
+    "type": "address"
+   },
+   {
+    "internalType": "string",
+    "name": "name",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "email",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "subject",
+    "type": "string"
+   },
+   {
+    "internalType": "string",
+    "name": "body",
+    "type": "string"
+   },
+   {
+    "internalType": "bool",
+    "name": "newMessage",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "_numberOfUsers",
+    "type": "uint256"
+   }
+  ],
+  "name": "getMessages",
+  "outputs": [
+   {
+    "components": [
+     {
+      "internalType": "address",
+      "name": "ethAccount",
+      "type": "address"
+     },
+     {
+      "internalType": "string",
+      "name": "name",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "email",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "subject",
+      "type": "string"
+     },
+     {
+      "internalType": "string",
+      "name": "body",
+      "type": "string"
+     },
+     {
+      "internalType": "bool",
+      "name": "newMessage",
+      "type": "bool"
+     }
+    ],
+    "internalType": "struct Messages.Message",
+    "name": "",
+    "type": "tuple"
+   }
+  ],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "name": "messengerId",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "numberOfUsers",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "name": "owner",
+  "outputs": [
+   {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ }
+]
