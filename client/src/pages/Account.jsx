@@ -45,12 +45,12 @@ const Account = () => {
   const physicalAddressRef = useRef("");
   const poBoxRef = useRef("");
 
-  let avatar01 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-01.png"
-  let avatar02 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-02.png"
-  let avatar03 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-03.png"
-  let avatar04 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-04.png"
-  let avatar05 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-05.png"
-  let avatar06 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets_test/images/ava-06.png"
+  let avatar01 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-01.png"
+  let avatar02 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-02.png"
+  let avatar03 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-03.png"
+  let avatar04 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-04.png"
+  let avatar05 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-05.png"
+  let avatar06 = "https://github.com/Benjovengo/SmartLuxury/raw/master/client/src/assets/images/ava-06.png"
 
 
 
