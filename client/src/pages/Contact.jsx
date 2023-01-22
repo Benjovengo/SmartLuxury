@@ -15,21 +15,20 @@ const Contact = () => {
 
   return (
     <>
-      <CommonSection title="Contact" />
+      <CommonSection title="Contact Us" />
       <section>
         <Container>
           <Row>
             <Col lg="6" md="6" className="m-auto text-center">
               <h2>Drop a Message</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Temporibus ipsum aperiam cumque fugit suscipit animi natus
-                nostrum voluptatem iste quam!
+                Please, feel free to leave a message. I'll be the only one reading it. And, of course, this message is also going to be placed in the blockchain!
               </p>
               <div className="contact mt-4">
                 <form onSubmit={handleSubmit}>
                   <div className="form__input">
                     <input
+                      maxlength="100"
                       type="text"
                       placeholder="Enter your name"
                       ref={nameRef}
@@ -37,6 +36,7 @@ const Contact = () => {
                   </div>
                   <div className="form__input">
                     <input
+                      maxlength="100"
                       type="email"
                       placeholder="Enter your email"
                       ref={emailRef}
@@ -44,6 +44,7 @@ const Contact = () => {
                   </div>
                   <div className="form__input">
                     <input
+                      maxlength="150"
                       type="text"
                       placeholder="Enter subject"
                       ref={subjectRef}
@@ -51,6 +52,7 @@ const Contact = () => {
                   </div>
                   <div className="form__input">
                     <textarea
+                      maxlength="500"
                       rows="7"
                       placeholder="Write message"
                       ref={messageRef}
