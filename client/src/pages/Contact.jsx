@@ -3,6 +3,9 @@ import React, { useRef } from "react";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
+import { newMessage } from "../scripts/messages";
+
+
 const Contact = () => {
   const nameRef = useRef("");
   const emailRef = useRef("");
@@ -11,6 +14,13 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let getName = e.target.nameInput.value;
+    let getEmail = e.target.emailInput.value;
+    let getSubject = e.target.subjectInput.value;
+    let getBody = e.target.bodyInput.value;
+    
+    newMessage(getName, getEmail, getSubject, getBody);
+    console.log('DEBUG')
   };
 
   return (
@@ -28,7 +38,8 @@ const Contact = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="form__input">
                     <input
-                      maxlength="100"
+                      name="nameInput"
+                      maxLength="100"
                       type="text"
                       placeholder="Enter your name"
                       ref={nameRef}
@@ -36,7 +47,8 @@ const Contact = () => {
                   </div>
                   <div className="form__input">
                     <input
-                      maxlength="100"
+                      name="emailInput"
+                      maxLength="100"
                       type="email"
                       placeholder="Enter your email"
                       ref={emailRef}
@@ -44,7 +56,8 @@ const Contact = () => {
                   </div>
                   <div className="form__input">
                     <input
-                      maxlength="150"
+                      name="subjectInput"
+                      maxLength="150"
                       type="text"
                       placeholder="Enter subject"
                       ref={subjectRef}
@@ -52,7 +65,8 @@ const Contact = () => {
                   </div>
                   <div className="form__input">
                     <textarea
-                      maxlength="500"
+                      name="bodyInput"
+                      maxLength="500"
                       rows="7"
                       placeholder="Write message"
                       ref={messageRef}
