@@ -16,7 +16,7 @@ const HeroSection = () => {
                 <span>buy and sell</span> luxury items
               </h2>
               
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ad fugit at quae saepe perferendis quaerat corrupti temporibus similique nihil?</p>
+              <p>Buying a product has never been safer. The authenticity is guaranteed by tracking the origin of the product you are buying.</p>
               
               <div className="hero__btns d-flex align-items-center gap-4">
                 <button className=' explore__create__btn  d-flex align-items-center gap-2'>
