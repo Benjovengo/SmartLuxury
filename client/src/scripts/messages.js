@@ -4,8 +4,7 @@ import { ethers } from 'ethers';
 import Messages from '../abis/Messages.json' // messages contract
 import config from '../config.json'; // config
 
-/* Register new product */
-export const newMessage = async (_name, _email, _subject, _body) => {
+
   // Setup provider and network
   let provider = new ethers.providers.Web3Provider(window.ethereum)
   const network = await provider.getNetwork()
@@ -16,6 +15,12 @@ export const newMessage = async (_name, _email, _subject, _body) => {
   // Javascript "version" of the contact smart contract
   const messages = new ethers.Contract(config[network.chainId].messages.address, Messages, signer)
 
+
+/** Create a new message */
+export const newMessage = async (_name, _email, _subject, _body) => {
   // add message
   await messages.addMessage(_name, _email, _subject, _body)
 }
+
+
+/** Get messages */
