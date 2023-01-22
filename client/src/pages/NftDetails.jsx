@@ -4,7 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import LiveAuction from "../components/ui/Live-auction/LiveAuction";
-import { NFT__DATA } from "../assets/data/data";
+import { NFT__DATA } from "../assets_test/data/data";
 import Review from '../components/ui/Review/Review';
 
 

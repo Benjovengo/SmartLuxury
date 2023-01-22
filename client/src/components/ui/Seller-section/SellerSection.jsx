@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import './seller.css'
 
-import { SELLER__DATA } from '../../../assets/data/data'
+import { SELLER__DATA } from '../../../assets_test/data/data'
 
 
 const SellerSection = () => {
