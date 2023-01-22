@@ -10,12 +10,12 @@ import { addAccount } from "../scripts/addAccount";
 import { getCustomerData } from "../scripts/getAccountInfo";
 
 // Provisory Data
-import ava01 from "../assets_test/images/ava-01.png";
-import ava02 from "../assets_test/images/ava-02.png";
-import ava03 from "../assets_test/images/ava-03.png";
-import ava04 from "../assets_test/images/ava-04.png";
-import ava05 from "../assets_test/images/ava-05.png";
-import ava06 from "../assets_test/images/ava-06.png";
+import ava01 from "../assets/images/ava-01.png";
+import ava02 from "../assets/images/ava-02.png";
+import ava03 from "../assets/images/ava-03.png";
+import ava04 from "../assets/images/ava-04.png";
+import ava05 from "../assets/images/ava-05.png";
+import ava06 from "../assets/images/ava-06.png";
 
 
 const overlay = () => {

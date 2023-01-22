@@ -4,7 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import NftCard from "../components/ui/Nft-card/NftCard";
 
-import { NFT__DATA, refreshProducts } from "../assets_test/data/data";
+import { NFT__DATA, refreshProducts } from "../assets/data/data";
 
 
 

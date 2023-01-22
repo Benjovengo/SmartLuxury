@@ -6,7 +6,7 @@ import './live-auction.css'
 
 import NftCard from '../Nft-card/NftCard'
 //import { NFT__DATA } from '../../../assets/data/data.js' // get data
-import { NFT__DATA } from '../../../assets_test/data/data.js' // test data
+import { NFT__DATA } from '../../../assets/data/data.js' // test data
 
 const LiveAuction = () => {
   return (
