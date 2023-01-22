@@ -10,6 +10,10 @@
   padding-bottom: 15px;
 }
 
+.logo p {
+  text-align: justify;
+}
+
 .img_logo {
   height: 1em;
   margin: -0.15em 1em 0em 0em;
