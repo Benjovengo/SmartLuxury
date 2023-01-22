@@ -82,14 +82,14 @@
 .chooseAvatarOverlay {
   background: rgba(0, 0, 0, .85);
   color: black;
-  display: none;
+  display: block;
   min-height: 100vh;
-  opacity: 1;
+  opacity: 0;
   padding: 0;
   place-content: top;
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: -1;
 }
 
 .avatar__list {
@@ -113,14 +113,14 @@
 }
 
 /* Add Avatar Overlay */
-.animateAdingOverlay {
+.animateAddingOverlay {
   animation: addAvatarOverlayFadeIn 1.5s forwards;
 }
 
 @keyframes addAvatarOverlayFadeIn {
   from {
     opacity: 0;
-    z-index: -1;
+    z-index: 1;
   }
   to {
     opacity: 1;
