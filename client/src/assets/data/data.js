@@ -109,10 +109,12 @@ export const refreshProducts = async () => {
 const loadAccountsInfo = async () => {
 
   const contactsInfo = []
-  const numberOfContacts = await contacts.numberOfCustomers()
+  const numberOfContacts = Number(await contacts.numberOfCustomers())
 
 
-  for (var i = 1; i <= Number(numberOfContacts); i++) {
+  //(let i = 0; i < (arr.length >= 4 ? 4 : arr.length)
+  //(let i = numberOfContacts; i > (numberOfContacts >= 4? numberOfContacts-4 : 1, i--)
+  for (let i = numberOfContacts; i >= (numberOfContacts >= 4? numberOfContacts-4 : 1); i--) {
     let data = await contacts.customers(i)
     let fetchedUser = {
       id: i,

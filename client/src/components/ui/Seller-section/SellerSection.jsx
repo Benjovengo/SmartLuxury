@@ -11,7 +11,7 @@ const SellerSection = () => {
         <Row>
           <Col lg="12" className="mb-5">
             <div className="seller__section-title">
-              <h3>Top Sellers</h3>
+              <h3>Most Recent Accounts</h3>
             </div>
           </Col>
 
