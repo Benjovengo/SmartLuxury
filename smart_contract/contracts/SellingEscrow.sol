@@ -166,6 +166,7 @@ contract SellingEscrow is IERC721Receiver {
         (bool success, ) = payable(nftSeller[_nftID]).call{value: afterFee}("");
         require(success, "Unsuccessful transfer of funds to the seller.");
 
+        // Transfer fees
         address deployer = fashionToken.deployer();
         uint256 myFee = uint256(purchasePrice[_nftID]) * uint256(5) * (10**14);
         (bool anotherSuccess, ) = payable(deployer).call{value: myFee}("");
