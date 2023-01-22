@@ -22,10 +22,6 @@ contract SellingEscrow is IERC721Receiver {
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
 
-    // DEBUG
-    bool public transfer01;
-    bool public transfer02;
-
     // Contracts
     FashionToken public fashionToken;
     Contacts public contactContract;
@@ -171,7 +167,7 @@ contract SellingEscrow is IERC721Receiver {
         require(success, "Unsuccessful transfer of funds to the seller.");
 
         address deployer = fashionToken.deployer();
-        uint256 myFee = address(this).balance;
+        uint256 myFee = uint256(purchasePrice[_nftID]) * uint256(5) * (10**14);
         (bool anotherSuccess, ) = payable(deployer).call{value: myFee}("");
 
         // Transfer product ownership
@@ -187,8 +183,6 @@ contract SellingEscrow is IERC721Receiver {
         // add token to buyer's account
         contactContract.addCustomerItems(buyer[_nftID], _nftID);
         // confirm sale
-        transfer01 = success;
-        transfer02 = anotherSuccess;
         emit saleFinalized(success && anotherSuccess);
     }
 
