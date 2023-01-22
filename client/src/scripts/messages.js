@@ -26,8 +26,7 @@ export const newMessage = async (_name, _email, _subject, _body) => {
 /** Get messages */
 export const myMessages = async () => {
   const numberOfSenders = Number(await messages.numberOfUsers())
-  let messageSent = await messages.getMessages(1)
+  await messages.notNew(1)
   console.log(Number(numberOfSenders))
-  console.log(messageSent)
   console.log(await messages.allMessages(1))
 }

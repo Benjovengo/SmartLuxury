@@ -17,9 +17,9 @@ contract Messages {
         string email;
         string subject;
         string body;
-        bool newMessage;
     }
     mapping(uint256 => Message) public allMessages;
+    mapping(uint256 => bool) public isNew;
     mapping(address => uint256) public messengerId;
 
     /* Modifiers - only certain entity can call some methods */
@@ -51,18 +51,13 @@ contract Messages {
             _name,
             _email,
             _subject,
-            _body,
-            true
+            _body
         );
+        isNew[messengerId[msg.sender]] = true;
     }
 
-    /** Get messages
-     *   - in the client-side, read the numberOfUsers to read the total number of users
-     *   - get the message for all the users and check if it is a new message
-     */
-    function getMessages(uint256 _userId) public pure returns (uint256) {
-        /* Message memory myMessage = allMessages[_userId];
-        allMessages[_userId].newMessage = false; */
-        return _userId;
+    /** Mark as read */
+    function notNew(uint256 _userID) public {
+        isNew[_userID] = false;
     }
 }
