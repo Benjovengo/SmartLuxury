@@ -4,7 +4,6 @@ import './seller.css'
 
 import { SELLER__DATA } from '../../../assets/data/data'
 
-
 const SellerSection = () => {
   return (
     <section>
@@ -18,15 +17,13 @@ const SellerSection = () => {
 
           {
             SELLER__DATA.map((item) => (
-              <Col lg="2" md="3" sm="4" xs="6" key={item.id} className="mb-4">
-                <div className="single__seller-card d-flex align-items-center gap-3">
-                  <div className="seller__img">
-                    <img src={item.sellerImg} alt="" className="w-100" />
-                  </div>
-
-                  <div className="seller__content">
-                    <h6>{item.sellerName}</h6>
-                  </div>
+              <Col key={item.id} className="col-3 d-flex align-items-center gap-3">
+                <div className="align-items-center gap-3">
+                  <img src={item.sellerImg} alt="" className="seller__img" />
+                </div>
+                <div className='seller__content'>
+                  <h5>{item.firstname}</h5>
+                  <h6>{item.lastname}</h6>
                 </div>
               </Col>
             ))

@@ -116,7 +116,9 @@ const loadAccountsInfo = async () => {
     let data = await contacts.customers(i)
     let fetchedUser = {
       id: i,
-      sellerName: data.firstName + data.lastName,
+      firstname: data.firstName,
+      lastname: data.lastName,
+      sellerName: data.firstName + ' ' + data.lastName,
       sellerImg: data.avatar,
       currentBid: 5.12,
       address: data.ethAccount
