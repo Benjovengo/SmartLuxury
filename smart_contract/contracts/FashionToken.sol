@@ -16,6 +16,7 @@ contract FashionToken is ERC721URIStorage {
     mapping(uint256 => uint256) public numberOfOwners; // total number of owners
     mapping(uint256 => mapping(uint256 => address)) private listOwners; // list of owners of a token
     mapping(string => bool) private registeredSerialNumber; // use serialNumber to check if it is registered
+    mapping(string => uint256) private productID; // use the serial number to return the product ID
     string[] serialNumber; // serial number of the product
 
     /* Constructor Method */
@@ -67,6 +68,7 @@ contract FashionToken is ERC721URIStorage {
             // Update list of owners
             addToOwners(newItemId, _newOwner);
         }
+        productID[_serialNumber] = newItemId;
         return newItemId;
     }
 
@@ -104,5 +106,14 @@ contract FashionToken is ERC721URIStorage {
     /* returns if a serial number has already been registered */
     function isRegistered(string memory _serialNum) public view returns (bool) {
         return registeredSerialNumber[_serialNum];
+    }
+
+    /* get product ID */
+    function getProductID(string memory _serialNumber)
+        public
+        view
+        returns (uint256)
+    {
+        return productID[_serialNumber];
     }
 }
