@@ -17,6 +17,7 @@ contract SellingEscrow is IERC721Receiver {
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
+    mapping(address => mapping(uint256 => uint256)) public deposit; // [buyer][nftId] -> [value]
     mapping(uint256 => address) public buyer;
     mapping(uint256 => address) public nftSeller;
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
@@ -129,8 +130,9 @@ contract SellingEscrow is IERC721Receiver {
 
     /* Put ether under contract (buyer - payable oracleEscrow) */
     function depositEarnest(uint256 _nftID) public payable {
-        //require(msg.value >= purchasePrice[_nftID], "Insufficient funds!");
+        require(msg.value >= purchasePrice[_nftID], "Insufficient funds!");
         buyer[_nftID] = msg.sender;
+        deposit[msg.sender][_nftID] = msg.value;
     }
 
     /* Oracle
@@ -159,6 +161,10 @@ contract SellingEscrow is IERC721Receiver {
         //require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
         //require(approval[_nftID][oracle]); // transaction approved by the delivery service
         //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
+        require(
+            deposit[buyer[_nftID]][_nftID] >= purchasePrice[_nftID],
+            "Insufficient funds!"
+        );
 
         // Transfer ether to the seller (from the SellingEscrow contract)
         address sellerAddr = nftSeller[_nftID];
@@ -178,6 +184,8 @@ contract SellingEscrow is IERC721Receiver {
             buyer[_nftID],
             _nftID
         );
+        // clear deposits
+        deposit[buyer[_nftID]][_nftID] = uint256(0);
         // set as unlisted
         isListed[_nftID] = false; // stop listing the item
         // add owner to list of owners
