@@ -10,9 +10,9 @@ let provider = new ethers.providers.Web3Provider(window.ethereum, "any")
 const network = await provider.getNetwork()
 // get signer
 const signer = provider.getSigner();
-
 // Javascript "version" of the smart contracts
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
+
 
 /** Get the list of owners for a particular item */
 export const getOwnersList = async (_nftID) => {
@@ -29,6 +29,7 @@ export const getOwnersList = async (_nftID) => {
   return owners
 
 }
+
 
 /** Get the first owner of a product */
 export const firstOwner = async (_nftID) => {
