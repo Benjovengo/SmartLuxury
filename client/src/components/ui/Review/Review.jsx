@@ -30,17 +30,9 @@ const tokens = (n) => {
 */
 const buyProduct = async (_tokenID, _priceETH) => {
   // deposit ether on selling escrow'
-  //let transaction = await sellingEscrow.depositEarnest(_tokenID, { value: _priceETH })
-  //await transaction.wait()
-
   let priceTokens = tokens(_priceETH)
   let transaction = await sellingEscrow.depositEarnest(_tokenID, { value: priceTokens })
   await transaction.wait()
-
-/*   console.log('Token ID:', _tokenID)
-  console.log('Price: ', _priceETH)
-  console.log('Tokens: ', Number(tokens(_priceETH)))
-  console.log(Number(await sellingEscrow.getBalance())) */
 
   // approve the transfer of the ownership of the product
   transaction = await sellingEscrow.approveTransfer(_tokenID)
