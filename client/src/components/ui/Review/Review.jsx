@@ -22,21 +22,34 @@ const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.
 
 
 const tokens = (n) => {
-  return ethers.utils.parseUnits(n.toString(), 'ether')
+  return String(n * (10**16))
 }
 
 /* Function
   Buy a product
 */
 const buyProduct = async (_tokenID, _priceETH) => {
+
+  let transaction
+
   // deposit ether on selling escrow'
-  let priceTokens = tokens(_priceETH)
-  let transaction = await sellingEscrow.depositEarnest(_tokenID, { value: priceTokens })
-  await transaction.wait()
+  try {
+    let priceTokens = tokens(Number(_priceETH)*100)
+    transaction = await sellingEscrow.depositEarnest(_tokenID, { value: priceTokens })
+    await transaction.wait()
+  } catch (error) {
+    console.log(error)
+  }
+
 
   // approve the transfer of the ownership of the product
-  transaction = await sellingEscrow.approveTransfer(_tokenID)
-  await transaction.wait()
+  try {
+    transaction = await sellingEscrow.approveTransfer(_tokenID)
+    await transaction.wait()
+  } catch (error) {
+    console.log(error)
+  }
+  
 
   // finalize sale
   //  - transfer ether to the seller
