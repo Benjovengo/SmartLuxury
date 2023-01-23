@@ -23,7 +23,8 @@ const NftCard = (props) => {
 
   /** Get list of owners for a product */
   const ownersList = async (_nftID) => {
-    alert(await getOwnersList(_nftID))
+    const list = await getOwnersList(_nftID)
+    alert('First owner: ' + list[0])
   }
 
 
