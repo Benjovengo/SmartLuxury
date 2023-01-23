@@ -15,6 +15,7 @@ contract FashionToken is ERC721URIStorage {
     address public deployer; // this address will receive the fees for the sales
     mapping(uint256 => uint256) public numberOfOwners; // total number of owners
     mapping(uint256 => mapping(uint256 => address)) private listOwners; // list of owners of a token
+    mapping(string => bool) private registeredSerialNumber; // use serialNumber to check if it is registered
     string[] serialNumber; // serial number of the product
 
     /* Constructor Method */
@@ -44,21 +45,9 @@ contract FashionToken is ERC721URIStorage {
     ) public returns (uint256) {
         // requirements to mint
         require(msg.sender == owner);
+        // variables
         uint256 newItemId;
-        bool alreadyRegistered = false;
-        // Check if a serial number has already been registered
-        if (_tokenIds.current() > 0) {
-            for (uint256 i = 1; i < _tokenIds.current(); i++) {
-                if (
-                    keccak256(abi.encodePacked((_serialNumber))) ==
-                    (keccak256(abi.encodePacked(serialNumber[i])))
-                ) {
-                    //Product already registered!
-                    alreadyRegistered = true;
-                    break;
-                }
-            }
-        }
+        bool alreadyRegistered = registeredSerialNumber[_serialNumber];
 
         // if the serial number hasn't been registered, mint the product NFT
         if (!alreadyRegistered) {
@@ -70,6 +59,9 @@ contract FashionToken is ERC721URIStorage {
 
             // add serial number info
             serialNumber.push(_serialNumber);
+
+            // mark serial number as registered
+            registeredSerialNumber[_serialNumber] = true;
 
             // Update list of owners
             addToOwners(newItemId, _newOwner);
