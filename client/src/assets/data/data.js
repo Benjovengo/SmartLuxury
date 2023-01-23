@@ -71,8 +71,8 @@ async function getData() {
     }
     console.log(json.SKU)
     //console.log(await fashionToken.isRegistered(json.SKU))
-    let argument = ethers.utils.formatBytes32String("CF003000012")
-    console.log(Number(await fashionToken.getProductID(json.SKU)))
+    let argument = ethers.utils.formatBytes32String(json.SKU)
+    console.log(Number(await fashionToken.getProductID(argument)))
   }
   return data
 }
