@@ -161,6 +161,7 @@ contract SellingEscrow is IERC721Receiver {
 
         /**NOT THE BALANCE!!! THE AMOUNT TRANSFERED TO THIS CONTRACT BY THAT BUYER TO BUY THAT ITEM */
         require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
+        //require(deposit[buyer[_nftID]][_nftID] >= purchasePrice[_nftID]); // the amount deposited must be greater or equal to the price
 
         // Transfer ether to the seller (from the SellingEscrow contract)
         uint256 afterFee = uint256(purchasePrice[_nftID]) *
@@ -180,6 +181,8 @@ contract SellingEscrow is IERC721Receiver {
             buyer[_nftID],
             _nftID
         );
+        // reset the deposit
+        deposit[buyer[_nftID]][_nftID] = 0;
         // set as unlisted
         isListed[_nftID] = false; // stop listing the item
         // add owner to list of owners
