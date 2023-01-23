@@ -15,8 +15,8 @@ contract FashionToken is ERC721URIStorage {
     address public deployer; // this address will receive the fees for the sales
     mapping(uint256 => uint256) public numberOfOwners; // total number of owners
     mapping(uint256 => mapping(uint256 => address)) private listOwners; // list of owners of a token
-    mapping(string => bool) private registeredSerialNumber; // use serialNumber to check if it is registered
-    mapping(string => uint256) private productID; // use the serial number to return the product ID
+    mapping(bytes32 => bool) private registeredSerialNumber; // use serialNumber to check if it is registered
+    mapping(bytes32 => uint256) private productID; // use the serial number to return the product ID
 
     /* Constructor Method */
     constructor() ERC721("Smart Luxury", "SLUX") {
@@ -41,7 +41,7 @@ contract FashionToken is ERC721URIStorage {
     function mint(
         string memory tokenURI,
         address _newOwner,
-        string memory _serialNumber
+        bytes32 _serialNumber
     ) public returns (uint256) {
         // requirements to mint
         require(
@@ -66,7 +66,7 @@ contract FashionToken is ERC721URIStorage {
             addToOwners(newItemId, _newOwner);
             // set the ID for that serial number
         }
-        productID["CF003000012"] = uint256(25);
+        productID[_serialNumber] = uint256(newItemId);
         return newItemId;
     }
 
@@ -102,16 +102,12 @@ contract FashionToken is ERC721URIStorage {
     }
 
     /* returns if a serial number has already been registered */
-    function isRegistered(string memory _serialNum) public view returns (bool) {
+    function isRegistered(bytes32 _serialNum) public view returns (bool) {
         return registeredSerialNumber[_serialNum];
     }
 
     /* get product ID */
-    function getProductID(string memory _serialNumber)
-        public
-        view
-        returns (uint256)
-    {
+    function getProductID(bytes32 _serialNumber) public view returns (uint256) {
         return productID[_serialNumber];
     }
 }
