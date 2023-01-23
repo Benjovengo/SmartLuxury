@@ -99,4 +99,9 @@ contract FashionToken is ERC721URIStorage {
     function getFirstOwner(uint256 _nftID) public view returns (address) {
         return listOwners[_nftID][1];
     }
+
+    /* returns if a serial number has already been registered */
+    function isRegistered(string memory _serialNum) public view returns (bool) {
+        return registeredSerialNumber[_serialNum];
+    }
 }

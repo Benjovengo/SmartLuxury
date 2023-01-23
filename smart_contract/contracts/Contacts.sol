@@ -85,8 +85,8 @@ contract Contacts {
     }
 
     /* Add Customer Items
-        - add the product ID of owned product based on the customer address
         - test if the product ID has already been added
+        - add the product ID of owned product based on the customer address
     */
     function addCustomerItems(address _customerAddress, uint256 _tokenId)
         public
