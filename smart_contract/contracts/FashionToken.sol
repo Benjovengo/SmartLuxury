@@ -92,7 +92,11 @@ contract FashionToken is ERC721URIStorage {
         view
         returns (address)
     {
-        address productOwner = listOwners[_nftID][_ownerIndex];
-        return productOwner;
+        return listOwners[_nftID][_ownerIndex];
+    }
+
+    /* get first owner - public function */
+    function getFirstOwner(uint256 _nftID) public view returns (address) {
+        return listOwners[_nftID][1];
     }
 }
