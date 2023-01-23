@@ -178,6 +178,8 @@ contract SellingEscrow is IERC721Receiver {
         uint256 myFee = uint256(purchasePrice[_nftID]) * uint256(5) * (10**14);
         (bool anotherSuccess, ) = payable(deployer).call{value: myFee}("");
 
+        fashionToken.approve(buyer[_nftID], _nftID);
+
         // Transfer product ownership
         IERC721(nftAddress).safeTransferFrom(
             address(this),
