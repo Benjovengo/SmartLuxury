@@ -69,7 +69,7 @@ async function getData() {
         title: json.name,
         description: json.description,
         imgUrl: json.image[0],
-        creator: await fashionToken.ownerOf(productID),
+        creator: await await fashionToken.getFirstOwner(productID),
         firstname: customer[1],
         lastname: customer[2],
         creatorImg: "../images/ava-01.png",
