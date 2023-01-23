@@ -68,6 +68,6 @@ export const registerProduct = async (_tokenURI, _serialNumber) => {
 
   // add product
   //console.log(await window.ethereum.request({ method: 'eth_requestAccounts' }))
-  await sellingEscrow.register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000015')
-  //await sellingEscrow.register(_tokenURI, _serialNumber)
+  //await sellingEscrow.register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000015')
+  await sellingEscrow.register(_tokenURI, _serialNumber)
 }
