@@ -185,14 +185,19 @@
     "internalType": "uint256",
     "name": "_nftID",
     "type": "uint256"
+   },
+   {
+    "internalType": "uint256",
+    "name": "_ownerIndex",
+    "type": "uint256"
    }
   ],
-  "name": "getOwners",
+  "name": "getOwner",
   "outputs": [
    {
-    "internalType": "address[]",
+    "internalType": "address",
     "name": "",
-    "type": "address[]"
+    "type": "address"
    }
   ],
   "stateMutability": "view",
