@@ -56,7 +56,7 @@ async function getData() {
     productID = Number(json.id)
     if (await sellingEscrow.isListed(productID)) {
       formatJson = {
-        id: json.id,
+        id: Number(await fashionToken.getProductID(json.SKU)),
         title: json.name,
         description: json.description,
         imgUrl: json.image[0],
@@ -69,10 +69,10 @@ async function getData() {
       }
       data.push(formatJson)
     }
-    console.log(json.SKU)
+    //console.log(json.SKU)
     //console.log(await fashionToken.isRegistered(json.SKU))
-    let argument = ethers.utils.formatBytes32String(json.SKU)
-    console.log(Number(await fashionToken.getProductID(json.SKU)))
+    //let argument = ethers.utils.formatBytes32String(json.SKU)
+    //console.log(Number(await fashionToken.getProductID(json.SKU)))
   }
   return data
 }
