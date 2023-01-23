@@ -20,17 +20,17 @@ const NftCard = (props) => {
   const ReviewSell = () => {
     setShowReview(true)
     // name
-    if (title != '') {
+    if (title !== '') {
       setProductName(title)
     }
     // ID
-    if (id != '') {
+    if (id !== '') {
       setProductId(id)
     }
     // price
     let inputID = `priceInput${id}`
     let priceResult = document.getElementById(inputID).value
-    if (priceResult != '') {
+    if (priceResult !== '') {
       setPrice(priceResult)
     }
   }
