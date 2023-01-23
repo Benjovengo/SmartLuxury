@@ -66,7 +66,7 @@ contract FashionToken is ERC721URIStorage {
             addToOwners(newItemId, _newOwner);
             // set the ID for that serial number
         }
-        productID["DEBUG"] = uint256(25);
+        productID["CF003000012"] = uint256(25);
         return newItemId;
     }
 
@@ -112,6 +112,6 @@ contract FashionToken is ERC721URIStorage {
         view
         returns (uint256)
     {
-        return productID["DEBUG"];
+        return productID[_serialNumber];
     }
 }

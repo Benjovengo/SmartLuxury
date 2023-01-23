@@ -1,19 +1,19 @@
 {
  "31337": {
   "fashionToken": {
-   "address": "0xcbEAF3BDe82155F56486Fb5a1072cb8baAf547cc"
+   "address": "0x2b5A4e5493d4a54E717057B127cf0C000C876f9B"
   },
   "trackingOracle": {
-   "address": "0x1429859428C0aBc9C2C47C8Ee9FBaf82cFA0F20f"
+   "address": "0x413b1AfCa96a3df5A686d8BFBF93d30688a7f7D9"
   },
   "contacts": {
-   "address": "0xB0D4afd8879eD9F52b28595d31B441D079B2Ca07"
+   "address": "0x02df3a3F960393F5B349E40A599FEda91a7cc1A7"
   },
   "sellingEscrow": {
-   "address": "0x162A433068F51e18b7d13932F27e66a3f99E6890"
+   "address": "0x821f3361D454cc98b7555221A06Be563a7E2E0A6"
   },
   "messages": {
-   "address": "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f"
+   "address": "0x5133BBdfCCa3Eb4F739D599ee4eC45cBCD0E16c5"
   }
  }
 }
