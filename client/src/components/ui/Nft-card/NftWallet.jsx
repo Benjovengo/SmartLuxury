@@ -100,7 +100,7 @@ const NftCard = (props) => {
 
       </div>
 
-      <span><Link to='#' className='history__link'><i className="ri-history-line" onClick={() => ownersList(id)}></i> View Ownership History</Link></span>
+      <button className='history__link' onClick={() => ownersList(id)}><span><i className="ri-history-line"></i> View Ownership History</span></button>
     </div>
   )
 }
