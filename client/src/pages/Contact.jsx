@@ -15,11 +15,23 @@ const Contact = () => {
 
   const addParagraphs = async () => {
     let data = await myMessages();
-    console.log(data[0])
-      let newParagraph
+    let individualMessage
+    let newParagraph
+    for (let i=0; i< data.length; i++){
+      individualMessage = data[i]
       newParagraph = document.createElement("p");
-      newParagraph.innerHTML = "Name";
+      newParagraph.innerHTML = "Name: " + individualMessage[1];
       document.body.appendChild(newParagraph);
+      newParagraph = document.createElement("p");
+      newParagraph.innerHTML = "Email: " + individualMessage[2];
+      document.body.appendChild(newParagraph);
+      newParagraph = document.createElement("p");
+      newParagraph.innerHTML = "Subject: " + individualMessage[3];
+      document.body.appendChild(newParagraph);
+      newParagraph = document.createElement("p");
+      newParagraph.innerHTML = "Body: " + individualMessage[4];
+      document.body.appendChild(newParagraph);
+    }
   }
 
 
