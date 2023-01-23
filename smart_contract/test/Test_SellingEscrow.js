@@ -138,12 +138,6 @@ describe('Selling Escrow', () => {
     beforeEach(async () => {
       let transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
       await transaction.wait()
-      
-      transaction = await sellingEscrow.connect(buyer).approveSale(1)
-      await transaction.wait()
-
-      transaction = await sellingEscrow.connect(seller).approveSale(1)
-      await transaction.wait()
 
       transaction = await sellingEscrow.connect(oracle).approveSale(1)
       await transaction.wait()
@@ -165,12 +159,6 @@ describe('Selling Escrow', () => {
       await transaction.wait()
 
       transaction = await sellingEscrow.connect(oracle).updateDeliveryStatus(1, true)
-      await transaction.wait()
-
-      transaction = await sellingEscrow.connect(buyer).approveSale(1)
-      await transaction.wait()
-
-      transaction = await sellingEscrow.connect(seller).approveSale(1)
       await transaction.wait()
 
       transaction = await sellingEscrow.connect(oracle).approveSale(1)

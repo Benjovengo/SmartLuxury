@@ -149,16 +149,15 @@ contract SellingEscrow is IERC721Receiver {
     }
 
     /* Finalize Sale
-       -> Require inspection status (add more items here, like appraisal)
-       -> Require sale to be authorized
+       -> Require delivered status
        -> Require funds to be correct amount
        -> Transfer NFT to buyer
        -> Transfer Funds to Seller */
     function finalizeSale(uint256 _nftID) public {
         //require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
-        //require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by the buyer
-        //require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
         //require(approval[_nftID][oracle]); // transaction approved by the delivery service
+
+        /**NOT THE BALANCE!!! THE AMOUNT TRANSFERED TO THIS CONTRACT BY THAT BUYER TO BUY THAT ITEM */
         require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         // Transfer ether to the seller (from the SellingEscrow contract)
