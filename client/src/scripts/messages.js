@@ -38,5 +38,6 @@ export const myMessages = async () => {
       await messages.notNew(i)
     }
   }
-  console.log(readMessages)
+  //console.log(readMessages)
+  return readMessages
 }

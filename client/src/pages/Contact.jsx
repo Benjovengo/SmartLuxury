@@ -12,6 +12,17 @@ const Contact = () => {
   const subjectRef = useRef("");
   const messageRef = useRef("");
 
+
+  const addParagraphs = async () => {
+    let data = await myMessages();
+    console.log(data[0])
+      let newParagraph
+      newParagraph = document.createElement("p");
+      newParagraph.innerHTML = "Name";
+      document.body.appendChild(newParagraph);
+  }
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let getName = e.target.nameInput.value;
@@ -34,6 +45,7 @@ const Contact = () => {
               <p>
                 Please, feel free to leave a message. I'll be the only one reading it. And, of course, this message is also going to be placed in the blockchain!
               </p>
+              <p><b>Warning!!</b> Only the last message will be read!</p>
               <div className="contact mt-4">
                 <form onSubmit={handleSubmit}>
                   <div className="form__input">
@@ -90,7 +102,7 @@ const Contact = () => {
               </div>
             </Col>
           </Row>
-          <button onClick={() => myMessages()}>My Messages</button>
+          <button id="addParagraphsButton" onClick={() => addParagraphs()}>My Messages</button>
         </Container>
       </section>
     </>
