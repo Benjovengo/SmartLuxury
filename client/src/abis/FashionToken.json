@@ -244,6 +244,25 @@
  {
   "inputs": [
    {
+    "internalType": "string",
+    "name": "_serialNumber",
+    "type": "string"
+   }
+  ],
+  "name": "getProductID",
+  "outputs": [
+   {
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
     "internalType": "address",
     "name": "owner",
     "type": "address"
