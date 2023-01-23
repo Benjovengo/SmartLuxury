@@ -129,7 +129,7 @@ contract SellingEscrow is IERC721Receiver {
 
     /* Put ether under contract (buyer - payable oracleEscrow) */
     function depositEarnest(uint256 _nftID) public payable {
-        require(msg.value >= purchasePrice[_nftID], "Insufficient funds!");
+        //require(msg.value >= purchasePrice[_nftID], "Insufficient funds!");
         buyer[_nftID] = msg.sender;
     }
 
