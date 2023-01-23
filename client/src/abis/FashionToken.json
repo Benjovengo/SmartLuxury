@@ -244,9 +244,9 @@
  {
   "inputs": [
    {
-    "internalType": "bytes32",
+    "internalType": "string",
     "name": "_serialNumber",
-    "type": "bytes32"
+    "type": "string"
    }
   ],
   "name": "getProductID",
@@ -287,9 +287,9 @@
  {
   "inputs": [
    {
-    "internalType": "bytes32",
+    "internalType": "string",
     "name": "_serialNum",
-    "type": "bytes32"
+    "type": "string"
    }
   ],
   "name": "isRegistered",
@@ -316,9 +316,9 @@
     "type": "address"
    },
    {
-    "internalType": "bytes32",
+    "internalType": "string",
     "name": "_serialNumber",
-    "type": "bytes32"
+    "type": "string"
    }
   ],
   "name": "mint",

@@ -65,13 +65,13 @@ const main = async () => {
 
 
   // ============================== DEFAULT MINTS ==============================
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', ethers.utils.formatBytes32String('IA002000811'))
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json', ethers.utils.formatBytes32String('IA002000251'))
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json', ethers.utils.formatBytes32String('IA002000404'))
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json', ethers.utils.formatBytes32String('IA002000868'))
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json', ethers.utils.formatBytes32String('IA002000769'))
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', ethers.utils.formatBytes32String('CF003000012'))
-  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', ethers.utils.formatBytes32String('IA002000148'))
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', 'IA002000811')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json', 'IA002000251')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json', 'IA002000404')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json', 'IA002000868')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json', 'IA002000769')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'CF003000012')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'IA002000148')
 
 
   /* Console Log results */

@@ -381,9 +381,9 @@
     "type": "string"
    },
    {
-    "internalType": "bytes32",
+    "internalType": "string",
     "name": "_serialNumber",
-    "type": "bytes32"
+    "type": "string"
    }
   ],
   "name": "register",

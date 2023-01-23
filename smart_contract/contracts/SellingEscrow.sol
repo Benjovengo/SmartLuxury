@@ -65,7 +65,9 @@ contract SellingEscrow is IERC721Receiver {
     /* Register new product
         - if the serial number has already been registered before
     */
-    function register(string memory _tokenURI, bytes32 _serialNumber) public {
+    function register(string memory _tokenURI, string memory _serialNumber)
+        public
+    {
         uint256 newID = fashionToken.mint(_tokenURI, msg.sender, _serialNumber);
         if (newID != 0) {
             IERC721(nftAddress).safeTransferFrom(
