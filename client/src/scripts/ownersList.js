@@ -32,5 +32,5 @@ export const getOwnersList = async (_nftID) => {
 
 /** Get the first owner of a product */
 export const firstOwner = async (_nftID) => {
-  return await fashionToken.firstOwner(_nftID)
+  return await fashionToken.getFirstOwner(_nftID)
 }
