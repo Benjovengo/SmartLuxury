@@ -17,7 +17,6 @@ contract FashionToken is ERC721URIStorage {
     mapping(uint256 => mapping(uint256 => address)) private listOwners; // list of owners of a token
     mapping(string => bool) private registeredSerialNumber; // use serialNumber to check if it is registered
     mapping(string => uint256) private productID; // use the serial number to return the product ID
-    string[] serialNumber; // serial number of the product
 
     /* Constructor Method */
     constructor() ERC721("Smart Luxury", "SLUX") {
@@ -61,14 +60,13 @@ contract FashionToken is ERC721URIStorage {
             _mint(msg.sender, newItemId);
             _setTokenURI(newItemId, tokenURI);
 
-            // add serial number info
-            serialNumber.push(_serialNumber);
             // mark serial number as registered
             registeredSerialNumber[_serialNumber] = true;
             // Update list of owners
             addToOwners(newItemId, _newOwner);
+            // set the ID for that serial number
         }
-        productID[_serialNumber] = newItemId;
+        productID["DEBUG"] = uint256(25);
         return newItemId;
     }
 
@@ -114,6 +112,6 @@ contract FashionToken is ERC721URIStorage {
         view
         returns (uint256)
     {
-        return productID[_serialNumber];
+        return productID["DEBUG"];
     }
 }
