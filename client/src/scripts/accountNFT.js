@@ -71,9 +71,7 @@ async function getBlockchainData() {
 }
 
 
-/**
- * mapping(uint256 => Customer) public customers;
- * mapping(address => uint256) public customerId;
+/** Export Data
  * 
  */
 
@@ -81,4 +79,3 @@ export const PRODUCTS__OWNED__FILE = await getBlockchainData()
 export const accountData = async () => {
   return await getBlockchainData()
 }
-//console.log(PRODUCTS__OWNED)
