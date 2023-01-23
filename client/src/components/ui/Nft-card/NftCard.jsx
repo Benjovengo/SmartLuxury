@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import './nft-card.css'
 
 import Review from "../Review/Review";
+import { getOwnersList } from '../../../scripts/ownersList';
+
 
 function copyToClipboard(_Address) {
   //console.log('')
@@ -17,6 +19,10 @@ const NftCard = (props) => {
   const [productName, setProductName] = useState('Product Title');
   const [productId, setProductId] = useState(1);
   const [price, setPrice] = useState(1);
+
+  const ownersList = async (_nftID) => {
+    console.log(await getOwnersList(_nftID))
+  }
 
   /**Show Reviwew */
   const reviewSell = () => {
@@ -86,7 +92,7 @@ const NftCard = (props) => {
 
       </div>
 
-      <span><Link to='#' className='history__link'><i className="ri-history-line"></i> View Ownership History</Link></span>
+      <button className='history__link' onClick={() => ownersList(id)}><span><i className="ri-history-line"></i> View Ownership History</span></button>
     </div>
   )
 }
