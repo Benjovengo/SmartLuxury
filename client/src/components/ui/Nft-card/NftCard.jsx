@@ -20,6 +20,7 @@ const NftCard = (props) => {
   const [productId, setProductId] = useState(1);
   const [price, setPrice] = useState(1);
 
+  /** Get list of owners for a product */
   const ownersList = async (_nftID) => {
     console.log(await getOwnersList(_nftID))
   }
@@ -28,7 +29,7 @@ const NftCard = (props) => {
   const reviewSell = () => {
     setShowPurchaseReview(true)
     // name
-    if (title != '') {
+    if (title !== '') {
       setProductName(title)
     }
     // id
@@ -36,7 +37,7 @@ const NftCard = (props) => {
       setProductId(id)
     }
     // price
-    if (currentBid != 0) {
+    if (currentBid !== 0) {
       setPrice(currentBid)
     }
   }
