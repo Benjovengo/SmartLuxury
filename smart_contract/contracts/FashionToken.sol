@@ -15,6 +15,7 @@ contract FashionToken is ERC721URIStorage {
     address public deployer; // this address will receive the fees for the sales
     mapping(uint256 => uint256) public numberOfOwners; // total number of owners
     mapping(uint256 => mapping(uint256 => address)) private listOwners; // list of owners of a token
+    //mapping(uint256 => mapping(uint256 => uint256)) private previousOwner; // last owner's ID
     mapping(string => bool) private registeredSerialNumber; // use serialNumber to check if it is registered
     string[] serialNumber; // serial number of the product
 
@@ -86,22 +87,13 @@ contract FashionToken is ERC721URIStorage {
         numberOfOwners[_nftID]++;
     }
 
-    /* get list of owners */
-    function getOwnersIn(uint256 _nftID)
-        private
+    /* get owner - public function */
+    function getOwner(uint256 _nftID, uint256 _ownerIndex)
+        public
         view
-        returns (address[] memory)
+        returns (address)
     {
-        address[] memory owners = new address[](numberOfOwners[_nftID]);
-        for (uint256 i; i < numberOfOwners[_nftID]; ++i) {
-            owners[i] = listOwners[_nftID][i];
-        }
-        return owners;
-    }
-
-    /* get list of owners - public function */
-    function getOwners(uint256 _nftID) public view returns (address[] memory) {
-        address[] memory owners = getOwnersIn(_nftID);
-        return owners;
+        address productOwner = listOwners[_nftID][_ownerIndex];
+        return productOwner;
     }
 }
