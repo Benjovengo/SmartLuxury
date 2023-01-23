@@ -122,7 +122,6 @@ contract SellingEscrow is IERC721Receiver {
 
         // update listing and ownership status
         isListed[_nftID] = false; // list product with ID=_nftID
-        nftSeller[_nftID] = msg.sender;
 
         // broadcast product unlisted
         emit productUnlisted(true);
@@ -159,14 +158,14 @@ contract SellingEscrow is IERC721Receiver {
         //require(approval[_nftID][buyer[_nftID]]); // the transaction needs to be approved by the buyer
         //require(approval[_nftID][nftSeller[_nftID]]); // the transaction needs to be approved by the seller
         //require(approval[_nftID][oracle]); // transaction approved by the delivery service
-        require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
+        //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
 
         // Transfer ether to the seller (from the SellingEscrow contract)
+        address sellerAddr = nftSeller[_nftID];
         uint256 afterFee = uint256(purchasePrice[_nftID]) *
             uint256(95) *
             (10**14);
-        (bool success, ) = payable(nftSeller[_nftID]).call{value: afterFee}("");
-        require(success, "Unsuccessful transfer of funds to the seller.");
+        (bool success, ) = payable(sellerAddr).call{value: afterFee}("");
 
         // Transfer fees
         address deployer = fashionToken.deployer();
