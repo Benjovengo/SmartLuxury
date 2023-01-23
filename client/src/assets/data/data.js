@@ -8,15 +8,6 @@ import Contacts from '../../abis/Contacts.json'
 import config from '../../config.json'; // config
 
 
-/* TEST IMAGES */
-import ava01 from "../images/ava-01.png";
-import ava02 from "../images/ava-02.png";
-import ava03 from "../images/ava-03.png";
-import ava04 from "../images/ava-04.png";
-import ava05 from "../images/ava-05.png";
-import ava06 from "../images/ava-06.png";
-
-
 /* Get info for products */
 
 // Setup provider and network
