@@ -36,6 +36,7 @@ contract Contacts {
     uint256[] tokenIds;
     mapping(address => uint256) public totalProductsOwned;
     mapping(address => uint256[]) public ownedProducts;
+    mapping(address => mapping(uint256 => bool)) private isOwned;
 
     /* Constructor Method 
         - sets the owner of the contacts contract
@@ -91,13 +92,8 @@ contract Contacts {
     function addCustomerItems(address _customerAddress, uint256 _tokenId)
         public
     {
-        bool added;
-        for (uint256 i; i < totalProductsOwned[_customerAddress]; i++) {
-            if (ownedProducts[_customerAddress][i] == _tokenId) {
-                added = true;
-            }
-        }
-        if (!added) {
+        if (!isOwned[_customerAddress][_tokenId]) {
+            isOwned[_customerAddress][_tokenId] = true;
             totalProductsOwned[_customerAddress]++;
             ownedProducts[_customerAddress].push(_tokenId);
         }
@@ -109,6 +105,8 @@ contract Contacts {
     function removeCustomerItems(address _customerAddress, uint256 _tokenId)
         public
     {
+        isOwned[_customerAddress][_tokenId] = false;
+        totalProductsOwned[_customerAddress]--;
         delete ownedProducts[_customerAddress][_tokenId];
     }
 
