@@ -23,10 +23,10 @@ const NftCard = (props) => {
 
   /** Get list of owners for a product */
   const ownersList = async (_nftID) => {
-    console.log(await getOwnersList(_nftID))
+    alert(await getOwnersList(_nftID))
   }
 
-  
+
   /**Show Reviwew */
   const reviewSell = () => {
     setShowPurchaseReview(true)
