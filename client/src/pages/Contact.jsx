@@ -29,7 +29,7 @@ const Contact = () => {
       newParagraph.innerHTML = "Subject: " + individualMessage[3];
       document.body.appendChild(newParagraph);
       newParagraph = document.createElement("p");
-      newParagraph.innerHTML = "Body: " + individualMessage[4];
+      newParagraph.innerHTML = "Body: " + individualMessage[4].replace(/\n/g, '<br/>');
       document.body.appendChild(newParagraph);
     }
   }
