@@ -44,7 +44,10 @@ contract FashionToken is ERC721URIStorage {
         string memory _serialNumber
     ) public returns (uint256) {
         // requirements to mint
-        require(msg.sender == owner);
+        require(
+            msg.sender == owner,
+            "Only the Selling contract can mint products!"
+        );
         // variables
         uint256 newItemId;
         bool alreadyRegistered = registeredSerialNumber[_serialNumber];
