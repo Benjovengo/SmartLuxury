@@ -67,7 +67,7 @@ const Create = () => {
                   
                   <div className="form__input">
                     <label>Title</label>
-                    <input type="text" name="productName" placeholder="Enter title" />
+                    <input type="text" name="productName" placeholder="Enter title" required />
                   </div>
 
                   <div className="form__input">
@@ -92,7 +92,7 @@ const Create = () => {
                       </Col>
                       <Col>
                         <label>Serial Number</label>
-                        <input type="text" name="serialNumber" placeholder="Serial Number" />
+                        <input type="text" pattern="[a-zA-Z0-9#-]{1,32}" maxLength="32" name="serialNumber" placeholder="Serial Number" required />
                       </Col>
                       <Col>
                         <label htmlFor="category">Category</label><br/>
