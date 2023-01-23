@@ -18,6 +18,7 @@ contract SellingEscrow is IERC721Receiver {
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
     mapping(uint256 => address) public buyer;
+    mapping(address => mapping(uint256 => uint256)) public deposit; // [buyer][nftId] -> [value]
     mapping(uint256 => address) public nftSeller;
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
@@ -132,6 +133,7 @@ contract SellingEscrow is IERC721Receiver {
     function depositEarnest(uint256 _nftID) public payable {
         require(msg.value >= purchasePrice[_nftID], "Insufficient funds!");
         buyer[_nftID] = msg.sender;
+        deposit[msg.sender][_nftID] = msg.value;
     }
 
     /* Oracle
