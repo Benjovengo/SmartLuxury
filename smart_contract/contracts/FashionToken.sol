@@ -59,10 +59,8 @@ contract FashionToken is ERC721URIStorage {
 
             // add serial number info
             serialNumber.push(_serialNumber);
-
             // mark serial number as registered
             registeredSerialNumber[_serialNumber] = true;
-
             // Update list of owners
             addToOwners(newItemId, _newOwner);
         }
