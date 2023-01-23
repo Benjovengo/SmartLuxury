@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './nft-card-sell.css'
 
 import Review from "../Review/ReviewSell";
+import { getOwnersList } from '../../../scripts/ownersList';
 
 
 
@@ -16,21 +17,27 @@ const NftCard = (props) => {
   const [price, setPrice] = useState(1);
   const [productId, setProductId] = useState(1);
 
+  /** Get list of owners for a product */
+  const ownersList = async (_nftID) => {
+    const list = await getOwnersList(_nftID)
+    alert('First owner: ' + list[0])
+  }
+
   /**Show Reviwew */
   const ReviewSell = () => {
     setShowReview(true)
     // name
-    if (title != '') {
+    if (title !== '') {
       setProductName(title)
     }
     // ID
-    if (id != '') {
+    if (id !== '') {
       setProductId(id)
     }
     // price
     let inputID = `priceInput${id}`
     let priceResult = document.getElementById(inputID).value
-    if (priceResult != '') {
+    if (priceResult !== '') {
       setPrice(priceResult)
     }
   }
@@ -93,7 +100,7 @@ const NftCard = (props) => {
 
       </div>
 
-      <span><Link to='#' className='history__link'><i className="ri-history-line"></i> View Ownership History</Link></span>
+      <span><Link to='#' className='history__link'><i className="ri-history-line" onClick={() => ownersList(id)}></i> View Ownership History</Link></span>
     </div>
   )
 }
