@@ -1,23 +1,47 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import LiveAuction from "../components/ui/Live-auction/LiveAuction";
-import { NFT__DATA } from "../assets/data/data";
+import { NFT__DATA, refreshProducts } from "../assets/data/data";
 import Review from '../components/ui/Review/Review';
 
 
 import "../styles/nft-details.css";
 
+
+
 const NftDetails = () => {
+
   const { id } = useParams();
-  const singleNft = NFT__DATA.find((item) => item.id === id);
+  let id_num = Number(id)
+  let result = NFT__DATA.find(object => object.id === id_num)
+  let [singleNft, setSingleNFT] = useState(result)
+
+  //DEBUG
+  console.log(NFT__DATA)
+
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
   const [productId, setProductId] = useState(1);
   const [price, setPrice] = useState(1);
+  let data = NFT__DATA
+
+
+  // ====== UPDATE PRODUCTS ON LOAD =========
+  const updateProducts = async () => {
+    data = await refreshProducts()
+    result = data.find(object => object.id === id_num)
+    setSingleNFT(result);
+  }
+
+  useEffect(() => {
+    updateProducts();
+  }, [])
+
+  
 
   /**Show Reviwew */
   const reviewPurchase = () => {
