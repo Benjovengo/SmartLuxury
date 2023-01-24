@@ -75,11 +75,6 @@ async function getData(_nftID) {
         currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
-      console.log('SINGLE PRODUCT DEBUG -------------------')
-      console.log('Argument:  ', _nftID)
-      console.log('Product ID ', productID)
-      console.log('ID Token   ', Number(await fashionToken.getProductID(json.SKU)))
-      console.log('----------------------------------------')
     }
   }
   return data
