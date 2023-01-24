@@ -65,37 +65,37 @@ const main = async () => {
 
 
   // ============================== DEFAULT MINTS ==============================
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', 'IA002000811')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json', 'IA002000251')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json', 'IA002000404')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json', 'IA002000868')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json', 'IA002000769')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'CF003000012')
-  await sellingEscrow.connect(seller).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'IA002000148')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Hobo-Black_IA002000811.json', 'IA002000811')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Dior-Vintage-Sunglasses_IA002000251.json', 'IA002000251')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Flap-Jackie-Bag.json', 'IA002000404')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Gucci-Swing-Red_IA002000868.json', 'IA002000868')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Louis-Vuitton-Speedy-Bag.json', 'IA002000769')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'CF003000012')
+  await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'IA002000148')
 
-  let transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 1)
+  let transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 1)
   await transaction.wait()
-  transaction = await sellingEscrow.connect(seller).list(1, tokens(1))
+  transaction = await sellingEscrow.connect(buyer).list(1, tokens(1))
   await transaction.wait()
 
-  transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 2)
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 2)
   await transaction.wait()
-  transaction = await sellingEscrow.connect(seller).list(2, tokens(0.75))
+  transaction = await sellingEscrow.connect(buyer).list(2, tokens(0.75))
   await transaction.wait()
   
-  transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 3)
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 3)
   await transaction.wait()
-  transaction = await sellingEscrow.connect(seller).list(3, tokens(1.25))
-  await transaction.wait()
-
-  transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 4)
-  await transaction.wait()
-  transaction = await sellingEscrow.connect(seller).list(4, tokens(1.65))
+  transaction = await sellingEscrow.connect(buyer).list(3, tokens(1.25))
   await transaction.wait()
 
-  transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 5)
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 4)
   await transaction.wait()
-  transaction = await sellingEscrow.connect(seller).list(5, tokens(0.85))
+  transaction = await sellingEscrow.connect(buyer).list(4, tokens(1.65))
+  await transaction.wait()
+
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 6)
+  await transaction.wait()
+  transaction = await sellingEscrow.connect(buyer).list(6, tokens(1.85))
   await transaction.wait()
 
   

@@ -10,7 +10,7 @@ import Review from "../Review/ReviewSell";
 
 const NftCard = (props) => {
 
-  const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname} = props.item  ;
+  const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname, isListed} = props.item  ;
   const [showReview, setShowReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
   const [price, setPrice] = useState(1);
@@ -60,21 +60,32 @@ const NftCard = (props) => {
           </div>
         </div>
 
-        <h6 className='price__header'>Set price</h6>
-        <div className="price__info d-flex align-items-bottom justify-content-between">
-          <div className='w-50'>
-            <div className="price__input">
-              <input
-                type="number" step="0.01"
-                placeholder="Price (ETH)"
-               id={`priceInput${id}`}
-              />
-          </div>
-          </div>
-          <div className='d-flex align-items-center justify-content-between'>
-            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
-          </div>
-        </div>
+        { (!isListed) ?
+          <>
+            <h6 className='price__header'>Set price</h6>
+            <div className="price__info d-flex align-items-bottom justify-content-between">
+              <div className='w-50'>
+                <div className="price__input">
+                  <input
+                    type="number" step="0.01"
+                    placeholder="Price (ETH)"
+                  id={`priceInput${id}`}
+                  />
+              </div>
+              </div>
+              <div className='d-flex align-items-center justify-content-between'>
+                <button className="bid__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
+              </div>
+            </div>
+          </> :
+          <>
+            <h6 className='price__header'>Changed your mind?</h6>
+            <div className='d-flex align-items-center justify-content-between'>
+              <button className="bid__btn">Remove from sale</button>
+            </div>
+          </>
+        }
+        
 
         <div className="creator__info d-flex align-items-center justify-content-between">
           <div className='w-150'>
