@@ -51,11 +51,15 @@ async function getData() {
   let formatJson
   let data = []
   let productID
+  let currentOwner
   for(let i=0; i < productList.length; i++){
     json = await productList[i]
     productID = Number(await fashionToken.getProductID(json.SKU))
+    currentOwner = String(await fashionToken.getOwnershipOf(productID)).toLocaleLowerCase()
     // get listed products
     if (await sellingEscrow.isListed(productID)) {
+      userId = await contacts.customerId(currentOwner)
+      customer = await contacts.customers(userId)
       formatJson = {
         id: productID,
         title: json.name,
