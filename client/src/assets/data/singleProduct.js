@@ -88,7 +88,13 @@ async function getData(_nftID) {
  */
 
 export const refreshProducts = async (_nftID) => {
-  let resultData = await getData(_nftID)
+  let resultData
+  try {
+    resultData = await getData(_nftID)
+  } catch (error) {
+    resultData = ''
+  }
+  
   return resultData
 }
 

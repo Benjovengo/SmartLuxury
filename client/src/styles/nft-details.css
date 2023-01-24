@@ -87,6 +87,19 @@
   color: #fff;
 }
 
+.product__not__found {
+  align-items: center;
+  display: flex;
+  height: 250px;
+  justify-content: center;
+}
+
+.product__not__found p {
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
 
 @media only screen and (max-width: 992px) {
   .single__nft__content h2 {

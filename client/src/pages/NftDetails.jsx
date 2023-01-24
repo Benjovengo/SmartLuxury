@@ -11,17 +11,10 @@ import Review from '../components/ui/Review/Review';
 import "../styles/nft-details.css";
 
 
-
-
-console.log('NftDetails DEBUG')
-console.log()
-
-
 const NftDetails = () => {
 
   const { id } = useParams();
   let id_num = Number(id)
-  console.log('ID: ', id_num)
   let SINGLE__NFT__DATA = refreshProducts(id_num)
   let [singleNft, setSingleNFT] = useState(SINGLE__NFT__DATA)
 
@@ -66,9 +59,23 @@ const NftDetails = () => {
 
   return (
     <>
-      {( singleNft === undefined ) ?
+      {( singleNft === undefined || singleNft === '' ) ?
         <>
           <CommonSection title='Product not found!' />
+
+          <section>
+            <Container>
+              <Row >
+                <div className="product__not__found d-flex align-items-center">
+                  <Col>
+                    <h2>This product was not found as listed for sale.</h2>
+                    <p>If you know the owner, confirm if the owner put this product for sale.</p>
+                    <p>Our privacy policy do not allow us to give any information about the owners of the products registered with us.</p>                  
+                  </Col>
+                </div>
+              </Row>
+            </Container>
+          </section>
         </>
       :
       <>
