@@ -57,6 +57,20 @@ async function getData(_nftID) {
     productID = Number(await fashionToken.getProductID(json.SKU))
     currentOwner = String(await fashionToken.getOwnershipOf(productID)).toLocaleLowerCase()
     isListed = await sellingEscrow.isListed(productID)
+
+    // DEBUG
+    if (_nftID === productID) {
+      console.log('SINGLE PRODUCT DEBUG -----------------------------------------')
+      console.log('isListed: ', isListed)
+      console.log('Current Owner   ', currentOwner)
+      console.log('Account Address ', accounts[0].toLocaleLowerCase())
+      console.log('--- comparisons ---')
+      console.log('Current Owner = Account Address? ', currentOwner === accounts[0].toLocaleLowerCase())
+      console.log('--------------------------------------------------------------')
+    }
+    // ----------------- END DEBUG
+
+
     // has to be listed or owned by who wants to see it
     // AND gets only one item at a time based on the ID
     if ((isListed || currentOwner === accounts[0]) && _nftID === productID) {
