@@ -42,32 +42,39 @@ const loadMetadata = async () => {
   return products
 }
 
-async function getData() {
-  const userId = await contacts.customerId(accounts[0])
-  const customer = await contacts.customers(userId) 
+async function getData(_nftID) {
+  let userId = await contacts.customerId(accounts[0])
+  let customer = await contacts.customers(userId)
 
   let productList = await loadMetadata()
   let json
-  let formatJson
-  let data = []
+  let data
   let productID
+  let isListed
+  let currentOwner
   for(let i=0; i < productList.length; i++){
     json = await productList[i]
     productID = Number(json.id)
-    if (await sellingEscrow.isListed(productID)) {
-      formatJson = {
+    currentOwner = String(await fashionToken.getOwnershipOf(productID))
+    isListed = await sellingEscrow.isListed(productID)
+    // has to be listed or owned by who wants to see it
+    // AND gets only one item at a time based on the ID
+    if ((isListed || currentOwner === accounts[0]) && _nftID === Number(await fashionToken.getProductID(json.SKU))) {
+      userId = await contacts.customerId(currentOwner)
+      customer = await contacts.customers(userId)
+      data = {
         id: Number(await fashionToken.getProductID(json.SKU)),
         title: json.name,
         description: json.description,
         imgUrl: json.image[0],
-        creator: await await fashionToken.getFirstOwner(productID),
+        creator: await fashionToken.getFirstOwner(productID),
         firstname: customer[1],
         lastname: customer[2],
-        creatorImg: "../images/ava-01.png",
+        creatorImg: customer[3],
         currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
-      data.push(formatJson)
+      break
     }
   }
   return data
@@ -79,9 +86,9 @@ async function getData() {
 /** DATA - EXPORT METADATA
  * get metadata for the products from the blockchain
  */
-export const NFT__DATA = await getData()
-export const refreshProducts = async () => {
-  let resultData = await getData()
+
+export const refreshProducts = async (_nftID) => {
+  let resultData = await getData(2)
   return resultData
 }
 
