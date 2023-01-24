@@ -73,6 +73,35 @@ const main = async () => {
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Marc-Jacobs-Aviator-Glasses_CF003000012.json', 'CF003000012')
   await sellingEscrow.connect(buyer).register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/public/metadata/Valentino-RockStud-1234.json', 'IA002000148')
 
+  let transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 1)
+  await transaction.wait()
+  transaction = await sellingEscrow.connect(buyer).list(1, tokens(1))
+  await transaction.wait()
+
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 2)
+  await transaction.wait()
+  transaction = await sellingEscrow.connect(buyer).list(2, tokens(0.75))
+  await transaction.wait()
+  
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 3)
+  await transaction.wait()
+  transaction = await sellingEscrow.connect(buyer).list(3, tokens(1.25))
+  await transaction.wait()
+
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 4)
+  await transaction.wait()
+  transaction = await sellingEscrow.connect(buyer).list(4, tokens(1.65))
+  await transaction.wait()
+
+  transaction = await fashionToken.connect(buyer).approve(sellingEscrow.address, 6)
+  await transaction.wait()
+  transaction = await sellingEscrow.connect(buyer).list(6, tokens(1.85))
+  await transaction.wait()
+
+  
+
+  
+
 
   /* Console Log results */
   console.log("FashionToken address:       ", fashionToken.address)

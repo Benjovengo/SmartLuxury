@@ -2,9 +2,10 @@ import { ethers } from 'ethers';
 
 
 /* Contracts */
-import FashionToken from '../abis/FashionToken.json'
-import Contacts from '../abis/Contacts.json' // Import ABI
-import config from '../config.json'; // config
+import FashionToken from '../abis/FashionToken.json' // Import token ABI
+import SellingEscrow from '../abis/SellingEscrow.json' // Import Selling contract ABI
+import Contacts from '../abis/Contacts.json' // Import Contacts ABI
+import config from '../config.json'; // Config - addresses
 
 
 let provider = new ethers.providers.Web3Provider(window.ethereum, "any")
@@ -18,6 +19,7 @@ const signer = provider.getSigner();
 
 // Javascript "version" of the smart contracts
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
 const totalTokens = await contacts.totalProductsOwned(accounts[0])
@@ -50,10 +52,12 @@ async function getBlockchainData() {
   let json
   let formatJson
   let data = []
+  let productID
   for(let i=0; i < productList.length; i++){
       json = await productList[i]
+      productID = Number(await fashionToken.getProductID(json.SKU))
       formatJson = {
-        id: json.id,
+        id: productID,
         title: json.name,
         description: json.description,
         imgUrl: json.image[0],
@@ -62,7 +66,8 @@ async function getBlockchainData() {
         lastname: customer[2],
         creatorImg: "../images/ava-01.png",
         currentBid: 100,
-        category: json.attributes[0].value
+        category: json.attributes[0].value,
+        isListed: await sellingEscrow.isListed(productID)
       }
       data.push(formatJson)    
   }

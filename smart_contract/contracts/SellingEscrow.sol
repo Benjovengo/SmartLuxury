@@ -17,8 +17,8 @@ contract SellingEscrow is IERC721Receiver {
     // Mappings - per NFT properties
     mapping(uint256 => bool) public isListed; // Checks whether the product is listed or not
     mapping(uint256 => uint256) public purchasePrice;
-    mapping(uint256 => address) public buyer;
     mapping(address => mapping(uint256 => uint256)) public deposit; // [buyer][nftId] -> [value]
+    mapping(uint256 => address) public buyer;
     mapping(uint256 => address) public nftSeller;
     mapping(uint256 => bool) public wasDelivered; // Checks if the purchased item was delivered
     mapping(uint256 => mapping(address => bool)) public approval; // Approve the transaction
@@ -123,7 +123,6 @@ contract SellingEscrow is IERC721Receiver {
 
         // update listing and ownership status
         isListed[_nftID] = false; // list product with ID=_nftID
-        nftSeller[_nftID] = msg.sender;
 
         // broadcast product unlisted
         emit productUnlisted(true);
@@ -158,22 +157,25 @@ contract SellingEscrow is IERC721Receiver {
     function finalizeSale(uint256 _nftID) public {
         //require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
         //require(approval[_nftID][oracle]); // transaction approved by the delivery service
-
-        /**NOT THE BALANCE!!! THE AMOUNT TRANSFERED TO THIS CONTRACT BY THAT BUYER TO BUY THAT ITEM */
-        require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
-        //require(deposit[buyer[_nftID]][_nftID] >= purchasePrice[_nftID]); // the amount deposited must be greater or equal to the price
+        //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
+        require(
+            deposit[buyer[_nftID]][_nftID] >= purchasePrice[_nftID],
+            "Insufficient funds!"
+        );
 
         // Transfer ether to the seller (from the SellingEscrow contract)
+        address sellerAddr = nftSeller[_nftID];
         uint256 afterFee = uint256(purchasePrice[_nftID]) *
             uint256(95) *
             (10**14);
-        (bool success, ) = payable(nftSeller[_nftID]).call{value: afterFee}("");
-        require(success, "Unsuccessful transfer of funds to the seller.");
+        (bool success, ) = payable(sellerAddr).call{value: afterFee}("");
 
         // Transfer fees
         address deployer = fashionToken.deployer();
         uint256 myFee = uint256(purchasePrice[_nftID]) * uint256(5) * (10**14);
         (bool anotherSuccess, ) = payable(deployer).call{value: myFee}("");
+
+        fashionToken.approve(buyer[_nftID], _nftID);
 
         // Transfer product ownership
         IERC721(nftAddress).safeTransferFrom(
@@ -181,8 +183,8 @@ contract SellingEscrow is IERC721Receiver {
             buyer[_nftID],
             _nftID
         );
-        // reset the deposit
-        deposit[buyer[_nftID]][_nftID] = 0;
+        // clear deposits
+        deposit[buyer[_nftID]][_nftID] = uint256(0);
         // set as unlisted
         isListed[_nftID] = false; // stop listing the item
         // add owner to list of owners

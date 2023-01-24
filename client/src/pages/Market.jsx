@@ -12,6 +12,7 @@ import "../styles/market.css";
 
 const Market = () => {
   const [data, setData] = useState(NFT__DATA);
+  //console.log(data)
 
   // ====== SORTING DATA BY CATEGORY =========
   const handleCategory = (e) => {

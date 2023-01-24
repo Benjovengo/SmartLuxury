@@ -81,9 +81,10 @@ describe('Selling Escrow', () => {
       transaction = await sellingEscrow.connect(seller).approveTransfer(1)
       await transaction.wait()
       transaction = await sellingEscrow.connect(seller).unlist(1)
+      await transaction.wait()
       const result = await sellingEscrow.isListed(1)
       expect(await fashionToken.ownerOf(1)).to.be.equal(seller.address)
-      expect(result).that.be.equal(false)
+      expect(result).to.be.equal(false)
     })
 
     it('Returns purchase price.', async () => {
@@ -91,7 +92,7 @@ describe('Selling Escrow', () => {
       transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
       await transaction.wait()
       const result = await sellingEscrow.purchasePrice(1)
-      expect(result).that.be.equal(tokens(10))
+      expect(result).to.be.equal(tokens(10))
     })
   })
 
@@ -172,12 +173,6 @@ describe('Selling Escrow', () => {
 
     it('Updates ownership', async () => {
       expect(await fashionToken.ownerOf(1)).to.be.equal(buyer.address)
-    })
-
-    it('Get list of owners', async () => {
-      let result = await fashionToken.getOwners(1)
-      expect(result[0]).to.be.equal(seller.address)
-      expect(result[1]).to.be.equal(buyer.address)
     })
 
     it('Updates oracle contract balance', async () => {

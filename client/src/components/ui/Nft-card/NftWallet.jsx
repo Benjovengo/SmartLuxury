@@ -1,17 +1,39 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { ethers } from 'ethers';
 
 import './nft-card-sell.css'
 
 import Review from "../Review/ReviewSell";
 import { getOwnersList } from '../../../scripts/ownersList';
 
+// Import ABI
+import SellingEscrow from '../../../abis/SellingEscrow.json' // import Selling contract ABI
+import config from '../../../config.json'; // config
+
+/** SETUP ETHERS CONNECTION */
+// Setup provider and network
+let provider = new ethers.providers.Web3Provider(window.ethereum)
+const network = await provider.getNetwork()
+// get signer
+const signer = provider.getSigner();
+// Javascript "version" of the smart contracts
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+
+//**Remove item from selling list */
+const stopSelling = async (_tokenID) => {
+  let transaction = await sellingEscrow.approveTransfer(_tokenID)
+  await transaction.wait()
+  transaction = await sellingEscrow.unlist(_tokenID)
+  await transaction.wait()
+  console.log('Item removed from selling list.')
+}
 
 
 
 const NftCard = (props) => {
 
-  const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname} = props.item  ;
+  const {title, id, currentBid, creatorImg, imgUrl, creator, firstname, lastname, isListed} = props.item  ;
   const [showReview, setShowReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
   const [price, setPrice] = useState(1);
@@ -67,21 +89,32 @@ const NftCard = (props) => {
           </div>
         </div>
 
-        <h6 className='price__header'>Set price</h6>
-        <div className="price__info d-flex align-items-bottom justify-content-between">
-          <div className='w-50'>
-            <div className="price__input">
-              <input
-                type="number" step="0.01"
-                placeholder="Price (ETH)"
-               id={`priceInput${id}`}
-              />
-          </div>
-          </div>
-          <div className='d-flex align-items-center justify-content-between'>
-            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
-          </div>
-        </div>
+        { (!isListed) ?
+          <>
+            <h6 className='price__header'>Set price</h6>
+            <div className="price__info d-flex align-items-bottom justify-content-between">
+              <div className='w-50'>
+                <div className="price__input">
+                  <input
+                    type="number" step="0.01"
+                    placeholder="Price (ETH)"
+                  id={`priceInput${id}`}
+                  />
+              </div>
+              </div>
+              <div className='d-flex align-items-center justify-content-between'>
+                <button className="bid__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
+              </div>
+            </div>
+          </> :
+          <>
+            <h6 className='price__header'>Changed your mind?</h6>
+            <div className='d-flex align-items-center justify-content-between'>
+              <button className="bid__btn" onClick={() => stopSelling(id)}>Remove from sale</button>
+            </div>
+          </>
+        }
+        
 
         <div className="creator__info d-flex align-items-center justify-content-between">
           <div className='w-150'>
