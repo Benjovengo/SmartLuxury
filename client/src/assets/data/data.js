@@ -67,14 +67,8 @@ async function getData() {
         currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
-      //console.log('data -- json')
-      //console.log(json)
       data.push(formatJson)
     }
-    //console.log(json.SKU)
-    //console.log(await fashionToken.isRegistered(json.SKU))
-    //let argument = ethers.utils.formatBytes32String(json.SKU)
-    //console.log(Number(await fashionToken.getProductID(json.SKU)))
   }
   return data
 }
