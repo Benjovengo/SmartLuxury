@@ -43,8 +43,8 @@ const loadMetadata = async () => {
 }
 
 async function getData() {
-  const userId = await contacts.customerId(accounts[0])
-  const customer = await contacts.customers(userId) 
+  let userId = await contacts.customerId(accounts[0])
+  let customer = await contacts.customers(userId) 
 
   let productList = await loadMetadata()
   let json
