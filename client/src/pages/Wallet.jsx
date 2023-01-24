@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -42,18 +42,17 @@ const wallet__data = [
 
 const Wallet = () => {
 
-  let PRODUCTS__OWNED = PRODUCTS__OWNED__FILE
+// Hooks
+const [data, setData] = useState(PRODUCTS__OWNED__FILE);
 
-  const reloadData = async () => {
-    //console.log('Wallet main page')
-    //console.log(await accountData())
-  }
+// ====== UPDATE PRODUCTS ON LOAD =========
+const updateProducts = async () => {
+  setData(await accountData());
+}
 
-  useEffect(() => {
-    reloadData();
-  }, [])
-
-
+useEffect(() => {
+  updateProducts();
+}, [])
 
 
   return (
@@ -73,7 +72,7 @@ const Wallet = () => {
 
             <Row>
                 {
-                  PRODUCTS__OWNED.slice(0, 8).map((item) => (
+                  data.slice(0, 8).map((item) => (
                     <Col lg="3" md="4" sm="6" key={item.id} className="mb-4">
                       <NftCard item={item} />
                     </Col>
