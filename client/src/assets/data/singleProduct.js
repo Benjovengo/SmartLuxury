@@ -55,7 +55,7 @@ async function getData(_nftID) {
   for(let i=0; i < productList.length; i++){
     json = await productList[i]
     productID = Number(await fashionToken.getProductID(json.SKU))
-    currentOwner = String(await fashionToken.getOwnershipOf(productID))
+    currentOwner = String(await fashionToken.getOwnershipOf(productID)).toLocaleLowerCase()
     isListed = await sellingEscrow.isListed(productID)
     // has to be listed or owned by who wants to see it
     // AND gets only one item at a time based on the ID
