@@ -60,7 +60,6 @@ async function getData(_nftID) {
     // has to be listed or owned by who wants to see it
     // AND gets only one item at a time based on the ID
     if ((isListed || currentOwner === accounts[0]) && _nftID === productID) {
-      //if (_nftID === productID) {
       userId = await contacts.customerId(currentOwner)
       customer = await contacts.customers(userId)
       data = {
