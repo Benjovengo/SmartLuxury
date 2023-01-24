@@ -53,17 +53,18 @@ async function getData() {
   let productID
   for(let i=0; i < productList.length; i++){
     json = await productList[i]
-    productID = Number(json.id)
+    productID = Number(await fashionToken.getProductID(json.SKU))
+    // get listed products
     if (await sellingEscrow.isListed(productID)) {
       formatJson = {
-        id: Number(await fashionToken.getProductID(json.SKU)),
+        id: productID,
         title: json.name,
         description: json.description,
         imgUrl: json.image[0],
         creator: await fashionToken.getFirstOwner(productID),
         firstname: customer[1],
         lastname: customer[2],
-        creatorImg: "../images/ava-01.png",
+        creatorImg: customer[3] ? customer[3] : "../images/ava-01.png",
         currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }

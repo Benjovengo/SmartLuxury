@@ -71,7 +71,7 @@ async function getData(_nftID) {
         creator: await fashionToken.getFirstOwner(productID),
         firstname: customer[1],
         lastname: customer[2],
-        creatorImg: customer[3],
+        creatorImg: customer[3] ? customer[3] : "../images/ava-01.png",
         currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
