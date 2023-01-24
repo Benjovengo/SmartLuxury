@@ -1,10 +1,32 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { ethers } from 'ethers';
 
 import './nft-card-sell.css'
 
 import Review from "../Review/ReviewSell";
 
+// Import ABI
+import SellingEscrow from '../../../abis/SellingEscrow.json' // import Selling contract ABI
+import config from '../../../config.json'; // config
+
+/** SETUP ETHERS CONNECTION */
+// Setup provider and network
+let provider = new ethers.providers.Web3Provider(window.ethereum)
+const network = await provider.getNetwork()
+// get signer
+const signer = provider.getSigner();
+// Javascript "version" of the smart contracts
+const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+
+//**Remove item from selling list */
+const stopSelling = async (_tokenID) => {
+  let transaction = await sellingEscrow.approveTransfer(_tokenID)
+  await transaction.wait()
+  transaction = await sellingEscrow.unlist(_tokenID)
+  await transaction.wait()
+  console.log('Item removed from selling list.')
+}
 
 
 
@@ -81,7 +103,7 @@ const NftCard = (props) => {
           <>
             <h6 className='price__header'>Changed your mind?</h6>
             <div className='d-flex align-items-center justify-content-between'>
-              <button className="bid__btn">Remove from sale</button>
+              <button className="bid__btn" onClick={() => stopSelling(id)}>Remove from sale</button>
             </div>
           </>
         }

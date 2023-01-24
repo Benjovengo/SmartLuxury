@@ -81,6 +81,7 @@ describe('Selling Escrow', () => {
       transaction = await sellingEscrow.connect(seller).approveTransfer(1)
       await transaction.wait()
       transaction = await sellingEscrow.connect(seller).unlist(1)
+      await transaction.wait()
       const result = await sellingEscrow.isListed(1)
       expect(await fashionToken.ownerOf(1)).to.be.equal(seller.address)
       expect(result).to.be.equal(false)
