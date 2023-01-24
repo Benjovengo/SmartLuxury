@@ -106,6 +106,7 @@ const Account = () => {
         </section>
       </div>
 
+      {/* ACCOUNT - MAIN SECTION */}
       <section>
         <Container>
           <Row>
