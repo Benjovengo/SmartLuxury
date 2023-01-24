@@ -87,7 +87,7 @@
   opacity: 0;
   padding: 0;
   place-content: top;
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: -1;
 }
