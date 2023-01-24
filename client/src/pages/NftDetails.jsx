@@ -11,7 +11,7 @@ import Review from '../components/ui/Review/Review';
 import "../styles/nft-details.css";
 
 
-let SINGLE__NFT__DATA = refreshProducts(4)
+
 
 console.log('NftDetails DEBUG')
 console.log()
@@ -21,8 +21,9 @@ const NftDetails = () => {
 
   const { id } = useParams();
   let id_num = Number(id)
-  let result = SINGLE__NFT__DATA
-  let [singleNft, setSingleNFT] = useState(result)
+  console.log('ID: ', id_num)
+  let SINGLE__NFT__DATA = refreshProducts(id_num)
+  let [singleNft, setSingleNFT] = useState(SINGLE__NFT__DATA)
 
   //DEBUG
   //console.log(SINGLE__NFT__DATA)
@@ -35,13 +36,13 @@ const NftDetails = () => {
 
 
   // ====== UPDATE PRODUCTS ON LOAD =========
-  const updateProducts = async () => {
-    result = await refreshProducts(4)
+  const updateProducts = async (id_num) => {
+    let result = await refreshProducts(id_num)
     setSingleNFT(result);
   }
 
   useEffect(() => {
-    updateProducts();
+    updateProducts(id_num);
   }, [])
 
   

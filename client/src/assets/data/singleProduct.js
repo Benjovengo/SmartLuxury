@@ -54,16 +54,17 @@ async function getData(_nftID) {
   let currentOwner
   for(let i=0; i < productList.length; i++){
     json = await productList[i]
-    productID = Number(json.id)
+    productID = Number(await fashionToken.getProductID(json.SKU))
     currentOwner = String(await fashionToken.getOwnershipOf(productID))
     isListed = await sellingEscrow.isListed(productID)
     // has to be listed or owned by who wants to see it
     // AND gets only one item at a time based on the ID
-    if ((isListed || currentOwner === accounts[0]) && _nftID === Number(await fashionToken.getProductID(json.SKU))) {
+    if ((isListed || currentOwner === accounts[0]) && _nftID === productID) {
+      //if (_nftID === productID) {
       userId = await contacts.customerId(currentOwner)
       customer = await contacts.customers(userId)
       data = {
-        id: Number(await fashionToken.getProductID(json.SKU)),
+        id: productID,
         title: json.name,
         description: json.description,
         imgUrl: json.image[0],
@@ -74,7 +75,11 @@ async function getData(_nftID) {
         currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
-      break
+      console.log('SINGLE PRODUCT DEBUG -------------------')
+      console.log('Argument:  ', _nftID)
+      console.log('Product ID ', productID)
+      console.log('ID Token   ', Number(await fashionToken.getProductID(json.SKU)))
+      console.log('----------------------------------------')
     }
   }
   return data
@@ -88,7 +93,7 @@ async function getData(_nftID) {
  */
 
 export const refreshProducts = async (_nftID) => {
-  let resultData = await getData(2)
+  let resultData = await getData(_nftID)
   return resultData
 }
 
