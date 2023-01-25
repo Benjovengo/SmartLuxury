@@ -1,0 +1,33 @@
+.my__messages {
+  background: #000;
+  border: none;
+  color: #fff;
+  padding: 7px 25px;
+  border-radius: 0px;
+  margin: 5px 0px;
+}
+
+.my__messages:hover {
+  background: #454545;
+}
+
+.my__messages__label {
+  color: #F89104;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.send__btn {
+  background: #F89104;
+  border: none;
+  color: #fff;
+  padding: 7px 25px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.send__btn:hover {
+  background: #D87E01;
+}

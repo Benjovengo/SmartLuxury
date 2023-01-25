@@ -5,6 +5,8 @@ import { Container, Row, Col } from "reactstrap";
 
 import { newMessage, myMessages } from "../scripts/messages";
 
+import '../styles/contactMe.css'
+
 
 const Contact = () => {
   const nameRef = useRef("");
@@ -97,24 +99,25 @@ const Contact = () => {
                     ></textarea>
                   </div>
 
-                  <button
-                    className="send__btn"
-                    style={{
-                      background: "#F89104",
-                      border: "none",
-                      color: "#fff",
-                      padding: "7px 25px",
-                      borderRadius: "5px",
-                      marginTop: "20px",
-                    }}
-                  >
-                    Send a Message
-                  </button>
+                  <Row>
+                    <Col>
+                      <button className="send__btn">
+                        Send a Message
+                      </button>
+                    </Col>
+
+                    <Col>
+                      <div className="m-auto text-center">
+                        <p className="my__messages__label">Only I can access this!</p>
+                        <button className="my__messages" id="addParagraphsButton" onClick={() => addParagraphs()}>View Messages</button>
+                      </div>
+                    </Col>
+                  </Row>
+
                 </form>
               </div>
             </Col>
           </Row>
-          <button id="addParagraphsButton" onClick={() => addParagraphs()}>My Messages</button>
         </Container>
       </section>
     </>
