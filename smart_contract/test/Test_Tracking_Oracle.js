@@ -45,8 +45,8 @@ describe('Tracking Oracle', () => {
     })
 
     it('Get result.', async () => {
-      const result = await trackingOracle.debug()
-      console.log(result)
+      const result = await trackingOracle.dieselPrice()
+      console.log(Number(result))
     })
 
   })
