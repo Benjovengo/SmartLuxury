@@ -56,6 +56,15 @@ contract ShippingInfo {
         }
     }
 
+    /** Return delivered state */
+    function isDelivered(address _buyer, uint256 _nftID)
+        public
+        view
+        returns (bool)
+    {
+        return delivered[_buyer][_nftID];
+    }
+
     /** Update presential status
       - only owner OR the verified carrier OR the selling contract can call this method
       - at any buying operation, check if there is an entry at delivered
@@ -78,21 +87,9 @@ contract ShippingInfo {
     /** Return whether or not the sele was presential */
     function isPresential(address _buyer, uint256 _nftID)
         public
-        returns (bool)
-    {
-        bool isPresentialSale = presential[_buyer][_nftID];
-        if (presential[_buyer][_nftID] != isPresentialSale) {
-            emit presentialSale(_buyer, _nftID, isPresentialSale);
-        }
-        return isPresentialSale;
-    }
-
-    /** Return delivered state */
-    function isDelivered(address _buyer, uint256 _nftID)
-        public
         view
         returns (bool)
     {
-        return delivered[_buyer][_nftID];
+        return presential[_buyer][_nftID];
     }
 }
