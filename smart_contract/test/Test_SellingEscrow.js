@@ -14,7 +14,7 @@ describe('Selling Escrow', () => {
 
   beforeEach(async () => {
     // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
-    [deployer, buyer, seller, oracle] = await ethers.getSigners()
+    [deployer, buyer, seller, shipping] = await ethers.getSigners()
 
     // Deploy SellingEscrow
     const FashionToken = await ethers.getContractFactory('FashionToken')
@@ -26,7 +26,7 @@ describe('Selling Escrow', () => {
 
     // Deploy SellingEscrow
     const SellingEscrow = await ethers.getContractFactory('SellingEscrow')
-    sellingEscrow = await SellingEscrow.deploy(fashionToken.address, contacts.address, oracle.address)
+    sellingEscrow = await SellingEscrow.deploy(fashionToken.address, contacts.address, shipping.address)
 
     // change owner
     fashionToken.changeOwner(sellingEscrow.address)
@@ -125,7 +125,7 @@ describe('Selling Escrow', () => {
       let transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
       await transaction.wait()
 
-      transaction = await sellingEscrow.connect(oracle).updateDeliveryStatus(1, true)
+      transaction = await sellingEscrow.connect(shipping).updateDeliveryStatus(1, true)
         await transaction.wait()
     })
 
@@ -140,14 +140,14 @@ describe('Selling Escrow', () => {
       let transaction = await sellingEscrow.connect(seller).list(1, tokens(10))
       await transaction.wait()
 
-      transaction = await sellingEscrow.connect(oracle).approveSale(1)
+      transaction = await sellingEscrow.connect(shipping).approveSale(1)
       await transaction.wait()
     })
 
     it('Updates approval status', async () => {
       expect(await sellingEscrow.approval(1, buyer.address)).to.be.equal(true)
       expect(await sellingEscrow.approval(1, seller.address)).to.be.equal(true)
-      expect(await sellingEscrow.approval(1, oracle.address)).to.be.equal(true)
+      expect(await sellingEscrow.approval(1, shipping.address)).to.be.equal(true)
     })
   })
 
@@ -159,13 +159,13 @@ describe('Selling Escrow', () => {
       transaction = await sellingEscrow.connect(buyer).depositEarnest(1, { value: tokens(10) })
       await transaction.wait()
 
-      transaction = await sellingEscrow.connect(oracle).updateDeliveryStatus(1, true)
+      transaction = await sellingEscrow.connect(shipping).updateDeliveryStatus(1, true)
       await transaction.wait()
 
-      transaction = await sellingEscrow.connect(oracle).approveSale(1)
+      transaction = await sellingEscrow.connect(shipping).approveSale(1)
       await transaction.wait()
 
-      await oracle.sendTransaction({ to: sellingEscrow.address, value: tokens(5) }) // here a lender can send ether to the contract
+      await shipping.sendTransaction({ to: sellingEscrow.address, value: tokens(5) }) // here a lender can send ether to the contract
 
       transaction = await sellingEscrow.connect(seller).finalizeSale(1)
       await transaction.wait()
@@ -175,7 +175,7 @@ describe('Selling Escrow', () => {
       expect(await fashionToken.ownerOf(1)).to.be.equal(buyer.address)
     })
 
-    it('Updates oracle contract balance', async () => {
+    it('Updates shipping contract balance', async () => {
       expect(await sellingEscrow.getBalance()).to.be.equal(tokens(0.75))
     })
   })
