@@ -16,8 +16,16 @@ contract ShippingInfo {
                                                                       - Buyer has to approve.*/
 
     // Events
-    event productDelivered(address _buyerAddress, uint256 _nftID);
-    event presentialSale(bool _isPresentialSale);
+    event productDelivered(
+        address _buyerAddress,
+        uint256 _nftID,
+        bool _deliveredStatus
+    );
+    event presentialSale(
+        address _buyerAddress,
+        uint256 _nftID,
+        bool _isPresentialSale
+    );
 
     /** Constructor Method 
       - sets the owner of the shipment info contract
@@ -38,20 +46,21 @@ contract ShippingInfo {
     /** Return whether or not the sele was presential */
     function isPresential(address _buyer, uint256 _nftID)
         public
-        view
         returns (bool)
     {
         bool isPresentialSale = presential[_buyer][_nftID];
+        if (isPresentialSale) {
+            emit presentialSale(_buyer, _nftID, isPresentialSale);
+        }
         return isPresentialSale;
     }
 
     /** Return delivered state */
-    function isDelivered(address _buyer, uint256 _nftID)
-        public
-        view
-        returns (bool)
-    {
+    function isDelivered(address _buyer, uint256 _nftID) public returns (bool) {
         bool wasDelivered = delivered[_buyer][_nftID];
+        if (wasDelivered) {
+            emit productDelivered(_buyer, _nftID, wasDelivered);
+        }
         return wasDelivered;
     }
 }
