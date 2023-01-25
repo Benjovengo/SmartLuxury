@@ -399,3 +399,39 @@
 {"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:16:27.100Z"}
 {"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:16:27.308Z"}
 []
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:16:57.100Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:17:27.109Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:17:27.313Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:17:57.112Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:18:27.118Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:18:27.322Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:18:57.132Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:19:27.146Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:19:27.324Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:19:57.152Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:20:27.163Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:20:27.326Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:20:57.165Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:21:27.173Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:21:27.329Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:21:57.175Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:22:27.181Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:22:27.336Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:22:57.196Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:23:27.202Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:23:27.366Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:23:57.206Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:24:27.206Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:24:27.375Z"}
+[]
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:24:57.208Z"}
+{"level":"debug","message":"reorg block target: 2","timestamp":"2023-01-25T18:25:27.216Z"}
+{"level":"debug","message":"checking invalid __callback transactions","timestamp":"2023-01-25T18:25:27.376Z"}
+[]
