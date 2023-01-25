@@ -51,7 +51,7 @@ contract ShippingInfo {
         bool _newStatus
     ) public {
         delivered[_buyer][_nftID] = _newStatus;
-        if (delivered[_buyer][_nftID] != _newStatus) {
+        if (delivered[_buyer][_nftID] != _newStatus && _newStatus) {
             emit productDelivered(_buyer, _nftID, _newStatus);
         }
     }
@@ -79,7 +79,7 @@ contract ShippingInfo {
         bool _newStatus
     ) public {
         presential[_buyer][_nftID] = _newStatus;
-        if (_newStatus) {
+        if (presential[_buyer][_nftID] != _newStatus && _newStatus) {
             emit presentialSale(_buyer, _nftID, _newStatus);
         }
     }
