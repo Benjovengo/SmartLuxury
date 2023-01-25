@@ -4,65 +4,43 @@ pragma solidity ^0.8.17;
 import "../node_modules/provable-eth-api/contracts/solc-v0.8.x/provableAPI.sol";
 
 contract TrackingOracle is usingProvable {
-    // for storing the query ids
-    bytes32 BTC_ID;
-    bytes32 regular_ID; // for storing BTC and fuel price
-    string public BTC_USD;
-    string public FUEL_Price; // events
+    string public GET_BITCOIN_PRICE_QUERY =
+        "json(https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1&page=1&sparkline=false).0.current_price";
+
+    event LogNewProvableQuery(string description);
+    event LogNewProvableResult(string result);
+
+    mapping(bytes32 => bool) public pendingQueries;
+    string public result;
+
+    //DEBUG
+    bytes32 public debug;
 
     constructor() payable {}
 
-    event ValueUpdated(string price);
-    event ProvableQueryCalled(string description); // save the address of the owner of this contract
-
-    address owner = msg.sender; // callback for the query
-
-    function __callback(bytes32 myid, string memory result) public {
-        // update only if you are the caller
+    function __callback(bytes32 _myid, string memory _result) public {
         require(msg.sender == provable_cbAddress());
-        if (myid == BTC_ID) {
-            BTC_USD = result;
-        } else if (myid == regular_ID) {
-            FUEL_Price = result;
-        }
-        emit ValueUpdated(result);
+        require(pendingQueries[_myid] == true);
+
+        result = _result;
+        emit LogNewProvableResult(_result);
+
+        delete pendingQueries[_myid]; // This effectively marks the query id as processed.
     }
 
-    // helper function to store 2 strings
-    function compareStrings(string memory a, string memory b)
-        private
-        pure
-        returns (bool)
-    {
-        return (keccak256(abi.encodePacked((a))) ==
-            keccak256(abi.encodePacked((b))));
-    }
-
-    // call this function to access web services
-    function updatePrice(string memory updateType) public payable {
-        // only the owner can invoke this function
-        require(
-            msg.sender == owner,
-            "Only the owner of this contract can call this function"
-        );
-        if (provable_getPrice("URL") > address(this).balance) {
-            emit ProvableQueryCalled(
-                "Please ensure that your wallet have sufficient funds to pay for the query"
+    function retrieveBitcoinPrice() public payable {
+        if (provable_getPrice("URL") > msg.value) {
+            revert(
+                "Provable query was NOT sent, please add some ETH to cover for the query fee!"
             );
         } else {
-            emit ProvableQueryCalled("Query sent, please wait");
-            if (compareStrings(updateType, "BTC")) {
-                // BTC_ID = provable_query("URL", "json(https://api.pro.coinbase.com/products/BTC-USD/ticker).price");
-                BTC_ID = provable_query(
-                    "URL",
-                    "json(https://drive.google.com/uc?export=download&id=1S8QRbmY9mmzu1PKNcD_Ftvz-uuHiTRpM).delivered"
-                );
-            } else if (compareStrings(updateType, "FUEL")) {
-                regular_ID = provable_query(
-                    "URL",
-                    "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel"
-                );
-            }
+            emit LogNewProvableQuery(
+                "Provable query was sent, standing by for the answer..."
+            );
+            GET_BITCOIN_PRICE_QUERY = "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel";
+            bytes32 queryId = provable_query("URL", GET_BITCOIN_PRICE_QUERY);
+            debug = queryId;
+            pendingQueries[queryId] = true;
         }
     }
 }

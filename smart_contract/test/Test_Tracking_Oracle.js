@@ -33,16 +33,6 @@ describe('Tracking Oracle', () => {
     const SellingEscrow = await ethers.getContractFactory('SellingEscrow')
     sellingEscrow = await SellingEscrow.deploy(fashionToken.address, contacts.address, trackingOracle.address)
 
-    // change owner
-    fashionToken.changeOwner(sellingEscrow.address)
-
-    // Mint
-    let transaction = await sellingEscrow.connect(seller).register("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS", "IA002000128")
-    await transaction.wait()
-
-    // Seller approval
-    transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 1)
-    await transaction.wait()
   })
 
   describe('Deployment and First Steps', () => {
@@ -52,6 +42,11 @@ describe('Tracking Oracle', () => {
       expect(result).to.not.equal(undefined)
       expect(result).to.not.equal('')
       expect(result).to.not.equal('0x')
+    })
+
+    it('Get result.', async () => {
+      const result = await trackingOracle.debug()
+      console.log(result)
     })
 
   })
