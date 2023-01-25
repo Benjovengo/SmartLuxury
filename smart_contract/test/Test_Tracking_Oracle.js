@@ -1,10 +1,6 @@
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
 
-const tokens = (n) => {
-  return ethers.utils.parseUnits(n.toString(), 'ether')
-}
-
 describe('Tracking Oracle', () => {
   // variables
   let deployer, account01
@@ -15,7 +11,7 @@ describe('Tracking Oracle', () => {
 
   beforeEach(async () => {
     // Setup accounts - to get signers use `const signers = await ethers.getSigners()`
-    [deployer, buyer, seller, account01] = await ethers.getSigners()
+    [deployer, account01] = await ethers.getSigners()
 
     // Deploy FashionToken
     const FashionToken = await ethers.getContractFactory('FashionToken')
@@ -45,7 +41,7 @@ describe('Tracking Oracle', () => {
     })
 
     it('Get result.', async () => {
-      const result = await trackingOracle.dieselPrice()
+      const result = await trackingOracle.price()
       console.log(Number(result))
     })
 
