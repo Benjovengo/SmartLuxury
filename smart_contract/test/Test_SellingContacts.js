@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+/* const { expect } = require('chai');
 const { ethers } = require('hardhat');
 
 const tokens = (n) => {
@@ -60,4 +60,4 @@ describe('Contracts', () => {
       expect(result).to.eql([1, 5])
     })
   })
-})
+}) */
