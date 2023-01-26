@@ -8,7 +8,7 @@ pragma solidity ^0.8.17;
 */
 
 import "./FashionToken.sol";
-import "./SellingEscrow.sol";
+import "./SellingContract.sol";
 import "./VerifiedContacts.sol";
 
 contract ShippingInfo {
@@ -16,7 +16,7 @@ contract ShippingInfo {
     // Fashion Token
     FashionToken public fashionToken;
     // Selling Contract
-    SellingEscrow private sellingEscrow;
+    SellingContract private sellingContract;
     // Verified Contacts
     VerifiedContacts private verifiedContacts;
 
@@ -27,7 +27,7 @@ contract ShippingInfo {
                                                                     NFT_ID (uint256) to BUYER (address) was presential?
                                                                     - Buyer has to approve.*/
     mapping(address => mapping(uint256 => address)) private buyer; // buyer's address
-    //address private seller; // seller address - sellingEscrow.getSeller(_nftID)
+    //address private seller; // seller address - sellingContract.getSeller(_nftID)
 
     // Events
     event productDelivered(
@@ -53,8 +53,8 @@ contract ShippingInfo {
 
     modifier onlyBuyer(uint256 _nftID) {
         require(
-            (msg.sender == buyer[sellingEscrow.getSeller(_nftID)][_nftID] &&
-                sellingEscrow.isListed(_nftID)),
+            (msg.sender == buyer[sellingContract.getSeller(_nftID)][_nftID] &&
+                sellingContract.isListed(_nftID)),
             "Only the owner or a verified contact can call this method"
         );
         _;

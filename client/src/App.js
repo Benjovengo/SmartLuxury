@@ -7,7 +7,7 @@ import Layout from './components/Layout/Layout'
 
 // Import ABIs
 //import FashionToken from './abis/FashionToken.json'
-//import SellingEscrow from './abis/SellingEscrow.json'
+//import SellingContract from './abis/SellingContract.json'
 //import trackingOracle from './abis/TrackingOracle.json'
 // config
 //import config from './config.json';
@@ -16,7 +16,7 @@ import Layout from './components/Layout/Layout'
 function App() {
 
   let [provider, setProvider] = useState(null)
-  //let [sellingEscrow, setEscrow] = useState(null)
+  //let [sellingContract, setEscrow] = useState(null)
   let [account, setAccount] = useState(null)
   //let [products, setProducts] = useState([])
   //let [product, setProduct] = useState({})

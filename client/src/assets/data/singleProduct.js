@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 
 // Import ABIs
 import FashionToken from '../../abis/FashionToken.json'
-import SellingEscrow from '../../abis/SellingEscrow.json'
+import SellingContract from '../../abis/SellingContract.json'
 import Contacts from '../../abis/Contacts.json'
 import config from '../../config.json'; // config
 
@@ -22,7 +22,7 @@ const signer = provider.getSigner();
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
 const totalSupply = await fashionToken.totalSupply()
 
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
 
@@ -56,7 +56,7 @@ async function getData(_nftID) {
     json = await productList[i]
     productID = Number(await fashionToken.getProductID(json.SKU))
     currentOwner = String(await fashionToken.getOwnershipOf(productID)).toLocaleLowerCase()
-    isListed = await sellingEscrow.isListed(productID)
+    isListed = await sellingContract.isListed(productID)
     // has to be listed or owned by who wants to see it
     // AND gets only one item at a time based on the ID
     if ((isListed || currentOwner === accounts[0]) && _nftID === productID) {
@@ -71,7 +71,7 @@ async function getData(_nftID) {
         firstname: customer[1],
         lastname: customer[2],
         creatorImg: customer[3] ? customer[3] : "../images/ava-01.png",
-        currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
+        currentBid: Number(await sellingContract.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
     }

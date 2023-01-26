@@ -9,7 +9,7 @@ describe('Contracts', () => {
   // variables
   let deployer, account01
   let fashionToken
-  let sellingEscrow
+  let sellingContract
   let contacts
 
   beforeEach(async () => {
@@ -24,25 +24,25 @@ describe('Contracts', () => {
     const Contacts = await ethers.getContractFactory('Contacts')
     contacts = await Contacts.deploy()
 
-    // Deploy SellingEscrow
-    const SellingEscrow = await ethers.getContractFactory('SellingEscrow')
-    sellingEscrow = await SellingEscrow.deploy(fashionToken.address, contacts.address, oracle.address)
+    // Deploy SellingContract
+    const SellingContract = await ethers.getContractFactory('SellingContract')
+    sellingContract = await SellingContract.deploy(fashionToken.address, contacts.address, oracle.address)
 
     // change owner
-    fashionToken.changeOwner(sellingEscrow.address)
+    fashionToken.changeOwner(sellingContract.address)
 
     // Mint
-    let transaction = await sellingEscrow.connect(seller).register("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS", "IA002000128")
+    let transaction = await sellingContract.connect(seller).register("https://ipfs.io/ipfs/QmTudSYeM7mz3PkYEWXWqPjomRPHogcMFSq7XAvsvsgAPS", "IA002000128")
     await transaction.wait()
 
     // Seller approval
-    transaction = await fashionToken.connect(seller).approve(sellingEscrow.address, 1)
+    transaction = await fashionToken.connect(seller).approve(sellingContract.address, 1)
     await transaction.wait()
   })
 
   describe('Deployment and First Steps', () => {
     it('Address.', async () => {
-      const result = await sellingEscrow.nftAddress()
+      const result = await sellingContract.nftAddress()
       expect(result).to.be.equal(fashionToken.address)
     })
 

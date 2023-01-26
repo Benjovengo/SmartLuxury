@@ -8,7 +8,7 @@ import Review from "../Review/ReviewSell";
 import { getOwnersList } from '../../../scripts/ownersList';
 
 // Import ABI
-import SellingEscrow from '../../../abis/SellingEscrow.json' // import Selling contract ABI
+import SellingContract from '../../../abis/SellingContract.json' // import Selling contract ABI
 import config from '../../../config.json'; // config
 
 /** SETUP ETHERS CONNECTION */
@@ -18,13 +18,13 @@ const network = await provider.getNetwork()
 // get signer
 const signer = provider.getSigner();
 // Javascript "version" of the smart contracts
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 
 //**Remove item from selling list */
 const stopSelling = async (_tokenID) => {
-  let transaction = await sellingEscrow.approveTransfer(_tokenID)
+  let transaction = await sellingContract.approveTransfer(_tokenID)
   await transaction.wait()
-  transaction = await sellingEscrow.unlist(_tokenID)
+  transaction = await sellingContract.unlist(_tokenID)
   await transaction.wait()
   console.log('Item removed from selling list.')
 }

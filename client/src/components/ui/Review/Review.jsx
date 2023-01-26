@@ -5,7 +5,7 @@ import "./review.css";
 
 // Import ABI
 import FashionToken from '../../../abis/FashionToken.json'
-import SellingEscrow from '../../../abis/SellingEscrow.json'
+import SellingContract from '../../../abis/SellingContract.json'
 import config from '../../../config.json'; // config
 
 
@@ -18,7 +18,7 @@ const network = await provider.getNetwork()
 const signer = provider.getSigner();
 // Javascript "version" of the smart contracts
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 
 
 const tokens = (n) => {
@@ -35,7 +35,7 @@ const buyProduct = async (_tokenID, _priceETH) => {
   // deposit ether on selling escrow'
   try {
     let priceTokens = tokens(Number(_priceETH)*100)
-    transaction = await sellingEscrow.depositEarnest(_tokenID, { value: priceTokens })
+    transaction = await sellingContract.depositEarnest(_tokenID, { value: priceTokens })
     await transaction.wait()
   } catch (error) {
     console.log(error)
@@ -44,7 +44,7 @@ const buyProduct = async (_tokenID, _priceETH) => {
 
   // approve the transfer of the ownership of the product
   try {
-    transaction = await sellingEscrow.approveTransfer(_tokenID)
+    transaction = await sellingContract.approveTransfer(_tokenID)
     await transaction.wait()
   } catch (error) {
     console.log(error)
@@ -54,7 +54,7 @@ const buyProduct = async (_tokenID, _priceETH) => {
   // finalize sale
   //  - transfer ether to the seller
   //  - transfer the ownership to the buyer
-  transaction = await sellingEscrow.finalizeSale(_tokenID)
+  transaction = await sellingContract.finalizeSale(_tokenID)
   await transaction.wait()
 }
 

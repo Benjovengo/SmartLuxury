@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 
 // Import ABIs
 import FashionToken from '../../abis/FashionToken.json'
-import SellingEscrow from '../../abis/SellingEscrow.json'
+import SellingContract from '../../abis/SellingContract.json'
 import Contacts from '../../abis/Contacts.json'
 import config from '../../config.json'; // config
 
@@ -31,7 +31,7 @@ const signer = provider.getSigner();
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
 const totalSupply = await fashionToken.totalSupply()
 
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
 
@@ -63,7 +63,7 @@ async function getData() {
   for(let i=0; i < productList.length; i++){
     json = await productList[i]
     productID = Number(json.id)
-    if (await sellingEscrow.isListed(productID)) {
+    if (await sellingContract.isListed(productID)) {
       formatJson = {
         id: json.id,
         title: json.name,
@@ -73,7 +73,7 @@ async function getData() {
         firstname: customer[1],
         lastname: customer[2],
         creatorImg: "../images/ava-01.png",
-        currentBid: Number(await sellingEscrow.purchasePrice(productID))/100,
+        currentBid: Number(await sellingContract.purchasePrice(productID))/100,
         category: json.attributes[0].value
       }
       data.push(formatJson)

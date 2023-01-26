@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 
 /* Contracts */
 import FashionToken from '../abis/FashionToken.json' // Import token ABI
-import SellingEscrow from '../abis/SellingEscrow.json' // Import Selling contract ABI
+import SellingContract from '../abis/SellingContract.json' // Import Selling contract ABI
 import Contacts from '../abis/Contacts.json' // Import Contacts ABI
 import config from '../config.json'; // Config - addresses
 
@@ -19,7 +19,7 @@ const signer = provider.getSigner();
 
 // Javascript "version" of the smart contracts
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, provider)
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 
 const totalTokens = await contacts.totalProductsOwned(accounts[0])
@@ -67,7 +67,7 @@ async function getBlockchainData() {
         creatorImg: "../images/ava-01.png",
         currentBid: 100,
         category: json.attributes[0].value,
-        isListed: await sellingEscrow.isListed(productID)
+        isListed: await sellingContract.isListed(productID)
       }
       data.push(formatJson)    
   }

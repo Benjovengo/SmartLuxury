@@ -6,7 +6,7 @@ import "./review.css";
 
 // Import ABI
 import FashionToken from '../../../abis/FashionToken.json'
-import SellingEscrow from '../../../abis/SellingEscrow.json'
+import SellingContract from '../../../abis/SellingContract.json'
 import config from '../../../config.json'; // config
 
 
@@ -19,17 +19,17 @@ const network = await provider.getNetwork()
 const signer = provider.getSigner();
 // Javascript "version" of the smart contracts
 const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
-const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 
 
 /* Function
   List product for sale
 */
 const listProduct = async (_tokenID, _priceETH) => {
-  let transaction = await fashionToken.approve(sellingEscrow.address, _tokenID)
+  let transaction = await fashionToken.approve(sellingContract.address, _tokenID)
   await transaction.wait()
   // List product
-  transaction = await sellingEscrow.list(_tokenID, _priceETH*100)
+  transaction = await sellingContract.list(_tokenID, _priceETH*100)
   await transaction.wait()
 }
 

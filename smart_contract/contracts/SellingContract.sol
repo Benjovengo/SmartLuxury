@@ -7,7 +7,7 @@ import "./Contacts.sol";
 
 /* Contract to get shipment tracking status 
   Acts like a escrow contract */
-contract SellingEscrow is IERC721Receiver {
+contract SellingContract is IERC721Receiver {
     // state variables
     address public nftAddress;
     address payable public seller;
@@ -161,7 +161,7 @@ contract SellingEscrow is IERC721Receiver {
             "Insufficient funds!"
         );
 
-        // Transfer ether to the seller (from the SellingEscrow contract)
+        // Transfer ether to the seller (from the SellingContract contract)
         address sellerAddr = nftSeller[_nftID];
         uint256 afterFee = uint256(purchasePrice[_nftID]) *
             uint256(95) *

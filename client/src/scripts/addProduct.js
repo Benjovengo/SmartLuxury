@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 
 /* Contract */
-import SellingEscrow from '../abis/SellingEscrow.json'
+import SellingContract from '../abis/SellingContract.json'
 import config from '../config.json'; // config
 
 /* Create JSON tokenURI */
@@ -64,10 +64,10 @@ export const registerProduct = async (_tokenURI, _serialNumber) => {
   console.log("Account:", await signer.getAddress());
 
   // Javascript "version" of the contact smart contract
-  const sellingEscrow = new ethers.Contract(config[network.chainId].sellingEscrow.address, SellingEscrow, signer)
+  const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 
   // add product
   //console.log(await window.ethereum.request({ method: 'eth_requestAccounts' }))
-  //await sellingEscrow.register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000015')
-  await sellingEscrow.register(_tokenURI, _serialNumber)
+  //await sellingContract.register('https://raw.githubusercontent.com/Benjovengo/SmartLuxury/front-end-integration/client/public/metadata/Valentino-RockStud-1234.json', 'ia002000015')
+  await sellingContract.register(_tokenURI, _serialNumber)
 }

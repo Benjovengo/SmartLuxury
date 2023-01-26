@@ -27,7 +27,7 @@ contract FashionToken is ERC721URIStorage {
     }
 
     /* Change ownership of this token contract 
-        - the SellingEscrow must be the owner of this token contract
+        - the SellingContract must be the owner of this token contract
     */
     function changeOwner(address _newOwner) public {
         require(msg.sender == owner);
