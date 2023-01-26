@@ -110,8 +110,8 @@ contract Contacts {
         delete ownedProducts[_customerAddress][_tokenId];
     }
 
-    /* Get Customer Info 
-        - get the info based on the customer address
+    /* Get owned products 
+        - get the token IDs of the products owned by a customer (address)
     */
     function getOwned(address _customerAddress)
         public
