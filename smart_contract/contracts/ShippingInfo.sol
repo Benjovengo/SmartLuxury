@@ -14,9 +14,9 @@ contract ShippingInfo {
     // States
     address private owner; // owner of the contract
     mapping(address => mapping(uint256 => bool)) private delivered; // set status as delivered for the sale of product NFT_ID (uint256) to BUYER (address)
-    mapping(address => mapping(uint256 => bool)) private presential; /* the sale of the product 
-                                                                      NFT_ID (uint256) to BUYER (address) was presential?
-                                                                      - Buyer has to approve.*/
+    mapping(address => mapping(uint256 => bool)) private inPerson; /* the sale of the product 
+                                                                    NFT_ID (uint256) to BUYER (address) was presential?
+                                                                    - Buyer has to approve.*/
 
     // Events
     event productDelivered(
@@ -24,7 +24,7 @@ contract ShippingInfo {
         uint256 _nftID,
         bool _deliveredStatus
     );
-    event presentialSale(
+    event inPersonSaleEvent(
         address _buyerAddress,
         uint256 _nftID,
         bool _isPresentialSale
@@ -40,7 +40,7 @@ contract ShippingInfo {
     /** Update delivered status
       - only owner OR the verified carrier OR the selling contract can call this method
       - at any buying operation, check if there is an entry at delivered
-        or presential with the SELLER'S ADDRESS AND THAT PARTICULAR NFT NUMBER 
+        or in person with the SELLER'S ADDRESS AND THAT PARTICULAR NFT NUMBER 
         and set both mappings to false
         (it is important to prevent the approval of a subsequent sale to a
         previous buyer before the delivery of the product)
@@ -65,22 +65,22 @@ contract ShippingInfo {
         return delivered[_buyer][_nftID];
     }
 
-    /** Update presential status
+    /** Update in person sale status
       - only owner OR the verified carrier OR the selling contract can call this method
       - at any buying operation, check if there is an entry at delivered
-        or presential with the SELLER'S ADDRESS AND THAT PARTICULAR NFT NUMBER 
+        or in person with the SELLER'S ADDRESS AND THAT PARTICULAR NFT NUMBER 
         and set both mappings to false
         (it is important to prevent the approval of a subsequent sale to a
         previous buyer before the delivery of the product)
     */
-    function updatePresentialStatus(
+    function updateInPersonStatus(
         address _buyer,
         uint256 _nftID,
         bool _newStatus
     ) public {
-        presential[_buyer][_nftID] = _newStatus;
+        inPerson[_buyer][_nftID] = _newStatus;
         if (_newStatus) {
-            emit presentialSale(_buyer, _nftID, _newStatus);
+            emit inPersonSaleEvent(_buyer, _nftID, _newStatus);
         }
     }
 
@@ -90,6 +90,6 @@ contract ShippingInfo {
         view
         returns (bool)
     {
-        return presential[_buyer][_nftID];
+        return inPerson[_buyer][_nftID];
     }
 }
