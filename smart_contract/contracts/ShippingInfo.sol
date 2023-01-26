@@ -7,11 +7,14 @@ pragma solidity ^0.8.17;
     -> only the contacts on the Verified Contacts can call this methods
 */
 
+import "./FashionToken.sol";
 import "./SellingEscrow.sol";
 import "./VerifiedContacts.sol";
 
 contract ShippingInfo {
     /** Contracts */
+    // Fashion Token
+    FashionToken public fashionToken;
     // Selling Contract
     SellingEscrow private sellingEscrow;
     // Verified Contacts
@@ -77,6 +80,7 @@ contract ShippingInfo {
         uint256 _nftID,
         bool _newStatus
     ) public onlyVerified(msg.sender) {
+        fashionToken.setFinalizeDelivery(_nftID, _newStatus);
         delivered[_buyer][_nftID] = _newStatus;
         if (_newStatus) {
             emit productDelivered(_buyer, _nftID, _newStatus);
@@ -105,6 +109,7 @@ contract ShippingInfo {
         uint256 _nftID,
         bool _newStatus
     ) public onlyVerified(msg.sender) {
+        fashionToken.setFinalizeDelivery(_nftID, _newStatus);
         inPerson[_buyer][_nftID] = _newStatus;
         if (_newStatus) {
             emit inPersonSaleEvent(_buyer, _nftID, _newStatus);

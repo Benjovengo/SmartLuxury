@@ -12,11 +12,13 @@ contract FashionToken is ERC721URIStorage {
     using Counters for Counters.Counter; // allow to create an enumerable ERC-721 token
     Counters.Counter private _tokenIds;
     address public owner;
+    address private authorizeVerifier;
     address public deployer; // this address will receive the fees for the sales
     mapping(uint256 => uint256) public numberOfOwners; // total number of owners
     mapping(uint256 => mapping(uint256 => address)) private listOwners; // list of owners of a token
     mapping(string => bool) private registeredSerialNumber; // use serialNumber to check if it is registered
     mapping(string => uint256) private productID; // use the serial number to return the product ID
+    mapping(uint256 => bool) private canFinalize; // check if the sale can be finalized
 
     /* Constructor Method */
     constructor() ERC721("Smart Luxury", "SLUX") {
@@ -30,6 +32,12 @@ contract FashionToken is ERC721URIStorage {
     function changeOwner(address _newOwner) public {
         require(msg.sender == owner);
         owner = _newOwner;
+    }
+
+    /** Authorize the verifier */
+    function setVerifier(address _verifier) public {
+        require(msg.sender == owner);
+        authorizeVerifier = _verifier;
     }
 
     /* Mint NFT
@@ -113,5 +121,14 @@ contract FashionToken is ERC721URIStorage {
         returns (uint256)
     {
         return productID[_serialNumber];
+    }
+
+    /** Sale can be finalized from the delivery stand point */
+    function setFinalizeDelivery(uint256 _nftID, bool _status) public {
+        require(
+            (msg.sender == owner || msg.sender == authorizeVerifier),
+            "ERROR: setFinalizeDelivery - Unauthorized access!"
+        );
+        canFinalize[_nftID] = _status;
     }
 }

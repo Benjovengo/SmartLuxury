@@ -189,6 +189,8 @@ contract SellingEscrow is IERC721Receiver {
         isListed[_nftID] = false; // stop listing the item
         // add owner to list of owners
         fashionToken.addToOwners(_nftID, buyer[_nftID]);
+        // reset finalize delivery status
+        fashionToken.setFinalizeDelivery(_nftID, false);
         // add token to buyer's account
         contactContract.addCustomerItems(buyer[_nftID], _nftID);
         // confirm sale
