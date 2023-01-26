@@ -58,34 +58,30 @@ This section of the documentation will provide an in-depth look at the various s
 
 - The proposed smart contract is designed to facilitate the tracking and verification of companies and stores within the supply chain. By maintaining a database of verified companies and their corresponding blockchain addresses, this smart contract enables the identification and verification of product origins. This ensures that products can be confidently identified as genuine, rather than counterfeit. Additionally, this smart contract allows for the tracking of product shipments, providing assurance that products have been delivered to the intended recipient. Overall, the implementation of this smart contract serves to improve the transparency and security of the supply chain, ensuring the authenticity of products and their successful delivery.
 
----
+## Göerli Test Network
 
----
+### Introduction to the Göerli Testnet
 
-## Goerli Network
+The Göerli Network is a test network for Ethereum-based projects. It is a public testnet that allows developers to test their contracts and dapps without the need for real Ether. Göerli allows developers to test their contracts on a network that is similar to the Ethereum mainnet, providing a more accurate simulation of the mainnet environment.
 
-### Introduction to the Goerli Testnet
+One of the advantages of Göerli is that it has a higher block limit than other testnets, which allows for faster and more efficient testing. Additionally, it has a higher number of active nodes, which makes it more resistant to network partitions and other issues that can occur on testnets with fewer nodes.
 
-The Goerli Network is a test network for Ethereum-based projects. It is a public testnet that allows developers to test their contracts and dapps without the need for real Ether. Goerli allows developers to test their contracts on a network that is similar to the Ethereum mainnet, providing a more accurate simulation of the mainnet environment.
-
-One of the advantages of Goerli is that it has a higher block limit than other testnets, which allows for faster and more efficient testing. Additionally, it has a higher number of active nodes, which makes it more resistant to network partitions and other issues that can occur on testnets with fewer nodes.
-
-Overall, the Goerli Network is a valuable tool for Ethereum developers looking to test their projects in a realistic and reliable environment. Its high block limit, active nodes and compatibility with the Ethereum mainnet makes it one of the best testnets for Ethereum-based projects.
+Overall, the Göerli Network is a valuable tool for Ethereum developers looking to test their projects in a realistic and reliable environment. Its high block limit, active nodes and compatibility with the Ethereum mainnet makes it one of the best testnets for Ethereum-based projects.
 
 ### Setup and Deployment
 
 #### hardhat.config.js
 
-To configure Hardhat to deploy a smart contract to the Goerli Testnet, you will need to add a network entry to your `hardhat.config.js` file containing the following parameters:
+To configure Hardhat to deploy a smart contract to the Göerli Testnet, you will need to add a network entry to your `hardhat.config.js` file containing the following parameters:
 
-- `chainId`: This is the unique identifier of the Goerli network. The value for this parameter should be set to `5`.
+- `chainId`: This is the unique identifier of the Göerli network. The value for this parameter should be set to `5`.
 
-- `rpcUrl`: This is the URL of the Goerli testnet's JSON-RPC endpoint. The default value for this parameter is `https://rpc.goerli.mudit.blog/`.
+- `rpcUrl`: This is the URL of the Göerli testnet's JSON-RPC endpoint. The default value for this parameter is `https://rpc.goerli.mudit.blog/`.
 
-- `blockExplorerUrl`: This is the URL of the Goerli testnet's block explorer, which can be used to view transactions and smart contract data on the network. The default value for this parameter is `https://goerli.etherscan.io/`.
+- `blockExplorerUrl`: This is the URL of the Göerli testnet's block explorer, which can be used to view transactions and smart contract data on the network. The default value for this parameter is `https://goerli.etherscan.io/`.
 
 ```
-// Replace this private key with your Goerli account private key
+// Replace this private key with your Göerli account private key
 // To export your private key from Metamask, open Metamask and
 // go to Account Details > Export Private Key
 // Beware: NEVER put real Ether into testing accounts
@@ -119,6 +115,6 @@ For more details about deploying contracts to a live network using Hardhat, see 
 
 _You'll have to change Metamask's network to Göerli before transacting._
 
-It's important to notice that you will need to have some goerli test ethers to deploy and test your smart contract on the Goerli testnet. You can get some at [Göerli Faucet](https://goerli-faucet.slock.it/)
+It's important to notice that you will need to have some goerli test ethers to deploy and test your smart contract on the Göerli testnet. You can get some at [Göerli Faucet](https://goerli-faucet.slock.it/)
 
 Also, you can check the contract address, balance and other important information on the block explorer url [Göerli Etherscan](https://goerli.etherscan.io/)
