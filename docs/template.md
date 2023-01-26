@@ -4,27 +4,24 @@
 
 #### Events
 
-#### `getProduct(string productId)`
+#### Functions
 
-This function is used to retrieve the details of a specific product from the smart contract.
+#### `function_name`
 
 ##### Parameters
 
-- `productId` (string): The unique identifier of the product.
+- `var name` (type): description
 
 ##### Returns
 
-- `product` (object): An object containing the details of the product, including name, description, price, and image url.
+- `none`
 
 ##### Usage
 
-The getProduct function is useful for displaying product details on the website or for comparing products before making a purchase. It can also be used to check the existence of a product in the smart contract before listing or unlisting it.
+After the deployment, the function can be called as follows:
 
 ```
-smartLuxury.getProduct("12345")
+contacts.
 ```
 
 ##### Notes
-
-- If the provided productId does not match any existing product, the function will return `null`.
-- It's important to be aware that the function returns an object with the product details, so the developer should handle it.
