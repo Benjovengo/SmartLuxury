@@ -1,6 +1,6 @@
 ### Smart Contract Name - TEMPLATE
 
-#### States
+#### State Variables
 
 #### Events
 
