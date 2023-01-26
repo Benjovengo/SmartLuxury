@@ -52,3 +52,17 @@ smartLuxury.getProduct("12345")
 
 - If the provided productId does not match any existing product, the function will return `null`.
 - It's important to be aware that the function returns an object with the product details, so the developer should handle it.
+
+---
+
+---
+
+## Goerli Network
+
+### Introduction to the Goerli Testnet
+
+The Goerli Network is a test network for Ethereum-based projects. It is a public testnet that allows developers to test their contracts and dapps without the need for real Ether. Goerli allows developers to test their contracts on a network that is similar to the Ethereum mainnet, providing a more accurate simulation of the mainnet environment.
+
+One of the advantages of Goerli is that it has a higher block limit than other testnets, which allows for faster and more efficient testing. Additionally, it has a higher number of active nodes, which makes it more resistant to network partitions and other issues that can occur on testnets with fewer nodes.
+
+Overall, the Goerli Network is a valuable tool for Ethereum developers looking to test their projects in a realistic and reliable environment. Its high block limit, active nodes and compatibility with the Ethereum mainnet makes it one of the best testnets for Ethereum-based projects.
