@@ -66,3 +66,13 @@ The Goerli Network is a test network for Ethereum-based projects. It is a public
 One of the advantages of Goerli is that it has a higher block limit than other testnets, which allows for faster and more efficient testing. Additionally, it has a higher number of active nodes, which makes it more resistant to network partitions and other issues that can occur on testnets with fewer nodes.
 
 Overall, the Goerli Network is a valuable tool for Ethereum developers looking to test their projects in a realistic and reliable environment. Its high block limit, active nodes and compatibility with the Ethereum mainnet makes it one of the best testnets for Ethereum-based projects.
+
+### Setup and Deployment
+
+#### Deployment
+
+```
+npx hardhat run scripts/deploy.js --network goerli
+```
+
+For more details about deploying contracts to a live network using Hardhat, see the official Hardhat documentation at [Deploying to a live network](https://hardhat.org/tutorial/deploying-to-a-live-network).
