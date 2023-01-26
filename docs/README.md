@@ -42,9 +42,11 @@ This section of the documentation will provide an in-depth look at the various s
 
 - The purpose of this smart contract is to facilitate the management of sales transactions. The sales process is comprised of three distinct stages:
 
-  4.1 The seller initiates the transaction by transferring ownership of an ERC-721 token, which serves as a representation of the product being sold, to the Selling contract and specifying the price.
-  4.2 The buyer then deposits an amount equal to the price of the product into the contract.
-  4.3 A verifier, responsible for ensuring that the product has been delivered from the seller to the buyer, approves the sale.
+  4.1. The seller initiates the transaction by transferring ownership of an ERC-721 token, which serves as a representation of the product being sold, to the Selling contract and specifying the price.
+
+  4.2. The buyer then deposits an amount equal to the price of the product into the contract.
+
+  4.3. A verifier, responsible for ensuring that the product has been delivered from the seller to the buyer, approves the sale.
 
 Upon approval, the transferred ether is disbursed to the seller and the ownership of the corresponding ERC-721 token is transferred to the buyer.
 
