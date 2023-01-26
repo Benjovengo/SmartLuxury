@@ -11,7 +11,7 @@ contract SellingEscrow is IERC721Receiver {
     // state variables
     address public nftAddress;
     address payable public seller;
-    address public oracle;
+    address public verifier;
     address public contacts;
     uint256 private fee = 5;
     // Mappings - per NFT properties
@@ -36,10 +36,10 @@ contract SellingEscrow is IERC721Receiver {
         _;
     }
 
-    modifier onlyOracleInspector() {
+    modifier onlyVerifier() {
         require(
-            msg.sender == oracle,
-            "Only oracle inspector can call this method"
+            msg.sender == verifier,
+            "Only verifier inspector can call this method"
         ); // may need to change to nftAddress
         _;
     }
@@ -54,9 +54,9 @@ contract SellingEscrow is IERC721Receiver {
     constructor(
         address _nftAddress,
         address _contacts,
-        address _oracle
+        address _verifier
     ) {
-        oracle = _oracle;
+        verifier = _verifier;
         contacts = _contacts;
         nftAddress = _nftAddress;
         fashionToken = FashionToken(_nftAddress);
@@ -128,18 +128,18 @@ contract SellingEscrow is IERC721Receiver {
         emit productUnlisted(true);
     }
 
-    /* Put ether under contract (buyer - payable oracleEscrow) */
+    /* Put ether under contract (buyer - payable verifierEscrow) */
     function depositEarnest(uint256 _nftID) public payable {
         require(msg.value >= purchasePrice[_nftID], "Insufficient funds!");
         buyer[_nftID] = msg.sender;
         deposit[msg.sender][_nftID] = msg.value;
     }
 
-    /* Oracle
-        - Inspects if the tracking status is 'delivered' (only oracle inspector) */
+    /* Verifier
+        - Inspects if the tracking status is 'delivered' (only verifier inspector) */
     function updateDeliveryStatus(uint256 _nftID, bool _delivered)
         public
-        onlyOracleInspector
+        onlyVerifier
     {
         wasDelivered[_nftID] = _delivered;
     }
@@ -156,7 +156,7 @@ contract SellingEscrow is IERC721Receiver {
        -> Transfer Funds to Seller */
     function finalizeSale(uint256 _nftID) public {
         //require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
-        //require(approval[_nftID][oracle]); // transaction approved by the delivery service
+        //require(approval[_nftID][verifier]); // transaction approved by the delivery service
         //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
         require(
             deposit[buyer[_nftID]][_nftID] >= purchasePrice[_nftID],
