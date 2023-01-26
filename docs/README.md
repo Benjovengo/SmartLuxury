@@ -32,6 +32,8 @@ This section of the documentation will provide an in-depth look at the various s
 
 2. [FashionToken](FashionToken.md)
 
+- The purpose of this smart contract is to establish a custom ERC-721 token to serve as a representation of the product within the blockchain ecosystem. This token contract is designed to assign a unique identification number to each product serial number, thus ensuring that no duplicate serial numbers are registered within the system. Additionally, the token contract is configured to store relevant metadata pertaining to each product, providing a comprehensive and easily accessible record of the product's characteristics and attributes. Overall, this smart contract serves as a robust and reliable means of tracking and managing product information within the blockchain.
+
 3. [Messages](Messages.md)
 
 4. [SellingContract](SellingContract.md)
