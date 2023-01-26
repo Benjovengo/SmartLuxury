@@ -155,9 +155,7 @@ contract SellingEscrow is IERC721Receiver {
        -> Transfer NFT to buyer
        -> Transfer Funds to Seller */
     function finalizeSale(uint256 _nftID) public {
-        //require(wasDelivered[_nftID]); // require that the item was delivered to the buyer
-        //require(approval[_nftID][verifier]); // transaction approved by the delivery service
-        //require(address(this).balance >= purchasePrice[_nftID]); // condition on the balance (amount transferred by the buyer)
+        require(fashionToken.getFinalizeStatus(_nftID)); // require that the sell can be finalized
         require(
             deposit[buyer[_nftID]][_nftID] >= purchasePrice[_nftID],
             "Insufficient funds!"

@@ -131,4 +131,8 @@ contract FashionToken is ERC721URIStorage {
         );
         canFinalize[_nftID] = _status;
     }
+
+    function getFinalizeStatus(uint256 _nftID) public view returns (bool) {
+        return canFinalize[_nftID];
+    }
 }
