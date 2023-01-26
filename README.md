@@ -36,4 +36,4 @@ Our platform uses smart contracts to ensure that all of our products are authent
 
 ## Technical Documentation
 
-For a more techical documentation of the smart contracts, refer to [Technical Documentation](./docs/README.md).
+For a more techical documentation of the smart contracts, refer to [Technical Documentation](./docs/).
