@@ -3,29 +3,17 @@
 #### State Variables
 
 - `totalCustomers` (Counter)
-
 - `owner` (address)
-
 - `userId` (uint256)
-
 - `numberOfCustomers` (uint256)
-
 - `Customer` (struct)
-
   - `ethAccount` (address)
-
   - `firstName` (string)
-
   - `lastName` (string)
-
   - `avatar` (string)
-
   - `email` (string)
-
   - `physicalAddress` (string)
-
   - `poBox` (uint256)
-
 - `customers` (mapping: customer's ID => Customer)
 - `customerId` (mapping: customer's address => customer ID)
 - `totalProductsOwned` (mapping: customer's address => number of products owned)
