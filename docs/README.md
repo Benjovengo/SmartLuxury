@@ -26,12 +26,17 @@ We hope that this documentation will be helpful in understanding the inner worki
 
 This section of the documentation will provide an in-depth look at the various smart contracts that make up the Smart Luxury platform.
 
-[Contacts](Contacts.md)
-[FashionToken](FashionToken.md)
-[Messages](Messages.md)
-[SellingContract](SellingContract.md)
-[ShippingInfo](ShippingInfo.md)
-[VerifiedContacts](VerifiedContacts.md)
+1. [Contacts](Contacts.md)
+
+2. [FashionToken](FashionToken.md)
+
+3. [Messages](Messages.md)
+
+4. [SellingContract](SellingContract.md)
+
+5. [ShippingInfo](ShippingInfo.md)
+
+6. [VerifiedContacts](VerifiedContacts.md)
 
 ---
 
