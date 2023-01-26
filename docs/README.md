@@ -36,7 +36,17 @@ This section of the documentation will provide an in-depth look at the various s
 
 3. [Messages](Messages.md)
 
+- This smart contract serves as a mechanism for the storage of any messages that may be submitted by users. It should be noted that access to these messages is restricted to my account and there is no means by which the identity of the sender can be determined. In the event that a response is desired, it is recommended that the individual include their contact information within the message, as this will enable me to initiate communication in a timely manner.
+
 4. [SellingContract](SellingContract.md)
+
+- The purpose of this smart contract is to facilitate the management of sales transactions. The sales process is comprised of three distinct stages:
+
+  4.1 The seller initiates the transaction by transferring ownership of an ERC-721 token, which serves as a representation of the product being sold, to the Selling contract and specifying the price.
+  4.2 The buyer then deposits an amount equal to the price of the product into the contract.
+  4.3 A verifier, responsible for ensuring that the product has been delivered from the seller to the buyer, approves the sale.
+
+Upon approval, the transferred ether is disbursed to the seller and the ownership of the corresponding ERC-721 token is transferred to the buyer.
 
 5. [ShippingInfo](ShippingInfo.md)
 
