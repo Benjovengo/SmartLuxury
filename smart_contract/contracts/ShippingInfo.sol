@@ -11,15 +11,20 @@ import "./SellingEscrow.sol";
 import "./VerifiedContacts.sol";
 
 contract ShippingInfo {
+    /** Contracts */
+    // Selling Contract
+    SellingEscrow private sellingEscrow;
+    // Verified Contacts
+    VerifiedContacts private verifiedContacts;
+
     // States
     address private owner; // owner of the contract
     mapping(address => mapping(uint256 => bool)) private delivered; // set status as delivered for the sale of product NFT_ID (uint256) to BUYER (address)
     mapping(address => mapping(uint256 => bool)) private inPerson; /* the sale of the product 
                                                                     NFT_ID (uint256) to BUYER (address) was presential?
                                                                     - Buyer has to approve.*/
-
-    // Verified Contacts
-    VerifiedContacts public verifiedContacts;
+    mapping(address => mapping(uint256 => address)) private buyer; // buyer's address
+    //address private seller; // seller address - sellingEscrow.getSeller(_nftID)
 
     // Events
     event productDelivered(
@@ -38,6 +43,15 @@ contract ShippingInfo {
         require(
             (msg.sender == owner ||
                 verifiedContacts.isVerifiedContact(_caller)),
+            "Only the owner or a verified contact can call this method"
+        );
+        _;
+    }
+
+    modifier onlyBuyer(uint256 _nftID) {
+        require(
+            (msg.sender == buyer[sellingEscrow.getSeller(_nftID)][_nftID] &&
+                sellingEscrow.isListed(_nftID)),
             "Only the owner or a verified contact can call this method"
         );
         _;
