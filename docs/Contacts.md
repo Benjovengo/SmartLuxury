@@ -148,3 +148,56 @@ contacts.addCustomerItems(customerAddress, 15)
 ##### Notes
 
 Before adding a product to an account, a check is performed to ensure that the given product ID hasn't already been added.
+
+#### `removeCustomerItems(address _customerAddress, uint256 _tokenId)`
+
+Remove the product ID from the owned products list.
+
+##### Parameters
+
+- `_customerAddress` (address): blockchain address of the customer
+- `_tokenId_` (uint256): ID of the product to be added to the customer's collection of products
+
+##### Scope
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+contacts.removeCustomerItems(customerAddress, 15)
+```
+
+#### `getOwned(address _customerAddress)`
+
+Get an array of token IDs of the products owned by a customer (represented by the customer's blockchain address).
+
+##### Parameters
+
+- `_customerAddress` (address): blockchain address of the customer
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `uint256[]`: array of token IDs
+
+##### Usage
+
+After the deployment, the function can be called as follows:
+
+```
+contacts.getOwned(customerAddress)
+```
+
+##### Notes
+
+The result is an array of token IDs (uint256) so that the client-side can iterate on to get the list of all products owned by a certain address.
