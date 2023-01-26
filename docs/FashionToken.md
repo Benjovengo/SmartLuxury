@@ -72,11 +72,12 @@ Change ownership of this token contract.
 
 ##### Parameters
 
-- `newOwner` (address): description
+- `newOwner` (address): address of the new owner of the token. In this project, it is the Selling contract.
 
 ##### Scope
 
 - `public`
+- Only the owner can call this function.
 
 ##### Returns
 
@@ -84,12 +85,119 @@ Change ownership of this token contract.
 
 ##### Usage
 
-Only the owner can call this function. In case the owner wants to call it, the function can be called as follows:
+In case the owner wants to call it, the function can be called as follows:
 
 ```
-fashion.changeOwner(newOwnerAddress)
+fashion.changeOwner(newOwnerAddress);
 ```
 
 ##### Notes
 
 This function is used to transfer the ownership of the token to the Selling contract. It separates the owner from the deployer.
+
+#### `setVerifier(address _verifier)`
+
+Authorize a verifier to check the delivery status.
+
+##### Parameters
+
+- `_verifier` (type): address of a contact present in the VerifiedContacts list.
+
+##### Scope
+
+- `public`
+- Only the owner can call this function.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+After the deployment, the function can be called as follows:
+
+```
+fashion.setVerifier(verifierAddress);
+```
+
+#### `mint(string memory tokenURI, address _newOwner, string memory _serialNumber)`
+
+Mint a new token.
+
+- Require the selling contract to call this function
+- Require that the serial number of the product is not already registered
+- If the serial number has already been registered, then return 0
+- Otherwise mint the product and increment the tokenID counter
+
+##### Parameters
+
+- `tokenURI` (string memory): the metadata URI for the token
+- `_newOwner` (address): address to mint the token to
+- `_serialNumber` (string memory): serial number of the product
+
+##### Scope
+
+- `public`
+- Only the Selling contract can mint products.
+
+##### Returns
+
+- `uint256`: the ID of the new token.
+
+##### Usage
+
+The function can be called as follows:
+
+```
+fashion.mint('https://where.the.URI.is/', productOwnerAddress, 'SerialNumberString')
+```
+
+#### `getOwnershipOf(uint256 _nftId)`
+
+Return the current ownership of the product NFT.
+
+##### Parameters
+
+- `_nftId` (uint256): ID of the NFT.
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `address`: owner of the token
+
+##### Usage
+
+The function can be called as follows:
+
+```
+fashion.getOwnershipOf(ID);
+```
+
+- where `ID` is a number (for example, 15).
+
+#### `totalSupply()`
+
+Returns the total number of products/NFTs registered.
+
+##### Parameters
+
+- `none`
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `uint256`: total number of registered tokens
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.totalSupply();
+```
