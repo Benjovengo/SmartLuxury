@@ -64,9 +64,32 @@ Function called at deployment.
 
 The address set as the deployer is the one that will receive the fees for the transactions on the web store.
 
-/_ Change ownership of this token contract - the SellingContract must be the owner of this token contract
-_/
-function changeOwner(address \_newOwner) public {
-require(msg.sender == owner);
-owner = \_newOwner;
-}
+#### `changeOwner(address _newOwner)`
+
+Change ownership of this token contract.
+
+- The SellingContract must be the owner of this token contract.
+
+##### Parameters
+
+- `newOwner` (address): description
+
+##### Scope
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+Only the owner can call this function. In case the owner wants to call it, the function can be called as follows:
+
+```
+fashion.changeOwner(newOwnerAddress)
+```
+
+##### Notes
+
+This function is used to transfer the ownership of the token to the Selling contract. It separates the owner from the deployer.
