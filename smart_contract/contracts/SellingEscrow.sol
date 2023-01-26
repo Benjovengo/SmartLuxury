@@ -208,8 +208,13 @@ contract SellingEscrow is IERC721Receiver {
     // accept ether from other contracts
     receive() external payable {}
 
-    /* Get the balance for the oracleEscrow contract */
+    /* Get the balance for this contract */
     function getBalance() public view returns (uint256) {
         return address(this).balance;
+    }
+
+    /* Return the seller of the product */
+    function getSeller(uint256 _nftID) public view returns (address) {
+        return nftSeller[_nftID];
     }
 }
