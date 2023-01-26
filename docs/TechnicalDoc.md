@@ -34,11 +34,11 @@ This function is used to retrieve the details of a specific product from the sma
 
 ##### Parameters
 
-- productId (string): The unique identifier of the product.
+- `productId` (string): The unique identifier of the product.
 
 ##### Returns
 
-- product (object): An object containing the details of the product, including name, description, price, and image url.
+- `product` (object): An object containing the details of the product, including name, description, price, and image url.
 
 ##### Usage
 
@@ -50,5 +50,5 @@ smartLuxury.getProduct("12345")
 
 ##### Notes
 
-- If the provided productId does not match any existing product, the function will return null.
+- If the provided productId does not match any existing product, the function will return `null`.
 - It's important to be aware that the function returns an object with the product details, so the developer should handle it.
