@@ -6,7 +6,7 @@ Welcome to the technical documentation for Smart Luxury, a Web 3 full-stack proj
 
 Our platform is built on the Ethereum blockchain, deployed on the _Göerli Test Network_, and utilizes smart contracts to ensure that all of our products are authentic and that delivery is guaranteed. We have three main smart contracts that make up our platform:
 
-- **Contacts**: This contract is responsible for storing information about the first name, last name, and address of the registered customers, based on their MetaMask address.
+- **Contacts**: this contract is responsible for storing information about the first name, last name, and address of the registered customers, based on their MetaMask address.
 
 - **FashionToken**: this contract is responsible for the creation of a custom ERC-20 token to store the products' metadata. Each product is represented by a unique token that contains information such as the product's name, description, and image URL.
 
@@ -25,6 +25,13 @@ We hope that this documentation will be helpful in understanding the inner worki
 ## Contracts
 
 This section of the documentation will provide an in-depth look at the various smart contracts that make up the Smart Luxury platform.
+
+[Contacts](Contacts.md)
+[FashionToken](FashionToken.md)
+[Messages](Messages.md)
+[SellingContract](SellingContract.md)
+[ShippingInfo](ShippingInfo.md)
+[VerifiedContacts](VerifiedContacts.md)
 
 ---
 
