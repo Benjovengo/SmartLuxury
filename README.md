@@ -33,3 +33,7 @@ To get started with Smart Luxury, simply visit our website and create an account
 Our platform uses smart contracts to ensure that all of our products are authentic and that delivery is guaranteed. When you make a purchase on our platform, a smart contract is created between you and the seller. This contract ensures that the product is authentic and that it will be delivered to you as promised.
 
 ### Advantages of a blockchain approach
+
+## Technical Documentation
+
+For a more techical documentation of the smart contracts, refer to [Technical Documentation](./docs/README.md).
