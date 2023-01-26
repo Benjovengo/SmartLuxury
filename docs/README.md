@@ -22,7 +22,7 @@ On the next section, each contract will be fully explained, including its functi
 
 We hope that this documentation will be helpful in understanding the inner workings of the Smart Luxury platform. If you have any questions or need further assistance, please don't hesitate to contact us using the _Contact Us_ section of our website.
 
-## Contracts
+## Smart Contracts
 
 This section of the documentation will provide an in-depth look at the various smart contracts that make up the Smart Luxury platform.
 
