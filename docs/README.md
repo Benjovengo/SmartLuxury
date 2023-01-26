@@ -48,7 +48,7 @@ This section of the documentation will provide an in-depth look at the various s
 
   4.3. A verifier, responsible for ensuring that the product has been delivered from the seller to the buyer, approves the sale.
 
-Upon approval, the transferred ether is disbursed to the seller and the ownership of the corresponding ERC-721 token is transferred to the buyer.
+- Upon approval, the transferred ether is disbursed to the seller and the ownership of the corresponding ERC-721 token is transferred to the buyer.
 
 5. [ShippingInfo](ShippingInfo.md)
 
