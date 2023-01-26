@@ -22,3 +22,17 @@
 - `tokenIds` (array of uint256)
 
 #### Events
+
+#### Functions
+
+##### `constructor()`
+
+The constructor sets the `owner` of the smart contract as the deployer (_msg.sender_).
+
+##### Parameters
+
+- `none`
+
+##### Returns
+
+- `none`
