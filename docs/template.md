@@ -10,7 +10,7 @@
 
 ##### Parameters
 
-- `var name` (type): description
+- `var_name` (type): description
 
 ##### Scope
 
@@ -25,7 +25,7 @@
 After the deployment, the function can be called as follows:
 
 ```
-contacts.
+fashion.
 ```
 
 ##### Notes
