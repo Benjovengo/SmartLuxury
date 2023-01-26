@@ -81,5 +81,5 @@ const contacts = new ethers.Contract(config[network.chainId].contacts.address, C
 After the deployment, the function can be called as follows:
 
 ```
-contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@provider.com', 'Street, City, Country', 12345678)
+contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@provider.com', 'Street - City - Country', 12345678)
 ```
