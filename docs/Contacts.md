@@ -69,7 +69,7 @@ const Contacts = await ethers.getContractFactory('Contacts')
 contacts = await Contacts.deploy()
 ```
 
-Or using _ethers.js_
+or using _ethers.js_ on the client-side:
 
 ```
 import Contacts from 'path/to/ABI/Contacts.json' // ABI for the smart contract
