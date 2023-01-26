@@ -28,7 +28,7 @@ This documentation will provide an in-depth look at the various smart contracts 
 
 ### Example Doc for a Smart Contract
 
-#### Function: `getProduct(string productId)`
+#### `getProduct(string productId)`
 
 This function is used to retrieve the details of a specific product from the smart contract.
 
