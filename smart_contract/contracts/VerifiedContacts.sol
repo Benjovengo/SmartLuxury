@@ -93,9 +93,7 @@ contract VerifiedContacts {
         return customers[customerId[_customerAddress]];
     }
 
-    /* Get Customer Info 
-        - get the info based on the customer address
-    */
+    /* Check if it is a verified contact */
     function isVerifiedContact(address _customerAddress)
         public
         view
