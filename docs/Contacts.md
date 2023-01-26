@@ -38,6 +38,11 @@ or using _ethers.js_ on the client-side:
 import Contacts from 'path/to/ABI/Contacts.json' // ABI for the smart contract
 import 'path/to/config.json' // config file with the address of the deployed smart contract
 
+let provider = new ethers.providers.Web3Provider(window.ethereum, "any")
+const network = await provider.getNetwork()
+const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+const signer = provider.getSigner();
+
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 ```
 
