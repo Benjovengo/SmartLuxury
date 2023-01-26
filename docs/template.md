@@ -1,8 +1,8 @@
-## Contracts
-
-This section of the documentation will provide an in-depth look at the various smart contracts that make up the Smart Luxury platform.
-
 ### Smart Contract Name - TEMPLATE
+
+#### States
+
+#### Events
 
 #### `getProduct(string productId)`
 

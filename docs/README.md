@@ -28,6 +28,8 @@ This section of the documentation will provide an in-depth look at the various s
 
 1. [Contacts](Contacts.md)
 
+- The purpose of this smart contract is to manage the accounts of regular customers of the store. The contract allows for anyone to register and make updates to their personal information without the need for verification. Authentication of the customer's account is achieved through the use of their unique address on the blockchain, ensuring that only the customer is able to update their information.
+
 2. [FashionToken](FashionToken.md)
 
 3. [Messages](Messages.md)
