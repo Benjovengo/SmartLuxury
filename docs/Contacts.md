@@ -25,6 +25,22 @@
 
 #### Functions
 
+Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
+
+```
+const Contacts = await ethers.getContractFactory('Contacts')
+contacts = await Contacts.deploy()
+```
+
+or using _ethers.js_ on the client-side:
+
+```
+import Contacts from 'path/to/ABI/Contacts.json' // ABI for the smart contract
+import 'path/to/config.json' // config file with the address of the deployed smart contract
+
+const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
+```
+
 ##### `constructor()`
 
 The constructor sets the `owner` of the smart contract as the deployer (_msg.sender_).
@@ -77,22 +93,6 @@ contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@
 ```
 
 ##### Notes
-
-Before using this function, one need to deploy it to a Hardhat node. After starting the node, run
-
-```
-const Contacts = await ethers.getContractFactory('Contacts')
-contacts = await Contacts.deploy()
-```
-
-or using _ethers.js_ on the client-side:
-
-```
-import Contacts from 'path/to/ABI/Contacts.json' // ABI for the smart contract
-import 'path/to/config.json' // config file with the address of the deployed smart contract
-
-const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
-```
 
 #### `getCustomerInfo(address _customerAddress)`
 
