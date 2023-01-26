@@ -18,6 +18,9 @@ contract ShippingInfo {
                                                                     NFT_ID (uint256) to BUYER (address) was presential?
                                                                     - Buyer has to approve.*/
 
+    // Verified Contacts
+    VerifiedContacts public verifiedContacts;
+
     // Events
     event productDelivered(
         address _buyerAddress,
@@ -29,6 +32,16 @@ contract ShippingInfo {
         uint256 _nftID,
         bool _isPresentialSale
     );
+
+    /* Modifiers - only certain entity can call some methods */
+    modifier onlyVerified(address _caller) {
+        require(
+            (msg.sender == owner ||
+                verifiedContacts.isVerifiedContact(_caller)),
+            "Only the owner or a verified contact can call this method"
+        );
+        _;
+    }
 
     /** Constructor Method 
       - sets the owner of the shipment info contract
@@ -77,7 +90,7 @@ contract ShippingInfo {
         address _buyer,
         uint256 _nftID,
         bool _newStatus
-    ) public {
+    ) public onlyVerified(msg.sender) {
         inPerson[_buyer][_nftID] = _newStatus;
         if (_newStatus) {
             emit inPersonSaleEvent(_buyer, _nftID, _newStatus);
