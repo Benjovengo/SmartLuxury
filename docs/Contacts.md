@@ -33,6 +33,10 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 
 - `none`
 
+##### Scope
+
+- `none`
+
 ##### Returns
 
 - `none`
@@ -55,6 +59,10 @@ The purpose of this function is to facilitate the management of customer account
 - `poBox` (uint256): P.O. Box number.
 
 This information is stored as strings in the Blockchain, but in a real-world implementation, the hash of that information should be stored in order not to reveal any customer details.
+
+##### Scope
+
+- `public`
 
 ##### Returns
 
@@ -92,6 +100,10 @@ const contacts = new ethers.Contract(config[network.chainId].contacts.address, C
 
 - `_customerAddress` (address): address of the account
 
+##### Scope
+
+- `public view`
+
 ##### Returns
 
 - `Customer` (struct): personal information about the account associated with the given address. If there is no association, returns an empty object.
@@ -107,3 +119,41 @@ customerInfo = contacts.getCustomerInfo(address_of_the_customer)
 ##### Notes
 
 `customerInfo` is a struct defined in the _State Variables_ section.
+
+#### `addCustomerItems(address _customerAddress, uint256 _tokenId)`
+
+##### Parameters
+
+- `var name` (type): description
+
+##### Scope
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+After the deployment, the function can be called as follows:
+
+```
+contacts.
+```
+
+##### Notes
+
+    /* Add Customer Items
+        - test if the product ID has already been added
+        - add the product ID of owned product based on the customer address
+    */
+    function addCustomerItems(address _customerAddress, uint256 _tokenId)
+        public
+    {
+        if (!isOwned[_customerAddress][_tokenId]) {
+            isOwned[_customerAddress][_tokenId] = true;
+            totalProductsOwned[_customerAddress]++;
+            ownedProducts[_customerAddress].push(_tokenId);
+        }
+    }

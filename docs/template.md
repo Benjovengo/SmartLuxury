@@ -12,6 +12,10 @@
 
 - `var name` (type): description
 
+##### Scope
+
+- `public`
+
 ##### Returns
 
 - `none`
