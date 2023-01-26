@@ -27,6 +27,7 @@ contract VerifiedContacts {
         string email;
         string physicalAddress;
         uint256 poBox;
+        bool valid;
     }
     mapping(uint256 => Customer) public customers;
     mapping(address => uint256) public customerId;
@@ -72,7 +73,8 @@ contract VerifiedContacts {
                 _avatar,
                 _email,
                 _physicalAddress,
-                _poBox
+                _poBox,
+                true
             );
             customerId[msg.sender] = userId;
             totalCustomers.increment();
@@ -89,6 +91,17 @@ contract VerifiedContacts {
         returns (Customer memory)
     {
         return customers[customerId[_customerAddress]];
+    }
+
+    /* Get Customer Info 
+        - get the info based on the customer address
+    */
+    function isVerifiedContact(address _customerAddress)
+        public
+        view
+        returns (bool)
+    {
+        return customers[customerId[_customerAddress]].valid;
     }
 
     /* Add Customer Items
