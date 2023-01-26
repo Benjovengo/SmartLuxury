@@ -122,9 +122,12 @@ customerInfo = contacts.getCustomerInfo(address_of_the_customer)
 
 #### `addCustomerItems(address _customerAddress, uint256 _tokenId)`
 
+Add products described by the token ID to the customer wallet. The customer is then the owner of the items added.
+
 ##### Parameters
 
-- `var name` (type): description
+- `_customerAddress` (address): blockchain address of the customer
+- `_tokenId_` (uint256): ID of the product to be added to the customer's collection of products
 
 ##### Scope
 
@@ -136,24 +139,12 @@ customerInfo = contacts.getCustomerInfo(address_of_the_customer)
 
 ##### Usage
 
-After the deployment, the function can be called as follows:
+This function can be called as follows:
 
 ```
-contacts.
+contacts.addCustomerItems(customerAddress, 15)
 ```
 
 ##### Notes
 
-    /* Add Customer Items
-        - test if the product ID has already been added
-        - add the product ID of owned product based on the customer address
-    */
-    function addCustomerItems(address _customerAddress, uint256 _tokenId)
-        public
-    {
-        if (!isOwned[_customerAddress][_tokenId]) {
-            isOwned[_customerAddress][_tokenId] = true;
-            totalProductsOwned[_customerAddress]++;
-            ownedProducts[_customerAddress].push(_tokenId);
-        }
-    }
+Before adding a product to an account, a check is performed to ensure that the given product ID hasn't already been added.
