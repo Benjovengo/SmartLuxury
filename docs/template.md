@@ -22,7 +22,7 @@
 
 ##### Usage
 
-After the deployment, the function can be called as follows:
+This function can be called as follows:
 
 ```
 fashion.
