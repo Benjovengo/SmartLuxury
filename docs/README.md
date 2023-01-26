@@ -52,7 +52,11 @@ This section of the documentation will provide an in-depth look at the various s
 
 5. [ShippingInfo](ShippingInfo.md)
 
+- The purpose of this contract is to track and record information pertaining to the shipment of products being sold. It provides the option for verification of the carrier company in the event of a delivered product, or for the buyer to confirm that the purchase was made in person. In the latter scenario, there is no verification of the carrier company. The approval of this smart contract serves as the final step in the selling process and generates an event that subsequently triggers the "finalize sale" function.
+
 6. [VerifiedContacts](VerifiedContacts.md)
+
+- The proposed smart contract is designed to facilitate the tracking and verification of companies and stores within the supply chain. By maintaining a database of verified companies and their corresponding blockchain addresses, this smart contract enables the identification and verification of product origins. This ensures that products can be confidently identified as genuine, rather than counterfeit. Additionally, this smart contract allows for the tracking of product shipments, providing assurance that products have been delivered to the intended recipient. Overall, the implementation of this smart contract serves to improve the transparency and security of the supply chain, ensuring the authenticity of products and their successful delivery.
 
 ---
 
