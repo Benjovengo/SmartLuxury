@@ -62,7 +62,7 @@ contract ShippingInfo {
         address _buyer,
         uint256 _nftID,
         bool _newStatus
-    ) public {
+    ) public onlyVerified(msg.sender) {
         delivered[_buyer][_nftID] = _newStatus;
         if (_newStatus) {
             emit productDelivered(_buyer, _nftID, _newStatus);
