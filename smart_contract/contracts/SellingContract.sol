@@ -64,7 +64,7 @@ contract SellingContract is IERC721Receiver {
     }
 
     /* Register new product
-        - if the serial number has already been registered before
+        - check if the serial number has already been registered before
     */
     function register(string memory _tokenURI, string memory _serialNumber)
         public
