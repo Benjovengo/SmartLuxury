@@ -71,6 +71,14 @@ Overall, the Goerli Network is a valuable tool for Ethereum developers looking t
 
 #### hardhat.config.js
 
+To configure Hardhat to deploy a smart contract to the Goerli Testnet, you will need to add a network entry to your `hardhat.config.js` file containing the following parameters:
+
+- `chainId`: This is the unique identifier of the Goerli network. The value for this parameter should be set to `5`.
+
+- `rpcUrl`: This is the URL of the Goerli testnet's JSON-RPC endpoint. The default value for this parameter is `https://rpc.goerli.mudit.blog/`.
+
+- `blockExplorerUrl`: This is the URL of the Goerli testnet's block explorer, which can be used to view transactions and smart contract data on the network. The default value for this parameter is `https://goerli.etherscan.io/`.
+
 ```
 // Replace this private key with your Goerli account private key
 // To export your private key from Metamask, open Metamask and
@@ -79,10 +87,11 @@ Overall, the Goerli Network is a valuable tool for Ethereum developers looking t
 const GOERLI_PRIVATE_KEY = "YOUR GOERLI PRIVATE KEY";
 
 module.exports = {
-  solidity: "0.8.9",
   networks: {
     goerli: {
-      url: `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
+      chainId: 5,
+      rpcUrl: 'https://rpc.goerli.mudit.blog/',
+      blockExplorerUrl: 'https://goerli.etherscan.io/',
       accounts: [GOERLI_PRIVATE_KEY]
     }
   }
@@ -91,8 +100,20 @@ module.exports = {
 
 #### Deployment
 
+Once you have set the parameters to the `hardhat.config.js` config file, you can use Hardhat to deploy your smart contract to the Göerli Testnet by running the `hardhat run` command with the `--network` flag set to `goerli`.
+
+Example:
+
 ```
 npx hardhat run scripts/deploy.js --network goerli
 ```
 
 For more details about deploying contracts to a live network using Hardhat, see the official Hardhat documentation at [Deploying to a live network](https://hardhat.org/tutorial/deploying-to-a-live-network).
+
+#### Notes
+
+_You'll have to change Metamask's network to Göerli before transacting._
+
+It's important to notice that you will need to have some goerli test ethers to deploy and test your smart contract on the Goerli testnet. You can get some at [Göerli Faucet](https://goerli-faucet.slock.it/)
+
+Also, you can check the contract address, balance and other important information on the block explorer url [Göerli Etherscan](https://goerli.etherscan.io/)
