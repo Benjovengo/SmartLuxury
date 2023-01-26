@@ -4,7 +4,6 @@
     "@nomicfoundation/hardhat-toolbox": "^2.0.1",
     "@openzeppelin/contracts": "^4.8.1",
     "@openzeppelin/upgrades": "^2.8.0",
-    "hardhat": "^2.12.6",
-    "provable-eth-api": "^0.5.0-npmfix"
+    "hardhat": "^2.12.6"
   }
 }
