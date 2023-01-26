@@ -26,7 +26,7 @@ We hope that this documentation will be helpful in understanding the inner worki
 
 This documentation will provide an in-depth look at the various smart contracts that make up the Smart Luxury platform.
 
-### Example Doc for a Smart Contract
+### Smart Contract Name - TEMPLATE
 
 #### `getProduct(string productId)`
 
