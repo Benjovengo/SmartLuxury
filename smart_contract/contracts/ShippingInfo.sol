@@ -22,10 +22,8 @@ contract ShippingInfo {
 
     // States
     address private owner; // owner of the contract
-    mapping(address => mapping(uint256 => bool)) private delivered; // set status as delivered for the sale of product NFT_ID (uint256) to BUYER (address)
-    mapping(address => mapping(uint256 => bool)) private inPerson; /* the sale of the product 
-                                                                    NFT_ID (uint256) to BUYER (address) was presential?
-                                                                    - Buyer has to approve.*/
+    mapping(uint256 => bool) private delivered; // set status as delivered for the sale of product NFT_ID (uint256) to BUYER (address)
+    mapping(uint256 => bool) private inPerson; // the sale of the product NFT_ID (uint256) was presential?
     mapping(address => mapping(uint256 => address)) private buyer; // buyer's address
     //address private seller; // seller address - sellingContract.getSeller(_nftID)
 
@@ -81,19 +79,15 @@ contract ShippingInfo {
         bool _newStatus
     ) public onlyVerified(msg.sender) {
         fashionToken.setFinalizeDelivery(_nftID, _newStatus);
-        delivered[_buyer][_nftID] = _newStatus;
+        delivered[_nftID] = _newStatus;
         if (_newStatus) {
             emit productDelivered(_buyer, _nftID, _newStatus);
         }
     }
 
     /** Return delivered state */
-    function isDelivered(address _buyer, uint256 _nftID)
-        public
-        view
-        returns (bool)
-    {
-        return delivered[_buyer][_nftID];
+    function isDelivered(uint256 _nftID) public view returns (bool) {
+        return delivered[_nftID];
     }
 
     /** Update in person sale status
@@ -110,18 +104,14 @@ contract ShippingInfo {
         bool _newStatus
     ) public onlyVerified(msg.sender) {
         fashionToken.setFinalizeDelivery(_nftID, _newStatus);
-        inPerson[_buyer][_nftID] = _newStatus;
+        inPerson[_nftID] = _newStatus;
         if (_newStatus) {
             emit inPersonSaleEvent(_buyer, _nftID, _newStatus);
         }
     }
 
     /** Return whether or not the sele was presential */
-    function isPresential(address _buyer, uint256 _nftID)
-        public
-        view
-        returns (bool)
-    {
-        return inPerson[_buyer][_nftID];
+    function isPresential(uint256 _nftID) public view returns (bool) {
+        return inPerson[_nftID];
     }
 }
