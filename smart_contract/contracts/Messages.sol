@@ -24,7 +24,7 @@ contract Messages {
 
     /* Modifiers - only certain entity can call some methods */
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only owner can call this method");
+        require(msg.sender == owner, "Only the owner can call this function!");
         _;
     }
 

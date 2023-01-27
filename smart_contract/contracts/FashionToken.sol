@@ -30,13 +30,13 @@ contract FashionToken is ERC721URIStorage {
         - the SellingContract must be the owner of this token contract
     */
     function changeOwner(address _newOwner) public {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "Only the owner can call this function!");
         owner = _newOwner;
     }
 
     /** Authorize the verifier */
     function setVerifier(address _verifier) internal {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "Only the owner can call this function!");
         authorizeVerifier = _verifier;
     }
 

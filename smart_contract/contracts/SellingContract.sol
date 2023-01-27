@@ -31,7 +31,7 @@ contract SellingContract is IERC721Receiver {
     modifier onlySeller(uint256 _nftID) {
         require(
             msg.sender == fashionToken.getOwnershipOf(_nftID),
-            "Only seller can call this method"
+            "Only the owner can call this function!"
         );
         _;
     }
@@ -39,7 +39,7 @@ contract SellingContract is IERC721Receiver {
     modifier onlyVerifier() {
         require(
             msg.sender == verifier,
-            "Only verifier inspector can call this method"
+            "Only the verifier can call this function!"
         ); // may need to change to nftAddress
         _;
     }
@@ -115,7 +115,7 @@ contract SellingContract is IERC721Receiver {
     function unlist(uint256 _nftID) public {
         require(
             nftSeller[_nftID] == msg.sender,
-            "Only the owner can call this method."
+            "Only the owner can call this function!"
         );
 
         // Transfer the NFT back from this contract to seller
@@ -155,7 +155,10 @@ contract SellingContract is IERC721Receiver {
        -> Transfer NFT to buyer
        -> Transfer Funds to Seller */
     function finalizeSale(uint256 _nftID) public {
-        require(fashionToken.getFinalizeStatus(_nftID)); // require that the sell can be finalized
+        require(
+            fashionToken.getFinalizeStatus(_nftID),
+            "The sale must be approved before it can be finalized!"
+        ); // require that the sell can be finalized
         require(
             deposit[buyer[_nftID]][_nftID] >= purchasePrice[_nftID],
             "Insufficient funds!"

@@ -44,7 +44,7 @@ contract ShippingInfo {
         require(
             (msg.sender == owner ||
                 verifiedContacts.isVerifiedContact(_caller)),
-            "Only the owner or a verified contact can call this method"
+            "Only the owner or a verified contact can call this function."
         );
         _;
     }
@@ -53,7 +53,7 @@ contract ShippingInfo {
         require(
             (msg.sender == buyer[sellingContract.getSeller(_nftID)][_nftID] &&
                 sellingContract.isListed(_nftID)),
-            "Only the owner or a verified contact can call this method"
+            "Only the owner or a verified contact can call this function."
         );
         _;
     }
