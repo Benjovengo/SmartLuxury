@@ -71,13 +71,18 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 #### `addAccount(string memory _firstName, string memory _lastName, string memory _avatar, string memory  email, string memory _physicalAddress, uint256 _poBox)`
 
 <table style="border-collapse: collapse;width: fit-content;">
-  <tr style="background-color: #CDCDCD;">
+  <tr>
+    <td>
+      <h4>Function Diagram</h4>
+    </td>
+  </tr>
+  <tr>
     <td style="border: 1px solid black;padding: 0px 1em;text-align: center;">
       <b>Function: </b><tt>functionName</tt>
     </td>
   </tr>
   <tr>
-    <td style="background-color: #FFFFFF;border: 1px solid black;padding: 0px 1em 0px 0px;text-align: left;">
+    <td style="border: 1px solid black;padding: 0px 1em 0px 0px;text-align: left;">
       Arguments
       <ul style="list-style-position: outside;margin: 0;padding-left: 1.5em; text-align: left;">
         <li><tt>varName: type</tt></li>
