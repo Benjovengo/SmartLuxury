@@ -70,41 +70,6 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 
 #### `addAccount(string memory _firstName, string memory _lastName, string memory _avatar, string memory  email, string memory _physicalAddress, uint256 _poBox)`
 
-<table style="border-collapse: collapse;width: fit-content;">
-  <tr>
-    <td style="border: 1px solid black;font-size: 1.25rem;padding: 0px 1em;text-align: center;">
-      <b>Function Diagram</b>
-    </td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black;padding: 0px 1em;text-align: center;">
-      <b>Function: </b><tt>addAccount</tt>
-    </td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black;padding: 0px 1em 0px 0px;text-align: left;">
-      Arguments
-      <ul style="list-style-position: outside;margin: 0;padding-left: 1.5em; text-align: left;">
-        <li><tt>firstName: string</tt></li>
-        <li><tt>lastName: string</tt></li>
-        <li><tt>avatar: string</tt></li>
-        <li><tt>email: string</tt></li>
-        <li><tt>physicalAddress: string</tt></li>
-        <li><tt>poBox: uint256</tt></li>
-      </ul>
-      Visibility
-        <ul style="list-style-position: outside;margin: 0;padding-left: 1.5em; text-align: left;">
-          <li><tt>public</tt></li>
-        </ul>
-    </td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black;padding: 0px 1em;text-align: left;">
-      <b>Return:</b> <tt>void</tt>
-    </td>
-  </tr>
-</table>
-
 The purpose of this function is to facilitate the management of customer accounts on the Blockchain. Specifically, it allows for the creation or modification of an association between a customer's address on the Blockchain and their corresponding Customer struct. When invoked, the function will first determine whether an existing association exists for the specified customer address.
 
 - If no association exists, the function will create a new association linking the customer address to the Customer struct provided by the customer.
