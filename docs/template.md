@@ -25,7 +25,7 @@
 This function can be called as follows:
 
 ```
-messages.
+sellingContract.
 ```
 
 ##### Notes
