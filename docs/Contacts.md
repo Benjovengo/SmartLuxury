@@ -78,15 +78,24 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
   </tr>
   <tr>
     <td style="border: 1px solid black;padding: 0px 1em;text-align: center;">
-      <b>Function: </b><tt>functionName</tt>
+      <b>Function: </b><tt>addAccount</tt>
     </td>
   </tr>
   <tr>
     <td style="border: 1px solid black;padding: 0px 1em 0px 0px;text-align: left;">
       Arguments
       <ul style="list-style-position: outside;margin: 0;padding-left: 1.5em; text-align: left;">
-        <li><tt>varName: type</tt></li>
+        <li><tt>firstName: string</tt></li>
+        <li><tt>lastName: string</tt></li>
+        <li><tt>avatar: string</tt></li>
+        <li><tt>email: string</tt></li>
+        <li><tt>physicalAddress: string</tt></li>
+        <li><tt>poBox: uint256</tt></li>
       </ul>
+      Visibility
+        <ul style="list-style-position: outside;margin: 0;padding-left: 1.5em; text-align: left;">
+          <li><tt>public</tt></li>
+        </ul>
     </td>
   </tr>
   <tr>
