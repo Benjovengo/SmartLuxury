@@ -100,7 +100,7 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
   </tr>
   <tr>
     <td style="border: 1px solid black;padding: 0px 1em;text-align: left;">
-      <b>Return:</b> <tt>bool</tt>
+      <b>Return:</b> <tt>void</tt>
     </td>
   </tr>
 </table>
