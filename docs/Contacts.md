@@ -99,8 +99,6 @@ After the deployment, the function can be called as follows:
 contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@provider.com', 'Street - City - Country', 12345678)
 ```
 
-##### Notes
-
 #### `getCustomerInfo(address _customerAddress)`
 
 ##### Parameters
