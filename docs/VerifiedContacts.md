@@ -27,14 +27,14 @@
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```solidity
-const VerifiedContacts = await ethers.getContractFactory('VerifiedContacts')
-verifiedContacts = await VerifiedContacts.deploy()
+```javascript
+const VerifiedContacts = await ethers.getContractFactory("VerifiedContacts");
+verifiedContacts = await VerifiedContacts.deploy();
 ```
 
 or using _ethers.js_ on the client-side:
 
-```solidity
+```javascript
 import { ethers } from 'ethers';
 
 import VerifiedContacts from 'path/to/ABI/VerifiedContacts.json' // ABI for the smart contract

@@ -38,34 +38,48 @@ Calling other contracts
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```solidity
-const FashionToken = await ethers.getContractFactory('FashionToken')
-fashionToken = await FashionToken.deploy()
-const Contacts = await ethers.getContractFactory('Contacts')
-contactsContract = await Contacts.deploy()
+```javascript
+const FashionToken = await ethers.getContractFactory("FashionToken");
+fashionToken = await FashionToken.deploy();
+const Contacts = await ethers.getContractFactory("Contacts");
+contactsContract = await Contacts.deploy();
 
-const SellingContract = await ethers.getContractFactory('SellingContract')
-sellingContract = await SellingContract.deploy()
+const SellingContract = await ethers.getContractFactory("SellingContract");
+sellingContract = await SellingContract.deploy();
 ```
 
 or using _ethers.js_ on the client-side:
 
-```solidity
-import { ethers } from 'ethers';
+```javascript
+import { ethers } from "ethers";
 
-import FashionToken from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
-import Contacts from 'path/to/ABI/Contacts.json' // ABI for the smart contract
-import SellingContract from 'path/to/ABI/SellingContract.json' // ABI for the smart contract
-import 'path/to/config.json' // config file with the address of the deployed smart contract
+import FashionToken from "path/to/ABI/FashionToken.json"; // ABI for the smart contract
+import Contacts from "path/to/ABI/Contacts.json"; // ABI for the smart contract
+import SellingContract from "path/to/ABI/SellingContract.json"; // ABI for the smart contract
+import "path/to/config.json"; // config file with the address of the deployed smart contract
 
-let provider = new ethers.providers.Web3Provider(window.ethereum, "any")
-const network = await provider.getNetwork()
-const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+let provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+const network = await provider.getNetwork();
+const accounts = await window.ethereum.request({
+  method: "eth_requestAccounts",
+});
 const signer = provider.getSigner();
 
-const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
-const contactsContract = new ethers.Contract(config[network.chainId].contactsContract.address, Contacts, signer)
-const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
+const fashionToken = new ethers.Contract(
+  config[network.chainId].fashionToken.address,
+  FashionToken,
+  signer
+);
+const contactsContract = new ethers.Contract(
+  config[network.chainId].contactsContract.address,
+  Contacts,
+  signer
+);
+const sellingContract = new ethers.Contract(
+  config[network.chainId].sellingContract.address,
+  SellingContract,
+  signer
+);
 ```
 
 #### `constructor(address _nftAddress, address _contacts, address _verifier)`

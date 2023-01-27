@@ -20,25 +20,31 @@
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```solidity
-const Messages = await ethers.getContractFactory('Messages')
-messages = await Messages.deploy()
+```javascript
+const Messages = await ethers.getContractFactory("Messages");
+messages = await Messages.deploy();
 ```
 
 or using _ethers.js_ on the client-side:
 
-```solidity
-import { ethers } from 'ethers';
+```javascript
+import { ethers } from "ethers";
 
-import Messages from 'path/to/ABI/Messages.json' // ABI for the smart contract
-import 'path/to/config.json' // config file with the address of the deployed smart contract
+import Messages from "path/to/ABI/Messages.json"; // ABI for the smart contract
+import "path/to/config.json"; // config file with the address of the deployed smart contract
 
-let provider = new ethers.providers.Web3Provider(window.ethereum, "any")
-const network = await provider.getNetwork()
-const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+let provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+const network = await provider.getNetwork();
+const accounts = await window.ethereum.request({
+  method: "eth_requestAccounts",
+});
 const signer = provider.getSigner();
 
-const messages = new ethers.Contract(config[network.chainId].messages.address, Messages, signer)
+const messages = new ethers.Contract(
+  config[network.chainId].messages.address,
+  Messages,
+  signer
+);
 ```
 
 ##### `constructor()`

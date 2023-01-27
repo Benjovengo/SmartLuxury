@@ -28,31 +28,37 @@ Calling other contracts
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```solidity
-const FashionToken = await ethers.getContractFactory('FashionToken')
-fashionToken = await FashionToken.deploy()
-const VerifiedContacts = await ethers.getContractFactory('VerifiedContacts')
-verifiedContract = await VerifiedContacts.deploy()
+```javascript
+const FashionToken = await ethers.getContractFactory("FashionToken");
+fashionToken = await FashionToken.deploy();
+const VerifiedContacts = await ethers.getContractFactory("VerifiedContacts");
+verifiedContract = await VerifiedContacts.deploy();
 
-const ShipmentInfo = await ethers.getContractFactory('ShipmentInfo')
-shipmentInfo = await ShipmentInfo.deploy()
+const ShipmentInfo = await ethers.getContractFactory("ShipmentInfo");
+shipmentInfo = await ShipmentInfo.deploy();
 ```
 
 or using _ethers.js_ on the client-side:
 
-```solidity
-import { ethers } from 'ethers';
+```javascript
+import { ethers } from "ethers";
 
-import FashionToken from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
-import VerifiedContacts from 'path/to/ABI/VerifiedContacts.json' // ABI for the smart contract
-import 'path/to/config.json' // config file with the address of the deployed smart contract
+import FashionToken from "path/to/ABI/FashionToken.json"; // ABI for the smart contract
+import VerifiedContacts from "path/to/ABI/VerifiedContacts.json"; // ABI for the smart contract
+import "path/to/config.json"; // config file with the address of the deployed smart contract
 
-let provider = new ethers.providers.Web3Provider(window.ethereum, "any")
-const network = await provider.getNetwork()
-const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+let provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+const network = await provider.getNetwork();
+const accounts = await window.ethereum.request({
+  method: "eth_requestAccounts",
+});
 const signer = provider.getSigner();
 
-const verifiedContracts = new ethers.Contract(config[network.chainId].verifiedContracts.address, VerifiedContracts, signer)
+const verifiedContracts = new ethers.Contract(
+  config[network.chainId].verifiedContracts.address,
+  VerifiedContracts,
+  signer
+);
 ```
 
 #### `constructor()`
