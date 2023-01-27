@@ -48,6 +48,10 @@ const signer = provider.getSigner();
 const contacts = new ethers.Contract(config[network.chainId].contacts.address, Contacts, signer)
 ```
 
+**Important Note**
+
+- Only the owner of this contract can add contacts to the list of verified contacts.
+
 ##### `constructor()`
 
 The constructor sets the `owner` of the smart contract as the deployer (_msg.sender_).
