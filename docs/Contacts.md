@@ -56,7 +56,7 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 
 - `none`
 
-##### Scope
+##### Visibility
 
 - `none`
 
@@ -83,7 +83,7 @@ The purpose of this function is to facilitate the management of customer account
 
 This information is stored as strings in the Blockchain, but in a real-world implementation, the hash of that information should be stored in order not to reveal any customer details.
 
-##### Scope
+##### Visibility
 
 - `public`
 
@@ -107,7 +107,7 @@ contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@
 
 - `_customerAddress` (address): address of the account
 
-##### Scope
+##### Visibility
 
 - `public view`
 
@@ -136,7 +136,7 @@ Add products described by the token ID to the customer wallet. The customer is t
 - `_customerAddress` (address): blockchain address of the customer
 - `_tokenId_` (uint256): ID of the product to be added to the customer's collection of products
 
-##### Scope
+##### Visibility
 
 - `public`
 
@@ -165,7 +165,7 @@ Remove the product ID from the owned products list.
 - `_customerAddress` (address): blockchain address of the customer
 - `_tokenId_` (uint256): ID of the product to be added to the customer's collection of products
 
-##### Scope
+##### Visibility
 
 - `public`
 
@@ -189,7 +189,7 @@ Get an array of token IDs of the products owned by a customer (represented by th
 
 - `_customerAddress` (address): blockchain address of the customer
 
-##### Scope
+##### Visibility
 
 - `public view`
 

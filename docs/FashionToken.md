@@ -50,7 +50,7 @@ const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.ad
 
 - `none`
 
-##### Scope
+##### Visibility
 
 - `none`
 
@@ -76,7 +76,7 @@ Change ownership of this token contract.
 
 - `newOwner` (address): address of the new owner of the token. In this project, it is the Selling contract.
 
-##### Scope
+##### Visibility
 
 - `public`
 - Only the owner can call this function.
@@ -105,7 +105,7 @@ Authorize a verifier to check the delivery status.
 
 - `_verifier` (type): address of a contact present in the VerifiedContacts list.
 
-##### Scope
+##### Visibility
 
 - `public`
 - Only the owner can call this function.
@@ -137,7 +137,7 @@ Mint a new token.
 - `_newOwner` (address): address to mint the token to
 - `_serialNumber` (string memory): serial number of the product
 
-##### Scope
+##### Visibility
 
 - `public`
 - Only the Selling contract can mint products.
@@ -162,7 +162,7 @@ Return the current ownership of the product NFT.
 
 - `_nftId` (uint256): ID of the NFT.
 
-##### Scope
+##### Visibility
 
 - `public view`
 
@@ -188,7 +188,7 @@ Returns the total number of products/NFTs registered.
 
 - `none`
 
-##### Scope
+##### Visibility
 
 - `public view`
 
@@ -213,7 +213,7 @@ Update list of owners with the addition of the address of a new owner.
 - `_nftID` (uint256): id of the token to which will be added a new owner
 - `_newOwner` (address): address of the new owner
 
-##### Scope
+##### Visibility
 
 - `public`
 - Only the current owner of the NFT can call this function.
@@ -241,7 +241,7 @@ Returns one of the owners (past or present) of a given token.
 - `_nftID` (uint256): id of the product/NFT token.
 - `_ownerIndex` (uint256): index of the owner in the owner's list for a particular token id.
 
-##### Scope
+##### Visibility
 
 - `public view`
 
@@ -268,7 +268,7 @@ Returns the first owner of a token.
 
 - `_nftID` (uint256): id of the product/NFT token.
 
-##### Scope
+##### Visibility
 
 - `public view`
 
@@ -298,7 +298,7 @@ Returns if a serial number has already been registered.
 
 - `_serialNum` (string memory): string containing the serial number of the product.
 
-##### Scope
+##### Visibility
 
 - `public view`
 
@@ -322,7 +322,7 @@ Returns the product id given the serial number for the product.
 
 - `_serialNumber` (string memory): string containing the serial number of the product.
 
-##### Scope
+##### Visibility
 
 - `public view`
 
@@ -347,7 +347,7 @@ Sets if a sale can be finalized from the delivery stand point.
 - `_nftID` (uint256): id of the product/NFT token.
 - `_status` (bool): set the status of the delivery for the product.
 
-##### Scope
+##### Visibility
 
 - `public`
 - Only the owner of the FashionToken contract or an authorized verifier can call this function.
@@ -374,7 +374,7 @@ Returns if the delivery process has been completed and the sale can be finalized
 
 - `var_name` (type): description
 
-##### Scope
+##### Visibility
 
 - `public view`
 

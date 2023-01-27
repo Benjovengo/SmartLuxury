@@ -49,7 +49,7 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 
 - `none`
 
-##### Scope
+##### Visibility
 
 - `none`
 
@@ -66,7 +66,7 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 - `_subject` (string memory): subject of the message.
 - `_body` (string memory): message body.
 
-##### Scope
+##### Visibility
 
 - `public`
 
@@ -94,7 +94,7 @@ Mark message as read.
 
 - `_userID` (uint256): id of the sender (associated with a blockchain address)
 
-##### Scope
+##### Visibility
 
 - `public`
 
