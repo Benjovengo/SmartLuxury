@@ -45,7 +45,7 @@ const messages = new ethers.Contract(config[network.chainId].messages.address, M
 
 The constructor sets the `owner` of the smart contract as the deployer (_msg.sender_).
 
-##### Parameters
+##### Arguments
 
 - `none`
 
@@ -59,7 +59,7 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 
 #### `addMessage(string memory _name, string memory _email, string memory _subject, string memory _body)`
 
-##### Parameters
+##### Arguments
 
 - `_name` (string memory): name of the sender of the message.
 - `_email` (string memory): email of the sender in order for us to be able to reply.
@@ -90,7 +90,7 @@ Due to the implementation, only the last message sent by each blockchain address
 
 Mark message as read.
 
-##### Parameters
+##### Arguments
 
 - `_userID` (uint256): id of the sender (associated with a blockchain address)
 

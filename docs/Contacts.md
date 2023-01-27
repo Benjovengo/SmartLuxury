@@ -56,7 +56,7 @@ const contacts = new ethers.Contract(config[network.chainId].contacts.address, C
 
 The constructor sets the `owner` of the smart contract as the deployer (_msg.sender_).
 
-##### Parameters
+##### Arguments
 
 - `none`
 
@@ -76,7 +76,7 @@ The purpose of this function is to facilitate the management of customer account
 
 - If an association already exists, the function will update the existing association with the new data provided by the customer. This ensures that customer information is always current and accurate on the Blockchain.
 
-##### Parameters
+##### Arguments
 
 - `firstName` (string): first name
 - `lastName` (string): last name
@@ -105,7 +105,7 @@ contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@
 
 #### `getCustomerInfo(address _customerAddress)`
 
-##### Parameters
+##### Arguments
 
 - `_customerAddress` (address): address of the account
 
@@ -133,7 +133,7 @@ customerInfo = contacts.getCustomerInfo(address_of_the_customer)
 
 Add products described by the token ID to the customer wallet. The customer is then the owner of the items added.
 
-##### Parameters
+##### Arguments
 
 - `_customerAddress` (address): blockchain address of the customer
 - `_tokenId_` (uint256): ID of the product to be added to the customer's collection of products
@@ -162,7 +162,7 @@ Before adding a product to an account, a check is performed to ensure that the g
 
 Remove the product ID from the owned products list.
 
-##### Parameters
+##### Arguments
 
 - `_customerAddress` (address): blockchain address of the customer
 - `_tokenId_` (uint256): ID of the product to be added to the customer's collection of products
@@ -187,7 +187,7 @@ contacts.removeCustomerItems(customerAddress, 15)
 
 Get an array of token IDs of the products owned by a customer (represented by the customer's blockchain address).
 
-##### Parameters
+##### Arguments
 
 - `_customerAddress` (address): blockchain address of the customer
 

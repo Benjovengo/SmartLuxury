@@ -74,7 +74,7 @@ Constructor method.
 
 - sets up the addresses and contracts associations.
 
-##### Parameters
+##### Arguments
 
 - `_nftAddress` (address): address of the FashionToken contract.
 - `_contacts` (address): address of the Contacts contract.
@@ -96,7 +96,7 @@ Called during the deployment process.
 
 Adds a new product to have its ownership tracked.
 
-##### Parameters
+##### Arguments
 
 - `_tokenURI` (string memory): description
 - `_serialNumber` (string memory): description
@@ -127,7 +127,7 @@ Receive confirmation for ERC-721 token.
 
 - Called upon a safe transfer.
 
-##### Parameters
+##### Arguments
 
 - (address): "operator" - the address of the account that is calling the function and sending the token.
 - (address): "from" - the address of the account that the token is being transferred from.
@@ -149,7 +149,7 @@ Called upon a safe transfer.
 
 Lists a product for sale.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): the id of the product/NFT that is put to sale.
 - `_purchasePrice` (uint256): the purchase price of the item.
@@ -182,7 +182,7 @@ After the completio of the listing operation, the event `productListed(true)` is
 
 Approve the transfer of the product ownership (ERC-721 token) from the owner to the Selling contract.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 
@@ -214,7 +214,7 @@ Unlists a product for sale.
 
 - after this, the product is not available for sale.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 
@@ -245,7 +245,7 @@ After the completio of the listing operation, the event `productUnlisted(true)` 
 
 Transfer ether to this contract.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 - the amount transfered is defined in `msg.value`
@@ -273,7 +273,7 @@ sellingContract.depositEarnest(id, { value: purchasePrice * (10**16) });
 
 Marks the tracking status as true, meaning that the product has been delivered.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 - `_delivered` (bool): status of the delivery (true: delivered; false: not delivered yet).
@@ -306,7 +306,7 @@ Once the product has been delivered and the sale is finalized, this function is 
 
 All the addresses involved in the selling process must approve the sale to finalize it.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 - Only the addresses involved in that particular selling process can call this function.
@@ -337,7 +337,7 @@ Finalize the sale after the following requirements are met:
 - Require delivered status
 - Require funds to be correct amount
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 
@@ -375,7 +375,7 @@ Cancel the sale.
 
 - reverts the transfers of ether by the buyer and the ERC-721 token by the seller.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 - Only the buyer and the seller can call this function.
@@ -404,7 +404,7 @@ Accept ether from other contracts.
 
 - The buyer can use other contracts can sent ether directly to this contract.
 
-##### Parameters
+##### Arguments
 
 - `none`
 
@@ -426,7 +426,7 @@ Returns the balance total of the Selling contract.
 
 - It represents the sum of all transfers from buyers that are currently held by this contract.
 
-##### Parameters
+##### Arguments
 
 - `none`
 
@@ -450,7 +450,7 @@ sellingContract.getBalance()
 
 Returns the seller of the product/NFT.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT.
 

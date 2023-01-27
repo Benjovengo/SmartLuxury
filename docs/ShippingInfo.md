@@ -59,7 +59,7 @@ const verifiedContracts = new ethers.Contract(config[network.chainId].verifiedCo
 
 Sets the owner of the contract as the deployer.
 
-##### Parameters
+##### Arguments
 
 - `none`
 
@@ -79,7 +79,7 @@ This function can be called uppon contract deployment.
 
 Updates the delivery status of the product.
 
-##### Parameters
+##### Arguments
 
 - `_buyer` (address): buyer's address.
 - `_nftID` (uint256): id of the product/NFT.
@@ -117,7 +117,7 @@ After the completio of the listing operation, the event `productDelivered(buyer'
 
 Returns the delivery status for the item.
 
-##### Parameters
+##### Arguments
 
 - `_buyer` (address): buyer's address.
 - `_nftID` (uint256): id of the product/NFT.
@@ -144,7 +144,7 @@ shipmentInfo.isDelivered(buyer.address, id);
 
 Sets the sale as conducted in person.
 
-##### Parameters
+##### Arguments
 
 - `_buyer` (address): buyer's address.
 - `_nftID` (uint256): id of the product/NFT.
@@ -180,7 +180,7 @@ After the completio of the listing operation, the event `inPersonSaleEvent(buyer
 
 #### `isPresential(address _buyer, uint256 _nftID)`
 
-##### Parameters
+##### Arguments
 
 - `_buyer` (address): buyer's address.
 - `_nftID` (uint256): id of the product/NFT.

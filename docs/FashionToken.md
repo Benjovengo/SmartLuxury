@@ -46,7 +46,7 @@ const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.ad
 - Sets the name of the ERC-721 token and its symbol.
 - Sets the owner and the deployer of the token.
 
-##### Parameters
+##### Arguments
 
 - `none`
 
@@ -72,7 +72,7 @@ Change ownership of this token contract.
 
 - The SellingContract must be the owner of this token contract.
 
-##### Parameters
+##### Arguments
 
 - `newOwner` (address): address of the new owner of the token. In this project, it is the Selling contract.
 
@@ -101,7 +101,7 @@ This function is used to transfer the ownership of the token to the Selling cont
 
 Authorize a verifier to check the delivery status.
 
-##### Parameters
+##### Arguments
 
 - `_verifier` (type): address of a contact present in the VerifiedContacts list.
 
@@ -131,7 +131,7 @@ Mint a new token.
 - If the serial number has already been registered, then return 0
 - Otherwise mint the product and increment the tokenID counter
 
-##### Parameters
+##### Arguments
 
 - `tokenURI` (string memory): the metadata URI for the token
 - `_newOwner` (address): address to mint the token to
@@ -158,7 +158,7 @@ fashion.mint('https://where.the.URI.is/', productOwnerAddress, 'SerialNumberStri
 
 Return the current ownership of the product NFT.
 
-##### Parameters
+##### Arguments
 
 - `_nftId` (uint256): ID of the NFT.
 
@@ -184,7 +184,7 @@ fashion.getOwnershipOf(ID);
 
 Returns the total number of products/NFTs registered.
 
-##### Parameters
+##### Arguments
 
 - `none`
 
@@ -208,7 +208,7 @@ fashion.totalSupply();
 
 Update list of owners with the addition of the address of a new owner.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the token to which will be added a new owner
 - `_newOwner` (address): address of the new owner
@@ -236,7 +236,7 @@ fashion.addToOwners(id, newOwnerAddress);
 
 Returns one of the owners (past or present) of a given token.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT token.
 - `_ownerIndex` (uint256): index of the owner in the owner's list for a particular token id.
@@ -264,7 +264,7 @@ fashion.getOwner(id, ownerIndex);
 
 Returns the first owner of a token.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT token.
 
@@ -294,7 +294,7 @@ This function is used to make it easier to identify and verify the product origi
 
 Returns if a serial number has already been registered.
 
-##### Parameters
+##### Arguments
 
 - `_serialNum` (string memory): string containing the serial number of the product.
 
@@ -318,7 +318,7 @@ fashion.isRegistered('SerialNumber');
 
 Returns the product id given the serial number for the product.
 
-##### Parameters
+##### Arguments
 
 - `_serialNumber` (string memory): string containing the serial number of the product.
 
@@ -342,7 +342,7 @@ fashion.getProductID('SerialNumber');
 
 Sets if a sale can be finalized from the delivery stand point.
 
-##### Parameters
+##### Arguments
 
 - `_nftID` (uint256): id of the product/NFT token.
 - `_status` (bool): set the status of the delivery for the product.
@@ -370,7 +370,7 @@ fashion.setFinalizeDelivery(id, true);
 
 Returns if the delivery process has been completed and the sale can be finalized.
 
-##### Parameters
+##### Arguments
 
 - `var_name` (type): description
 
