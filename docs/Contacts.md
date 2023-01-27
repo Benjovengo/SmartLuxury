@@ -73,7 +73,7 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 <table style="border-collapse: collapse;width: fit-content;">
   <tr>
     <td style="border: 1px solid black;padding: 0px 1em;text-align: center;">
-      <h3 style="margin: 0;padding: 0px 1em;">Function Diagram</h3>
+      <h3 style="margin: 0px;padding: 0px 1em;">Function Diagram</h3>
     </td>
   </tr>
   <tr>
