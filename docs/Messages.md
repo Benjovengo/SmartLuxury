@@ -40,3 +40,74 @@ const signer = provider.getSigner();
 
 const messages = new ethers.Contract(config[network.chainId].messages.address, Messages, signer)
 ```
+
+##### `constructor()`
+
+The constructor sets the `owner` of the smart contract as the deployer (_msg.sender_).
+
+##### Parameters
+
+- `none`
+
+##### Scope
+
+- `none`
+
+##### Returns
+
+- `none`
+
+#### `addMessage(string memory _name, string memory _email, string memory _subject, string memory _body)`
+
+##### Parameters
+
+- `_name` (string memory): name of the sender of the message.
+- `_email` (string memory): email of the sender in order for us to be able to reply.
+- `_subject` (string memory): subject of the message.
+- `_body` (string memory): message body.
+
+##### Scope
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+message.addMessage('Your Name', 'your.email@provider.com', 'What is it about.', 'The message itself');
+```
+
+##### Notes
+
+Due to the implementation, only the last message sent by each blockchain address will be fetched when calling this function.
+
+#### `notNew(uint256 _userID)`
+
+Mark message as read.
+
+##### Parameters
+
+- `_userID` (uint256): id of the sender (associated with a blockchain address)
+
+##### Scope
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+messages.notNew(id);
+```
+
+- where `id` is an unsigned integer (for example, 15) and represents the id of the sender of the message.
