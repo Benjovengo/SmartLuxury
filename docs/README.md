@@ -80,7 +80,7 @@ To configure Hardhat to deploy a smart contract to the Göerli Testnet, you will
 
 - `blockExplorerUrl`: This is the URL of the Göerli testnet's block explorer, which can be used to view transactions and smart contract data on the network. The default value for this parameter is `https://goerli.etherscan.io/`.
 
-```json
+```javascript
 // Replace this private key with your Göerli account private key
 // To export your private key from Metamask, open Metamask and
 // go to Account Details > Export Private Key
@@ -91,11 +91,11 @@ module.exports = {
   networks: {
     goerli: {
       chainId: 5,
-      rpcUrl: 'https://rpc.goerli.mudit.blog/',
-      blockExplorerUrl: 'https://goerli.etherscan.io/',
-      accounts: [GOERLI_PRIVATE_KEY]
-    }
-  }
+      rpcUrl: "https://rpc.goerli.mudit.blog/",
+      blockExplorerUrl: "https://goerli.etherscan.io/",
+      accounts: [GOERLI_PRIVATE_KEY],
+    },
+  },
 };
 ```
 
