@@ -53,6 +53,8 @@ or using _ethers.js_ on the client-side:
 ```
 import { ethers } from 'ethers';
 
+import FashionToken from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
+import Contacts from 'path/to/ABI/Contacts.json' // ABI for the smart contract
 import SellingContract from 'path/to/ABI/SellingContract.json' // ABI for the smart contract
 import 'path/to/config.json' // config file with the address of the deployed smart contract
 
