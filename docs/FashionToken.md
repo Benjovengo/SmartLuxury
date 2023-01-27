@@ -311,3 +311,81 @@ This function can be called as follows:
 ```
 fashion.isRegistered('SerialNumber');
 ```
+
+#### `getProductID(string memory _serialNumber)`
+
+Returns the product id given the serial number for the product.
+
+##### Parameters
+
+- `_serialNumber` (string memory): string containing the serial number of the product.
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `uint256`: id of the product/NFT.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.getProductID('SerialNumber');
+```
+
+#### `setFinalizeDelivery(uint256 _nftID, bool _status)`
+
+Sets if a sale can be finalized from the delivery stand point.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT token.
+- `_status` (bool): set the status of the delivery for the product.
+
+##### Scope
+
+- `public`
+- Only the owner of the FashionToken contract or an authorized verifier can call this function.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.setFinalizeDelivery(id, true);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+
+#### `getFinalizeStatus(uint256 _nftID)`
+
+Returns if the delivery process has been completed and the sale can be finalized.
+
+##### Parameters
+
+- `var_name` (type): description
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `bool`: indication that the sale can be finalized or not.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.getFinalizeStatus(id)
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
