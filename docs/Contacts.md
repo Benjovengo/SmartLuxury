@@ -27,14 +27,14 @@
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```
+```solidity
 const Contacts = await ethers.getContractFactory('Contacts')
 contacts = await Contacts.deploy()
 ```
 
 or using _ethers.js_ on the client-side:
 
-```
+```solidity
 import { ethers } from 'ethers';
 
 import Contacts from 'path/to/ABI/Contacts.json' // ABI for the smart contract
@@ -99,7 +99,7 @@ This information is stored as strings in the Blockchain, but in a real-world imp
 
 After the deployment, the function can be called as follows:
 
-```
+```solidity
 contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@provider.com', 'Street - City - Country', 12345678)
 ```
 
@@ -121,7 +121,7 @@ contacts.addAccount('First Name', 'Last Name', 'https://link.to/avatar', 'email@
 
 After the deployment, the function can be called as follows:
 
-```
+```solidity
 customerInfo = contacts.getCustomerInfo(address_of_the_customer)
 ```
 
@@ -150,7 +150,7 @@ Add products described by the token ID to the customer wallet. The customer is t
 
 This function can be called as follows:
 
-```
+```solidity
 contacts.addCustomerItems(customerAddress, 15)
 ```
 
@@ -179,7 +179,7 @@ Remove the product ID from the owned products list.
 
 This function can be called as follows:
 
-```
+```solidity
 contacts.removeCustomerItems(customerAddress, 15)
 ```
 
@@ -203,7 +203,7 @@ Get an array of token IDs of the products owned by a customer (represented by th
 
 After the deployment, the function can be called as follows:
 
-```
+```solidity
 contacts.getOwned(customerAddress)
 ```
 
