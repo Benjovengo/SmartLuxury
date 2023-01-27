@@ -35,7 +35,7 @@ contract FashionToken is ERC721URIStorage {
     }
 
     /** Authorize the verifier */
-    function setVerifier(address _verifier) public {
+    function setVerifier(address _verifier) internal {
         require(msg.sender == owner);
         authorizeVerifier = _verifier;
     }
