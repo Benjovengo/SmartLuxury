@@ -176,7 +176,7 @@ The function can be called as follows:
 fashion.getOwnershipOf(ID);
 ```
 
-- where `ID` is a number (for example, 15).
+- where `ID` is an unsigned integer (for example, 15).
 
 #### `totalSupply()`
 
@@ -200,4 +200,114 @@ This function can be called as follows:
 
 ```
 fashion.totalSupply();
+```
+
+#### `addToOwners(uint256 _nftID, address _newOwner)`
+
+Update list of owners with the addition of the address of a new owner.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the token to which will be added a new owner
+- `_newOwner` (address): address of the new owner
+
+##### Scope
+
+- `public`
+- Only the current owner of the NFT can call this function.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.addToOwners(id, newOwnerAddress);
+```
+
+- where `id` is an unsigned integer (for example, 15).
+
+#### `getOwner(uint256 _nftID, uint256 _ownerIndex)`
+
+Returns one of the owners (past or present) of a given token.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT token.
+- `_ownerIndex` (uint256): index of the owner in the owner's list for a particular token id.
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `address`: address of the nth owner of the token.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.getOwner(id, ownerIndex);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id
+- `ownerIndex` is also an unsigned integer, ranging from 1 to the total number of owners that a particular has since its creation.
+
+#### `getFirstOwner(uint256 _nftID)`
+
+Returns the first owner of a token.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT token.
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `address`: address of the creator/first owner of the token.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.getFirstOwner(id);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id
+
+##### Notes
+
+This function is used to make it easier to identify and verify the product origins.
+
+#### `isRegistered(string memory _serialNum)`
+
+Returns if a serial number has already been registered.
+
+##### Parameters
+
+- `_serialNum` (string memory): string containing the serial number of the product.
+
+##### Scope
+
+- `public view`
+
+##### Returns
+
+- `bool`: check if the serial number of the product has already been registered.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+fashion.isRegistered('SerialNumber');
 ```
