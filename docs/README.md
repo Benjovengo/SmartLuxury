@@ -80,7 +80,7 @@ To configure Hardhat to deploy a smart contract to the Göerli Testnet, you will
 
 - `blockExplorerUrl`: This is the URL of the Göerli testnet's block explorer, which can be used to view transactions and smart contract data on the network. The default value for this parameter is `https://goerli.etherscan.io/`.
 
-```
+```json
 // Replace this private key with your Göerli account private key
 // To export your private key from Metamask, open Metamask and
 // go to Account Details > Export Private Key
@@ -105,7 +105,7 @@ Once you have set the parameters to the `hardhat.config.js` config file, you can
 
 Example:
 
-```
+```bash
 npx hardhat run scripts/deploy.js --network goerli
 ```
 

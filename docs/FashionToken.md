@@ -20,14 +20,14 @@ The present smart contract employs the utilization of the ERC-721 and ERC-721URI
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```
+```solidity
 const FashionToken = await ethers.getContractFactory('FashionToken')
 fashionToken = await FashionToken.deploy()
 ```
 
 or using _ethers.js_ on the client-side:
 
-```
+```solidity
 import { ethers } from 'ethers';
 
 import FashionToken from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
@@ -89,7 +89,7 @@ Change ownership of this token contract.
 
 In case the owner wants to call it, the function can be called as follows:
 
-```
+```solidity
 fashion.changeOwner(newOwnerAddress);
 ```
 
@@ -118,7 +118,7 @@ Authorize a verifier to check the delivery status.
 
 After the deployment, the function can be called as follows:
 
-```
+```solidity
 fashion.setVerifier(verifierAddress);
 ```
 
@@ -150,7 +150,7 @@ Mint a new token.
 
 The function can be called as follows:
 
-```
+```solidity
 fashion.mint('https://where.the.URI.is/', productOwnerAddress, 'SerialNumberString')
 ```
 
@@ -174,7 +174,7 @@ Return the current ownership of the product NFT.
 
 The function can be called as follows:
 
-```
+```solidity
 fashion.getOwnershipOf(ID);
 ```
 
@@ -200,7 +200,7 @@ Returns the total number of products/NFTs registered.
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.totalSupply();
 ```
 
@@ -226,7 +226,7 @@ Update list of owners with the addition of the address of a new owner.
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.addToOwners(id, newOwnerAddress);
 ```
 
@@ -253,7 +253,7 @@ Returns one of the owners (past or present) of a given token.
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.getOwner(id, ownerIndex);
 ```
 
@@ -280,7 +280,7 @@ Returns the first owner of a token.
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.getFirstOwner(id);
 ```
 
@@ -310,7 +310,7 @@ Returns if a serial number has already been registered.
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.isRegistered('SerialNumber');
 ```
 
@@ -334,7 +334,7 @@ Returns the product id given the serial number for the product.
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.getProductID('SerialNumber');
 ```
 
@@ -360,7 +360,7 @@ Sets if a sale can be finalized from the delivery stand point.
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.setFinalizeDelivery(id, true);
 ```
 
@@ -386,7 +386,7 @@ Returns if the delivery process has been completed and the sale can be finalized
 
 This function can be called as follows:
 
-```
+```solidity
 fashion.getFinalizeStatus(id)
 ```
 

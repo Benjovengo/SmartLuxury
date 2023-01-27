@@ -28,7 +28,7 @@ Calling other contracts
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```
+```solidity
 const FashionToken = await ethers.getContractFactory('FashionToken')
 fashionToken = await FashionToken.deploy()
 const VerifiedContacts = await ethers.getContractFactory('VerifiedContacts')
@@ -40,7 +40,7 @@ shipmentInfo = await ShipmentInfo.deploy()
 
 or using _ethers.js_ on the client-side:
 
-```
+```solidity
 import { ethers } from 'ethers';
 
 import FashionToken from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
@@ -98,7 +98,7 @@ Updates the delivery status of the product.
 
 This function can be called as follows:
 
-```
+```solidity
 shipmentInfo.updateDeliveryStatus(buyer.address, id, deliveryStatus);
 ```
 
@@ -134,7 +134,7 @@ Returns the delivery status for the item.
 
 This function can be called as follows:
 
-```
+```solidity
 shipmentInfo.isDelivered(buyer.address, id);
 ```
 
@@ -163,7 +163,7 @@ Sets the sale as conducted in person.
 
 This function can be called as follows:
 
-```
+```solidity
 shipmentInfo.updateDeliveryStatus(buyer.address, id, deliveryStatus);
 ```
 
@@ -197,7 +197,7 @@ After the completio of the listing operation, the event `inPersonSaleEvent(buyer
 
 This function can be called as follows:
 
-```
+```solidity
 shipmentInfo.isPresential(buyer.address, id)
 ```
 

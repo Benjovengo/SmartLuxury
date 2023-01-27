@@ -38,7 +38,7 @@ Calling other contracts
 
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
-```
+```solidity
 const FashionToken = await ethers.getContractFactory('FashionToken')
 fashionToken = await FashionToken.deploy()
 const Contacts = await ethers.getContractFactory('Contacts')
@@ -50,7 +50,7 @@ sellingContract = await SellingContract.deploy()
 
 or using _ethers.js_ on the client-side:
 
-```
+```solidity
 import { ethers } from 'ethers';
 
 import FashionToken from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
@@ -113,7 +113,7 @@ Adds a new product to have its ownership tracked.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.register('https://link.to/metadata/token.uri', 'SerialNumber')
 ```
 
@@ -167,7 +167,7 @@ Lists a product for sale.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.list(id, purchasePrice)
 ```
 
@@ -198,7 +198,7 @@ Approve the transfer of the product ownership (ERC-721 token) from the owner to 
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.approveTransfer(id);
 ```
 
@@ -231,7 +231,7 @@ Unlists a product for sale.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.unlist(id);
 ```
 
@@ -262,7 +262,7 @@ Transfer ether to this contract.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.depositEarnest(id, { value: purchasePrice * (10**16) });
 ```
 
@@ -291,7 +291,7 @@ Marks the tracking status as true, meaning that the product has been delivered.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.updateDeliveryStatus(id, deliveryStatus);
 ```
 
@@ -323,7 +323,7 @@ All the addresses involved in the selling process must approve the sale to final
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.approveSale(id);
 ```
 
@@ -353,7 +353,7 @@ Finalize the sale after the following requirements are met:
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.finalizeSale(id);
 ```
 
@@ -392,7 +392,7 @@ Cancel the sale.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.cancelSale(id);
 ```
 
@@ -442,7 +442,7 @@ Returns the balance total of the Selling contract.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.getBalance()
 ```
 
@@ -466,7 +466,7 @@ Returns the seller of the product/NFT.
 
 This function can be called as follows:
 
-```
+```solidity
 sellingContract.getSeller(id)
 ```
 
