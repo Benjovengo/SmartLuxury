@@ -135,3 +135,160 @@ Receive confirmation for ERC-721 token.
 ##### Usage
 
 Called upon a safe transfer.
+
+#### `list(uint256 _nftID, uint256 _purchasePrice)`
+
+Lists a product for sale.
+
+##### Parameters
+
+- `_nftID` (uint256): the id of the product/NFT that is put to sale.
+- `_purchasePrice` (uint256): the purchase price of the item.
+
+##### Scope
+
+- `public payable`
+- Only the owner(seller) can call this function.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.list(id, purchasePrice)
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id
+- where `purchasePrice` is an unsigned integer (for example, 105) representing the price of the item in _hundredths of ETH_
+
+##### Notes
+
+After the completio of the listing operation, an event the event `productListed(true)` is emitted.
+
+#### `approveTransfer(uint256 _nftID)`
+
+Approve the transfer of the product ownership (ERC-721 token) from the owner to the Selling contract.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+
+##### Scope
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.approveTransfer(id);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+
+##### Notes
+
+It is necessary to approve the transfer before actually transferring it.
+
+#### `unlist(uint256 _nftID)`
+
+Unlists a product for sale.
+
+- after this, the product is not available for sale.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+
+##### Scope
+
+- `public`
+- Only the owner can call this function.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.unlist(id);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+
+##### Notes
+
+After the completio of the listing operation, an event the event `productUnlisted(true)` is emitted.
+
+#### `depositEarnest(uint256 _nftID)`
+
+Transfer ether to this contract.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+- the amount transfered is defined in `msg.value`
+
+##### Scope
+
+- `public payable`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.depositEarnest(id, { value: purchasePrice * (10**16) })
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+- where `purchasePrice` is an unsigned integer (for example, 105) representing the price of the item in _hundredths of ETH_
+
+#### `updateDeliveryStatus(uint256 _nftID, bool _delivered)`
+
+Marks the tracking status as true, meaning that the product has been delivered.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+- `_delivered` (bool): status of the delivery (true: delivered; false: not delivered yet).
+
+##### Scope
+
+- `public`
+- Only an authorized verifier can call this function.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.updateDeliveryStatus(id, deliveryStatus)
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id,
+- and `deliveryStatus` checks if the product has been delivered or not.
+
+##### Notes
+
+Once the product has been delivered and the sale is finalized, this function is used to mark the product as not delivered in order guarantee that the product will be delivered on a future sale.
