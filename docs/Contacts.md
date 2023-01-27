@@ -70,6 +70,27 @@ The constructor sets the `owner` of the smart contract as the deployer (_msg.sen
 
 #### `addAccount(string memory _firstName, string memory _lastName, string memory _avatar, string memory  email, string memory _physicalAddress, uint256 _poBox)`
 
+<table style="border-collapse: collapse;width: fit-content;">
+  <tr>
+    <td style="background-color: #CDCDCD;border: 1px solid black;padding: 0px 1em;text-align: center;">
+      <b>Function: </b><tt>functionName</tt>
+    </td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;padding: 0px 1em 0px 0px;text-align: left;">
+      Arguments
+      <ul style="list-style-position: outside;margin: 0;padding-left: 1.5em; text-align: left;">
+        <li><tt>varName: type</tt></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;padding: 0px 1em;text-align: left;">
+      <b>Return:</b> <tt>bool</tt>
+    </td>
+  </tr>
+</table>
+
 The purpose of this function is to facilitate the management of customer accounts on the Blockchain. Specifically, it allows for the creation or modification of an association between a customer's address on the Blockchain and their corresponding Customer struct. When invoked, the function will first determine whether an existing association exists for the specified customer address.
 
 - If no association exists, the function will create a new association linking the customer address to the Customer struct provided by the customer.
