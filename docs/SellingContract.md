@@ -39,6 +39,11 @@ Calling other contracts
 Before using these functions, the smart contract needs to deployed to a Hardhat node or to a testnet (it is not recommended to use any of the code from this project on a real project - it is not production ready!). After starting the node, run
 
 ```
+const FashionToken = await ethers.getContractFactory('FashionToken')
+fashionToken = await FashionToken.deploy()
+const Contacts = await ethers.getContractFactory('Contacts')
+contactsContract = await Contacts.deploy()
+
 const SellingContract = await ethers.getContractFactory('SellingContract')
 sellingContract = await SellingContract.deploy()
 ```
@@ -56,6 +61,8 @@ const network = await provider.getNetwork()
 const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
 const signer = provider.getSigner();
 
+const fashionToken = new ethers.Contract(config[network.chainId].fashionToken.address, FashionToken, signer)
+const contactsContract = new ethers.Contract(config[network.chainId].contactsContract.address, Contacts, signer)
 const sellingContract = new ethers.Contract(config[network.chainId].sellingContract.address, SellingContract, signer)
 ```
 
