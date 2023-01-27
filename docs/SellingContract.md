@@ -71,7 +71,7 @@ Constructor method.
 - `_contacts` (address): address of the Contacts contract.
 - `_verifier` (address): address of the verifier.
 
-##### Scope
+##### Visibility
 
 - `none`
 
@@ -92,7 +92,7 @@ Adds a new product to have its ownership tracked.
 - `_tokenURI` (string memory): description
 - `_serialNumber` (string memory): description
 
-##### Scope
+##### Visibility
 
 - `public`
 
@@ -124,7 +124,7 @@ Receive confirmation for ERC-721 token.
 - (address): "from" - the address of the account that the token is being transferred from.
 - (uint256): "tokenId" - the unique ID of the ERC721 token being transferred.
 
-##### Scope
+##### Visibility
 
 - `external pure`
 
@@ -145,7 +145,7 @@ Lists a product for sale.
 - `_nftID` (uint256): the id of the product/NFT that is put to sale.
 - `_purchasePrice` (uint256): the purchase price of the item.
 
-##### Scope
+##### Visibility
 
 - `public payable`
 - Only the owner(seller) can call this function.
@@ -162,12 +162,12 @@ This function can be called as follows:
 sellingContract.list(id, purchasePrice)
 ```
 
-- where `id` is an unsigned integer (for example, 15) representing the token id
-- where `purchasePrice` is an unsigned integer (for example, 105) representing the price of the item in _hundredths of ETH_
+- where `id` is an unsigned integer (for example, 15) representing the token id,
+- and `purchasePrice` is an unsigned integer (for example, 105) representing the price of the item in _hundredths of ETH_
 
 ##### Notes
 
-After the completio of the listing operation, an event the event `productListed(true)` is emitted.
+After the completio of the listing operation, the event `productListed(true)` is emitted.
 
 #### `approveTransfer(uint256 _nftID)`
 
@@ -177,7 +177,7 @@ Approve the transfer of the product ownership (ERC-721 token) from the owner to 
 
 - `_nftID` (uint256): id of the product/NFT.
 
-##### Scope
+##### Visibility
 
 - `public`
 
@@ -209,7 +209,7 @@ Unlists a product for sale.
 
 - `_nftID` (uint256): id of the product/NFT.
 
-##### Scope
+##### Visibility
 
 - `public`
 - Only the owner can call this function.
@@ -230,7 +230,7 @@ sellingContract.unlist(id);
 
 ##### Notes
 
-After the completio of the listing operation, an event the event `productUnlisted(true)` is emitted.
+After the completio of the listing operation, the event `productUnlisted(true)` is emitted.
 
 #### `depositEarnest(uint256 _nftID)`
 
@@ -241,7 +241,7 @@ Transfer ether to this contract.
 - `_nftID` (uint256): id of the product/NFT.
 - the amount transfered is defined in `msg.value`
 
-##### Scope
+##### Visibility
 
 - `public payable`
 
@@ -254,7 +254,7 @@ Transfer ether to this contract.
 This function can be called as follows:
 
 ```
-sellingContract.depositEarnest(id, { value: purchasePrice * (10**16) })
+sellingContract.depositEarnest(id, { value: purchasePrice * (10**16) });
 ```
 
 - where `id` is an unsigned integer (for example, 15) representing the token id.
@@ -269,7 +269,7 @@ Marks the tracking status as true, meaning that the product has been delivered.
 - `_nftID` (uint256): id of the product/NFT.
 - `_delivered` (bool): status of the delivery (true: delivered; false: not delivered yet).
 
-##### Scope
+##### Visibility
 
 - `public`
 - Only an authorized verifier can call this function.
@@ -283,7 +283,7 @@ Marks the tracking status as true, meaning that the product has been delivered.
 This function can be called as follows:
 
 ```
-sellingContract.updateDeliveryStatus(id, deliveryStatus)
+sellingContract.updateDeliveryStatus(id, deliveryStatus);
 ```
 
 - where `id` is an unsigned integer (for example, 15) representing the token id,
@@ -292,3 +292,173 @@ sellingContract.updateDeliveryStatus(id, deliveryStatus)
 ##### Notes
 
 Once the product has been delivered and the sale is finalized, this function is used to mark the product as not delivered in order guarantee that the product will be delivered on a future sale.
+
+#### `approveSale(uint256 _nftID)`
+
+All the addresses involved in the selling process must approve the sale to finalize it.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+- Only the addresses involved in that particular selling process can call this function.
+
+##### Visibility
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.approveSale(id);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+
+#### `finalizeSale(uint256 _nftID)`
+
+Finalize the sale after the following requirements are met:
+
+- Require the appoval of the sale by the addresses involved in the process
+- Require delivered status
+- Require funds to be correct amount
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+
+##### Visibility
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.finalizeSale(id);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+
+##### Notes
+
+Operations:
+
+- Transfer NFT to buyer
+- Transfer the amount relative to the price of the item minus the corresponding fee to seller
+- Transfer the fee to the deployer
+
+After the completio of the listing operation, the event `saleFinalized(true, true)` is emitted broadcasting that both ether transfers (the amount corresponding to the price to the seller and the fee to the deployer) were successfull.
+
+#### `cancelSale(uint256 _nftID)`
+
+Cancel the sale.
+
+- reverts the transfers of ether by the buyer and the ERC-721 token by the seller.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+- Only the buyer and the seller can call this function.
+
+##### Visibility
+
+- `public`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.cancelSale(id);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+
+#### `receive()`
+
+Accept ether from other contracts.
+
+- The buyer can use other contracts can sent ether directly to this contract.
+
+##### Parameters
+
+- `none`
+
+##### Visibility
+
+- `external payable`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+Send ether from other contracts to the Selling contract.
+
+#### `getBalance()`
+
+Returns the balance total of the Selling contract.
+
+- It represents the sum of all transfers from buyers that are currently held by this contract.
+
+##### Parameters
+
+- `none`
+
+##### Visibility
+
+- `public view`
+
+##### Returns
+
+- `uint256`: the amount held by this contract.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.getBalance()
+```
+
+#### `getSeller(uint256 _nftID)`
+
+Returns the seller of the product/NFT.
+
+##### Parameters
+
+- `_nftID` (uint256): id of the product/NFT.
+
+##### Visibility
+
+- `public view`
+
+##### Returns
+
+- `address`: the address of the seller of a particular product/NFT.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+sellingContract.getSeller(id)
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
