@@ -4,6 +4,7 @@
 
 - `owner` (address)
 - `delivered` (mapping: buyer's address => (mapping: product id => delivered status))
+- `inPerson` (mapping: buyer's address => (mapping: product id => delivered status))
 - `buyer` (mapping: seller's address => (mapping: product id => buyer's address))
 
 Calling other contracts
@@ -53,3 +54,151 @@ const signer = provider.getSigner();
 
 const verifiedContracts = new ethers.Contract(config[network.chainId].verifiedContracts.address, VerifiedContracts, signer)
 ```
+
+#### `constructor()`
+
+Sets the owner of the contract as the deployer.
+
+##### Parameters
+
+- `none`
+
+##### Visibility
+
+- `none`
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called uppon contract deployment.
+
+#### `updateDeliveryStatus(address _buyer, uint256 _nftID, bool _newStatus)`
+
+Updates the delivery status of the product.
+
+##### Parameters
+
+- `_buyer` (address): buyer's address.
+- `_nftID` (uint256): id of the product/NFT.
+- `_newStatus` (bool): status of the current delivery.
+
+##### Visibility
+
+- `public`
+- Only owner, a verified carrier, or the selling contract can call this method.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+shipmentInfo.updateDeliveryStatus(buyer.address, id, deliveryStatus);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id,
+- and the `deliveryStatus` is set to `true` if the item has been delivered and `false` otherwise.
+
+##### Notes
+
+At the beginning of every buying operation, this function checks if there is an entry at `delivered` or `inPerson` mappings with the seller's address and the particular product/NFT id and set both mappings to `false`.
+
+- This check is important to prevent the approval of a subsequent sale before delivering the product.
+
+After the completio of the listing operation, the event `productDelivered(buyer's address, product id, is delivered status)` is emitted broadcasting that the product has been delivered.
+
+#### `isDelivered(address _buyer, uint256 _nftID)`
+
+Returns the delivery status for the item.
+
+##### Parameters
+
+- `_buyer` (address): buyer's address.
+- `_nftID` (uint256): id of the product/NFT.
+
+##### Visibility
+
+- `public view`
+
+##### Returns
+
+- `bool`: returns `true` if the item has been delivered and `false` otherwise.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+shipmentInfo.isDelivered(buyer.address, id);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
+
+#### `updateInPersonStatus(address _buyer, uint256 _nftID, bool _newStatus)`
+
+Sets the sale as conducted in person.
+
+##### Parameters
+
+- `_buyer` (address): buyer's address.
+- `_nftID` (uint256): id of the product/NFT.
+- `_newStatus` (bool): if set to `true` means that the sale was conducted in person, otherwise it is set to `false`.
+
+##### Visibility
+
+- `public`
+- Only the buyer can call this function.
+
+##### Returns
+
+- `none`
+
+##### Usage
+
+This function can be called as follows:
+
+```
+shipmentInfo.updateDeliveryStatus(buyer.address, id, deliveryStatus);
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id,
+- and the `deliveryStatus` is set to `true` if the item has been delivered and `false` otherwise.
+
+##### Notes
+
+At the beginning of every buying operation, this function checks if there is an entry at `inPerson` or `inPerson` mappings with the buyer's address and the particular product/NFT id and set both mappings to `false`.
+
+- This check is important to prevent setting a subsequent sale as conducted in person without the buyers consent.
+
+After the completio of the listing operation, the event `inPersonSaleEvent(buyer's address, product id, is delivered status)` is emitted broadcasting that the selling was conducted in person.
+
+#### `isPresential(address _buyer, uint256 _nftID)`
+
+##### Parameters
+
+- `_buyer` (address): buyer's address.
+- `_nftID` (uint256): id of the product/NFT.
+
+##### Visibility
+
+- `public view`
+
+##### Returns
+
+- `bool`: returns `true` if the selling process conducted in person and `false` otherwise.
+
+##### Usage
+
+This function can be called as follows:
+
+```
+shipmentInfo.isPresential(buyer.address, id)
+```
+
+- where `id` is an unsigned integer (for example, 15) representing the token id.
