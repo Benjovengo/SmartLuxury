@@ -30,7 +30,7 @@ or using _ethers.js_ on the client-side:
 ```
 import { ethers } from 'ethers';
 
-import Contacts from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
+import FashionToken from 'path/to/ABI/FashionToken.json' // ABI for the smart contract
 import 'path/to/config.json' // config file with the address of the deployed smart contract
 
 let provider = new ethers.providers.Web3Provider(window.ethereum, "any")
