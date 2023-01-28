@@ -23,7 +23,6 @@ import "../styles/nft-details.css";
     "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets/images/Dior-Vintage-Sunglasses_03.webp"
 ]
 
-
 const NftDetails = () => {
 
   const { id } = useParams();
@@ -31,6 +30,7 @@ const NftDetails = () => {
   let SINGLE__NFT__DATA = refreshProducts(id_num)
   let [singleNft, setSingleNFT] = useState(SINGLE__NFT__DATA)
 
+  console.log(singleNft.imgUrl)
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
@@ -98,16 +98,10 @@ const NftDetails = () => {
 {/* Slider ------------------------------------------------------------------------------*/}
                 <div className="slider__outer__container">
                   <div className="slider__inner__container">
-                    <ImageSlider images={productImages} />
+                    <ImageSlider images={singleNft.imgUrl} />
                   </div>
                 </div>
-
 {/* ------------------------------------------------------------------------------ Slider*/}
-                {/* <img
-                  src={singleNft.imgUrl[0]}
-                  alt=""
-                  className="w-100 single__nft-img"
-                /> */}
               </Col>
 
               <Col lg="6" md="6" sm="6">
