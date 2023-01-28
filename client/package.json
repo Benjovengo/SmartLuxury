@@ -18,6 +18,8 @@
     "react-scripts": "5.0.1",
     "reactstrap": "^9.1.5",
     "remixicon": "^2.5.0",
+    "sass": "^1.57.1",
+    "swiper": "^8.4.6",
     "web-vitals": "^2.1.4",
     "webpack": "^5.75.0"
   },
