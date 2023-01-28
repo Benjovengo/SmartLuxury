@@ -129,7 +129,8 @@ const NftDetails = () => {
                     </div>
                   </div>
 
-                  <p className="my-4">{singleNft.description}</p>
+                  <p className="product__description"><b>Description</b><br /></p>
+                  <p>{singleNft.description}</p>
 
                   <p>Price: {Number(singleNft.currentBid).toFixed(2)} ETH</p>
 

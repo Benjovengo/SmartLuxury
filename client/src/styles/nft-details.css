@@ -52,6 +52,11 @@
   font-weight: 500;
 }
 
+.product__description {
+  margin-bottom: 0;
+  padding: 0;
+}
+
 .singleNft-btn {
   padding: 8px 25px;
   background: #000;
