@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import 'swiper/swiper.min.css'
+import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs } from 'swiper'
 
 import './imageSlider.scss'
 
 const ImageSlider = props => {
-  const [activeThumb, setActiveThumb] = useState(null)
+  const [activeThumb, setActiveThumb] = useState(null);
 
   return (
     <>
@@ -17,7 +17,7 @@ const ImageSlider = props => {
         navigation={true}
         modules={[Navigation, Thumbs]}
         grabCursor={true}
-        //thumbs={{swiper:activeThumb}}
+        thumbs={{ swiper: activeThumb }}
         className='product__images__slider'
       >
         {
