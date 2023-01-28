@@ -14,23 +14,17 @@ import ImageSlider from "../components/ui/Image-Slider/ImageSlider"
 
 import "../styles/nft-details.css";
 
-
-  //DEBUG
-  //console.log(SINGLE__NFT__DATA)
-  const productImages = [
-    "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets/images/Dior-Vintage-Sunglasses_01.webp",
-    "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets/images/Dior-Vintage-Sunglasses_02.webp",
-    "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets/images/Dior-Vintage-Sunglasses_03.webp"
-]
-
 const NftDetails = () => {
 
-  const { id } = useParams();
+  const { id } = useParams(); /* i think here is the problem! 
+                                That's why it changes the product
+                                when going back to Market page,
+                                but don't update product when
+                                clicking on the cards below the
+                                NFT details */
   let id_num = Number(id)
   let SINGLE__NFT__DATA = refreshProducts(id_num)
   let [singleNft, setSingleNFT] = useState(SINGLE__NFT__DATA)
-
-  console.log(singleNft.imgUrl)
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
@@ -42,6 +36,7 @@ const NftDetails = () => {
   const updateProducts = async (id_num) => {
     let result = await refreshProducts(id_num)
     setSingleNFT(result);
+    console.log(result)
   }
 
   useEffect(() => {
@@ -98,7 +93,7 @@ const NftDetails = () => {
 {/* Slider ------------------------------------------------------------------------------*/}
                 <div className="slider__outer__container">
                   <div className="slider__inner__container">
-                    <ImageSlider images={singleNft.imgUrl} />
+                    <ImageSlider images={singleNft.imgUrl ? singleNft.imgUrl : []} />
                   </div>
                 </div>
 {/* ------------------------------------------------------------------------------ Slider*/}
