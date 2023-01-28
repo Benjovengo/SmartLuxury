@@ -35,11 +35,11 @@ const main = async () => {
   await fashionToken.deployed()
   fashionAddress = fashionToken.address
 
-  // Deploy TrackingOracle
-  const TrackingOracle = await ethers.getContractFactory('TrackingOracle')
-  const trackingOracle = await TrackingOracle.deploy()
-  await trackingOracle.deployed()
-  trackingAddress = trackingOracle.address
+  // Deploy ShippingInfo
+  const ShippingInfo = await ethers.getContractFactory('ShippingInfo')
+  const shippingInfo = await ShippingInfo.deploy()
+  await shippingInfo.deployed()
+  trackingAddress = shippingInfo.address
 
   // Deploy Contacts
   const Contacts = await ethers.getContractFactory('Contacts')
@@ -50,7 +50,7 @@ const main = async () => {
 
   // Deploy OracleEscrow
   const SellingContract = await ethers.getContractFactory('SellingContract')
-  const sellingContract = await SellingContract.deploy(fashionToken.address, contacts.address, trackingOracle.address)
+  const sellingContract = await SellingContract.deploy(fashionToken.address, contacts.address, shippingInfo.address)
   await sellingContract.deployed()
   sellingAddress = sellingContract.address
 
@@ -106,7 +106,7 @@ const main = async () => {
   /* Console Log results */
   console.log("FashionToken address:       ", fashionToken.address)
   console.log("SellingContract address:      ", sellingContract.address)
-  console.log("TrackingOracle address:     ", trackingOracle.address)
+  console.log("ShippingInfo address:     ", shippingInfo.address)
   console.log("Contacts address:           ", contacts.address)
   console.log("Messages address:           ", messages.address)
   //console.log("VerifiedContacts address: ")
@@ -150,11 +150,11 @@ function createABIFiles() {
   writeABIs(abiFilePath, stringfyData)
 
   // Tracking Oracle ABI
-  jsonFile = fs.readFileSync('./artifacts/contracts/TrackingOracle.sol/TrackingOracle.json')
+  jsonFile = fs.readFileSync('./artifacts/contracts/ShippingInfo.sol/ShippingInfo.json')
   jsonData = JSON.parse(jsonFile);
   stringfyData = JSON.stringify(jsonData.abi, null, " ")
 
-  abiFilePath = "../client/src/abis/TrackingOracle.json"
+  abiFilePath = "../client/src/abis/ShippingInfo.json"
   writeABIs(abiFilePath, stringfyData)
 
   // Messages ABI
@@ -181,7 +181,7 @@ function createConfigJSON(_fashionAddress, _trackingAddress, _sellingAddress, _c
     fashionToken: {
       address: _fashionAddress
     },
-    trackingOracle: {
+    shippingInfo: {
       address: _trackingAddress
     },
     contacts: {
