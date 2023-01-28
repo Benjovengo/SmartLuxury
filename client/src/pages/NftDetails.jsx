@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
@@ -43,7 +43,9 @@ const NftDetails = () => {
     updateProducts(id_num);
   }, [])
 
-  
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+});
 
   /**Show Reviwew */
   const reviewPurchase = () => {
