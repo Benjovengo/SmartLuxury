@@ -17,7 +17,7 @@ const ImageSlider = props => {
         navigation={true}
         modules={[Navigation, Thumbs]}
         grabCursor={true}
-        thumbs={{swiper:activeThumb}}
+        //thumbs={{swiper:activeThumb}}
         className='product__images__slider'
       >
         {
