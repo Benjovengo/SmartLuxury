@@ -7,9 +7,7 @@ import { Navigation, Thumbs } from 'swiper'
 import './imageSlider.scss'
 
 const ImageSlider = props => {
-  const [activeThumb, setActiveThumb] = useState()
-
-  const slideTo = (index) => Swiper.slideTo(1)
+  const [activeThumb, setActiveThumb] = useState(null)
 
   return (
     <>
@@ -19,7 +17,7 @@ const ImageSlider = props => {
         navigation={true}
         modules={[Navigation, Thumbs]}
         grabCursor={true}
-        //thumbs={{ swiper: activeThumb }}
+        thumbs={{swiper:activeThumb}}
         className='product__images__slider'
       >
         {
@@ -31,11 +29,12 @@ const ImageSlider = props => {
         }
       </Swiper>
       <Swiper
-        onSwiper={setActiveThumb}
         loop={true}
         spaceBetween={10}
         slidesPerView={4}
         modules={[Navigation, Thumbs]}
+        watchSlidesProgress
+        onSwiper={setActiveThumb}
         className='product__thumbs__slider'
       >
         {
