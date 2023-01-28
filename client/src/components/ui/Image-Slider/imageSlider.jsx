@@ -1,9 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const imageSlider = () => {
+const ImageSlider = props => {
   return (
-    <div>imageSlider</div>
+    <div>ImageSlider</div>
   )
 }
 
-export default imageSlider
+ImageSlider.propTypes = {}
+
+export default ImageSlider

@@ -7,6 +7,7 @@ import LiveAuction from "../components/ui/Live-auction/LiveAuction";
 import { refreshProducts } from "../assets/data/singleProduct";
 import Review from '../components/ui/Review/Review';
 
+import ImageSlider from "../components/ui/Image-Slider/ImageSlider"
 
 import "../styles/nft-details.css";
 
@@ -85,11 +86,19 @@ const NftDetails = () => {
           <Container>
             <Row>
               <Col lg="6" md="6" sm="6">
-                <img
+{/* Slider ------------------------------------------------------------------------------*/}
+                <div className="slider__outer__container">
+                  <div className="slider__inner__container">
+                    <ImageSlider />
+                  </div>
+                </div>
+
+{/* ------------------------------------------------------------------------------ Slider*/}
+                {/* <img
                   src={singleNft.imgUrl}
                   alt=""
                   className="w-100 single__nft-img"
-                />
+                /> */}
               </Col>
 
               <Col lg="6" md="6" sm="6">
