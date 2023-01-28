@@ -1,0 +1,154 @@
+[
+ {
+  "inputs": [],
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": false,
+    "internalType": "address",
+    "name": "_buyerAddress",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "_nftID",
+    "type": "uint256"
+   },
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "_isPresentialSale",
+    "type": "bool"
+   }
+  ],
+  "name": "inPersonSaleEvent",
+  "type": "event"
+ },
+ {
+  "anonymous": false,
+  "inputs": [
+   {
+    "indexed": false,
+    "internalType": "address",
+    "name": "_buyerAddress",
+    "type": "address"
+   },
+   {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "_nftID",
+    "type": "uint256"
+   },
+   {
+    "indexed": false,
+    "internalType": "bool",
+    "name": "_deliveredStatus",
+    "type": "bool"
+   }
+  ],
+  "name": "productDelivered",
+  "type": "event"
+ },
+ {
+  "inputs": [],
+  "name": "fashionToken",
+  "outputs": [
+   {
+    "internalType": "contract FashionToken",
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "_nftID",
+    "type": "uint256"
+   }
+  ],
+  "name": "isDelivered",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "uint256",
+    "name": "_nftID",
+    "type": "uint256"
+   }
+  ],
+  "name": "isPresential",
+  "outputs": [
+   {
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+   }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "_buyer",
+    "type": "address"
+   },
+   {
+    "internalType": "uint256",
+    "name": "_nftID",
+    "type": "uint256"
+   },
+   {
+    "internalType": "bool",
+    "name": "_newStatus",
+    "type": "bool"
+   }
+  ],
+  "name": "updateDeliveryStatus",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ },
+ {
+  "inputs": [
+   {
+    "internalType": "address",
+    "name": "_buyer",
+    "type": "address"
+   },
+   {
+    "internalType": "uint256",
+    "name": "_nftID",
+    "type": "uint256"
+   },
+   {
+    "internalType": "bool",
+    "name": "_newStatus",
+    "type": "bool"
+   }
+  ],
+  "name": "updateInPersonStatus",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+ }
+]
