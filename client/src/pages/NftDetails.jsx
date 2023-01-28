@@ -7,9 +7,21 @@ import LiveAuction from "../components/ui/Live-auction/LiveAuction";
 import { refreshProducts } from "../assets/data/singleProduct";
 import Review from '../components/ui/Review/Review';
 
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
 import ImageSlider from "../components/ui/Image-Slider/ImageSlider"
 
 import "../styles/nft-details.css";
+
+
+  //DEBUG
+  //console.log(SINGLE__NFT__DATA)
+  const productImages = [
+    "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets/images/Dior-Vintage-Sunglasses_01.webp",
+    "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets/images/Dior-Vintage-Sunglasses_02.webp",
+    "https://raw.githubusercontent.com/Benjovengo/SmartLuxury/master/client/src/assets/images/Dior-Vintage-Sunglasses_03.webp"
+]
 
 
 const NftDetails = () => {
@@ -18,9 +30,6 @@ const NftDetails = () => {
   let id_num = Number(id)
   let SINGLE__NFT__DATA = refreshProducts(id_num)
   let [singleNft, setSingleNFT] = useState(SINGLE__NFT__DATA)
-
-  //DEBUG
-  //console.log(SINGLE__NFT__DATA)
 
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
@@ -89,13 +98,13 @@ const NftDetails = () => {
 {/* Slider ------------------------------------------------------------------------------*/}
                 <div className="slider__outer__container">
                   <div className="slider__inner__container">
-                    <ImageSlider />
+                    <ImageSlider images={productImages} />
                   </div>
                 </div>
 
 {/* ------------------------------------------------------------------------------ Slider*/}
                 {/* <img
-                  src={singleNft.imgUrl}
+                  src={singleNft.imgUrl[0]}
                   alt=""
                   className="w-100 single__nft-img"
                 /> */}
