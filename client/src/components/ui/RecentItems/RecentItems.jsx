@@ -19,7 +19,7 @@ const RecentItems = () => {
           </Row>
           <Row className='selling__content justify-content-center'>
             <Col xs="12" className="text-center">
-              <button className="explore__more__btn">More Items</button>
+              <button className="explore__more__btn">View More Items</button>
             </Col>
           </Row>
 

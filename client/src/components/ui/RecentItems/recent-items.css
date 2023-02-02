@@ -1,6 +1,7 @@
 .selling__content h3 {
   font-family: 'Raleway', sans-serif;
   font-size: 2rem;
+  margin: 0;
 }
 
 .explore__more__btn {
@@ -9,9 +10,10 @@
   border-radius: 0px !important;
   color: #FFF;
   font-size: 1rem;
-  margin: -1.1em 0 0 0;
+  line-height: normal;
+  margin: -1.5em 0 0 0;
   outline: none;
-  padding: 0px 40px !important;
+  padding: 0px 2em !important;
   text-align: center;
   text-transform: uppercase;
 }
