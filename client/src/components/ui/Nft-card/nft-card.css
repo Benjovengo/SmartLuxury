@@ -125,7 +125,7 @@
 }
 
 
-.bid__btn {
+.buy__btn {
   border: none;
   outline: none;
   padding: 5px 22px;
@@ -137,7 +137,7 @@
   background: #141414;
 }
 
-.bid__btn:hover {
+.buy__btn:hover {
   background: #F89104;
   color: #fff;
 }
@@ -233,7 +233,7 @@
     font-size: 0.7rem !important;
   }
 
-  .bid__btn {
+  .buy__btn {
     padding: 4px 20px !important;
     font-size: 0.6rem !important;
   }

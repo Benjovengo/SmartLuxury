@@ -111,7 +111,7 @@ const Review = ({ productName, price, productId, setShowPurchaseReview }) => {
           <span className="money">{(Number(price)).toFixed(2)} ETH</span>
         </div>
 
-        <button className="place__bid-btn" onClick={() => confirmPurchase()}>Confirm Purchase</button>
+        <button className="place__order-btn" onClick={() => confirmPurchase()}>Confirm Purchase</button>
       </div>
     </div>
   );

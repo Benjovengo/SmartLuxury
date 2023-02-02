@@ -103,14 +103,14 @@ const NftCard = (props) => {
               </div>
               </div>
               <div className='d-flex align-items-center justify-content-between'>
-                <button className="bid__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
+                <button className="buy__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
               </div>
             </div>
           </> :
           <>
             <h6 className='price__header'>Changed your mind?</h6>
             <div className='d-flex align-items-center justify-content-between'>
-              <button className="bid__btn" onClick={() => stopSelling(id)}>Remove from sale</button>
+              <button className="buy__btn" onClick={() => stopSelling(id)}>Remove from sale</button>
             </div>
           </>
         }

@@ -83,7 +83,7 @@ const Review = ({ productName, productId, price, setShowReview }) => {
 
         {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
 
-        <button onClick={() => confirmSelling()} className="place__bid-btn">Confirm</button>
+        <button onClick={() => confirmSelling()} className="place__order-btn">Confirm</button>
       </div>
     </div>
   );
