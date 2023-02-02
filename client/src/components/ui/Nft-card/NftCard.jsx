@@ -65,33 +65,29 @@ const NftCard = (props) => {
         </div>
 
         <div className="price__info d-flex align-items-center justify-content-between">
-          <div className='w-50'>
-            <h6>Price</h6>
-            <p>{(Number(currentBid)).toFixed(2)} ETH</p>
+          <div className='w-70'>
+            <p>Price: <span>{(Number(currentBid)).toFixed(2)} ETH</span></p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
             <button className="buy__btn d-flex align-items-center gap-2" onClick={() => reviewSell()}>Buy</button>
           </div>
         </div>
 
-        <div className="creator__info d-flex align-items-center justify-content-between">
-          <div className='w-150'>
-            <h6>Original Owner's Address</h6>
-          </div>
+        <div className="creator__info">
+          <h6>Original Owner's Address</h6>
         </div>
       </div>
 
-      <div className="creator__info d-flex align-items-center justify-content-between">
+      <div className="creator__address d-flex align-items-center justify-content-between">
           <p className='original__address'>{creator}</p>
-          <button className='copy__to__clipboard' onClick={copyToClipboard('Address')}>
-            <i className="ri-file-copy-line"></i>
+          <button className='history__link' onClick={() => ownersList(id)}>
+            <i className="ri-history-line"></i>
           </button>
 
           {showPurchaseReview && <Review productName={productName} price={price} productId={productId} setShowPurchaseReview={setShowPurchaseReview} />}
 
       </div>
 
-      <button className='history__link' onClick={() => ownersList(id)}><span><i className="ri-history-line"></i> View Ownership History</span></button>
     </div>
   )
 }
