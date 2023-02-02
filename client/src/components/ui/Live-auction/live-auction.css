@@ -1,6 +1,29 @@
+.selling__content h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+}
+
+
+.explore__more__btn {
+  background: #F89104;
+  border: none;
+  border-radius: 0px !important;
+  color: #FFF;
+  font-size: 1rem;
+  margin: -1.1em 0 0 0;
+  outline: none;
+  padding: 0px 40px !important;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.explore__more__btn:hover {
+  background: #D87E01;
+}
+
 .single__nft__card {
   padding: 20px;
-  background-color: #F0F0F0;
+  background-color: #FFF;
   border-radius: 0px;
 }
 

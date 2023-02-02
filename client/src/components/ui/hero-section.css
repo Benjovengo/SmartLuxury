@@ -61,7 +61,6 @@
   border-radius: 0px !important;
   font-size: 0.9rem;
   text-align: center;
-  width: fit-content;
 }
 
 
@@ -74,6 +73,7 @@
 .explore__create__btn a {
   text-decoration: none;
   color: #fff;
+  width: fit-content;
 }
 
 .hero__btns button a:hover {
