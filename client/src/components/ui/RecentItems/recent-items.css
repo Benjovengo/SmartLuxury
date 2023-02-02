@@ -21,3 +21,8 @@
 .explore__more__btn:hover {
   background: #D87E01;
 }
+
+.link__btn {
+  color: #FFF;
+  text-decoration: none;
+}

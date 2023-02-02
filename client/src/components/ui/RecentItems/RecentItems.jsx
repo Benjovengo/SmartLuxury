@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 import './recent-items.css'
 
@@ -19,7 +20,7 @@ const RecentItems = () => {
           </Row>
           <Row className='selling__content justify-content-center'>
             <Col xs="12" className="text-center">
-              <button className="explore__more__btn">View More Items</button>
+              <Link className='link__btn' to='/market'><button className="explore__more__btn">View More Items</button></Link>
             </Col>
           </Row>
 
