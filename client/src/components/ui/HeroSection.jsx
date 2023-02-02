@@ -17,11 +17,11 @@ const HeroSection = () => {
           <Row className='hero__content d-flex align-items-center'>
               <p>Buying a product has never been safer. The authenticity is guaranteed by tracking the origin of all the products! </p>
           </Row>
-          <Row className='hero__content'>
+          {/* <Row className='hero__content'>
             <button className=' explore__create__btn'>
               <Link to='/market'>Explore</Link>
             </button>
-          </Row>
+          </Row> */}
         </Container>      
       </section>
     </>
