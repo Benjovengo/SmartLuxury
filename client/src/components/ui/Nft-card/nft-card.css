@@ -1,29 +1,11 @@
-.owner__info {
-  margin: 0;
-  padding: 0;
-}
-
-.owner__info h5 {
-  font-size: 1.0rem;
-  font-weight: 300;
-  margin: 0;
-}
-
-.owner__info p {
-  font-size: 1.15rem;
-  font-weight: 300;
-  margin: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
+/** Card wrapper style */
 .single__nft__card {
-  padding: 20px;
+  padding: 12px;
   background-color: #FFF;
   border-radius: 0px;
 }
 
+/** Product image - cover image */
 .nft__img {
   width: 100%;
   height: 0;
@@ -42,25 +24,58 @@
   object-fit: contain;
 }
 
+/** Product Header */
 .nft__title {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   margin-top: 5px;
   overflow: hidden;
-  text-align: center;
+  text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .nft__title a {
   color: #000;
+  font-family: "Cinzel", serif;
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
 }
 
 .nft__title a:hover {
-  color: #000;
+  color: #D87E01;
 }
+
+
+.owner__info {
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.owner__info p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.owner__info span {
+  font-weight: 400;
+  margin: 0;
+}
+
+
+.product__stars {
+  color: #F89104;
+  line-height: normal;
+  margin: -0.35em 0 0 0;
+}
+
+
+
 
 .creator__img {
   width: 50px;
@@ -84,15 +99,6 @@
 }
 
 
-.owner__info h6 {
-  font-size: 0.8rem;
-  color: #141414;
-  font-weight: 500;
-  margin: 0;
-  padding: 0;
-}
-
-
 
 .history__link{
   margin: 1em 0;
@@ -104,11 +110,6 @@
 }
 
 
-.owner__info p {
-  font-size: 1.15rem;
-  margin: -0.25em 0 0 0;
-  padding: 0;
-}
 
 .price__info h6 {
   font-size: 0.9rem;
