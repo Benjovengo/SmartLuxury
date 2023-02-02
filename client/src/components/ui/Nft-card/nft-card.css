@@ -1,0 +1,51 @@
+.owner__info {
+  margin: 0;
+  padding: 0;
+}
+
+.owner__info h5 {
+  font-size: 1.0rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.owner__info p {
+  font-size: 1.15rem;
+  font-weight: 300;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.history__link{
+  margin: 1em 0;
+  background-color: #000;
+  padding: 5px 30px;
+  border: 1px solid #252525;
+  border-radius: 0px;
+  font-weight: 500;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .nft__title {
+    font-size: 2.8rem !important;
+  }
+
+  .creator__info h6 {
+    font-size: 0.6rem !important;
+  }
+
+  .creator__info p {
+    font-size: 0.7rem !important;
+  }
+
+  .bid__btn {
+    padding: 4px 20px !important;
+    font-size: 0.6rem !important;
+  }
+  .history__link a {
+    font-size: 0.6rem !important;
+  }
+}

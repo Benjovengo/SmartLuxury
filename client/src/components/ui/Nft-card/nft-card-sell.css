@@ -1,0 +1,57 @@
+.price__input input,
+.price__input textarea {
+  width: 100%;
+  padding: 5px 5px;
+  color: #fff;
+  font-size: 0.8rem;
+  background: #343444;
+  border: 1px solid rgba(21, 21, 21, 0.171);
+  outline: none;
+  border-radius: 5px;
+}
+
+.price__header {
+  font-size: 0.9rem;
+  margin: 0.5em 0 0.1em 0;
+}
+
+.bid__btn {
+  border: none;
+  outline: none;
+  padding: 5px 22px;
+  background: transparent;
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: 0px;
+  transition: 0.3s;
+  background: #141414;
+  text-align: center;
+  width: 100%;
+}
+
+.bid__btn:hover {
+  background: #F89104;
+  color: #fff;
+}
+
+@media only screen and (max-width: 992px) {
+  .nft__title {
+    font-size: 2.8rem !important;
+  }
+
+  .creator__info h6 {
+    font-size: 0.6rem !important;
+  }
+
+  .creator__info p {
+    font-size: 0.7rem !important;
+  }
+
+  .bid__btn {
+    padding: 4px 20px !important;
+    font-size: 0.6rem !important;
+  }
+  .history__link a {
+    font-size: 0.6rem !important;
+  }
+}
