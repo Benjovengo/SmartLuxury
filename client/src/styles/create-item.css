@@ -1,3 +1,9 @@
+.preview__item__header {
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 /** Create item wrapper div*/
 .create__item {
   background: #FFF;
