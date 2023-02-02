@@ -10,7 +10,7 @@ const HeroSection = () => {
     <section className="hero__section">
       <Container>
         <Row>
-          <Col  lg='6' md='6'>
+          <Col  lg='6' md='6' className='d-flex align-items-center w-100'>
             <div className="hero__content">
               <h2>Renew your collection<br/>
                 <span>buy and sell</span> luxury items
@@ -31,7 +31,6 @@ const HeroSection = () => {
 
           <Col lg="6" md="6">
             <div className="hero__img">
-              {/* <img src={''} alt="" className="w-100" /> */}
             </div>
           </Col>
 

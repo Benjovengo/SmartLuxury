@@ -1,19 +1,28 @@
 .hero__section {
-  background-image: url('../../assets/images/extended_hero.png');
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+    ),
+    url('../../assets/images/hero_bags_banner.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin-top: 60px;
+  margin-top: 3em;
 }
 
 .hero__content h2 {
   color: #fff;
-  line-height: 55px;
   font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.25em;
+  text-align: center;
 }
 
 .hero__content p {
   color: #fff;
+  font-size: 1.25em;
+  line-height: normal;
+  text-align: center;
 }
 
 .hero__content h2 span {
@@ -21,6 +30,12 @@
   -webkit-text-fill-color: #F89104;
   margin-left: 0px !important;
   display: inline-block;
+}
+
+.hero__btns__wrapper {
+  align-items: center;
+  margin-top: 40px;
+  text-align: center;
 }
 
 .hero__btns {
