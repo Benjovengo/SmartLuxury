@@ -54,7 +54,7 @@ const Header = ( { account, setAccount } ) => {
 
   return (
     <header className="header" ref={headerRef}>
-      <Container>
+      <Container >
         <div className="navigation">
           <div className="logo">
             <h2 className='d-flex gap-2 align-items-center'>
