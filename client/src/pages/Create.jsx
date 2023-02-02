@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -46,6 +46,12 @@ const handleSubmit = (e) => {
 };
 
 const Create = () => {
+
+  // @notice scroll to the top of the page
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  });
+  
   return (
     <>
       <CommonSection title="Register Item" />
