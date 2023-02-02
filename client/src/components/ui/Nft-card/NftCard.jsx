@@ -75,7 +75,7 @@ const NftCard = (props) => {
             <p>{(Number(currentBid)).toFixed(2)} ETH</p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
-            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => reviewSell()}>Buy</button>
+            <button className="buy__btn d-flex align-items-center gap-2" onClick={() => reviewSell()}>Buy</button>
           </div>
         </div>
 
