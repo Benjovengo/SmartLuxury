@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react'
 
 import HeroSection from '../components/ui/HeroSection'
-import LiveAuction from '../components/ui/Live-auction/LiveAuction'
+import RecentItems from '../components/ui/RecentItems/RecentItems'
 
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <HeroSection />
-      <LiveAuction />
+      <RecentItems />
     </>
   )
 }
