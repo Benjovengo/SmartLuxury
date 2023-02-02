@@ -1,5 +1,5 @@
 .header {
-  background-color: #FAF6F1;
+  background-color: #141414;
   width: 100%;
   height: 60px;
   line-height: 60px;
@@ -7,6 +7,18 @@
   top: 0;
   left: 0;
   z-index: 111111;
+  clip-path: polygon(0% 0%, 21% 0%, 25% 100%, 0% 100%);
+}
+
+.logo h2 {
+  background-clip: text;
+  -webkit-text-fill-color: #141414;
+  margin-bottom: 0;
+}
+
+.img__logo {
+  height: 1.2em;
+  margin: -0.15em 0em 0em -1em;
 }
 
 .header__shrink {
@@ -28,7 +40,7 @@
 
 .nav__item a {
   color: #000;
-  font-family: "Cinzel", serif;
+  font-family: "Montserrat", sans-serif;
   text-decoration: none;
 }
 
@@ -44,11 +56,6 @@
   background-clip: text;
   -webkit-text-fill-color: #141414;
   margin-bottom: 0;
-}
-
-.img__logo {
-  height: 1.2em;
-  margin: -0.15em 0em 0em 0em;
 }
 
 .nav__right {

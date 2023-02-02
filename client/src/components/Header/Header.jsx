@@ -59,7 +59,7 @@ const Header = ( { account, setAccount } ) => {
           <div className="logo">
             <h2 className='d-flex gap-2 align-items-center'>
               <span>
-                <img src='SmartLuxuryColorLogo.svg' alt='smart luxury logo' className='img__logo' ></img>
+                <img src='SmartLuxuryLogo.png' alt='smart luxury logo' className='img__logo' ></img>
               </span>
             </h2>
           </div>
