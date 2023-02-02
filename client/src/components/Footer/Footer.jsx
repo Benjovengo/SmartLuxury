@@ -61,18 +61,18 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <Row>
-          <Col lg='3' md='6' sm='6'>
+          <Col lg='3'>
             <div className="logo">
               <h2 className='d-flex gap-2 align-items-center'>
                 <span>
-                  <img src='SmartLuxuryColorLogo.svg' alt='smart luxury logo' className='img__logo' ></img>
+                  <img src='SmartLuxuryDarkLogo.png' alt='smart luxury logo' className='img__logo' ></img>
                 </span>
               </h2>
               <p>This project uses the Goerli test network. To use its functionalities you may need to get some ether for that network. If so, one option is to use <a href="goerlifaucet.com/">Goerli Faucet</a> to get some ethers.</p>
             </div>
           </Col>
 
-          <Col lg='2' md='3' sm='6'>
+          <Col lg="2" md="3" sm="6">
             <h5>My Account</h5>
             <ListGroup className="list__group">
               {MY__ACCOUNT.map((item, index) => (

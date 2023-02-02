@@ -1,8 +1,9 @@
 .footer h5 {
-  font-family: "Cinzel", serif;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #000;
+  text-transform: uppercase;
 }
 
 .footer {
@@ -10,13 +11,18 @@
   padding-bottom: 15px;
 }
 
+.logo {
+  margin: 0 1em;
+  justify-content: center;
+}
+
 .logo p {
   text-align: justify;
 }
 
-.img_logo {
-  height: 1em;
-  margin: -0.15em 1em 0em 0em;
+.footer .img__logo {
+  height: 1.4em;
+  margin: -1em 0em 0.15em 0em;
 }
 
 .list__item {
