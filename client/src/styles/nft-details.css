@@ -52,6 +52,11 @@
   font-weight: 500;
 }
 
+.product__description {
+  margin-bottom: 0;
+  padding: 0;
+}
+
 .singleNft-btn {
   padding: 8px 25px;
   background: #000;
@@ -100,6 +105,18 @@
   padding: 0;
 }
 
+.slider__outer__container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.slider__inner__container {
+  background-color: aqua;
+  padding: 1em;
+  width: 100%;
+}
 
 @media only screen and (max-width: 992px) {
   .single__nft__content h2 {

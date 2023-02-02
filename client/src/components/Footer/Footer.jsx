@@ -138,7 +138,7 @@ const Footer = () => {
           </Col>
 
           <Col lg='12' className='mt-4 text-center'>
-            <p><b>Atention!!!</b> Smart Luxury is a fictitious brand. Don't use it to sell real products.</p>
+            <p><b>Warning!!!</b> Please note that <i>Smart Luxury</i> is a fictional brand and should not be used for purchasing or selling any actual products.</p>
           </Col>
 
           <Col lg='12' className='mt-4 text-center'>

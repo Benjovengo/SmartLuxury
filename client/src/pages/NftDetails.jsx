@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
@@ -7,20 +7,24 @@ import LiveAuction from "../components/ui/Live-auction/LiveAuction";
 import { refreshProducts } from "../assets/data/singleProduct";
 import Review from '../components/ui/Review/Review';
 
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
+import ImageSlider from "../components/ui/Image-Slider/ImageSlider"
 
 import "../styles/nft-details.css";
 
-
 const NftDetails = () => {
 
-  const { id } = useParams();
+  const { id } = useParams(); /* i think here is the problem! 
+                                That's why it changes the product
+                                when going back to Market page,
+                                but don't update product when
+                                clicking on the cards below the
+                                NFT details */
   let id_num = Number(id)
   let SINGLE__NFT__DATA = refreshProducts(id_num)
   let [singleNft, setSingleNFT] = useState(SINGLE__NFT__DATA)
-
-  //DEBUG
-  //console.log(SINGLE__NFT__DATA)
-
 
   const [showPurchaseReview, setShowPurchaseReview] = useState(false);
   const [productName, setProductName] = useState('Product Title');
@@ -32,13 +36,16 @@ const NftDetails = () => {
   const updateProducts = async (id_num) => {
     let result = await refreshProducts(id_num)
     setSingleNFT(result);
+    console.log(result)
   }
 
   useEffect(() => {
     updateProducts(id_num);
   }, [])
 
-  
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+});
 
   /**Show Reviwew */
   const reviewPurchase = () => {
@@ -85,11 +92,13 @@ const NftDetails = () => {
           <Container>
             <Row>
               <Col lg="6" md="6" sm="6">
-                <img
-                  src={singleNft.imgUrl}
-                  alt=""
-                  className="w-100 single__nft-img"
-                />
+{/* Slider ------------------------------------------------------------------------------*/}
+                <div className="slider__outer__container">
+                  <div className="slider__inner__container">
+                    <ImageSlider images={singleNft.imgUrl ? singleNft.imgUrl : []} />
+                  </div>
+                </div>
+{/* ------------------------------------------------------------------------------ Slider*/}
               </Col>
 
               <Col lg="6" md="6" sm="6">
@@ -129,7 +138,8 @@ const NftDetails = () => {
                     </div>
                   </div>
 
-                  <p className="my-4">{singleNft.description}</p>
+                  <p className="product__description"><b>Description</b><br /></p>
+                  <p>{singleNft.description}</p>
 
                   <p>Price: {Number(singleNft.currentBid).toFixed(2)} ETH</p>
 
