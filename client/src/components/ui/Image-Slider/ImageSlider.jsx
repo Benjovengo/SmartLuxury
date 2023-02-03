@@ -23,7 +23,9 @@ const ImageSlider = props => {
         {
           props.images.map((item, index) => (
             <SwiperSlide key={index}>
-                <img src={item} alt="product images" />
+                <div className='img__container'>
+                  <img src={item} alt="product images" />
+                </div>
             </SwiperSlide>
           ))
         }

@@ -133,7 +133,7 @@ const NftDetails = () => {
 
                     <div className="creator__detail">
                       <p>Seller - Current Owner</p>
-                      <h6>Fábio Benjovengo {singleNft.firstname} {singleNft.lastname}</h6>
+                      {(singleNft.firstname) || (singleNft.lastname) ? <h6>{singleNft.firstname} {singleNft.lastname}</h6> : <h6>Sarah Connor</h6> }
                       <h5>{singleNft.creator}</h5>
                       <div className='created__by'>
                         <p>Created By</p>
