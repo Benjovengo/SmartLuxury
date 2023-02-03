@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
-import NftCard from "../components/ui/Nft-card/NftSellCard";
-import img from "../assets/images/img-01.png";
+import NftCard from "../components/ui/Nft-card/NftPreviewCard";
+import img from "../assets/images/template_image.jpg";
 import avatar from "../assets/images/ava-01.png";
 import { randomPhoto } from "../scripts/randomProduct";
 
@@ -46,6 +46,12 @@ const handleSubmit = (e) => {
 };
 
 const Create = () => {
+
+  // @notice scroll to the top of the page
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  });
+  
   return (
     <>
       <CommonSection title="Register Item" />
@@ -54,19 +60,19 @@ const Create = () => {
         <Container>
           <Row>
             <Col lg="3" md="4" sm="6">
-              <h5 className="mb-4">Preview Item</h5>
+              <h5 className="preview__item__header mb-4">Preview Item</h5>
               <NftCard item={item} />
             </Col>
 
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
-                <label>Sell a registered item</label>
-                <p className="mb-4">To sell a registered item, go to your wallet, set the price and press the sell button.</p>
-                <h5>Register a new item for sale</h5>
+                <h3 className="sell__item">Do you want to sell a registered item?</h3>
+                <p className="mb-5">To sell a registered item, go to your wallet, set the price and press the sell button.</p>
+                <h3 className="sell__item">Register a new item for sale</h3>
                 <form onSubmit={handleSubmit}>
                   
                   <div className="form__input">
-                    <label>Title</label>
+                    <label>Title <span>(required)</span></label>
                     <input type="text" name="productName" placeholder="Enter title" required />
                   </div>
 
@@ -91,12 +97,13 @@ const Create = () => {
                         />
                       </Col>
                       <Col>
-                        <label>Serial Number</label>
+                        <label>Serial Number <span>(required)</span></label>
                         <input type="text" pattern="[a-zA-Z0-9#-]{1,32}" maxLength="32" name="serialNumber" placeholder="Serial Number" required />
                       </Col>
                       <Col>
                         <label htmlFor="category">Category</label><br/>
                         <select id="category" name="category">
+                        <option value="blank">Choose category</option>
                           <option value="bag">Bag</option>
                           <option value="shoe">Shoe</option>
                           <option value="jewel">Jewelry</option>
@@ -121,6 +128,7 @@ const Create = () => {
                       <Col>
                         <label htmlFor="condition">Condition</label><br/>
                         <select id="condition" name="condition">
+                          <option value="blank">Set the condition</option>
                           <option value="new">New, with tags</option>
                           <option value="excellent">Excellent</option>
                           <option value="good">Good, but used</option>
@@ -146,22 +154,22 @@ const Create = () => {
                          />
                       </Col>
                       <Col>
-                      <label htmlFor="">Year</label>
-                        <input type="number" min="2000" max="2099" step="1" name="year" placeholder="2023"/>
+                      <label htmlFor="">Year <span>(required)</span></label>
+                        <input defaultValue='2023' type="number" min="2000" max="2099" step="1" name="year" placeholder="2023" required/>
                       </Col>
                     </Row>
                   </div>
 
 
                   <div className="form__input">
-                    <label htmlFor="">Upload File <span>(not implemented)</span></label>
+                    <label htmlFor="">Upload File <span>(not implemented yet)</span></label>
                     <input type="file" className="upload__input" />
                   </div>
 
                   <div className="d-flex justify-content-between">
-                    <div><i>Now just click the button to register or list you item for sale.</i></div>
+                    <div><i>Now just click the button to create the product.<br/> Your blockchain address will always be the original owner of this product.</i></div>
                     <div>
-                      <button className="register__btn" type="submit">Register</button>
+                      <button className="register__btn" type="submit">Create Product</button>
                     </div>
                   </div>
 

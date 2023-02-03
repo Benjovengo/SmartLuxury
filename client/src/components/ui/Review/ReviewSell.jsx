@@ -54,12 +54,12 @@ const Review = ({ productName, productId, price, setShowReview }) => {
         <p className="text-light">
           Item
         </p>
-        <p className="money">{productName}</p>
+        <p className="item__header">{productName}</p>
 
         <p className="text-light">
           Seller's address
         </p>
-        <p className="money">0xC74a9a98Af6108adD8EB17A4262d3dc9B924c429</p>
+        <p className="seller__address">0xC74a9a98Af6108adD8EB17A4262d3dc9B924c429</p>
 
         <div className="input__item mb-3">
           <p className="text-light">Quantity</p>
@@ -83,7 +83,7 @@ const Review = ({ productName, productId, price, setShowReview }) => {
 
         {/* <i className="ri-close-line" onClick={() => console.log('Another BUTTON')}></i> */}
 
-        <button onClick={() => confirmSelling()} className="place__bid-btn">Confirm</button>
+        <button onClick={() => confirmSelling()} className="place__order-btn">Confirm</button>
       </div>
     </div>
   );

@@ -1,19 +1,37 @@
 .hero__section {
-  background-image: url('../../assets/images/extended_hero.png');
+  align-items: center;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+    ),
+    url('../../assets/images/hero_bags_banner.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin-top: 60px;
+  margin-top: 3em;
+}
+
+.hero__content {
+  justify-content: center;
 }
 
 .hero__content h2 {
   color: #fff;
-  line-height: 55px;
   font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.25em;
+  margin-top: 3.5em;
+  text-align: center;
 }
 
 .hero__content p {
   color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 1.5em;
+  line-height: normal;
+  margin: 1em 0;
+  max-width: 70%;
+  text-align: center;
 }
 
 .hero__content h2 span {
@@ -23,17 +41,26 @@
   display: inline-block;
 }
 
-.hero__btns {
+.hero__btns__wrapper {
+  align-items: center;
   margin-top: 40px;
+  text-align: center;
+}
+
+.hero__btns {
+  margin-top: 3em;
+  text-align: center;
 }
 
 .explore__create__btn {
   background: #F89104;
   border: none;
   outline: none;
-  padding: 7px 25px !important;
+  margin-top: 2em;
+  padding: 10px 40px !important;
   border-radius: 0px !important;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 
@@ -41,14 +68,12 @@
   background: #D87E01;
 }
 
-.explore__create__btn i {
-  color: #fff;
-  font-size: 1rem;
-}
+
 
 .explore__create__btn a {
   text-decoration: none;
   color: #fff;
+  width: fit-content;
 }
 
 .hero__btns button a:hover {

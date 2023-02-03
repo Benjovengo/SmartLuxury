@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
-import LiveAuction from "../components/ui/Live-auction/LiveAuction";
+import RecentItems from "../components/ui/RecentItems/RecentItems";
 import { refreshProducts } from "../assets/data/singleProduct";
 import Review from '../components/ui/Review/Review';
 
@@ -86,9 +86,9 @@ const NftDetails = () => {
         </>
       :
       <>
-        <CommonSection title={singleNft.title} />
+        <CommonSection title="Product Details" />
 
-        <section>
+        <section className='nft__details__wrapper'>
           <Container>
             <Row>
               <Col lg="6" md="6" sm="6">
@@ -107,12 +107,9 @@ const NftDetails = () => {
 
                   <div className=" d-flex align-items-center justify-content-between mt-4 mb-4">
                     <div className=" d-flex align-items-center gap-4 single__nft-seen">
-                      <span>
-                        <i className="ri-eye-line"></i> 234
-                      </span>
-                      <span>
-                        <i className="ri-heart-line"></i> 123
-                      </span>
+                      <div className='product__stars'>
+                        <span><i className="ri-medal-2-fill"></i></span> <i className="ri-star-fill"></i><i className="ri-star-half-line"></i><i className="ri-star-line"></i><i className="ri-star-line"></i><i className="ri-star-line"></i>
+                      </div>
                     </div>
 
                     <div className=" d-flex align-items-center gap-2 single__nft-more">
@@ -125,6 +122,10 @@ const NftDetails = () => {
                     </div>
                   </div>
 
+                  <p className="product__description"><b>Description</b><br /></p>
+                  <p>{singleNft.description}</p>
+
+
                   <div className="nft__creator d-flex gap-3 align-items-center">
                     <div className="creator__img">
                       <img src={singleNft.creatorImg} alt="" className="w-100" />
@@ -132,16 +133,19 @@ const NftDetails = () => {
 
                     <div className="creator__detail">
                       <p>Seller - Current Owner</p>
-                      <h6>{singleNft.creator}</h6>
-                      <p>Created By</p>
-                      <h6>{singleNft.creator}</h6>
+                      {(singleNft.firstname) || (singleNft.lastname) ? <h6>{singleNft.firstname} {singleNft.lastname}</h6> : <h6>Sarah Connor</h6> }
+                      <h5>{singleNft.creator}</h5>
+                      <div className='created__by'>
+                        <p>Created By</p>
+                        <h5>{singleNft.creator}</h5>
+                      </div>
+                      
                     </div>
                   </div>
 
-                  <p className="product__description"><b>Description</b><br /></p>
-                  <p>{singleNft.description}</p>
+                  
 
-                  <p>Price: {Number(singleNft.currentBid).toFixed(2)} ETH</p>
+                  <p className='price'><span>Price:</span> {Number(singleNft.currentBid).toFixed(2)} ETH</p>
 
                   <button className="singleNft-btn d-flex align-items-center gap-2" onClick={() => reviewPurchase()}>
                     <i className="ri-shopping-bag-line"></i>
@@ -156,7 +160,7 @@ const NftDetails = () => {
           </Container>
         </section>
 
-        <LiveAuction />
+        <RecentItems />
       </>
       }
     </>

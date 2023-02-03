@@ -57,46 +57,37 @@ const NftCard = (props) => {
         <h5 className='nft__title'>
           <Link to={`/market/${id}`}>{title}</Link>
         </h5>
-        <div className="creator__info-wrapper d-flex gap-3">
-          <div className="creator__img">
-            <img src={creatorImg} alt="" className='w-100' />
-          </div>
-
-          <div className='owner__info w-70'>
-            <h6>Seller</h6>
-            <h5>{firstname}</h5>
-            <p>{lastname}</p>
-          </div>
+        <div className='product__stars'>
+          <i className="ri-star-line"></i><i className="ri-star-half-line"></i><i className="ri-star-fill"></i>
+        </div>
+        <div className='owner__info w-70'>
+          <p><span>Seller:</span> {firstname} {lastname}</p>
         </div>
 
         <div className="price__info d-flex align-items-center justify-content-between">
-          <div className='w-50'>
-            <h6>Price</h6>
-            <p>{(Number(currentBid)).toFixed(2)} ETH</p>
+          <div className='w-70'>
+            <p>Price: <span>{(Number(currentBid)).toFixed(2)} ETH</span></p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
-            <button className="bid__btn d-flex align-items-center gap-2" onClick={() => reviewSell()}>Buy</button>
+            <button className="buy__btn d-flex align-items-center gap-2" onClick={() => reviewSell()}>Buy</button>
           </div>
         </div>
 
-        <div className="creator__info d-flex align-items-center justify-content-between">
-          <div className='w-150'>
-            <h6>Original Owner's Address</h6>
-          </div>
+        <div className="creator__info">
+          <h6>Original Owner's Address</h6>
         </div>
       </div>
 
-      <div className="creator__info d-flex align-items-center justify-content-between">
+      <div className="creator__address d-flex align-items-center justify-content-between">
           <p className='original__address'>{creator}</p>
-          <button className='copy__to__clipboard' onClick={copyToClipboard('Address')}>
-            <i className="ri-file-copy-line"></i>
+          <button className='history__link tooltip-toggle' data-tooltip="View ownership history" onClick={() => ownersList(id)}>
+            <i className="ri-history-line"></i>
           </button>
 
           {showPurchaseReview && <Review productName={productName} price={price} productId={productId} setShowPurchaseReview={setShowPurchaseReview} />}
 
       </div>
 
-      <button className='history__link' onClick={() => ownersList(id)}><span><i className="ri-history-line"></i> View Ownership History</span></button>
     </div>
   )
 }

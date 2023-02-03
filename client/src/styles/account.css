@@ -1,10 +1,27 @@
 .container__settings {
-  background-color: #DDD;
+  background-color: #fbf8f7;
 }
 
 .title__text {
   color:brown;
   margin: -1em 0 0.5em 0;
+}
+
+.square {
+  background-color: #000;
+  color: #FFF;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  height: 70px;
+  margin-left: 1.5em;
+  text-align: left;
+  width: 70px;
+}
+
+.square span {
+  margin-left: 0.25em;
 }
 
 .preview__avatar {
@@ -40,7 +57,9 @@
 }
 
 .preview__info h4 {
-  margin: -0.25em 0 0.5em 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: -0.25em 0 1.5em 0;
 }
 
 

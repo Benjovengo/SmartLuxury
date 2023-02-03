@@ -24,10 +24,18 @@
   border: none;
   color: #fff;
   padding: 7px 25px;
-  border-radius: 5px;
-  margin-top: 20px;
+  border-radius: 0px;
+  margin: 5px 0px;
 }
 
 .send__btn:hover {
   background: #D87E01;
+}
+
+.send__btn__label {
+  color: #000;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
 }

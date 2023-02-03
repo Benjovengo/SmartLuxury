@@ -14,6 +14,14 @@
   color: #000;
   font-size: 0.8rem;
 }
+
+.product__stars {
+  background-color: #FFF;
+  border: none;
+  color: #F89104;
+}
+
+
 .single__nft-more span {
   color: #fff;
   font-size: 0.8rem;
@@ -26,10 +34,20 @@
   border-radius: 50px;
 }
 
+
+.product__description {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
 .nft__creator {
   background: #FAF6F1;
+  border-left: 0.25em solid #F89104;
+  margin-top: 2em;
   padding: 15px;
-  border-radius: 7px;
   width: 100%;
 }
 
@@ -38,24 +56,47 @@
   height: 40px;
 }
 
+
 .creator__detail p {
-  font-size: 0.7rem;
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
   font-weight: 300;
-  margin-bottom: 0;
-  margin-top: 0;
+  line-height: normal;
+  margin: 0;
 }
 
 .creator__detail h6 {
   color: #000;
-  margin-bottom: 0;
-  font-size: 0.9rem;
-  font-weight: 500;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
-.product__description {
-  margin-bottom: 0;
-  padding: 0;
+.creator__detail h5 {
+  color: #000;
+  margin: 0;
+  margin-top: 0.1em;
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
+  font-weight: 300;
 }
+
+
+
+.created__by {
+  margin-top: 1em;
+}
+
+.price {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  margin-top: 2em;
+}
+
+.price span {
+  font-weight: 600;
+}
+
 
 .singleNft-btn {
   padding: 8px 25px;
@@ -110,12 +151,14 @@
   display: flex;
   height: 100vh;
   justify-content: center;
+  margin: -1.9em 0 0 0;
 }
 
 .slider__inner__container {
-  background-color: aqua;
+  background-color: #FFF;
   padding: 1em;
-  width: 100%;
+  height: 80%;
+  width: 80%;
 }
 
 @media only screen and (max-width: 992px) {

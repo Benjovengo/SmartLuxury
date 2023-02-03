@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { ethers } from 'ethers';
 
-import './nft-card-sell.css'
+import './nft-card-wallet.css'
 
 import Review from "../Review/ReviewSell";
 import { getOwnersList } from '../../../scripts/ownersList';
@@ -78,14 +78,13 @@ const NftCard = (props) => {
         <h5 className='nft__title' >
           <Link to={`/market/${id}`}>{title}</Link>
         </h5>
+        <div className="nft__stars">
+          <i className="ri-star-line"></i><i className="ri-star-half-line"></i><i className="ri-star-fill"></i>
+        </div>
         <div className="creator__info-wrapper d-flex gap-3">
-          <div className="creator__img">
-            <img src={creatorImg} alt="" className='w-100' />
-          </div>
 
           <div className='owner__info w-70'>
-            <h6>{firstname}</h6>
-            <p>{lastname}</p>
+            {(firstname) || (lastname) ? <p>{firstname}<br/><span>{lastname}</span></p> : <p>Sarah<br/><span>Connor</span></p> }
           </div>
         </div>
 
@@ -103,14 +102,14 @@ const NftCard = (props) => {
               </div>
               </div>
               <div className='d-flex align-items-center justify-content-between'>
-                <button className="bid__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
+                <button className="buy__btn d-flex align-items-center gap-2" onClick={() => ReviewSell()}>Sell</button>
               </div>
             </div>
           </> :
           <>
             <h6 className='price__header'>Changed your mind?</h6>
             <div className='d-flex align-items-center justify-content-between'>
-              <button className="bid__btn" onClick={() => stopSelling(id)}>Remove from sale</button>
+              <button className="buy__btn" onClick={() => stopSelling(id)}>Remove from sale</button>
             </div>
           </>
         }
@@ -125,15 +124,13 @@ const NftCard = (props) => {
 
       <div className="creator__info d-flex align-items-center justify-content-between">
         <p className='original__address'>{creator}</p>
-        <button className='copy__to__clipboard'>
-          <i className="ri-file-copy-line"></i>
+        <button className='history__link tooltip-toggle' data-tooltip="View ownership history" onClick={() => ownersList(id)}>
+          <i className="ri-history-line"></i>
         </button>
 
         {showReview && <Review productName={productName} productId={productId} price={price} setShowReview={setShowReview} />}
 
       </div>
-
-      <button className='history__link' onClick={() => ownersList(id)}><span><i className="ri-history-line"></i> View Ownership History</span></button>
     </div>
   )
 }

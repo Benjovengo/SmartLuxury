@@ -23,7 +23,9 @@ const ImageSlider = props => {
         {
           props.images.map((item, index) => (
             <SwiperSlide key={index}>
-                <img src={item} alt="product images" />
+                <div className='img__container'>
+                  <img src={item} alt="product images" />
+                </div>
             </SwiperSlide>
           ))
         }
@@ -31,7 +33,7 @@ const ImageSlider = props => {
       <Swiper
         loop={true}
         spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView={Math.min(props.images.length,4)}
         modules={[Navigation, Thumbs]}
         watchSlidesProgress
         onSwiper={setActiveThumb}

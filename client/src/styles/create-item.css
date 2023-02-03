@@ -1,15 +1,50 @@
+.preview__item__header {
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/** Create item wrapper div*/
+.create__item {
+  background: #FFF;
+  margin: 0;
+}
+
+.create__item p {
+  background: #FFF;
+  margin: 0;
+}
+
+.create__item label {
+  background: #FFF;
+  font-weight: 300;
+  margin: 0;
+}
+
+.sell__item {
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+
+.form__input input::placeholder,
+.form__input textarea::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #858585;
+  opacity: 1; /* Firefox */
+}
+
 .form__input input,
 .form__input textarea {
   width: 100%;
   padding: 7px 25px;
-  color: #fff;
-  font-size: 0.8rem;
-  background: #343444;
-  border: 1px solid rgba(21, 21, 21, 0.171);
+  color: #000;
+  font-size: 1rem;
+  background: #f5f4f4;
+  border: none;
   outline: none;
-  border-radius: 5px;
+  border-radius: 0px;
 }
-
 
 .form__input {
   margin-bottom: 15px;
@@ -29,7 +64,7 @@ input::file-selector-button {
   font-weight: bold;
   color: #fff;
   padding: 0.5em;
-  border: thin solid grey;
+  border: none;
   border-radius: 0px;
 }
 
@@ -74,15 +109,19 @@ input[type=file]::file-selector-button:hover {
 }
 
 
+.form__input option[value="blank"] { 
+  color: #858585;
+}
+
 .form__input select {
   width: 100%;
   padding: 7px 25px;
-  color: #fff;
-  font-size: 0.8rem;
-  background: #343444;
-  border: 1px solid rgba(21, 21, 21, 0.171);
+  color: #000;
+  font-size: 1rem;
+  background: #f5f4f4;
+  border: none;
   outline: none;
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 

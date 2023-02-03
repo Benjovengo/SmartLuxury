@@ -1,6 +1,8 @@
 .product__images__slider {
   .swiper-slide {
     align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
     padding-top: 80%;
     overflow: hidden;
     position: relative;
@@ -9,8 +11,17 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      height: 100%;
+      max-width: 100%;
     }
+  }
+
+  .img__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
   }
 
   .swiper-button-prev {
@@ -27,11 +38,11 @@
 
 .product__thumbs__slider {
   .swiper-slide {
-    border: 1px solid green;
+    border: 1px solid #000;
     cursor: pointer;
 
     &-active {
-      border-color: #ff0000;
+      border-color: #F89104;
     }
   }
 
@@ -48,3 +59,5 @@
     }
   }
 }
+
+

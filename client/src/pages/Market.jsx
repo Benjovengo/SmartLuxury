@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -7,12 +7,16 @@ import NftCard from "../components/ui/Nft-card/NftCard";
 import { NFT__DATA, refreshProducts } from "../assets/data/data";
 
 
-
 import "../styles/market.css";
 
 const Market = () => {
   const [data, setData] = useState(NFT__DATA);
   //console.log(data)
+
+  // @notice scroll to the top of the page
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  });
 
   // ====== SORTING DATA BY CATEGORY =========
   const handleCategory = (e) => {
@@ -100,7 +104,7 @@ const Market = () => {
 
   return (
     <>
-      <CommonSection title={"MarketPlace"} />
+      <CommonSection title={"Marketplace"} />
 
       <section>
         <Container>

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -9,6 +9,11 @@ import '../styles/contactMe.css'
 
 
 const Contact = () => {
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  });
+
   const nameRef = useRef("");
   const emailRef = useRef("");
   const subjectRef = useRef("");
@@ -101,6 +106,7 @@ const Contact = () => {
 
                   <Row>
                     <Col>
+                    <p className="send__btn__label">Anyone can send messages!</p>
                       <button className="send__btn">
                         Send a Message
                       </button>
@@ -108,7 +114,7 @@ const Contact = () => {
 
                     <Col>
                       <div className="m-auto text-center">
-                        <p className="my__messages__label">Only I can access this!</p>
+                        <p className="my__messages__label">Only I can access them!</p>
                         <button className="my__messages" id="addParagraphsButton" onClick={() => addParagraphs()}>View Messages</button>
                       </div>
                     </Col>

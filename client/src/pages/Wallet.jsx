@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -42,8 +42,14 @@ const wallet__data = [
 
 const Wallet = () => {
 
+// @notice scroll to the top of the page
+useLayoutEffect(() => {
+  window.scrollTo(0, 0)
+});
+
 // Hooks
 const [data, setData] = useState(PRODUCTS__OWNED__FILE);
+
 
 // ====== UPDATE PRODUCTS ON LOAD =========
 const updateProducts = async () => {
@@ -57,22 +63,19 @@ useEffect(() => {
 
   return (
     <>
-      <CommonSection title="Manage Collection" />
+      <CommonSection title="Collection" />
       <section>
         <Container>
           <Row>
             <Col lg="12" className="mb-5 text-center">
               <div className="w-50 m-auto">
-                <h3 className="">Your Collection</h3>
-                <p>
-                  Manage you collection of luxury items!
-                </p>
+                <h3 className="collection__header">Manage Your Collection</h3>
               </div>
             </Col>
 
             <Row>
                 {
-                  data.slice(0, 8).map((item) => (
+                  data.map((item) => (
                     <Col lg="3" md="4" sm="6" key={item.id} className="mb-4">
                       <NftCard item={item} />
                     </Col>
