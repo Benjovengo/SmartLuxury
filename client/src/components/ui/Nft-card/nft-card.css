@@ -156,6 +156,53 @@
 }
 
 
+.tooltip-toggle {
+  cursor: pointer;
+  position: relative;
+}
+
+.tooltip-toggle::before {
+  position: absolute;
+  top: -2em;
+  left: 0px;
+  background-color: #F89104;
+  border-radius: 0px;
+  color: #252525;
+  content: attr(data-tooltip);
+  padding: 0.25rem;
+  text-transform: none;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  width: 15em;
+}
+
+.tooltip-toggle::after {
+  position: absolute;
+  top: -12px;
+  left: 9px;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+  margin-left: -5px;
+  width: 0;
+}
+
+.tooltip-toggle::before,
+.tooltip-toggle::after {
+  color: #252525;
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+}
+
+.tooltip-toggle:hover::before,
+.tooltip-toggle:hover::after {
+  opacity: 1;
+  -webkit-transition: all 0.75s ease;
+  transition: all 0.75s ease;
+}
 
 
 @media only screen and (max-width: 992px) {

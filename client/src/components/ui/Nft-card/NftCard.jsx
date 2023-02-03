@@ -80,7 +80,7 @@ const NftCard = (props) => {
 
       <div className="creator__address d-flex align-items-center justify-content-between">
           <p className='original__address'>{creator}</p>
-          <button className='history__link' onClick={() => ownersList(id)}>
+          <button className='history__link tooltip-toggle' data-tooltip="View ownership history" onClick={() => ownersList(id)}>
             <i className="ri-history-line"></i>
           </button>
 
