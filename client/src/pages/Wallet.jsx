@@ -63,13 +63,13 @@ useEffect(() => {
 
   return (
     <>
-      <CommonSection title="Manage Collection" />
+      <CommonSection title="Collection" />
       <section>
         <Container>
           <Row>
             <Col lg="12" className="mb-5 text-center">
               <div className="w-50 m-auto">
-                <h3 className="">Your Collection</h3>
+                <h3 className="collection__header">Manage Your Collection</h3>
               </div>
             </Col>
 
