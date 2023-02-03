@@ -1,18 +1,50 @@
-.price__input input,
-.price__input textarea {
+.nft__stars {
+  color: #F89104;
+}
+
+.price__input input {
   width: 100%;
   padding: 5px 5px;
-  color: #fff;
-  font-size: 0.8rem;
-  background: #343444;
+  color: #000;
+  font-size: 1rem;
+  background: #f5f4f4;
   border: 1px solid rgba(21, 21, 21, 0.171);
   outline: none;
-  border-radius: 5px;
 }
+
+.price__input input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #858585;
+  opacity: 1; /* Firefox */
+}
+
+
+.owner__info {
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.owner__info p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: normal;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.owner__info span {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+
 
 .price__header {
   font-size: 0.9rem;
-  margin: 0.5em 0 0.1em 0;
+  margin: 1em 0 0.1em 0;
 }
 
 .buy__btn {
@@ -33,6 +65,14 @@
   background: #F89104;
   color: #fff;
 }
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 992px) {
   .nft__title {

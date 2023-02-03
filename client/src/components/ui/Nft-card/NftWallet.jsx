@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { ethers } from 'ethers';
 
-import './nft-card-sell.css'
+import './nft-card-wallet.css'
 
 import Review from "../Review/ReviewSell";
 import { getOwnersList } from '../../../scripts/ownersList';
@@ -78,14 +78,13 @@ const NftCard = (props) => {
         <h5 className='nft__title' >
           <Link to={`/market/${id}`}>{title}</Link>
         </h5>
+        <div className="nft__stars">
+          <i className="ri-star-line"></i><i className="ri-star-half-line"></i><i className="ri-star-fill"></i>
+        </div>
         <div className="creator__info-wrapper d-flex gap-3">
-          <div className="creator__img">
-            <img src={creatorImg} alt="" className='w-100' />
-          </div>
 
           <div className='owner__info w-70'>
-            <h6>{firstname}</h6>
-            <p>{lastname}</p>
+            {(firstname) || (lastname) ? <p>{firstname}<br/><span>{lastname}</span></p> : <p>Sarah<br/><span>Connor</span></p> }
           </div>
         </div>
 
