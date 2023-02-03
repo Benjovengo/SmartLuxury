@@ -57,11 +57,11 @@ const NftCard = (props) => {
         <h5 className='nft__title'>
           <Link to={`/market/${id}`}>{title}</Link>
         </h5>
-        <div className='owner__info w-70'>
-          <p><span>Seller:</span> {firstname} {lastname}</p>
-        </div>
         <div className='product__stars'>
           <i className="ri-star-line"></i><i className="ri-star-half-line"></i><i className="ri-star-fill"></i>
+        </div>
+        <div className='owner__info w-70'>
+          <p><span>Seller:</span> {firstname} {lastname}</p>
         </div>
 
         <div className="price__info d-flex align-items-center justify-content-between">
