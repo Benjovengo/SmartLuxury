@@ -1,5 +1,5 @@
 .container__settings {
-  background-color: #DDD;
+  background-color: #fbf8f7;
 }
 
 .title__text {
@@ -40,6 +40,8 @@
 }
 
 .preview__info h4 {
+  font-size: 1.25rem;
+  font-weight: 400;
   margin: -0.25em 0 0.5em 0;
 }
 
