@@ -23,9 +23,10 @@
 }
 
 .single__review h6 {
+  font-family: "Cinzel", serif;
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 0px;
+  margin-bottom: 2em;
 }
 
 .single__review p {
@@ -33,10 +34,24 @@
   margin: 0;
 }
 
+.single__review .item__header {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+.single__review .seller__address {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 1em;
+}
+
 .single__review .money {
   color: #fff;
-  font-weight: 500;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: 1.2rem;
   margin-bottom: 1em;
 }
 
