@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -42,8 +42,14 @@ const wallet__data = [
 
 const Wallet = () => {
 
+// @notice scroll to the top of the page
+useLayoutEffect(() => {
+  window.scrollTo(0, 0)
+});
+
 // Hooks
 const [data, setData] = useState(PRODUCTS__OWNED__FILE);
+
 
 // ====== UPDATE PRODUCTS ON LOAD =========
 const updateProducts = async () => {
