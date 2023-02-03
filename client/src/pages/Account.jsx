@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useLayoutEffect } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -38,6 +38,12 @@ function ValidateEmail(mail)
 
 
 const Account = () => {
+
+  // @notice scroll to the top of the page
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  });
+  
   // Hooks
   const firstNameRef = useRef("");
   const lastNameRef = useRef("");
