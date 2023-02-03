@@ -51,7 +51,7 @@ const NftCard = (props) => {
       <div className="creator__address d-flex align-items-center justify-content-between">
           <p className='original__address'>{creator}</p>
           <button className='history__link'>
-            <i className="ri-history-line"></i>
+            <i className="ri-history-line" title="Ownership's history"></i>
           </button>
 
       </div>
