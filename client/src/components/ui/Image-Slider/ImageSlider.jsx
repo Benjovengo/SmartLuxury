@@ -12,7 +12,7 @@ const ImageSlider = props => {
   return (
     <>
       <Swiper
-        loop={true}
+        loop={false}
         spaceBetween={10}
         navigation={true}
         modules={[Navigation, Thumbs]}
@@ -31,7 +31,7 @@ const ImageSlider = props => {
         }
       </Swiper>
       <Swiper
-        loop={true}
+        loop={false}
         spaceBetween={10}
         slidesPerView={Math.min(props.images.length,4)}
         modules={[Navigation, Thumbs]}
