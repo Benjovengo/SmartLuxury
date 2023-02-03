@@ -124,15 +124,13 @@ const NftCard = (props) => {
 
       <div className="creator__info d-flex align-items-center justify-content-between">
         <p className='original__address'>{creator}</p>
-        <button className='copy__to__clipboard'>
-          <i className="ri-file-copy-line"></i>
+        <button className='history__link tooltip-toggle' data-tooltip="View ownership history" onClick={() => ownersList(id)}>
+          <i className="ri-history-line"></i>
         </button>
 
         {showReview && <Review productName={productName} productId={productId} price={price} setShowReview={setShowReview} />}
 
       </div>
-
-      <button className='history__link' onClick={() => ownersList(id)}><span><i className="ri-history-line"></i> View Ownership History</span></button>
     </div>
   )
 }
