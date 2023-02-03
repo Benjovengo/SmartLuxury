@@ -33,7 +33,7 @@ const ImageSlider = props => {
       <Swiper
         loop={true}
         spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView={Math.min(props.images.length,4)}
         modules={[Navigation, Thumbs]}
         watchSlidesProgress
         onSwiper={setActiveThumb}
