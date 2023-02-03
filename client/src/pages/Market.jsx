@@ -7,7 +7,6 @@ import NftCard from "../components/ui/Nft-card/NftCard";
 import { NFT__DATA, refreshProducts } from "../assets/data/data";
 
 
-
 import "../styles/market.css";
 
 const Market = () => {
