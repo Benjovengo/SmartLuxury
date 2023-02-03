@@ -18,50 +18,44 @@ const NftCard = (props) => {
   return (
     <div className="single__nft__card">
       <div className="nft__img">
-        <img src={imgUrl} alt="" className='w-100' />
+        <Link to={`/market/${id}`}>
+          <img src={imgUrl} alt="" className='w-100' />
+        </Link>
       </div>
 
       <div className="nft__content">
-        <h5 className='nft__title'>{title}</h5>
-        <div className="creator__info-wrapper d-flex gap-3">
-          <div className="creator__img">
-            <img src={creatorImg} alt="" className='w-100' />
-          </div>
-
-          <div className='owner__info w-70'>
-            <h6>Seller</h6>
-            <p>Sarah Connor</p>
-          </div>
+        <h5 className='nft__title'>
+          <Link to="#">{title}</Link>
+        </h5>
+        <div className='owner__info w-70'>
+          <p><span>Seller:</span> Sarah Connor</p>
+        </div>
+        <div className='product__stars'>
+        <i className="ri-star-fill"></i><i className="ri-star-fill"></i><i className="ri-star-half-line"></i><i className="ri-star-line"></i>
         </div>
 
         <div className="price__info d-flex align-items-center justify-content-between">
-          <div className='w-50'>
-            <h6>Price</h6>
-            <p>{(Number(currentBid)).toFixed(2)} ETH</p>
+          <div className='w-70'>
+            <p>Price: <span>{(Number(currentBid)).toFixed(2)} ETH</span></p>
           </div>
           <div className='d-flex align-items-center justify-content-between'>
             <button className="buy__btn d-flex align-items-center gap-2">Buy</button>
           </div>
         </div>
 
-        <div className="creator__info d-flex align-items-center justify-content-between">
-          <div className='w-150'>
-            <h6>Original Owner's Address</h6>
-          </div>
+        <div className="creator__info">
+          <h6>Original Owner's Address</h6>
         </div>
       </div>
 
-      <div className="creator__info d-flex align-items-center justify-content-between">
+      <div className="creator__address d-flex align-items-center justify-content-between">
           <p className='original__address'>{creator}</p>
-          <button className='copy__to__clipboard' onClick={copyToClipboard('Address')}>
-            <i className="ri-file-copy-line"></i>
+          <button className='history__link'>
+            <i className="ri-history-line"></i>
           </button>
-
-          {showReview && <Review setShowReview={setShowReview} />}
 
       </div>
 
-      <span><Link to='#' className='history__link'><i className="ri-history-line"></i> View Ownership History</Link></span>
     </div>
   )
 }

@@ -66,7 +66,7 @@ const Create = () => {
 
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
-                <h3 className="sell__item">Sell a registered item</h3>
+                <h3 className="sell__item">Do you want to sell a registered item?</h3>
                 <p className="mb-5">To sell a registered item, go to your wallet, set the price and press the sell button.</p>
                 <h3 className="sell__item">Register a new item for sale</h3>
                 <form onSubmit={handleSubmit}>
