@@ -58,7 +58,6 @@ const Account = () => {
     console.log('Account: Get customer data!!')
     return result;
   }) */
-  
 
   const [avatarUrl, setAvatarUrl] = useState(avatar01);
 
@@ -117,7 +116,7 @@ const Account = () => {
                 <h4>Preview</h4>
                 <Row>
                   <Col>
-                    <img src={ava01} alt="" id="account_avatar" className="w-100 preview__avatar" title="Change avatar" onClick={()=> overlay()}/>
+                  { (getCustomerData.imgUrl) ? <img src={getCustomerData.imgUrl} alt="" id="account_avatar" className="w-100 preview__avatar" title="Change avatar" onClick={()=> overlay()}/> : <div class="square"> <span>FL</span></div> }
                   </Col>
                   <Col className="m-auto preview__card">
                     <p id="first_name">First name</p>
