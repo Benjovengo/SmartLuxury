@@ -75,7 +75,7 @@ useEffect(() => {
 
             <Row>
                 {
-                  data.slice(0, 8).map((item) => (
+                  data.map((item) => (
                     <Col lg="3" md="4" sm="6" key={item.id} className="mb-4">
                       <NftCard item={item} />
                     </Col>
